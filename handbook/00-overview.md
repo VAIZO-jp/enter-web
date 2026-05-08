@@ -1,0 +1,113 @@
+# 00 — V/ENTER WEB 事業部 概要
+
+> 公式サイト [vaizo.jp](https://vaizo.jp) には現時点（2026-05-09）で V/ENTER WEB 事業部の記載がない。
+> 本ドキュメントが社内向けの「正式な事業説明」として機能する。
+
+---
+
+## 1. ミッション
+
+> AI（Claude Code + Codex CLI）を実装ドラフト・司令塔として組み合わせ、
+> 飲食・店舗業態を中心に **「速く・安く・上品な」Webサイト** を量産する。
+
+「上品な」とは VAIZO Editorial の白黒ミニマルを基調とした審美性であり、テンプレ感を出さないこと。
+「速く」とは月次300件規模に耐える生産性であり、人間が手でゼロから書かないこと。
+
+## 2. 提供サービス
+
+| サービス | 概要 | 対象 |
+|---------|------|------|
+| **AIサイト制作（フルリニューアル）** | 既存サイトをClaude×Codexで全面刷新、WordPressへ統合 | 飲食・バー・ライブハウス・店舗 |
+| **AIサイト制作（LP単発）** | 単発LPをスタンドアロンHTMLで制作、Vercel/GitHub Pages等にデプロイ | 新規開店・キャンペーン |
+| **脆弱性レポート + デザインアイデンティティ提案** | 公開情報スキャン + デザイン提案を無償送付。営業導線として運用 | 既存サイトを持つ法人 |
+| **WP移行・運用代行** | 既存サイトのWordPress移行、運用支援 | DIY疲れの個人事業主・店舗 |
+
+## 3. 営業プロセス（要約）
+
+詳細は [`01-sales-process.md`](./01-sales-process.md) 参照。
+
+1. ターゲット選定（S/A/Bランク）
+2. 公開情報スキャン（パッシブのみ。詳細 [`05-vulnerability-scan.md`](./05-vulnerability-scan.md)）
+3. デザインアイデンティティ + カスタムデモトップ作成
+4. 脆弱性レポート + デモを無償送付
+5. 反応があれば商談、契約、本制作
+
+## 4. 制作プロセス（要約）
+
+詳細は [`03-codex-claude-workflow.md`](./03-codex-claude-workflow.md) と [`04-wp-publish-guide.md`](./04-wp-publish-guide.md) 参照。
+
+1. 仕様確定（Claude Code が `brief.md` をまとめる）
+2. Codex プロンプト組み立て（[`templates/codex-prompts/`](../templates/codex-prompts/) から雛形選択）
+3. Codex CLI で実装ドラフト生成（`codex exec`）
+4. Claude Code が差分レビュー、必要修正を直接Edit
+5. Playwright/web-cloner MCP で自己検収
+6. WP統合（[`decision-trees/wp-integration-method.md`](../decision-trees/wp-integration-method.md) で方式選択）
+7. デモ環境（GitHub Pages + staticrypt）でクライアント確認
+8. 本番反映、Playwright全自動テスト
+9. 公開後30日フォロー（[`runbooks/post-launch-30days.md`](../runbooks/post-launch-30days.md)）
+
+## 5. チーム体制
+
+| 役割 | 担当 | 責任範囲 |
+|------|------|---------|
+| CEO・営業統括 | 橋本友太郎 | 営業全体・予算判断・経営判断 |
+| CTO・技術統括 | 櫻井理也 | 本リポジトリ・手順書・技術判断・最終レビュー |
+| 制作担当 | 櫻井みどり | 案件制作・QC・脆弱性レポート二重チェック |
+| 制作担当 | 小野寺陸斗 | 案件制作・公開作業 |
+| アライアンスパートナー | OneBe | 案件支援（タスク単価ベース） |
+
+業務委託（OneBe）の運用は **タスク単価ベース** で「指揮命令性なし」を担保する。詳細はメモリ `project_onebe_partnership.md` および `project_vaizo_web_ops.md` の C1 制約を参照。
+
+## 6. 5ファイル統合運用フレーム（v0.2）
+
+事業部の業務管理は5ファイルExcelスイートで運用：
+
+1. WBS（制作工程）
+2. チェックリスト87項目
+3. 修正ログ
+4. タイムシート（打刻記録のみ。給与計算は社労士に委ねる）
+5. 業務委託費（タスク単価ベース）
+
+格納先: `C:\Users\nnkre\tmp\vaizo-web-ops\`
+詳細: メモリ `project_vaizo_web_ops.md`
+
+**Phase 0 完了前は本格運用しない**:
+- 顧問社労士レビュー（タイムシート方針）
+- 顧問弁護士レビュー（業務委託契約・瑕疵担保条項）
+- 全担当のExcel環境棚卸し（Mac混在ならGoogle Sheets化を検討）
+
+## 7. ブランド原則
+
+- **VAIZOエディトリアル**: 白黒のみ、ヘアライン罫線
+- **書体**: Inter 900 + Noto Sans JP 700（見出し）/ 本文系は Noto Sans JP 400
+- **本文**: 17px、テーブル: 15px、行間: 1.9
+- **ロゴ**: `vaizo_logo_{black/white}.svg`、改変禁止、最小幅 120px
+- **V/表記**: 半角スラッシュ「/」のみ。「V|」「V・」等は不可
+- **メール**: `info@vaizo.jp`（`.co.jp` は使わない）
+- **NG表現**: 軍事比喩・否定列挙・採用語・階層用語
+
+詳細: [`02-design-policy.md`](./02-design-policy.md)
+
+## 8. 月次300件スケールの目標
+
+| 指標 | 目標 | 現状 |
+|------|------|------|
+| 月次脆弱性レポート送付 | 300件 | Phase 0 開始前（実績なし） |
+| 月次反応率（返信または問い合わせ） | 5%以上（15件/月） | 未測定 |
+| 月次成約率（送付ベース） | 1%以上（3件/月） | 未測定 |
+| 平均制作期間（合意〜公開） | 14日以内 | 仙台レトロ実績: 約30日（要短縮） |
+| QC工数 | 1案件3〜5分 | 仙台レトロ: 修正対応 25件 |
+
+**ボトルネック仮説**:
+- Codexプロンプト規格化未完で案件ごとに手書きしている
+- WP統合方式が方式B（CSS衝突多発）になりがちで修正多発
+- 公開後の AIテスト未自動化で人手確認に時間がかかる
+
+→ Phase 1〜3 で順次解消予定。
+
+## 9. 関連ドキュメント
+
+- [VAIZO 1期目予算 v12.1](https://drive.google.com/file/d/1FQN6aaelty5Ie7Jy9x2phOYD2GAbgCYZ) — 体制実態反映版
+- メモリ `project_vaizo_web_ops.md` — 統合運用フレーム v0.2
+- メモリ `project_onebe_partnership.md` — OneBeパートナーシップ条件
+- メモリ `project_sales_process_v1.md` — 営業プロセスv1

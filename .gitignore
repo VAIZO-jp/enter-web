@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs (regenerable)
+dist/html/
+dist/pdf/
+dist/assets/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Secrets (never commit)
+.env
+.env.local
+.env.*.local
+secrets/
+*.pem
+*.key
+*-credentials.json
+
+# Local-only
+.local/
+tmp/

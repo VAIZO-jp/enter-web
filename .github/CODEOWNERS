@@ -1,0 +1,54 @@
+# CODEOWNERS — V/ENTER WEB ハンドブック
+#
+# このファイルは GitHub の自動レビュー機能に使われる。
+# 各ディレクトリ・ファイルに対して、PR時に自動アサインされるレビュアーを定義する。
+#
+# 構文: <pattern> <owner1> <owner2> ...
+
+# ==========
+# デフォルト（全ファイル）
+# ==========
+*                                @SakuraiRiya
+
+# ==========
+# 営業・事業全体（橋本CEO）
+# ==========
+/handbook/00-overview.md         @hashimoto-yutaro @SakuraiRiya
+/handbook/01-sales-process.md    @hashimoto-yutaro @SakuraiRiya
+/handbook/05-vulnerability-scan.md  @hashimoto-yutaro @SakuraiRiya
+/decision-trees/vulnerability-target.md  @hashimoto-yutaro @SakuraiRiya
+/templates/client-emails/        @hashimoto-yutaro @SakuraiRiya
+
+# ==========
+# 技術・手順書（櫻井CTO）
+# ==========
+/handbook/02-design-policy.md    @SakuraiRiya
+/handbook/03-codex-claude-workflow.md  @SakuraiRiya
+/handbook/04-wp-publish-guide.md @SakuraiRiya
+/handbook/06-onboarding.md       @SakuraiRiya
+/templates/codex-prompts/        @SakuraiRiya
+/templates/wp-prompts/           @SakuraiRiya
+/decision-trees/wp-integration-method.md  @SakuraiRiya
+/decision-trees/ai-vs-human.md   @SakuraiRiya
+/decision-trees/escalation.md    @SakuraiRiya
+/troubleshooting/                @SakuraiRiya
+/runbooks/                       @SakuraiRiya
+/scripts/                        @SakuraiRiya
+/dist/                           @SakuraiRiya
+
+# ==========
+# 重要ファイル（経営陣）
+# ==========
+/README.md                       @hashimoto-yutaro @SakuraiRiya
+/MAP.md                          @hashimoto-yutaro @SakuraiRiya
+/.github/                        @SakuraiRiya
+/.github/CODEOWNERS              @hashimoto-yutaro @SakuraiRiya
+
+# ==========
+# 注意
+# ==========
+# 上記の @hashimoto-yutaro は実在のGitHubユーザー名に置換すること。
+# 現状の確認: VAIZO-jp organization のメンバー一覧を gh api で確認。
+#
+# 例:
+#   gh api orgs/VAIZO-jp/members --paginate

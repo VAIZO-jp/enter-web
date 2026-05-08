@@ -1,0 +1,25 @@
+{
+  "name": "enter-web-handbook",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VAIZO V/ENTER WEB Department Handbook — Markdown source, HTML & PDF distributables",
+  "scripts": {
+    "build:html": "node scripts/build.mjs --html-only",
+    "build:pdf": "node scripts/build.mjs --pdf-only",
+    "build": "node scripts/build.mjs",
+    "clean": "rimraf dist/html dist/pdf",
+    "lint:md": "echo 'Add markdownlint when needed'",
+    "preview": "echo 'Open dist/html/index.html in your browser'"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "marked": "^14.1.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.46.0",
+    "rimraf": "^5.0.10"
+  }
+}
