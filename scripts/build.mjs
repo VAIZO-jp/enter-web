@@ -22,7 +22,9 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "..");
 const DIST_HTML = path.join(ROOT, "dist", "html");
 const DIST_PDF = path.join(ROOT, "dist", "pdf");
-const CSS_PATH = path.join(ROOT, "dist", "css", "vaizo-editorial.css");
+const CSS_SRC = path.join(ROOT, "assets", "css", "vaizo-editorial.css"); // ソースCSS（git管理）
+const CSS_OUT = path.join(DIST_HTML, "css", "vaizo-editorial.css"); // HTML出力先のCSS（dist/html配下、相対パス整合）
+const CSS_PATH = CSS_OUT; // 後方互換のエイリアス
 const DOCS_DIR = path.join(ROOT, "docs"); // GitHub Pages 配信ディレクトリ
 
 // ============================================================
@@ -257,6 +259,13 @@ function renderTOC(structure) {
 // 5. 個別 HTML ページ生成
 // ============================================================
 
+async function prepareCssAssets() {
+  console.log("🎨 Preparing CSS assets in dist/html/css/...");
+  await ensureDir(path.dirname(CSS_OUT));
+  await fs.copyFile(CSS_SRC, CSS_OUT);
+  console.log(`  ✓ ${path.relative(ROOT, CSS_OUT)}`);
+}
+
 async function buildIndividualHtmlPages() {
   console.log("📄 Building individual HTML pages...");
   await ensureDir(DIST_HTML);
@@ -389,6 +398,7 @@ async function main() {
   let combinedHtmlPath = path.join(DIST_HTML, "index.html");
 
   if (!PDF_ONLY) {
+    await prepareCssAssets();
     await buildIndividualHtmlPages();
     combinedHtmlPath = await buildBookHtml();
   }
