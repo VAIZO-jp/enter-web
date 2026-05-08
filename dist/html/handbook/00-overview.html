@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>事業部概要 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>00 — V/ENTER WEB 事業部 概要</h1>
+<blockquote>
+<p>公式サイト <a href="https://vaizo.jp">vaizo.jp</a> には現時点（2026-05-09）で V/ENTER WEB 事業部の記載がない。
+本ドキュメントが社内向けの「正式な事業説明」として機能する。</p>
+</blockquote>
+<hr>
+<h2>1. ミッション</h2>
+<blockquote>
+<p>AI（Claude Code + Codex CLI）を実装ドラフト・司令塔として組み合わせ、
+飲食・店舗業態を中心に <strong>「速く・安く・上品な」Webサイト</strong> を量産する。</p>
+</blockquote>
+<p>「上品な」とは VAIZO Editorial の白黒ミニマルを基調とした審美性であり、テンプレ感を出さないこと。
+「速く」とは月次300件規模に耐える生産性であり、人間が手でゼロから書かないこと。</p>
+<h2>2. 提供サービス</h2>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>概要</th>
+<th>対象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AIサイト制作（フルリニューアル）</strong></td>
+<td>既存サイトをClaude×Codexで全面刷新、WordPressへ統合</td>
+<td>飲食・バー・ライブハウス・店舗</td>
+</tr>
+<tr>
+<td><strong>AIサイト制作（LP単発）</strong></td>
+<td>単発LPをスタンドアロンHTMLで制作、Vercel/GitHub Pages等にデプロイ</td>
+<td>新規開店・キャンペーン</td>
+</tr>
+<tr>
+<td><strong>脆弱性レポート + デザインアイデンティティ提案</strong></td>
+<td>公開情報スキャン + デザイン提案を無償送付。営業導線として運用</td>
+<td>既存サイトを持つ法人</td>
+</tr>
+<tr>
+<td><strong>WP移行・運用代行</strong></td>
+<td>既存サイトのWordPress移行、運用支援</td>
+<td>DIY疲れの個人事業主・店舗</td>
+</tr>
+</tbody></table>
+<h2>3. 営業プロセス（要約）</h2>
+<p>詳細は <a href="./01-sales-process.html"><code>01-sales-process.md</code></a> 参照。</p>
+<ol>
+<li>ターゲット選定（S/A/Bランク）</li>
+<li>公開情報スキャン（パッシブのみ。詳細 <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a>）</li>
+<li>デザインアイデンティティ + カスタムデモトップ作成</li>
+<li>脆弱性レポート + デモを無償送付</li>
+<li>反応があれば商談、契約、本制作</li>
+</ol>
+<h2>4. 制作プロセス（要約）</h2>
+<p>詳細は <a href="./03-codex-claude-workflow.html"><code>03-codex-claude-workflow.md</code></a> と <a href="./04-wp-publish-guide.html"><code>04-wp-publish-guide.md</code></a> 参照。</p>
+<ol>
+<li>仕様確定（Claude Code が <code>brief.md</code> をまとめる）</li>
+<li>Codex プロンプト組み立て（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> から雛形選択）</li>
+<li>Codex CLI で実装ドラフト生成（<code>codex exec</code>）</li>
+<li>Claude Code が差分レビュー、必要修正を直接Edit</li>
+<li>Playwright/web-cloner MCP で自己検収</li>
+<li>WP統合（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a> で方式選択）</li>
+<li>デモ環境（GitHub Pages + staticrypt）でクライアント確認</li>
+<li>本番反映、Playwright全自動テスト</li>
+<li>公開後30日フォロー（<a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a>）</li>
+</ol>
+<h2>5. チーム体制</h2>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>担当</th>
+<th>責任範囲</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CEO・営業統括</td>
+<td>橋本友太郎</td>
+<td>営業全体・予算判断・経営判断</td>
+</tr>
+<tr>
+<td>CTO・技術統括</td>
+<td>櫻井理也</td>
+<td>本リポジトリ・手順書・技術判断・最終レビュー</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>櫻井みどり</td>
+<td>案件制作・QC・脆弱性レポート二重チェック</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>小野寺陸斗</td>
+<td>案件制作・公開作業</td>
+</tr>
+<tr>
+<td>アライアンスパートナー</td>
+<td>OneBe</td>
+<td>案件支援（タスク単価ベース）</td>
+</tr>
+</tbody></table>
+<p>業務委託（OneBe）の運用は <strong>タスク単価ベース</strong> で「指揮命令性なし」を担保する。詳細はメモリ <code>project_onebe_partnership.md</code> および <code>project_vaizo_web_ops.md</code> の C1 制約を参照。</p>
+<h2>6. 5ファイル統合運用フレーム（v0.2）</h2>
+<p>事業部の業務管理は5ファイルExcelスイートで運用：</p>
+<ol>
+<li>WBS（制作工程）</li>
+<li>チェックリスト87項目</li>
+<li>修正ログ</li>
+<li>タイムシート（打刻記録のみ。給与計算は社労士に委ねる）</li>
+<li>業務委託費（タスク単価ベース）</li>
+</ol>
+<p>格納先: <code>C:\Users\nnkre\tmp\vaizo-web-ops\</code>
+詳細: メモリ <code>project_vaizo_web_ops.md</code></p>
+<p><strong>Phase 0 完了前は本格運用しない</strong>:</p>
+<ul>
+<li>顧問社労士レビュー（タイムシート方針）</li>
+<li>顧問弁護士レビュー（業務委託契約・瑕疵担保条項）</li>
+<li>全担当のExcel環境棚卸し（Mac混在ならGoogle Sheets化を検討）</li>
+</ul>
+<h2>7. ブランド原則</h2>
+<ul>
+<li><strong>VAIZOエディトリアル</strong>: 白黒のみ、ヘアライン罫線</li>
+<li><strong>書体</strong>: Inter 900 + Noto Sans JP 700（見出し）/ 本文系は Noto Sans JP 400</li>
+<li><strong>本文</strong>: 17px、テーブル: 15px、行間: 1.9</li>
+<li><strong>ロゴ</strong>: <code>vaizo_logo_{black/white}.svg</code>、改変禁止、最小幅 120px</li>
+<li><strong>V/表記</strong>: 半角スラッシュ「/」のみ。「V|」「V・」等は不可</li>
+<li><strong>メール</strong>: <code>info@vaizo.jp</code>（<code>.co.jp</code> は使わない）</li>
+<li><strong>NG表現</strong>: 軍事比喩・否定列挙・採用語・階層用語</li>
+</ul>
+<p>詳細: <a href="./02-design-policy.html"><code>02-design-policy.md</code></a></p>
+<h2>8. 月次300件スケールの目標</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>目標</th>
+<th>現状</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>月次脆弱性レポート送付</td>
+<td>300件</td>
+<td>Phase 0 開始前（実績なし）</td>
+</tr>
+<tr>
+<td>月次反応率（返信または問い合わせ）</td>
+<td>5%以上（15件/月）</td>
+<td>未測定</td>
+</tr>
+<tr>
+<td>月次成約率（送付ベース）</td>
+<td>1%以上（3件/月）</td>
+<td>未測定</td>
+</tr>
+<tr>
+<td>平均制作期間（合意〜公開）</td>
+<td>14日以内</td>
+<td>仙台レトロ実績: 約30日（要短縮）</td>
+</tr>
+<tr>
+<td>QC工数</td>
+<td>1案件3〜5分</td>
+<td>仙台レトロ: 修正対応 25件</td>
+</tr>
+</tbody></table>
+<p><strong>ボトルネック仮説</strong>:</p>
+<ul>
+<li>Codexプロンプト規格化未完で案件ごとに手書きしている</li>
+<li>WP統合方式が方式B（CSS衝突多発）になりがちで修正多発</li>
+<li>公開後の AIテスト未自動化で人手確認に時間がかかる</li>
+</ul>
+<p>→ Phase 1〜3 で順次解消予定。</p>
+<h2>9. 関連ドキュメント</h2>
+<ul>
+<li><a href="https://drive.google.com/file/d/1FQN6aaelty5Ie7Jy9x2phOYD2GAbgCYZ">VAIZO 1期目予算 v12.1</a> — 体制実態反映版</li>
+<li>メモリ <code>project_vaizo_web_ops.md</code> — 統合運用フレーム v0.2</li>
+<li>メモリ <code>project_onebe_partnership.md</code> — OneBeパートナーシップ条件</li>
+<li>メモリ <code>project_sales_process_v1.md</code> — 営業プロセスv1</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

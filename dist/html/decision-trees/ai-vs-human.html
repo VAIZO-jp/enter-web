@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI vs 人間の境界 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：「AIに任せる」vs「人間が確認」の境界</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> の「迷ったらAI」原則を補足する判断基準。</p>
+</blockquote>
+<hr>
+<h2>原則</h2>
+<p>V/ENTER WEB は <strong>「AIに任せて進める」</strong> が基本姿勢。ただし、<strong>人手確認が必須の領域</strong> がある。</p>
+<hr>
+<h2>カテゴリ別の判断</h2>
+<h3>✅ AIに完全に任せてよい（人手確認不要）</h3>
+<ul>
+<li>HTML / CSS / JS の実装ドラフト生成</li>
+<li>WP最適化版の作成（4-pre 監査含む）</li>
+<li>Playwright 全自動テスト（5-AI）</li>
+<li>画像のリサイズ・圧縮・WebP変換</li>
+<li>Lighthouse スコア測定</li>
+<li>コンソールエラー検出</li>
+<li>文章の校正（誤字脱字・口調の統一）</li>
+<li>翻訳・要約</li>
+</ul>
+<h3>⚠️ AIに任せて、人手で必ず最終確認する（QC必須）</h3>
+<ul>
+<li><strong>脆弱性スキャンレポート</strong>: 誤検知の二重チェック（櫻井みどり、3-5分/件）</li>
+<li><strong>デザインのブランド整合</strong>: VAIZO Design Policy 準拠を最終目視</li>
+<li><strong>コピーライティングの感情・温度</strong>: 軍事比喩・否定列挙等の検出</li>
+<li><strong>クライアント向けメール</strong>: 道義的ライン違反の検出（恐怖訴求・煽り等）</li>
+<li><strong>WP統合方式の選定</strong>: AIの推奨を尊重しつつCTOが最終判断</li>
+<li><strong>公開前の見た目スクショ</strong>: クライアントが認識した最終案と一致するか</li>
+</ul>
+<h3>❌ AIに任せず、必ず人間が実行・判断する</h3>
+<ul>
+<li><strong>クライアントへの送信</strong> (脆弱性レポート添付メール、提案メール、公開報告)<ul>
+<li>理由: 道義的判断・関係性・タイミング</li>
+</ul>
+</li>
+<li><strong>メール宛先のテスト送信受信確認</strong> (5-メール)<ul>
+<li>理由: クライアントの実機での受信が最終確認</li>
+</ul>
+</li>
+<li><strong>クライアントとの口頭コミュニケーション</strong> (会議・電話)<ul>
+<li>理由: 信頼関係・空気感</li>
+</ul>
+</li>
+<li><strong>法的判断</strong> (削除依頼対応・クレーム対応の最終判断)<ul>
+<li>理由: 顧問弁護士相談を要する領域</li>
+</ul>
+</li>
+<li><strong>金額・契約条件の最終決定</strong><ul>
+<li>理由: 経営判断</li>
+</ul>
+</li>
+<li><strong>業務委託契約の指揮命令性に触れる判断</strong><ul>
+<li>理由: 偽装請負の法的リスク</li>
+</ul>
+</li>
+<li><strong>個人情報の扱い</strong><ul>
+<li>理由: 個人情報保護法・関係法令</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>判断フロー（簡易版）</h2>
+<pre><code>┌────────────────────────────────────────────────┐
+│ Q1. このタスクの結果を「クライアントに直接送る」    │
+│     ／「対外公開する」？                          │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ⚠️ 必ず人手で最終確認 + 該当者承認
+        │
+        └── NO ───→ Q2へ
+
+┌────────────────────────────────────────────────┐
+│ Q2. 法的・道義的リスクがある領域？                 │
+│     （脆弱性・契約・個人情報）                     │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ❌ AIに任せず人間が判断
+        │           （必要なら顧問弁護士相談）
+        │
+        └── NO ───→ Q3へ
+
+┌────────────────────────────────────────────────┐
+│ Q3. ブランド整合・コピー感情・デザイン審美が       │
+│     関わる？                                    │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ⚠️ AIに任せて最終目視確認
+        │
+        └── NO ───→ ✅ AIに完全に任せる
+</code></pre>
+<hr>
+<h2>AI が止まったら、ためらわず人間にエスカレーション</h2>
+<p>AIが「これ以上判断できない」と返した場合、もしくは複数回試行しても結果が改善しない場合：</p>
+<ol>
+<li>AI とのやり取りログをスクショまたはコピー</li>
+<li>案件CTO（櫻井理也）に Slack DM</li>
+<li>詳細は <a href="./escalation.html"><code>escalation.md</code></a></li>
+</ol>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> — 「迷ったらAI」原則</li>
+<li><a href="../troubleshooting/"><code>troubleshooting/</code></a> — AIで対処できなかったケースのナレッジ</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

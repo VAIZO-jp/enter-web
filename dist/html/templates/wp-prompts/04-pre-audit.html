@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WP移行前監査プロンプト（4-pre） — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>WP移行前監査プロンプト（4-pre）</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-pre から呼び出される AI 指示文。
+このテンプレートをそのままコピーして {{プレースホルダ}} を埋め、Claude Code に貼り付ける。</p>
+</blockquote>
+<hr>
+<p>最終版HTML（<code>{{最終版HTMLファイル名}}</code>）と対象WordPressサイト（<code>{{対象サイトURL}}</code>）について、WP移行前のチェックを以下のA〜J項で実施し、Markdownレポートを返してください。</p>
+<h2>チェック項目</h2>
+<h3>A. 構造的問題</h3>
+<p><code>&lt;!DOCTYPE&gt;</code> / <code>&lt;html&gt;</code> / <code>&lt;head&gt;</code> / <code>&lt;body&gt;</code> / <code>&lt;header&gt;</code> / <code>&lt;footer&gt;</code> / <code>&lt;nav&gt;</code> の有無と、テーマとの重複箇所を一覧化。</p>
+<h3>B. 画像パス</h3>
+<p>相対パス・絶対URL・外部CDN・GitHub Pages URL等を一覧化、置換対象を特定。</p>
+<h3>C. 外部URL／canonical／JSON-LD</h3>
+<p>書換が必要なURLを全箇所リスト化（旧URL→<code>{{公開URL}}</code>）。</p>
+<h3>D. CSP／セキュリティヘッダ</h3>
+<p><code>&lt;meta&gt;</code> CSP、HSTS、サーバ側設定との整合をチェック。</p>
+<h3>E. 動的要素／フォーム／カレンダー</h3>
+<p>静的化／動的化の判断、メール宛先確定状況をチェック。</p>
+<h3>F. 統合方式の判断</h3>
+<p>以下4方式から推奨を選定：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>評価</th>
+<th>適用条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A: カスタムページテンプレート（page-{slug}.php）</strong></td>
+<td>★★★★★</td>
+<td>テーマheader/footerを呼ばない最上策</td>
+</tr>
+<tr>
+<td>B: 固定ページ＋Custom HTMLブロック</td>
+<td>★★</td>
+<td>簡単だがCSS衝突多発</td>
+</tr>
+<tr>
+<td>C: ショートコード化</td>
+<td>★★★</td>
+<td>複数ページで再利用したい</td>
+</tr>
+<tr>
+<td>D: 別ドメイン／サブディレクトリで静的HTML</td>
+<td>★</td>
+<td>最終手段</td>
+</tr>
+</tbody></table>
+<p>判断フローチャート: <a href="../../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></p>
+<h3>G. WPプラグイン干渉</h3>
+<ul>
+<li>Yoast SEO（meta上書き）</li>
+<li>Elementor等Page Builder</li>
+<li>画像CDN・最適化系</li>
+<li>キャッシュ系</li>
+</ul>
+<p>の干渉可能性を「高/中/低」で評価。</p>
+<h3>H. QAチェックリスト</h3>
+<p>公開前の動作確認項目を列挙（<a href="../../runbooks/deploy-day.html"><code>runbooks/deploy-day.md</code></a> 参照）。</p>
+<h3>I. クライアント連絡待ち項目</h3>
+<p>メール宛先／カレンダーID／GTM等で未確定の項目を抽出。</p>
+<h3>J. リスクと対応</h3>
+<table>
+<thead>
+<tr>
+<th>リスクID</th>
+<th>影響度（高/中/低）</th>
+<th>内容</th>
+<th>対応策</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>出力先</h2>
+<p><code>{{案件フォルダ}}/01_WEBサイト刷新サービス/docs/wp-migration-check_{{YYYYMMDD}}.md</code></p>
+<hr>
+<h2>監査レポートを受け取ったら</h2>
+<ol>
+<li><strong>F項（統合方式）</strong> で AI が推奨する方式に沿って、4-0の最適化要件を調整（通常は方式A：カスタムページテンプレート推奨）</li>
+<li><strong>G項（プラグイン干渉）</strong> が「中」以上なら、対象プラグインの一時停止／除外設定を事前に決める</li>
+<li><strong>I項（連絡待ち）</strong> が残っているならクライアントに催促 → 確定するまで本番貼付は保留</li>
+<li><strong>J項（リスク）</strong> を案件CTO・クライアントと共有 → 対応策を合意してから 4-0 へ進む</li>
+</ol>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

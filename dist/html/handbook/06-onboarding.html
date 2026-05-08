@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day1 オンボーディング — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>06 — Day1 オンボーディングチェックリスト</h1>
+<blockquote>
+<p>新規メンバーが V/ENTER WEB 事業部に参加した最初の日に、上から順に進めれば1日で稼働可能になる。</p>
+</blockquote>
+<hr>
+<h2>⚠️ Phase 0 完了前の制約</h2>
+<p>業務委託・外部協力者向けの一部項目は、以下の Phase 0 タスク完了後に解禁される：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 顧問社労士レビュー（タイムシート方針）</li>
+<li><input disabled="" type="checkbox"> 顧問弁護士レビュー（業務委託契約書・瑕疵担保条項）</li>
+</ul>
+<p>詳細: <a href="./00-overview.html"><code>handbook/00-overview.md</code></a> §6 および メモリ <code>project_vaizo_web_ops.md</code></p>
+<hr>
+<h2>Day 1: アカウント・ツール準備（午前）</h2>
+<h3>必須アカウント</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>GitHub</strong> アカウント作成 → <code>VAIZO-jp</code> org への招待を受領</li>
+<li><input disabled="" type="checkbox"> <strong>Slack</strong> ワークスペース <code>vaizo-one-team.slack.com</code> への招待を受領</li>
+<li><input disabled="" type="checkbox"> <strong>Google Workspace</strong>（@vaizo.jp ドメイン）アカウント受領</li>
+<li><input disabled="" type="checkbox"> <strong>1Password Teams</strong> Vault招待を受領（Phase 1 完了後）</li>
+<li><input disabled="" type="checkbox"> <strong>Plaud</strong> 個別アカウント作成</li>
+<li><input disabled="" type="checkbox"> <strong>Tactiq</strong> 個別アカウント作成</li>
+</ul>
+<h3>開発環境（実装担当者のみ）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Node.js 20以上 + npm</li>
+<li><input disabled="" type="checkbox"> OpenAI Codex CLI: <code>npm install -g @openai/codex</code> → <code>codex login</code>（ChatGPT Plus以上必要）</li>
+<li><input disabled="" type="checkbox"> Claude Code CLI: 公式手順に従いインストール → ログイン（Claude Pro以上）</li>
+<li><input disabled="" type="checkbox"> Git 設定（<code>user.name</code>, <code>user.email</code>）</li>
+<li><input disabled="" type="checkbox"> エディタ（VS Code推奨、Cursor可）</li>
+<li><input disabled="" type="checkbox"> 1Password CLI（任意、シークレット参照を効率化）</li>
+</ul>
+<h3>本リポジトリのクローン</h3>
+<pre><code class="language-bash">gh repo clone VAIZO-jp/enter-web
+cd enter-web
+</code></pre>
+<p>または</p>
+<pre><code class="language-bash">git clone https://github.com/VAIZO-jp/enter-web.git
+cd enter-web
+</code></pre>
+<hr>
+<h2>Day 1: ドキュメント確認（午後）</h2>
+<h3>30分で読むべき5本</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../README.html"><code>README.md</code></a>（このリポジトリの入口）</li>
+<li><input disabled="" type="checkbox"> <a href="../MAP.html"><code>MAP.md</code></a>（データ保存場所・アクセス地図）★最重要</li>
+<li><input disabled="" type="checkbox"> <a href="./00-overview.html"><code>handbook/00-overview.md</code></a>（事業全体像）</li>
+<li><input disabled="" type="checkbox"> <a href="./02-design-policy.html"><code>handbook/02-design-policy.md</code></a>（VAIZO Design Policy）</li>
+<li><input disabled="" type="checkbox"> <a href="./03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a>（実装ワークフロー）</li>
+</ul>
+<h3>役割別の追加読書（1〜2時間）</h3>
+<h4>営業担当の場合</h4>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./01-sales-process.html"><code>handbook/01-sales-process.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a>（<strong>最重要</strong>：法的・道義的ライン）</li>
+<li><input disabled="" type="checkbox"> <a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="../templates/client-emails/"><code>templates/client-emails/</code></a> 全雛形</li>
+</ul>
+<h4>制作担当の場合</h4>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a>（<strong>最重要</strong>：5ステップ公開手順）</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/TEMPLATE.html"><code>templates/codex-prompts/TEMPLATE.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> 業態別雛形を全て眺める</li>
+<li><input disabled="" type="checkbox"> <a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="../runbooks/deploy-day.html"><code>runbooks/deploy-day.md</code></a></li>
+</ul>
+<h4>CTO/技術リード補佐の場合</h4>
+<ul>
+<li>上記すべて + 全 <a href="../troubleshooting/"><code>troubleshooting/</code></a> ファイル</li>
+</ul>
+<hr>
+<h2>Day 1: 実機検証（夕方）</h2>
+<h3>営業担当</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> のパッシブスキャンツール3つを自分のサイト（<code>vaizo.jp</code> 等の許可サイト）で試す<ul>
+<li>securityheaders.com</li>
+<li>Mozilla Observatory</li>
+<li>SSL Labs</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> スコア確認、レポートのスクショを取る</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/client-emails/"><code>templates/client-emails/</code></a> の脆弱性レポート添付メール雛形を読み、文体に違和感がないか確認</li>
+</ul>
+<h3>制作担当</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Codex CLI で「Hello World HTML」を生成してみる<pre><code class="language-bash">mkdir codex-hello &amp;&amp; cd codex-hello
+echo &quot;シンプルなHTMLでHello Worldと表示するindex.htmlを作って&quot; &gt; codex_prompt.md
+codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &quot;./codex_out.md&quot; &quot;$(cat ./codex_prompt.md)&quot;
+cat codex_out.md
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"> 生成された <code>index.html</code> をブラウザで開いて確認</li>
+<li><input disabled="" type="checkbox"> Claude Code に「このHTMLをVAIZO Design Policyに沿って修正して」と依頼してみる</li>
+<li><input disabled="" type="checkbox"> <a href="../troubleshooting/codex-cli-issues.html"><code>troubleshooting/codex-cli-issues.md</code></a> を読み、無音失敗のパターンを把握</li>
+</ul>
+<hr>
+<h2>Day 1: Slack 挨拶投稿</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>#事業部別_enter-ai</code>（C0ARXUP0L21）に挨拶投稿<ul>
+<li>自己紹介（役割、得意領域、これまでの経験）</li>
+<li>Day1で気になった点・質問</li>
+<li>困ったときの連絡方法</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> <code>#all-株式会社vaizo</code>（C0AP8VAUYSE）にも自己紹介投稿（任意）</li>
+</ul>
+<hr>
+<h2>Day 2 以降: 段階的アサイン</h2>
+<h3>Day 2-3: 既存案件の観察</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 仙台レトロバックページ（<a href="https://retro-backpage.com/">retro-backpage.com</a>）の Drive フォルダ（<code>1c8VIDSkvo6jI1ahjuE3tWdS0qYN2fQcx</code>）を読む</li>
+<li><input disabled="" type="checkbox"> BAR NOIR デモ（Drive <code>1GAvzoiZejlZIUKd0bY0rPhIdRZhM_9Jb</code>）の <code>codex_prompt.md</code> <code>codex_out.md</code> <code>index.html</code> を読む</li>
+<li><input disabled="" type="checkbox"> 公開済サイトで <a href="../troubleshooting/mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a> の事故再発防止策を読む</li>
+</ul>
+<h3>Day 4-5: 練習案件</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 自分の知人・家族のサイトで（許可を得て）脆弱性スキャン → デモ作成 → レビュー（実際のクライアントには送らない）</li>
+<li><input disabled="" type="checkbox"> CTOにレビュー依頼</li>
+</ul>
+<h3>Week 2: 最初の本番案件アサイン</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> に従って案件キックオフ</li>
+<li><input disabled="" type="checkbox"> CTOがメンターとして付き、各ステップで都度チェック</li>
+</ul>
+<hr>
+<h2>困ったとき</h2>
+<table>
+<thead>
+<tr>
+<th>何に困った</th>
+<th>どうする</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作で詰まった</td>
+<td>まずAIに聞く（<a href="./04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> 大前提）</td>
+</tr>
+<tr>
+<td>判断に迷う</td>
+<td><a href="../decision-trees/"><code>decision-trees/</code></a> を見る</td>
+</tr>
+<tr>
+<td>エラー・故障</td>
+<td><a href="../troubleshooting/"><code>troubleshooting/</code></a> を見る</td>
+</tr>
+<tr>
+<td>上記でも解決しない</td>
+<td>案件CTO（櫻井理也）にSlack DM、もしくは <code>#事業部別_enter-ai</code> でメンション</td>
+</tr>
+<tr>
+<td>緊急</td>
+<td>橋本CEO（電話番号は1Password共有）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>30日後の振り返り</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 最初に詰まったポイントを整理して <a href="../troubleshooting/"><code>troubleshooting/</code></a> に追記PR</li>
+<li><input disabled="" type="checkbox"> このオンボーディング手順で「分かりにくかった」点を本ファイルへの改善PR</li>
+<li><input disabled="" type="checkbox"> CTOと1on1（30分）</li>
+</ul>
+<p>新規メンバーがこの手順を完了したら、本ファイル末尾に名前と日付をチェックインします（PRで本人が記入）：</p>
+<pre><code class="language-markdown">## オンボーディング完了者
+
+- 2026-05-XX: 〇〇〇〇（役割）
+</code></pre>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

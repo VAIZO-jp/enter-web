@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mailto: リグレッション事故 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>mailto: リグレッション事故の事例と再発防止</h1>
+<blockquote>
+<p>仙台レトロバックページ案件（2026-04月、修正ID <code>F-RBP-202605-001/025/026</code>）で発生した実事故の記録。
+このページの存在自体が「VAIZO V/ENTER WEB 統合運用フレーム v0.2」の策定動機となった。</p>
+</blockquote>
+<hr>
+<h2>事故の概要</h2>
+<h3>何が起きたか</h3>
+<p>仙台レトロバックページの本番公開後、<code>mailto:</code> リンクから問い合わせメーラーを起動しようとすると <strong>全てのメーラー（Outlook、Gmail、Apple Mail）でメーラーが起動しなくなった</strong>。</p>
+<h3>原因</h3>
+<p>修正対応 #25 → #26 で、複数宛先の指定方法を以下のように変更した：</p>
+<pre><code class="language-html">&lt;!-- 修正前（動作していた） --&gt;
+&lt;a href=&quot;mailto:to@example.com,cc1@example.com,cc2@example.com&quot;&gt;
+
+&lt;!-- 修正後（動作しない） --&gt;
+&lt;a href=&quot;mailto:to@example.com?cc=cc1@example.com,cc2@example.com&quot;&gt;
+</code></pre>
+<p>カンマ区切りcc → <code>?cc=</code> 形式 への変更自体は仕様上正しいが、<strong>対象環境（Outlook 365 + Apple Mail + Gmail Web）の一部で <code>mailto:</code> URL のエンコードが正しく解釈されない</strong> 結果、リンクが無効化された。</p>
+<h3>影響</h3>
+<ul>
+<li>公開後 約24時間、お問い合わせフォームが実質機能しないままだった</li>
+<li>リード喪失の可能性（実害は確認できなかったが、影響度「高」）</li>
+<li>クライアント・関係者に修正対応で工数発生</li>
+</ul>
+<h3>なぜ気付くのが遅れたか</h3>
+<ol>
+<li>修正対応表（修正ログ）にステータス・優先度・担当・工数の管理がなかった</li>
+<li>リグレッションテスト（公開前の <code>mailto:</code> 起動確認）が手順に組み込まれていなかった</li>
+<li>Step 5-メール（実機テスト送信）の運用が始まる前の事故だった</li>
+</ol>
+<hr>
+<h2>教訓</h2>
+<h3>Lesson 1: <code>mailto:</code> の修正は必ず実機で起動確認</h3>
+<ul>
+<li>修正後、Outlook / Gmail / Apple Mail の少なくとも2環境で起動テスト</li>
+<li>スマホ実機（iOS Mail、Android Gmail）でも確認</li>
+</ul>
+<h3>Lesson 2: リグレッションテストを手順に組み込む</h3>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール として正式手順化済み。</p>
+<h3>Lesson 3: 修正ログの運用標準化</h3>
+<p>修正ID <code>F-{案件略号}-{YYYYMM}-{連番:03桁}</code> で管理。
+ステータス・優先度・担当・工数・スクショを必須項目化。</p>
+<p>詳細: メモリ <code>project_vaizo_web_ops.md</code> § C3</p>
+<h3>Lesson 4: 「公開2週間以内の瑕疵担保」の契約明記</h3>
+<p>公開後の不具合を「サービス範囲」として無償対応するか、「契約外」として有償対応するかの線引き。
+顧問弁護士確認後に契約書に明記。</p>
+<p>詳細: メモリ <code>project_vaizo_web_ops.md</code> § W7</p>
+<hr>
+<h2>再発防止チェックリスト</h2>
+<p>公開前に以下を必ず実施：</p>
+<ul>
+<li><input disabled="" type="checkbox"> <code>mailto:</code> リンクを Outlook / Gmail / Apple Mail で起動確認</li>
+<li><input disabled="" type="checkbox"> スマホ実機（iOS Mail、Android Gmail）で起動確認</li>
+<li><input disabled="" type="checkbox"> 複数宛先がある場合、<code>mailto:to@...?cc=cc1@...,cc2@...</code> 形式が正しく動くか確認</li>
+<li><input disabled="" type="checkbox"> 件名・本文プリセットが文字化けしないか確認（URLエンコードに注意）</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> のチェック項目③で AI が <code>tel:</code> <code>mailto:</code> を検証</li>
+</ul>
+<p>公開後：</p>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール 実機テスト送信を必ず実施</li>
+<li><input disabled="" type="checkbox"> クライアント側で受信確認まで完了</li>
+</ul>
+<hr>
+<h2><code>mailto:</code> の正しい記述例</h2>
+<h3>単一宛先</h3>
+<pre><code class="language-html">&lt;a href=&quot;mailto:info@example.com&quot;&gt;お問い合わせ&lt;/a&gt;
+</code></pre>
+<h3>件名・本文プリセット</h3>
+<pre><code class="language-html">&lt;a href=&quot;mailto:info@example.com?subject=お問い合わせ&amp;body=お世話になります。&quot;&gt;
+  お問い合わせ
+&lt;/a&gt;
+</code></pre>
+<p>URLエンコード推奨（特に日本語）：</p>
+<pre><code class="language-html">&lt;a href=&quot;mailto:info@example.com?subject=%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&amp;body=%E3%81%8A%E4%B8%96%E8%A9%B1%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82&quot;&gt;
+  お問い合わせ
+&lt;/a&gt;
+</code></pre>
+<h3>複数宛先（cc）</h3>
+<pre><code class="language-html">&lt;a href=&quot;mailto:to@example.com?cc=cc1@example.com,cc2@example.com&quot;&gt;
+  お問い合わせ
+&lt;/a&gt;
+</code></pre>
+<h3>複数宛先（to のカンマ区切り、推奨されない）</h3>
+<pre><code class="language-html">&lt;!-- 古い書き方。互換性のため動くが推奨しない --&gt;
+&lt;a href=&quot;mailto:to1@example.com,to2@example.com&quot;&gt;
+</code></pre>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール</li>
+<li><a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a></li>
+<li><a href="../templates/codex-prompts/live-house.html"><code>templates/codex-prompts/live-house.md</code></a> — 仙台レトロを基にした雛形（事故注意書き含む）</li>
+<li>メモリ <code>project_vaizo_web_ops.md</code> — 統合運用フレーム v0.2 の策定動機</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>エスカレーション順 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：エスカレーション順</h1>
+<blockquote>
+<p>詰まったとき・困ったときの「誰に・どう連絡するか」のフローチャート。</p>
+</blockquote>
+<hr>
+<h2>エスカレーション順</h2>
+<pre><code>Step 1: 自力 + AI で 30分試行
+   ├── 解決 ✓ → 完了。学びを troubleshooting/ に追記PR
+   └── 30分経過 → Step 2
+
+Step 2: 案件CTO（櫻井理也）に Slack DM
+   ├── 内容: 状況・スクショ・AIとのログ・試したこと
+   ├── 反応1時間以内 → 解決へ
+   └── 反応なし → Step 3
+
+Step 3: #事業部別_enter-ai でメンション @here
+   ├── 関連メンバー全員に共有
+   ├── 反応30分以内 → 解決へ
+   └── 反応なし or 緊急 → Step 4
+
+Step 4: 橋本CEO に Slack DM or 電話
+   ├── 緊急時のみ（通常は Step 2-3 で対応）
+   └── 連絡先: 1Password共有 Vault に格納
+</code></pre>
+<hr>
+<h2>ケース別のエスカレーション先</h2>
+<table>
+<thead>
+<tr>
+<th>ケース</th>
+<th>エスカレーション先</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>技術的な詰まり（実装・デバッグ）</td>
+<td>櫻井CTO → #claudeworks → 橋本CEO</td>
+</tr>
+<tr>
+<td>WP公開作業中のトラブル</td>
+<td>櫻井CTO → #事業部別_enter-ai</td>
+</tr>
+<tr>
+<td>クライアントからのクレーム</td>
+<td>小野寺・櫻井みどり（30分以内）→ 橋本CEO（2時間以内）</td>
+</tr>
+<tr>
+<td>脆弱性レポートの削除依頼</td>
+<td>24時間以内に 小野寺・櫻井みどり が返信 → ブラックリスト永久登録 → 櫻井CTO に通知</td>
+</tr>
+<tr>
+<td>法的相談（不正アクセス禁止法・契約・個人情報）</td>
+<td>橋本CEO → 顧問弁護士</td>
+</tr>
+<tr>
+<td>経理・支払い</td>
+<td>#経理部_経費精算-仕訳</td>
+</tr>
+<tr>
+<td>業務委託（OneBe）の調整</td>
+<td>#all-onebe-vaizoアライアンスチーム</td>
+</tr>
+<tr>
+<td>アカウント発行・権限</td>
+<td>#情報システム部</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>緊急時（公開直後の致命的トラブル）</h2>
+<p>例: 公開後にサイトが真っ白になった、500エラーが頻発、個人情報が露出した</p>
+<pre><code>1. まず深呼吸（2秒）
+2. ステップ2-1のバックアップ（.wpress）から All-in-One WP Migration で即復元
+   ※ 慌てない。バックアップを取っているから戻せる
+3. 復元したらクライアントに「一時的に表示が乱れたが復旧した」旨を即報告
+4. 櫻井CTO + 橋本CEO に Slack DM で並行報告
+5. 原因調査は復旧後に落ち着いて行う
+6. 学びを troubleshooting/ に追記PR
+</code></pre>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<hr>
+<h2>エスカレーション時の伝え方</h2>
+<p>良い例:</p>
+<blockquote>
+<p>仙台レトロバックページ案件で公開作業中。
+Step 4-6 のプレビューで、ヘッダーがテーマと二重表示されている。
+AIに3回直してもらったが解決せず。
+スクショ添付：[image]
+AI とのやり取りログ：[link]
+状態: 公開ボタンは押していない。Step 2-3 のバックアップは取得済み。
+相談内容: 方式B → 方式A に切り替えるべきか、別の対処があるか、どちらか判断したい。</p>
+</blockquote>
+<p>ダメな例:</p>
+<blockquote>
+<p>動かない、助けて</p>
+</blockquote>
+<p>→ 状況・試したこと・期待する判断 の3点を必ず添える。</p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../troubleshooting/"><code>troubleshooting/</code></a> — 既知の問題と対処</li>
+<li><a href="../MAP.html"><code>MAP.md</code></a> — 担当者連絡先</li>
+<li><a href="./ai-vs-human.html"><code>decision-trees/ai-vs-human.md</code></a> — AI vs 人間の境界</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

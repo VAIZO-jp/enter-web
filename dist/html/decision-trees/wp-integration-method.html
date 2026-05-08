@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WP統合方式の選択 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：WP統合方式の選択（A / B / C / D）</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-pre F項 から参照される判断ツリー。</p>
+</blockquote>
+<hr>
+<h2>4方式の評価</h2>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>評価</th>
+<th>適用条件</th>
+<th>主リスク</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A: カスタムページテンプレート（page-{slug}.php）</strong></td>
+<td>★★★★★</td>
+<td>テーマファイル編集可 + PHP書ける担当者あり</td>
+<td>テーマアップデートで上書きされる可能性（子テーマ化必須）</td>
+</tr>
+<tr>
+<td><strong>B: 固定ページ + Custom HTMLブロック</strong></td>
+<td>★★</td>
+<td>テーマ編集権限なし／触りたくない</td>
+<td>CSS衝突多発、JS干渉、テーマ <code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> 重複</td>
+</tr>
+<tr>
+<td><strong>C: ショートコード化</strong></td>
+<td>★★★</td>
+<td>複数ページで再利用したい</td>
+<td>プラグイン依存、保守性が下がる</td>
+</tr>
+<tr>
+<td><strong>D: 別ドメイン／サブディレクトリで静的HTML</strong></td>
+<td>★</td>
+<td>他案で対応不可、最終手段</td>
+<td>SEO効果分散、ブランド統一性低下、運用二重化</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>判断フロー</h2>
+<pre><code>┌────────────────────────────────────────────────┐
+│ Q1. テーマファイル編集権限はあるか？              │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ Q2へ
+        │
+        └── NO ──→ Q3へ
+
+┌────────────────────────────────────────────────┐
+│ Q2. PHPを書ける担当者がチーム or クライアントに    │
+│     いるか？                                    │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ ★★★★★ 方式A: カスタムページテンプレート
+        │           （子テーマ化必須）
+        │
+        └── NO ──→ Q3へ
+
+┌────────────────────────────────────────────────┐
+│ Q3. このコンテンツを複数ページで再利用するか？     │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ ★★★ 方式C: ショートコード化
+        │           （プラグイン依存に注意）
+        │
+        └── NO ──→ Q4へ
+
+┌────────────────────────────────────────────────┐
+│ Q4. 既存テーマと統合してブランド統一性を担保        │
+│     したいか？                                   │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ ★★ 方式B: Custom HTMLブロック
+        │           （CSS衝突リスク）
+        │
+        └── NO ──→ ★ 方式D: 別ドメイン／サブディレクトリ
+                    （最終手段）
+</code></pre>
+<hr>
+<h2>各方式の実装メモ</h2>
+<h3>方式A: カスタムページテンプレート</h3>
+<pre><code class="language-php">&lt;?php
+/*
+Template Name: V/ENTER WEB - {{ページ名}}
+*/
+?&gt;
+&lt;!-- WPテーマの header / footer は呼ばない --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html &lt;?php language_attributes(); ?&gt;&gt;
+&lt;head&gt;
+  &lt;?php wp_head(); ?&gt;
+  &lt;!-- カスタムCSS, OGP, JSON-LD はここに --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- WP最適化版HTMLの本文をここに --&gt;
+  &lt;?php wp_footer(); ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>配置先: <code>wp-content/themes/{子テーマ}/page-{slug}.php</code></li>
+<li>固定ページ編集画面から「テンプレート」で選択</li>
+<li>子テーマ必須（親テーマ更新で消えないように）</li>
+</ul>
+<h3>方式B: Custom HTMLブロック</h3>
+<ul>
+<li>編集画面で「カスタムHTML」ブロックを追加</li>
+<li>インラインCSSは <code>body.page-{slug} ...</code> で必ずスコープ化</li>
+<li>JSは IIFE で囲って衝突回避</li>
+<li>テーマ <code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> は表示されたまま（重複しないこと）</li>
+</ul>
+<h3>方式C: ショートコード</h3>
+<pre><code class="language-php">function venter_lp_section_shortcode() {
+  ob_start();
+  ?&gt;
+  &lt;!-- HTML本文 --&gt;
+  &lt;?php
+  return ob_get_clean();
+}
+add_shortcode(&#39;venter_lp&#39;, &#39;venter_lp_section_shortcode&#39;);
+</code></pre>
+<ul>
+<li>固定ページ・記事内で <code>[venter_lp]</code> で呼び出し可能</li>
+<li>子テーマ <code>functions.php</code> または専用プラグイン化</li>
+</ul>
+<h3>方式D: 別ドメイン／サブディレクトリ</h3>
+<ul>
+<li>Vercel / GitHub Pages / S3+CloudFront 等で静的ホスト</li>
+<li>メインドメインからリンクのみ</li>
+<li>canonical で SEO 影響を最小化</li>
+</ul>
+<hr>
+<h2>過去案件の実例</h2>
+<table>
+<thead>
+<tr>
+<th>案件</th>
+<th>採用方式</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仙台レトロバックページ</td>
+<td>方式B（Custom HTML）</td>
+<td>mailto事故等のリグレッションあり、最終的に整理して公開</td>
+</tr>
+<tr>
+<td>BAR NOIR デモ</td>
+<td>方式A前提（ステージングは静的）</td>
+<td>デモ段階のため未統合</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>エスカレーション</h2>
+<p>判断に迷う場合: 案件CTO（櫻井理也）に Slack DM で相談。</p>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

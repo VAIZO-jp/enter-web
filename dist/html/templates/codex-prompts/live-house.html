@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ライブハウス業態 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：ライブハウス業態</h1>
+<blockquote>
+<p>このテンプレートは仙台レトロバックページ案件（公開: 2026-04-30、retro-backpage.com）から抽象化したもの。
+ライブハウス・音楽スポット業態のトップ + イベント表示を生成するためのプロンプト雛形。</p>
+</blockquote>
+<p>使用方法: 案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt.md</code> としてリネーム。</p>
+<hr>
+<h2>タスク: {{ライブハウス名}}公式サイトのトップ + イベント表示</h2>
+<h2>役割</h2>
+<p>V/ENTER WEB事業部の実装ドラフト担当として、ライブハウス向けのトップページ + 直近イベント表示を完成形で書く。</p>
+<h2>成果物</h2>
+<ul>
+<li>単一HTMLファイル <code>index.html</code>（CSSはhead内、JS最小限）</li>
+<li>またはWP固定ページ用最適化版（<code>{{slug}}_wp.html</code>）</li>
+</ul>
+<h2>想定店舗</h2>
+<ul>
+<li><strong>業態</strong>: ライブハウス / 音楽スポット / クラブ</li>
+<li><strong>立地</strong>: {{仙台中心部、地下、キャパ100名}}</li>
+<li><strong>屋号</strong>: {{&quot;retro backpage&quot;}}</li>
+<li><strong>ミッション</strong>: {{音と人が交差する、街の止まり木。}}</li>
+<li><strong>客層</strong>: {{20代〜40代、音楽好き、地元コミュニティ、観光客}}</li>
+</ul>
+<h2>デザイン要件</h2>
+<ul>
+<li><strong>トーン</strong>: HERITAGE_DARK / URBAN_MUSIC 系統（クラシックロックや渋いジャズに似合う）</li>
+<li><strong>配色</strong>: 主色 <code>#0a0a0a</code> ベース、アクセントに業態に合わせた色（{{ネオン管風 / アンバー / 燻んだレッド}}）</li>
+<li><strong>書体</strong>: タイポグラフィ重め。Inter 900 + Noto Sans JP 700。歌詞・引用には Noto Serif JP も可</li>
+<li><strong>レイアウト</strong>:<ul>
+<li>ヒーロー: 大きなキャッチ + 直近ライブのカウントダウン or バナー</li>
+<li>イベントカード（時系列）: 日付 / 出演 / チケット情報 / 詳細リンク</li>
+<li>About / Access / ブッキング問い合わせ</li>
+<li>必須: 電話 + LINE のCTAを追従バーで常設</li>
+</ul>
+</li>
+<li><strong>JSON-LD <code>Event</code></strong>: 直近のライブ情報を構造化データ化（GSC リッチ結果用）</li>
+</ul>
+<h2>イベントセクション仕様</h2>
+<pre><code>{{
+  &quot;events&quot;: [
+    {
+      &quot;date&quot;: &quot;2026-05-15&quot;,
+      &quot;title&quot;: &quot;{{ライブタイトル}}&quot;,
+      &quot;artists&quot;: [&quot;{{出演者1}}&quot;, &quot;{{出演者2}}&quot;],
+      &quot;open&quot;: &quot;18:00&quot;,
+      &quot;start&quot;: &quot;19:00&quot;,
+      &quot;advance_price&quot;: 3500,
+      &quot;door_price&quot;: 4000,
+      &quot;ticket_url&quot;: &quot;{{チケット販売URL}}&quot;
+    }
+  ]
+}}
+</code></pre>
+<p>イベントカードは縦タイムライン形式。過去のイベントは別アコーディオンで隠す。</p>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>仕様外の機能（チャット・予約フォーム等）は勝手に追加しない</li>
+<li>軍事比喩・否定列挙・採用語は使わない</li>
+<li>「敷居が高い」「真の音楽好き」等の選別的表現は避け、開かれたトーンに</li>
+<li>飲食・店舗案件のため、<strong>電話 + LINE のCTAを全ページで追従バー常設</strong></li>
+<li>メールは <code>info@vaizo.jp</code> を使用、<code>.co.jp</code> 不使用</li>
+<li>文字サイズ: 本文17px、テーブル15px、行間1.9厳守</li>
+<li>アクセシビリティ: コントラスト比AA以上、フォーカスリング、<code>prefers-reduced-motion</code> 対応</li>
+</ul>
+<h2>⚠️ 過去のリグレッション事故（必読）</h2>
+<p>仙台レトロ案件で <code>mailto:</code> の cc 形式修正により全メーラー起動不能のリグレッション事故が発生（修正ID <code>F-RBP-202605-001/025/026</code>）。詳細: <a href="../../troubleshooting/mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a></p>
+<p><strong>今回のプロンプトでは</strong>:</p>
+<ul>
+<li><code>mailto:</code> リンクの形式は <code>mailto:address?subject=...&amp;body=...</code> 形式（カンマ区切りcc不可）</li>
+<li>複数宛先が必要な場合は <code>mailto:to1@example.com?cc=cc1@example.com,cc2@example.com</code> 形式</li>
+<li>必ず実機（Outlook / Gmail / Apple Mail）で起動テストする</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>index.html</code> または <code>{{slug}}_wp.html</code> を開くと全要件を満たして表示</li>
+<li><input disabled="" type="checkbox"> JSON-LD <code>Event</code> が GSC リッチ結果テストツールで有効と判定される</li>
+<li><input disabled="" type="checkbox"> <code>mailto:</code> がOutlook / Gmail / Apple Mail で正常起動</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+<li><input disabled="" type="checkbox"> レスポンシブ全幅でレイアウト崩れなし</li>
+<li><input disabled="" type="checkbox"> Lighthouse モバイル パフォーマンス 70以上、LCP 2.5秒以内</li>
+</ul>
+<h2>最終アウトプット</h2>
+<p><code>{{ファイル名}}</code> の完全なコードと、JSON-LDの実例、<code>mailto:</code> 起動確認のチェック手順を返してください。</p>
+<hr>
+<h2>過去案件の参考</h2>
+<ul>
+<li>仙台レトロバックページ: Drive <code>1c8VIDSkvo6jI1ahjuE3tWdS0qYN2fQcx</code><ul>
+<li>公開URL: <a href="https://retro-backpage.com/">https://retro-backpage.com/</a></li>
+<li>修正対応表: 25件以上（mailto事故含む）</li>
+<li>公開日: 2026-04-30</li>
+</ul>
+</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

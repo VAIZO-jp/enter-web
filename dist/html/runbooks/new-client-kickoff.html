@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新規案件キックオフ — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：新規案件キックオフ（30項目チェックリスト）</h1>
+<blockquote>
+<p>新規クライアントの案件アサイン直後、本リストを上から順に進める。
+各項目に責任者・所要時間・成果物を明示。</p>
+</blockquote>
+<hr>
+<h2>1. 案件番号・命名（5分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 案件略号（3〜4文字）を決める（例: 仙台レトロ→<code>RBP</code>、BAR NOIR→<code>BNR</code>）</li>
+<li><input disabled="" type="checkbox"> 正式名称をクライアントから受領（株式会社○○、有限会社○○ 等）</li>
+<li><input disabled="" type="checkbox"> Slack <code>#事業部別_enter-ai</code> で案件発生を共有</li>
+</ul>
+<p>担当: 案件CTO（櫻井理也）</p>
+<h2>2. Drive フォルダ作成（10分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>02_事業部別_EnterWebAI_AIWebサイト制作/</code> 配下に <code>{{正式名称}}/</code> フォルダ作成</li>
+<li><input disabled="" type="checkbox"> 子フォルダ作成:<ul>
+<li><code>01_WEBサイト刷新サービス/</code>（成果物・最新版）</li>
+<li><code>01_WEBサイト刷新サービス/最新版/images/</code></li>
+<li><code>01_WEBサイト刷新サービス/WP最適化版/</code></li>
+<li><code>01_WEBサイト刷新サービス/docs/</code>（議事録・契約・監査レポート）</li>
+<li><code>公開作業/</code></li>
+<li><code>公開作業/バックアップ_YYYYMMDD/</code>（公開当日に作成）</li>
+<li><code>議事録/</code></li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> フォルダID（最上位）を本ファイル末尾の「案件メタ情報」に記録</li>
+</ul>
+<p>担当: 案件アサイン者</p>
+<h2>3. GitHub Issue 起票（10分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>VAIZO-jp/VAIZO</code> リポジトリで <code>.github/ISSUE_TEMPLATE/team.md</code> でIssue作成</li>
+<li><input disabled="" type="checkbox"> ラベル: <code>type:team</code>, <code>enter-web</code>, <code>status:in-progress</code></li>
+<li><input disabled="" type="checkbox"> タイトル: <code>[{{案件略号}}] {{正式名称}} Webサイトリニューアル</code></li>
+<li><input disabled="" type="checkbox"> Issue 番号を控える</li>
+<li><input disabled="" type="checkbox"> ブランチ作成: <code>feature/{{issue-num}}-{{案件略号}}-kickoff</code></li>
+</ul>
+<p>担当: 案件アサイン者</p>
+<h2>4. 1Password Vault 作成（5分・Phase 1完了後）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 1Password で Vault <code>Client-{{案件略号}}</code> 作成</li>
+<li><input disabled="" type="checkbox"> WP管理画面・サーバー・ドメイン・SaaS等のログインを格納予定の領域として準備</li>
+<li><input disabled="" type="checkbox"> アサインメンバーをメンバー追加</li>
+</ul>
+<p>担当: 櫻井CTO（Vault管理者）</p>
+<h2>5. 契約・見積書（30分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 見積書を Drive <code>006_経理部_事務系・経費精算等/01_帳票テンプレート/</code> の見積テンプレで作成</li>
+<li><input disabled="" type="checkbox"> 業務委託契約書テンプレを準備（社労士・弁護士レビュー済の最新版）</li>
+<li><input disabled="" type="checkbox"> クライアントに送付、捺印・返送を待つ</li>
+<li><input disabled="" type="checkbox"> 返送された契約書を Drive 案件フォルダ <code>01_WEBサイト刷新サービス/docs/契約/</code> に保管</li>
+</ul>
+<p>担当: 橋本CEO</p>
+<h2>6. キックオフMTG設定（15分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Google Calendar で 60分のMTGをクライアントと設定</li>
+<li><input disabled="" type="checkbox"> Plaud + Tactiq 起動準備（録音・文字起こし）</li>
+<li><input disabled="" type="checkbox"> アジェンダ:<ul>
+<li>案件目的・KPI</li>
+<li>スケジュール</li>
+<li>体制（担当者）</li>
+<li>必要な情報・素材の受領計画</li>
+<li>決定権者の確認</li>
+<li>公開希望日</li>
+</ul>
+</li>
+</ul>
+<p>担当: 案件CTO</p>
+<h2>7. 必要情報の受領計画（MTG中に確定）</h2>
+<p>WP公開作業に必要な情報・アカウント（<a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 1 参照）：</p>
+<h3>必須3点</h3>
+<ul>
+<li><input disabled="" type="checkbox"> WordPress管理画面ログインURL</li>
+<li><input disabled="" type="checkbox"> 管理者ID</li>
+<li><input disabled="" type="checkbox"> 管理者パスワード</li>
+</ul>
+<h3>周辺アカウント（優先度A）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ドメイン管理画面の権限</li>
+<li><input disabled="" type="checkbox"> レンタルサーバー管理画面</li>
+<li><input disabled="" type="checkbox"> Google Analytics 4 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google Search Console 権限</li>
+<li><input disabled="" type="checkbox"> Google Tag Manager 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google広告アカウント管理者権限（運用案件のみ）</li>
+<li><input disabled="" type="checkbox"> Google ビジネスプロフィール管理者権限（MEO案件のみ）</li>
+</ul>
+<h3>素材</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ロゴデータ（AI / SVG / 高解像度PNG）</li>
+<li><input disabled="" type="checkbox"> 写真・画像（圧縮前の元データ）</li>
+<li><input disabled="" type="checkbox"> 文章原稿</li>
+<li><input disabled="" type="checkbox"> 既存サイトの構造資料</li>
+</ul>
+<p>担当: 案件アサイン者</p>
+<h2>8. デザイン提案（3〜5営業日）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> から業態別雛形を選択</li>
+<li><input disabled="" type="checkbox"> FV3案を Codex で生成（<a href="../templates/codex-prompts/bar-or-restaurant-fv.html"><code>bar-or-restaurant-fv.md</code></a> 等）</li>
+<li><input disabled="" type="checkbox"> Claude Code でレビュー → 修正</li>
+<li><input disabled="" type="checkbox"> GitHub プライベートリポジトリ <code>VAIZO-jp/{{案件略号}}-site</code> 作成、staticrypt保護でデプロイ</li>
+<li><input disabled="" type="checkbox"> 提案メール送付（<a href="../templates/client-emails/proposal.html"><code>templates/client-emails/proposal.md</code></a>）</li>
+</ul>
+<p>担当: 制作担当 + 案件CTO</p>
+<h2>9. 採用案決定〜本制作開始</h2>
+<ul>
+<li><input disabled="" type="checkbox"> クライアントから採用案決定の返信受領</li>
+<li><input disabled="" type="checkbox"> FV → 6セクション拡張（<a href="../templates/codex-prompts/extension-sections.html"><code>templates/codex-prompts/extension-sections.md</code></a>）</li>
+<li><input disabled="" type="checkbox"> 修正対応表の運用開始（修正ID <code>F-{{案件略号}}-{{YYYYMM}}-{{連番:03桁}}</code>）</li>
+</ul>
+<p>担当: 制作担当</p>
+<h2>10. 公開作業</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a> に従って公開当日の段取り</li>
+</ul>
+<p>担当: 案件アサイン者 + 案件CTO</p>
+<hr>
+<h2>案件メタ情報（記入欄）</h2>
+<pre><code class="language-yaml">---
+案件略号: {{}}
+正式名称: {{}}
+業態: {{}}
+公開URL予定: {{}}
+ドメイン: {{}}
+契約日: {{}}
+公開希望日: {{}}
+担当開発者: {{}}
+案件CTO: {{}}
+クライアント担当者: {{}}
+クライアント決定権者: {{}}
+予算: {{}}
+スケジュール:
+  - キックオフ: {{}}
+  - 提案: {{}}
+  - 採用案決定: {{}}
+  - 本制作: {{}}
+  - デモ確認: {{}}
+  - 公開: {{}}
+Drive案件フォルダID: {{}}
+GitHub案件Issue: {{}}
+GitHub案件Repo: {{}}
+1Password Vault: Client-{{案件略号}}
+---
+</code></pre>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a></li>
+<li><a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a></li>
+<li><a href="./post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a></li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

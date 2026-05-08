@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VAIZO Design Policy v1 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>02 — VAIZO Design Policy v1</h1>
+<blockquote>
+<p>Drive 版正本: Doc ID <code>1KB5KDcZGU_ukdsSilP_5h3FcFGcRXZLa4O0MlwiA-B0</code>
+本ファイルは GitHub への正本移管中。Phase 1 完了後、Drive 側は <code>MOVED_TO_GITHUB.md</code> リダイレクトに切り替える。</p>
+</blockquote>
+<hr>
+<h2>1. 基本原則</h2>
+<p>VAIZO エディトリアル: <strong>白黒のみ、ヘアライン罫線、大きな余白、微細グレイン</strong>。</p>
+<ul>
+<li>派手な色を使わない。アクセントが必要な業態（高級バー等）は <strong>控えめなゴールド <code>#b89b6a</code></strong> のみ可</li>
+<li>グラデーション・ドロップシャドウは原則使わない</li>
+<li>アイコンは線画（ヘアライン）またはシンプルな塗り</li>
+</ul>
+<h2>2. 配色</h2>
+<table>
+<thead>
+<tr>
+<th>トークン</th>
+<th>カラーコード</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--ink-black</code></td>
+<td><code>#0a0a0a</code></td>
+<td>主要テキスト・ヘッダ・罫線</td>
+</tr>
+<tr>
+<td><code>--ink-charcoal</code></td>
+<td><code>#1c1c1c</code></td>
+<td>サブテキスト</td>
+</tr>
+<tr>
+<td><code>--ink-graphite</code></td>
+<td><code>#3a3a3a</code></td>
+<td>キャプション・補助</td>
+</tr>
+<tr>
+<td><code>--paper-off-white</code></td>
+<td><code>#f5f3ee</code></td>
+<td>背景（オフホワイト）</td>
+</tr>
+<tr>
+<td><code>--paper-cream</code></td>
+<td><code>#faf7f2</code></td>
+<td>表のゼブラ・引用背景</td>
+</tr>
+<tr>
+<td><code>--paper-pure</code></td>
+<td><code>#ffffff</code></td>
+<td>強調背景</td>
+</tr>
+<tr>
+<td><code>--rule-hairline</code></td>
+<td><code>rgba(10,10,10,0.12)</code></td>
+<td>ヘアライン罫線</td>
+</tr>
+<tr>
+<td><code>--accent-gold</code></td>
+<td><code>#b89b6a</code></td>
+<td>アクセント（高級業態のみ）</td>
+</tr>
+</tbody></table>
+<p>業態別に高級バー等で <code>--accent-gold</code> を使ってよい。それ以外の業態は白黒厳守。</p>
+<h2>3. 書体</h2>
+<h3>見出し（英字）</h3>
+<ul>
+<li><strong>Inter 900</strong>（最も推す） / Cormorant Garamond / Playfair Display（高級業態）</li>
+</ul>
+<h3>見出し（日本語）</h3>
+<ul>
+<li><strong>Noto Sans JP 700</strong>（標準） / Noto Serif JP 700（高級業態）</li>
+</ul>
+<h3>本文</h3>
+<ul>
+<li><strong>Noto Sans JP 400</strong> または <strong>Noto Serif JP 400</strong>（業態次第）</li>
+<li>フォントサイズ: <strong>本文17px</strong>、<strong>テーブル15px</strong>、<strong>行間1.9</strong></li>
+</ul>
+<h3>数字・データ</h3>
+<ul>
+<li>Inter（Tabular Nums有効）</li>
+</ul>
+<pre><code class="language-css">font-feature-settings: &quot;tnum&quot; 1, &quot;lnum&quot; 1;
+</code></pre>
+<h2>4. レイアウト</h2>
+<ul>
+<li><strong>大きな余白</strong>: セクション間 <code>clamp(80px, 12vw, 160px)</code></li>
+<li><strong>コンテンツ最大幅</strong>: 1280px（編集系は 960px、長文は 760px）</li>
+<li><strong>グリッド</strong>: 12カラム、ガター 32px</li>
+<li><strong>ヘアライン罫線</strong>: 1px、<code>var(--rule-hairline)</code> 色</li>
+</ul>
+<h2>5. ロゴ</h2>
+<ul>
+<li>ファイル: <code>vaizo_logo_{black/white}.svg</code></li>
+<li>改変禁止</li>
+<li>最小幅 120px</li>
+<li>周囲のクリアスペース: ロゴ高さの1/3以上</li>
+</ul>
+<h2>6. ブランド表記</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>OK</th>
+<th>NG</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ブランド名</td>
+<td><code>V/ENTER WEB</code></td>
+<td>`V</td>
+</tr>
+<tr>
+<td>メールアドレス</td>
+<td><code>info@vaizo.jp</code></td>
+<td><code>info@vaizo.co.jp</code></td>
+</tr>
+<tr>
+<td>会社表記</td>
+<td><code>株式会社VAIZO</code></td>
+<td><code>(株)VAIZO</code>, <code>vaizo Inc.</code></td>
+</tr>
+</tbody></table>
+<h2>7. NG表現</h2>
+<p>以下は社内・対外問わず使用禁止：</p>
+<ul>
+<li><strong>軍事比喩</strong>: 「弾を撃つ」「攻める」「制圧する」「敵」「最前線」等</li>
+<li><strong>否定列挙</strong>: 「〜ではない」「〜できない」を3つ以上連ねた文</li>
+<li><strong>採用語</strong>: 「カルチャーフィット」「リファラル採用」等の業界臭い語</li>
+<li><strong>階層用語</strong>: 「下層」「上位」「下流」「下請け」等の上下関係を強調する語</li>
+</ul>
+<p>代替表現の例:</p>
+<table>
+<thead>
+<tr>
+<th>NG</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>「敵を制圧する」</td>
+<td>「課題を解決する」</td>
+</tr>
+<tr>
+<td>「下請け」</td>
+<td>「アライアンスパートナー」</td>
+</tr>
+<tr>
+<td>「炎上を防ぐ」</td>
+<td>「誠実な運用を保つ」</td>
+</tr>
+</tbody></table>
+<h2>8. ホバー・モーション</h2>
+<ul>
+<li>ホバーは <strong>控えめに</strong>（線が引かれる程度）</li>
+<li>モーションは0.2-0.4秒、easing は <code>cubic-bezier(0.4, 0, 0.2, 1)</code> 程度</li>
+<li><code>prefers-reduced-motion: reduce</code> 対応必須</li>
+</ul>
+<pre><code class="language-css">@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</code></pre>
+<h2>9. アクセシビリティ</h2>
+<ul>
+<li>コントラスト比: WCAG <strong>AA以上</strong>（本文 4.5:1、見出し 3:1）</li>
+<li>全ての画像に <code>alt</code> 属性</li>
+<li>フォーカスリング表示（<code>outline: 2px solid var(--ink-black)</code> 程度）</li>
+<li>セマンティックHTML（<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;footer&gt;</code>）</li>
+<li>スキップリンク（「本文へ」）</li>
+</ul>
+<h2>10. Codex/Claude が遵守すべき制約（再掲）</h2>
+<ul>
+<li>仕様外の機能を勝手に追加しない</li>
+<li>TODO で埋めず完成させる</li>
+<li>軍事比喩・否定列挙・採用語・階層用語は使わない</li>
+<li>飲食/店舗案件は <strong>電話・LINE のCTAを必ず常設</strong>（追従バー含む）</li>
+<li>V/ブランド表記は半角スラッシュ「/」のみ</li>
+<li>メールは <code>info@vaizo.jp</code>、<code>.co.jp</code> 不使用</li>
+<li>アイキャッチ + 本文画像が完全に揃っている</li>
+<li>コンソールエラーゼロ</li>
+<li>LCP / CLS の悪化なし</li>
+</ul>
+<h2>11. 関連ドキュメント</h2>
+<ul>
+<li><a href="../templates/codex-prompts/TEMPLATE.html"><code>templates/codex-prompts/TEMPLATE.md</code></a> — Codex プロンプトに本ポリシーを埋め込み済み</li>
+<li><a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a> — CSS衝突時の対処</li>
+<li>メモリ <code>feedback_figma_implementation.md</code> — Figma実装の11鉄則</li>
+</ul>
+<hr>
+<p><strong>v1.0 — 2026-05-09</strong></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

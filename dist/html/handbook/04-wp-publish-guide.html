@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordPress 公開手順書（汎用版） — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>04 — WordPress 子ページ刷新・公開 手順書（汎用版）</h1>
+<blockquote>
+<p>Drive 版正本: Doc ID <code>1XK4epQJSMDqlXkXMx9bhlFgi1wkhundnJBlAK8bIyW4</code>（2026-05-01初版）
+本ファイルが GitHub 正本。Drive 側は Phase 1 完了後 <code>MOVED_TO_GITHUB.md</code> リダイレクト化。</p>
+</blockquote>
+<p>対象: 任意のWordPressサイトの任意の固定ページ（子ページ）の刷新・公開
+作成: VAIZO V/ENTER WEB事業部
+作成日: 2026-05-01 / 改訂: 2026-05-09 GitHub移管</p>
+<p>この手順書は、WordPressを初めて触る方でも進められるように書いた汎用テンプレートです。新しい案件のたびに「使う前のチェック」欄を埋めてから、上から順番に進めていけば公開まで到達できます。</p>
+<hr>
+<h2>★大前提（絶対ルール）</h2>
+<p><strong>迷ったら、すぐAIに聞きます。一人で悩まない。</strong></p>
+<table>
+<thead>
+<tr>
+<th>場面</th>
+<th>やること</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作で迷った／エラーが出た</td>
+<td>Claude Code（AI）に状況を貼って相談する</td>
+</tr>
+<tr>
+<td>原因の特定</td>
+<td>AIに任せる（エラーメッセージ・スクリーンショットを渡す）</td>
+</tr>
+<tr>
+<td>解決方法の検討と実行</td>
+<td>AIに任せる（「直して」と投げてOK）</td>
+</tr>
+<tr>
+<td>「これで合ってる？」の確認</td>
+<td>AIに見てもらう</td>
+</tr>
+<tr>
+<td>公開後のテスト・レポート出力</td>
+<td>AIにまとめてやらせる（ステップ5-AI 参照）</td>
+</tr>
+<tr>
+<td>復旧・バックアップからの戻し</td>
+<td>AIに「ステップ2のバックアップから戻したい、手順を出して」と投げる</td>
+</tr>
+</tbody></table>
+<p><strong>運用ルール</strong>: 「自分で考えて止まる」より「AIに聞いて進める」を優先。相談文は丁寧に書かなくてOK。「○○で詰まった、どうしたらいい？」レベルで投げる。スクリーンショット添付推奨。</p>
+<hr>
+<h2>使う前に：案件情報を埋める</h2>
+<pre><code>◇ クライアント名             ：__________________
+◇ 対象サイトのドメイン       ：__________________ （例：example.com）
+◇ 対象固定ページ名           ：__________________ （例：会社案内）
+◇ 対象固定ページの公開URL    ：__________________ （例：https://example.com/about/）
+◇ WP管理画面ログインURL      ：__________________ （例：https://example.com/wp-login.php）
+◇ 案件作業フォルダ（Drive）  ：__________________
+◇ 最終版HTMLファイル名       ：__________________ （例：proposal_01.html）
+◇ 担当開発者・案件CTO        ：__________________
+</code></pre>
+<p>以下の本文では、上記を <strong>【対象サイト】</strong>、<strong>【対象固定ページ】</strong>、<strong>【WP管理画面URL】</strong>、<strong>【最終版HTMLファイル】</strong>、<strong>【クライアント様】</strong>、<strong>【公開URL】</strong>、<strong>【案件フォルダ】</strong> と表記します。</p>
+<hr>
+<h2>この手順書でやること</h2>
+<p>【クライアント様】と事前に確認・同意いただいたデザインを、【対象サイト】の【対象固定ページ】に反映して公開します。</p>
+<ol>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%E3%82%923%E3%81%A4%E9%9B%86%E3%82%81%E3%82%8B">ステップ1</a></strong> 事前準備（必要な情報を集める）</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972%E7%8F%BE%E8%A1%8C%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E5%8F%96%E3%82%8B%E6%9C%80%E9%87%8D%E8%A6%81">ステップ2</a></strong> 現行サイトのバックアップを取る（最重要）</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973%E7%94%BB%E5%83%8F%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%97%E3%81%A6wordpress%E3%81%AB%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B">ステップ3</a></strong> 画像をダウンロードしてWordPressにアップロードする</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%974wp%E6%9C%80%E9%81%A9%E5%8C%96%E7%89%88%E3%81%AE%E4%BD%9C%E6%88%90%E3%83%87%E3%83%A2%E7%A2%BA%E8%AA%8D%E6%9C%AC%E7%95%AA%E8%B2%BC%E3%82%8A%E4%BB%98%E3%81%91">ステップ4</a></strong> WP最適化版の作成・デモ確認・本番貼り付け</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%975%E5%85%AC%E9%96%8B%E5%BE%8C%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%E5%85%AC%E9%96%8B%E7%9B%B4%E5%BE%8C%E3%81%AB%E5%BF%85%E3%81%9A%E5%AE%9F%E6%96%BD">ステップ5</a></strong> 公開後のテスト（公開直後に必ず実施）</li>
+</ol>
+<hr>
+<h2>ステップ1｜事前準備（必要な情報を3つ集める）</h2>
+<p>公開作業を始める前に、以下の5項目（1-A 〜 1-E）をすべてチェック・受領します。1つでも漏れていると後工程で詰まります。</p>
+<h3>1-A. 提案・合意フェーズの完了確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 提案書／提案HTML（複数案：例 ELEGANT_WHITE / HERITAGE_DARK / URBAN_MUSIC 等）をクライアントに共有済み</li>
+<li><input disabled="" type="checkbox"> クライアントが採用案を選定済み（メール／議事録に記録あり）</li>
+<li><input disabled="" type="checkbox"> 脆弱性診断レポートを事前にクライアントへ提示済み（赤／黄／緑の項目別に対応方針を合意）</li>
+<li><input disabled="" type="checkbox"> 議事録（Tactiq等での文字起こし）を【案件フォルダ】／議事録/ に保存済み</li>
+<li><input disabled="" type="checkbox"> 「最終確認OK」のクライアント返信が記録に残っている</li>
+<li><input disabled="" type="checkbox"> 修正対応表（修正ID／ステータス／スクショ／修正事項／修正確認）の運用が始まっている</li>
+</ul>
+<p>これらが揃っていない場合、本手順書の作業には進まず営業フェーズへ戻します。</p>
+<h3>1-B. WordPress管理画面のログイン情報（必須3点）</h3>
+<p>お客様から以下の3点を受領します：</p>
+<ol>
+<li>WordPress管理画面のログインURL（形式: <code>https://【対象ドメイン】/wp/wp-login.php</code> または <code>/wp-admin/</code>）</li>
+<li>管理者ID（ログイン名）</li>
+<li>管理者パスワード</li>
+</ol>
+<p><strong>【ヒント】受け取った情報は 1Password Teams の Vault <code>Client-{client-slug}</code> に保管。Drive や共有チャットに直接貼らない。</strong>（1Password導入前は <code>C:\Users\hashi\.vaizo\secrets\</code> に保管）</p>
+<h3>1-C. 周辺アカウント受領（優先度A）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ドメイン管理画面の権限（DNS設定／SSL強制／サブドメイン設定）</li>
+<li><input disabled="" type="checkbox"> レンタルサーバー管理画面（Xserver等。SSL常時化／サーバー設定／ファイルアップロード／HSTS設定）</li>
+<li><input disabled="" type="checkbox"> Google Analytics 4 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google Search Console 権限（インデックス管理／公開後のURL検査）</li>
+<li><input disabled="" type="checkbox"> Google Tag Manager 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google広告アカウント管理者権限（運用案件のみ）</li>
+<li><input disabled="" type="checkbox"> Google ビジネスプロフィール管理者権限（MEO案件のみ）</li>
+</ul>
+<h3>1-D. 写真・素材の受領状況の確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 全画像が「圧縮済み」かつ「ページ内の用途がわかる名前」にリネーム済み</li>
+<li><input disabled="" type="checkbox"> 【案件フォルダ】／01_WEBサイト刷新サービス／最新版／images に最終版が配置済み</li>
+<li><input disabled="" type="checkbox"> 受領追加写真（途中差し替え）がある場合は最終HTMLにすべて反映済み</li>
+<li><input disabled="" type="checkbox"> ロゴデータ（AI／SVG／高解像度PNG）が揃っている</li>
+</ul>
+<h3>1-E. クライアント連絡待ち項目の管理</h3>
+<p>公開直前まで決まっていなくても進められますが、本番反映前に必ず確定が必要：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 問い合わせメール送信先の最終確定（誤設定はリード喪失、影響度: <strong>高</strong>）</li>
+<li><input disabled="" type="checkbox"> 予約Google CalendarのID／共有URL（カレンダー機能がある場合）</li>
+<li><input disabled="" type="checkbox"> GTMコンテナID（既存テーマで設定済みなら不要）</li>
+<li><input disabled="" type="checkbox"> ファビコン／apple-touch-icon</li>
+<li><input disabled="" type="checkbox"> JSON-LD Eventの実データ（イベント情報を載せる場合）</li>
+</ul>
+<p>未確定項目は 【案件フォルダ】／公開作業/連絡待ちチェックリスト_YYYYMMDD.md に一覧化し、クライアントへの催促フローを回します。</p>
+<hr>
+<h2>ステップ2｜現行サイトのバックアップを取る（最重要）</h2>
+<p><strong>【なぜやるか】</strong> 公開後にデザインの崩れや不具合が起きたとき、すぐに元の状態に戻せる「保険」をかけておくため。バックアップを取らずに公開して問題が起きると、最悪の場合お客様のサイトが見られなくなります。</p>
+<p>このステップでは「念のため重ねて取る」ことを推奨。3種類のバックアップを順番に取得します。</p>
+<h3>2-1. ［推奨］All-in-One WP Migration でサイト全体をバックアップ</h3>
+<ol>
+<li>左メニュー「All-in-One WP Migration」→「エクスポート」</li>
+<li>「サイトのエクスポート先」をクリック → リスト表示</li>
+<li>「ファイル」をクリック</li>
+<li>「サイトを今すぐダウンロード」ボタンが出たら押して <code>.wpress</code> ファイルをPCに保存</li>
+<li>Driveの【案件フォルダ】／公開作業／バックアップ_YYYYMMDD/ に保存</li>
+</ol>
+<p><strong>戻し方</strong>: 同じプラグインの「インポート」から保存した <code>.wpress</code> をドラッグ＆ドロップで復元。</p>
+<h3>2-2. ［二重保険］WordPress標準のエクスポート</h3>
+<ol>
+<li>左メニュー「ツール」→「エクスポート」</li>
+<li>「すべてのコンテンツ」を選択</li>
+<li>「エクスポートファイルをダウンロード」→ XMLファイル取得</li>
+<li>Driveのバックアップフォルダに保存</li>
+</ol>
+<h3>2-3. ［ピンポイント］編集対象ページの本文をテキストファイルに保存</h3>
+<ol>
+<li>左メニュー「固定ページ」→「固定ページ一覧」→【対象固定ページ】を開く</li>
+<li>本文（HTML）の枠内をクリック → Ctrl+A → Ctrl+C</li>
+<li>メモ帳に貼付 → <code>【対象固定ページslug】_backup_YYYYMMDD.html</code> で保存</li>
+<li>Driveのバックアップフォルダに保存</li>
+<li>右側「リビジョン: ◯」の数字も控える（戻すとき使う番号）</li>
+</ol>
+<p><strong>【3種類のバックアップ・まとめ】</strong></p>
+<ul>
+<li>2-1（All-in-One WP Migration）→ サイト全部の完全コピー。最終的な保険</li>
+<li>2-2（標準エクスポート）→ コンテンツ部分のみのコピー</li>
+<li>2-3（本文コピー）→ 今回触るページだけのピンポイント保険。すぐに戻せる</li>
+</ul>
+<p><strong>【絶対のルール】</strong> 3つのファイルすべてをDriveの「公開作業／バックアップ_YYYYMMDD」フォルダにアップしてから、次のステップに進みます。</p>
+<hr>
+<h2>ステップ3｜画像をダウンロードしてWordPressにアップロードする</h2>
+<h3>3-1. 画像をダウンロード（圧縮・リネーム済みの最終版）</h3>
+<p><strong>【前提（実施済み）】</strong></p>
+<ul>
+<li>お客様と同意済みのデザインで使われている画像は、すべてVAIZO側で「圧縮」と「ページのどこに使うかわかる名前」へのリネーム作業を完了している</li>
+<li>最終版HTMLファイルの画像パスは、リネーム後のファイル名にすべて差し替え済み</li>
+</ul>
+<ol>
+<li>Google Drive【案件フォルダ】／01_WEBサイト刷新サービス／最新版／images を開く</li>
+<li>フォルダごと「ダウンロード」→ ZIP取得</li>
+<li>ZIPを解凍（extra / gallery 等のフォルダ確認）</li>
+</ol>
+<h3>3-2. WordPressの管理画面にログイン</h3>
+<p>【WP管理画面URL】をChromeで開く → ID/パスワード入力 → ログイン。</p>
+<h3>3-3. ダッシュボードからメディアへ移動</h3>
+<p>左メニュー「メディア」をクリック。</p>
+<h3>3-4. 画像を一括アップロード</h3>
+<ol>
+<li>「メディアファイルを追加」→ グレーの大きな枠が表示</li>
+<li>解凍した画像フォルダの中身を全選択 → ドラッグ＆ドロップ</li>
+<li>緑色のチェックマーク確認</li>
+</ol>
+<p><strong>【ポイント】</strong></p>
+<ul>
+<li>1度に大量にアップすると失敗する → 10〜15枚ずつ分けて</li>
+<li>同名ファイル衝突時は自動で <code>-1.jpg</code> 等が付く。差し替えたい場合は古いものを先に削除</li>
+<li>1ファイル最大1GBまで</li>
+</ul>
+<h3>3-5. アップロード結果を確認</h3>
+<p>「メディア」→「ライブラリ」で一覧表示。アップした画像が並んでいれば成功。</p>
+<hr>
+<h2>ステップ4｜WP最適化版の作成・デモ確認・本番貼り付け</h2>
+<p>このステップは、（A）最終版HTMLを WordPress 用に最適化 → （B）デモ環境で動作確認 → （C）OKなら本番に貼り付け、の3段階で進めます。</p>
+<p>スタンドアロンHTMLをそのままWPに貼ると、テーマの <code>&lt;head&gt;</code>/<code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> と重複してレイアウトが崩れたりCSS衝突を起こすため、必ず「WP最適化版」を作ってデモで確認してから本番に貼ります。</p>
+<h3>4-pre. WP移行前チェックシート（事前監査・必須）</h3>
+<p>最終版HTMLを最適化に進める前に、AIに「監査」させて何が衝突するか・何を書き換えるべきかをリスト化。</p>
+<p><strong>【AIに事前監査を依頼するプロンプト】</strong> → <a href="../templates/wp-prompts/04-pre-audit.html"><code>templates/wp-prompts/04-pre-audit.md</code></a></p>
+<p>監査項目（A〜J）:</p>
+<ul>
+<li>A. 構造的問題（<code>&lt;DOCTYPE&gt;</code>/<code>&lt;html&gt;</code>/<code>&lt;head&gt;</code>/<code>&lt;body&gt;</code>/<code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code>/<code>&lt;nav&gt;</code> の有無と重複）</li>
+<li>B. 画像パス（相対パス・絶対URL・外部CDN・GitHub Pages URL等）</li>
+<li>C. 外部URL／canonical／JSON-LD（書換が必要なURLを全箇所リスト化）</li>
+<li>D. CSP／セキュリティヘッダ</li>
+<li>E. 動的要素／フォーム／カレンダー</li>
+<li>F. <strong>統合方式の判断</strong>（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a> 参照）</li>
+<li>G. WPプラグイン干渉（Yoast SEO／Page Builder／キャッシュ系）</li>
+<li>H. QAチェックリスト</li>
+<li>I. クライアント連絡待ち項目</li>
+<li>J. リスクと対応</li>
+</ul>
+<p><strong>統合方式 選択の判断基準</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>評価</th>
+<th>適用条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A: カスタムページテンプレート（page-{slug}.php）</strong></td>
+<td>★★★★★</td>
+<td>テーマファイル編集可能、PHP書ける担当者あり</td>
+</tr>
+<tr>
+<td>B: 固定ページ＋Custom HTMLブロック</td>
+<td>★★</td>
+<td>テーマ編集権限なし。CSS衝突に注意・スコープ化必須</td>
+</tr>
+<tr>
+<td>C: ショートコード化</td>
+<td>★★★</td>
+<td>複数ページで再利用したい</td>
+</tr>
+<tr>
+<td>D: 別ドメイン／サブディレクトリで静的HTML</td>
+<td>★</td>
+<td>最終手段</td>
+</tr>
+</tbody></table>
+<p>詳細フローチャート: <a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></p>
+<h3>4-0. WP最適化版HTMLの作成とデモ確認</h3>
+<p><strong>【AIにWP最適化を依頼するプロンプト】</strong> → <a href="../templates/wp-prompts/04-0-optimize.html"><code>templates/wp-prompts/04-0-optimize.md</code></a></p>
+<p>最適化要件:</p>
+<ol>
+<li><code>&lt;head&gt;</code>内の meta / link / style を WP テーマと重複しないように整理</li>
+<li><code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code>/<code>&lt;nav&gt;</code> はテーマと統合（削除）</li>
+<li>インラインCSSは body スコープ化（<code>body.page-【slug】 .xxx { ... }</code>）</li>
+<li>インラインJSはIIFEまたはモジュール化</li>
+<li>canonical / og:url / twitter:url / JSON-LD を【公開URL】に書換</li>
+<li>画像src を WPメディアアップロード後のURL（<code>https://【対象ドメイン】/wp-content/uploads/YYYY/MM/</code>）に一括置換</li>
+<li>CSP meta タグは WPサーバ設定と整合がなければ削除</li>
+<li>GTM / GA タグは既存テーマで設定済みなら削除</li>
+</ol>
+<p><strong>【AIにデモ環境を構築してもらう】</strong></p>
+<ul>
+<li>GitHub Pages にデプロイ（リポジトリは <strong>必ずプライベート＋招待制</strong>で運用。公開リポジトリだとコードが読まれて脆弱性を突かれる可能性）</li>
+<li>リポジトリ名: <code>{案件略称}-wp-demo</code></li>
+<li>ブランチ: <code>main</code></li>
+<li>パスワード保護する場合は staticrypt 等で</li>
+</ul>
+<p><strong>【3段階デモ運用（推奨）】</strong></p>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① クライアント確認用デモ</td>
+<td>GitHub Pages プライベート + staticrypt保護。デザイン・コピー・写真の最終OKをもらう</td>
+</tr>
+<tr>
+<td>② 開発確認用デモ</td>
+<td>ローカルWP or ステージングWPで実際にテーマ統合確認。CSS／プラグイン干渉を実証</td>
+</tr>
+<tr>
+<td>③ 本番（4-1以降）</td>
+<td>②でAIテスト全項目OKならここに進む</td>
+</tr>
+</tbody></table>
+<h3>4-1. GitHubからWP最適化版HTMLをダウンロード</h3>
+<ol>
+<li>AIから渡されたGitHubリポジトリのURLを開く</li>
+<li><code>【最終版HTMLファイル】_wp.html</code> をクリック</li>
+<li>右上の「Raw」ボタン横のダウンロードアイコン → PCに保存</li>
+</ol>
+<h3>4-2〜4-4. メモ帳経由・本文クリア</h3>
+<ol>
+<li>ダウンロードしたHTMLをメモ帳で開く → Ctrl+A → Ctrl+C</li>
+<li>編集画面の本文枠で Ctrl+A → Delete</li>
+<li>メモ帳ウィンドウは閉じずに残す（万一の再コピー用）</li>
+</ol>
+<h3>4-5. 新しいHTMLを貼り付け</h3>
+<p>空になった本文枠で Ctrl+V。</p>
+<h3>4-6. プレビューで見た目を確認</h3>
+<p>「変更をプレビュー」→ 別タブで確認:</p>
+<ul>
+<li>写真がすべて表示されている</li>
+<li>見出し・本文・テーブル等のレイアウトが崩れていない</li>
+<li>スマホ表示で崩れない（F12 → スマホアイコン）</li>
+<li>電話番号タップ／メールリンクが押せる</li>
+<li>予約・問い合わせなどのCTAが動く</li>
+</ul>
+<p><strong>【プレビューで問題があったとき】</strong> AIに「プレビューでこういう症状」とスクショを渡して原因特定を依頼。詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<h3>4-7. 「更新」をクリックして本番反映</h3>
+<ol>
+<li>編集画面右側「公開」ボックスの青い「更新」ボタンをクリック</li>
+<li>「固定ページを更新しました」と表示されれば本番反映完了</li>
+</ol>
+<p><strong>【公開直後にやること】</strong></p>
+<ul>
+<li>【公開URL】を別タブで開いて確認</li>
+<li>Ctrl+F5 でスーパーリロード（古い表示が残らないようにキャッシュを破棄）</li>
+<li>PCとスマホ両方で表示を確認</li>
+</ul>
+<hr>
+<h2>ステップ5｜公開後のテスト（公開直後に必ず実施）</h2>
+<p>公開ボタンを押したら終わりではありません。「ちゃんと動いているか」を必ずテストします。</p>
+<h3>5-AI. ［★最推奨・最速］AIに全自動でテストさせる</h3>
+<p>Claude Code に <a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> のプロンプトをそのまま貼り付けて送信。AIがPlaywrightで全リンク・全ボタン・全機能・レスポンシブ・Lighthouseまで自動チェック。</p>
+<p>チェック項目:</p>
+<ol>
+<li>全リンクをクリック → 404・遷移先ズレ検出</li>
+<li>全ボタン（CTA・予約・問い合わせ・印刷）の動作確認</li>
+<li>電話（<code>tel:</code>）／メール（<code>mailto:</code>）リンク起動確認</li>
+<li>ギャラリー: フィルター切替・ライトボックス</li>
+<li>見積シミュレーター動作確認</li>
+<li>レスポンシブ: 320 / 375 / 414 / 768 / 1024 / 1280 / 1920 px</li>
+<li>Lighthouseスコア（モバイル＋デスクトップ）</li>
+<li>ブラウザコンソールエラー</li>
+</ol>
+<p>合格基準:</p>
+<ul>
+<li>すべてのリンク 200 OK／想定先に遷移</li>
+<li>すべてのCTA・ボタンが動作OK</li>
+<li>レスポンシブ 全幅でレイアウト崩れなし</li>
+<li>Lighthouse モバイル パフォーマンス70以上 ／ LCP 2.5秒以内</li>
+<li>コンソールエラー 0件</li>
+</ul>
+<h3>5-メール. メール宛先のテスト送信（公開前必須・リード喪失防止）</h3>
+<p>問い合わせフォームのメール宛先設定ミスは「リード喪失」として影響度が最も高い項目です。</p>
+<ol>
+<li>本番ページの問い合わせフォームを開く</li>
+<li>テストデータ（件名「公開前テスト送信」、本文「テスト送信。気にせず削除してください。」）で送信</li>
+<li>クライアントに「いまテストメールを送ったので受信を確認してください」と Slack／電話で連絡</li>
+<li>クライアントから「届いた」の返信をもらえれば確定</li>
+<li>届かない場合は WP管理画面のフォーム設定（Contact Form 7 等）の宛先設定を確認 → 修正 → 再送信</li>
+<li>クライアントに送信ログ・受信スクショを残してもらい、案件フォルダに保存</li>
+</ol>
+<h3>5-1〜5-7. 手動チェック（AI不可時のフォールバック）</h3>
+<p>5-AI で全項目OKなら、5-1〜5-7 はスキップして 5-8 に進んでOK。</p>
+<ul>
+<li>5-1. キャッシュ破棄（Ctrl+F5）</li>
+<li>5-2. PCブラウザでの見た目チェック</li>
+<li>5-3. スマホ表示のチェック</li>
+<li>5-4. クリック・タップ動作チェック</li>
+<li>5-5. 見積シミュレーター／予約カレンダー等の独自機能チェック</li>
+<li>5-6. SEO・SNS表示の確認（Twitter Card / Facebook Debugger / GSC URL検査）</li>
+<li>5-7. 表示速度のチェック（Lighthouse モバイル＋デスクトップ）</li>
+</ul>
+<h3>5-8. 関係者への連絡・社内記録</h3>
+<ol>
+<li>お客様に「公開完了報告」を連絡（<a href="../templates/delivery-reports.html"><code>templates/delivery-reports.md</code></a> 参照）</li>
+<li>Driveの【案件フォルダ】／公開作業／公開記録_YYYYMMDD.md に以下を残す:<ul>
+<li>公開日時</li>
+<li>公開URL</li>
+<li>5-2〜5-7のチェック結果（OK/NG）</li>
+<li>スクリーンショット（公開直後のPCとスマホ表示）</li>
+<li>バックアップファイルの場所（ステップ2で取った3つ）</li>
+<li>トラブル時の連絡先（案件CTO・担当開発者）</li>
+</ul>
+</li>
+</ol>
+<h3>5-トラブル. 公開後にトラブルが見つかったら</h3>
+<ol>
+<li><strong>まずAIに状況を渡す</strong>（スクショ＋エラー文）→ 原因特定と復旧手順を出してもらう</li>
+<li>慌てない。ステップ2で3重のバックアップを取っているので必ず戻せる</li>
+<li>軽微（崩れ等）→ ステップ4-4でクリア → ステップ2-3のテキストを貼り戻す → 「更新」</li>
+<li>重大（真っ白／500エラー等）→ All-in-One WP Migrationの「インポート」から、ステップ2-1の <code>.wpress</code> を復元</li>
+<li>復元したらお客様に「一時的に表示が乱れたが復旧した」旨を即報告。原因を調べてから再公開</li>
+</ol>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<hr>
+<h2>困ったときは</h2>
+<p><strong>まず最初にやること: AIに相談する</strong></p>
+<p>状況のスクリーンショット＋エラーメッセージをAIに貼って、「原因と対処を出して」と投げる。</p>
+<p><strong>よくあるトラブル（参考。最終判断はAIに）</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>第一手</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ログインできない</td>
+<td>ID/パスワード再確認、何度も間違えるとロック。AIに「IPロック解除方法」</td>
+</tr>
+<tr>
+<td>画像のアップロードでエラー</td>
+<td>容量制限の可能性。サイズを下げて再試行。AIにスクショ＋エラー文</td>
+</tr>
+<tr>
+<td>ページが真っ白／500エラー</td>
+<td>ステップ2-1の <code>.wpress</code> から即復元</td>
+</tr>
+<tr>
+<td>崩れ・表示異常</td>
+<td>ステップ4-4でクリア → ステップ2-3の本文バックアップを貼り戻す</td>
+</tr>
+</tbody></table>
+<p><strong>それでも解決しなかったとき</strong>:</p>
+<ul>
+<li>案件CTO（櫻井理也）にSlack DM</li>
+<li>AIとのやり取りログを一緒に共有すると引き継ぎが格段に早くなる</li>
+</ul>
+<hr>
+<p><strong>v1.0 — 2026-05-01初版（Drive版）</strong>
+<strong>v1.1 — 2026-05-09 GitHub正本移管</strong></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公開当日の段取り — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：公開当日の段取り</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> の5ステップを実行する当日のタイムライン版。</p>
+</blockquote>
+<hr>
+<h2>公開当日の標準スケジュール（半日想定）</h2>
+<h3>09:00 — 朝の確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 1 の事前準備チェックリストを再確認</li>
+<li><input disabled="" type="checkbox"> クライアントとの「最終確認OK」が記録に残っているか確認</li>
+<li><input disabled="" type="checkbox"> WP管理画面に正常ログインできるか確認</li>
+<li><input disabled="" type="checkbox"> 必要な情報・素材が全て揃っているか確認</li>
+</ul>
+<h3>09:30 — バックアップ取得（最重要）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> All-in-One WP Migration エクスポート（<code>.wpress</code>）</li>
+<li><input disabled="" type="checkbox"> WordPress 標準XMLエクスポート</li>
+<li><input disabled="" type="checkbox"> 編集対象ページの本文テキスト保存</li>
+<li><input disabled="" type="checkbox"> 3ファイルすべてを Drive <code>公開作業/バックアップ_{{YYYYMMDD}}/</code> に保存</li>
+<li><input disabled="" type="checkbox"> <strong>3つ揃ってから次に進む</strong>（鉄則）</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 2</p>
+<h3>10:00 — 画像アップロード</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 圧縮・リネーム済みの最終版画像を Drive からダウンロード</li>
+<li><input disabled="" type="checkbox"> WordPress メディアライブラリに10〜15枚ずつ分けてアップロード</li>
+<li><input disabled="" type="checkbox"> アップロード完了確認（緑のチェックマーク）</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 3</p>
+<h3>11:00 — WP最適化版作成 + デモ確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/04-pre-audit.html"><code>templates/wp-prompts/04-pre-audit.md</code></a> で事前監査実行</li>
+<li><input disabled="" type="checkbox"> 統合方式を確定（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a>）</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/04-0-optimize.html"><code>templates/wp-prompts/04-0-optimize.md</code></a> で最適化版作成</li>
+<li><input disabled="" type="checkbox"> GitHub プライベートリポジトリ + staticrypt でデモ環境構築</li>
+<li><input disabled="" type="checkbox"> クライアント確認用デモを共有</li>
+<li><input disabled="" type="checkbox"> 開発確認用デモ（ローカルWP or ステージング）でテーマ統合確認</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-pre, 4-0</p>
+<h3>13:00 — 本番反映（昼食後）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> WP最適化版HTMLをダウンロード（GitHub から Raw コピー）</li>
+<li><input disabled="" type="checkbox"> 編集対象ページの編集画面を開く</li>
+<li><input disabled="" type="checkbox"> 本文枠を Ctrl+A → Delete でクリア</li>
+<li><input disabled="" type="checkbox"> Ctrl+V で貼り付け</li>
+<li><input disabled="" type="checkbox"> プレビューで見た目確認（PCとスマホ）</li>
+<li><input disabled="" type="checkbox"> 「更新」ボタンクリック → 本番反映完了</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-1〜4-7</p>
+<h3>13:30 — 公開直後の確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 公開URL を別タブで開く</li>
+<li><input disabled="" type="checkbox"> Ctrl+F5 でスーパーリロード</li>
+<li><input disabled="" type="checkbox"> PCとスマホ両方で表示確認</li>
+</ul>
+<h3>14:00 — Playwright 全自動テスト</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> のプロンプトを Claude Code に投げる</li>
+<li><input disabled="" type="checkbox"> 全リンク・全CTA・レスポンシブ・Lighthouse・コンソールエラーを自動チェック</li>
+<li><input disabled="" type="checkbox"> レポートを Drive <code>公開作業/AIテストレポート_{{YYYYMMDD}}.md</code> に保存</li>
+<li><input disabled="" type="checkbox"> <strong>全項目OKを確認してから次へ</strong></li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-AI</p>
+<h3>14:30 — メール宛先テスト送信（リード喪失防止）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 本番ページの問い合わせフォームでテスト送信</li>
+<li><input disabled="" type="checkbox"> クライアントに「いまテストメールを送ったので受信を確認してください」と Slack/電話</li>
+<li><input disabled="" type="checkbox"> クライアントから「届いた」の返信を待つ</li>
+<li><input disabled="" type="checkbox"> 届かない場合はフォーム設定確認 → 修正 → 再送信</li>
+<li><input disabled="" type="checkbox"> 受信スクショを案件フォルダに保存</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール</p>
+<h3>15:00 — 公開完了報告</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/client-emails/delivery-completion.html"><code>templates/client-emails/delivery-completion.md</code></a> で完了報告メール作成</li>
+<li><input disabled="" type="checkbox"> 添付：公開後スクショ（PC/スマホ）、AIテストレポートサマリ</li>
+<li><input disabled="" type="checkbox"> クライアントに送信</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/delivery-reports.html"><code>templates/delivery-reports.md</code></a> で社内記録を Drive に保存</li>
+<li><input disabled="" type="checkbox"> Slack <code>#事業部別_enter-ai</code> で完了アナウンス</li>
+<li><input disabled="" type="checkbox"> GitHub Issue を <code>status:completed</code> に更新、PR をマージ</li>
+</ul>
+<h3>15:30 — 振り返り</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 当日詰まった点を <a href="../troubleshooting/"><code>troubleshooting/</code></a> に追記候補としてメモ</li>
+<li><input disabled="" type="checkbox"> プロンプトの改善点を <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> への追記候補としてメモ</li>
+<li><input disabled="" type="checkbox"> 後日 PR 起票</li>
+</ul>
+<hr>
+<h2>緊急時の対応</h2>
+<h3>公開後にサイトが真っ白／500エラー</h3>
+<pre><code>1. 慌てない。深呼吸。
+2. All-in-One WP Migration の「インポート」を開く
+3. 朝に取った .wpress バックアップをドラッグ＆ドロップ
+4. 復元完了を待つ
+5. 公開URLで表示確認
+6. クライアントに即報告（「一時的に表示が乱れたが復旧した」）
+7. 櫻井CTO + 橋本CEO に Slack DM
+</code></pre>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<h3>mailto: が動かない</h3>
+<pre><code>1. 修正方法を確認 (troubleshooting/mailto-regression.md)
+2. 修正後、Outlook / Gmail / Apple Mail で起動確認
+3. スマホ実機（iOS Mail / Android Gmail）で起動確認
+4. クライアントに修正完了報告
+</code></pre>
+<p>詳細: <a href="../troubleshooting/mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a></p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> — 5ステップ詳細</li>
+<li><a href="./new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> — キックオフ</li>
+<li><a href="./post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a> — 公開後フォロー</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

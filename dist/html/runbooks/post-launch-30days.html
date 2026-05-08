@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公開後30日のフォロー — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：公開後30日のフォロー</h1>
+<blockquote>
+<p>公開して終わりではなく、30日間で「公開時に取り切れなかったSEO・解析・改修」を完了させる。</p>
+</blockquote>
+<hr>
+<h2>Day 0（公開当日）</h2>
+<ul>
+<li><a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a> を完了</li>
+</ul>
+<hr>
+<h2>Day 1（公開翌日）</h2>
+<h3>朝のチェック</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 公開URLを開いて、夜間にトラブルが起きていないか確認</li>
+<li><input disabled="" type="checkbox"> GA4 / GSC でアクセスが計測されているか確認</li>
+<li><input disabled="" type="checkbox"> 問い合わせフォームに前日のテストメール以外の反応がないか確認</li>
+</ul>
+<h3>Google Search Console 設定</h3>
+<ul>
+<li><input disabled="" type="checkbox"> サイトマップ送信（<code>https://{{ドメイン}}/sitemap.xml</code>）</li>
+<li><input disabled="" type="checkbox"> URL検査で公開URLのインデックス状況確認</li>
+<li><input disabled="" type="checkbox"> 必要なら「インデックス登録をリクエスト」</li>
+</ul>
+<hr>
+<h2>Week 1（公開後1週間）</h2>
+<h3>Lighthouse 再計測</h3>
+<ul>
+<li><input disabled="" type="checkbox"> PC / モバイル両方で Lighthouse 計測</li>
+<li><input disabled="" type="checkbox"> パフォーマンス・SEO・アクセシビリティ・ベストプラクティス スコアを記録</li>
+<li><input disabled="" type="checkbox"> 公開当日のスコアと比較</li>
+<li><input disabled="" type="checkbox"> 70 未満の項目があれば改修計画</li>
+</ul>
+<h3>コンソールエラー確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Chrome DevTools で公開URL を開き、コンソールエラーがないか</li>
+<li><input disabled="" type="checkbox"> エラーがあれば原因調査・修正</li>
+</ul>
+<h3>Search Console モバイルユーザビリティ</h3>
+<ul>
+<li><input disabled="" type="checkbox"> モバイルユーザビリティの問題がないか確認</li>
+<li><input disabled="" type="checkbox"> あれば修正（タップ要素のサイズ、コンテンツ幅等）</li>
+</ul>
+<h3>軽微な調整</h3>
+<ul>
+<li><input disabled="" type="checkbox"> クライアントから受けた「公開後のお気づきの点」を反映</li>
+<li><input disabled="" type="checkbox"> 修正は契約上の「公開後XX日以内の瑕疵担保」範囲か確認</li>
+</ul>
+<hr>
+<h2>Week 2（公開後2週間）</h2>
+<h3>GA4 / GSC アクセス推移確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 公開後2週間のセッション数・PV・直帰率を記録</li>
+<li><input disabled="" type="checkbox"> 想定との差異を確認</li>
+<li><input disabled="" type="checkbox"> 流入チャネル（Organic / Direct / Referral / Social）の構成確認</li>
+</ul>
+<h3>競合サイトとの比較（任意）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> パッシブスキャンツールで競合上位サイトを確認</li>
+<li><input disabled="" type="checkbox"> パフォーマンス・SEOで明らかに劣る項目があれば改修候補</li>
+</ul>
+<hr>
+<h2>Week 3-4（公開後3-4週間）</h2>
+<h3>コンテンツ追加の検討</h3>
+<ul>
+<li><input disabled="" type="checkbox"> クライアントから「ブログ記事」「お知らせ」等の追加コンテンツ要望ヒアリング</li>
+<li><input disabled="" type="checkbox"> 必要なら追加見積</li>
+</ul>
+<h3>MEO（Googleビジネスプロフィール）連携</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Google Maps での店舗情報が正しいか確認</li>
+<li><input disabled="" type="checkbox"> サイトURL がプロフィールに登録されているか確認</li>
+<li><input disabled="" type="checkbox"> 写真・営業時間の更新</li>
+</ul>
+<h3>SNS 連携（必要なら）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Instagram / X / Facebook 等とのリンク確認</li>
+<li><input disabled="" type="checkbox"> OGP画像が正しく表示されるか確認（Twitter Card / Facebook Debugger）</li>
+</ul>
+<hr>
+<h2>Day 30（公開後30日）</h2>
+<h3>振り返りMTG（クライアントと）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 30分のMTG設定</li>
+<li><input disabled="" type="checkbox"> アジェンダ:<ul>
+<li>30日間のアクセス推移</li>
+<li>問い合わせ・予約等のCV件数</li>
+<li>クライアント側で気づいた点</li>
+<li>改修・追加コンテンツの希望</li>
+<li>次のフェーズ（運用継続契約・追加プロジェクト）</li>
+</ul>
+</li>
+</ul>
+<h3>30日後レポート</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Drive 案件フォルダ <code>公開作業/30日後レポート_{{YYYYMMDD}}.md</code> を作成</li>
+<li><input disabled="" type="checkbox"> 内容:<ul>
+<li>公開日・経過日数</li>
+<li>GA4 アクセス推移グラフ</li>
+<li>GSC インプレッション・クリック数推移</li>
+<li>Lighthouse スコア（公開時 → 30日後）</li>
+<li>問い合わせ・予約等のCV件数</li>
+<li>クライアントからの主要フィードバック</li>
+<li>今後の改修・運用方針</li>
+</ul>
+</li>
+</ul>
+<h3>内部振り返り</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../troubleshooting/"><code>troubleshooting/</code></a> への追記が必要な学びがあるかレビュー</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> のプロンプト改善PRを起票</li>
+<li><input disabled="" type="checkbox"> チーム内で 15分の振り返り（Slack スレッドでも可）</li>
+</ul>
+<hr>
+<h2>Day 60-90（運用フェーズ）</h2>
+<p>公開30日を超えたら、運用契約 or 追加プロジェクトのフェーズへ。</p>
+<ul>
+<li>月次運用レポート（GA4 / GSC / Lighthouse）</li>
+<li>月1回のクライアントMTG</li>
+<li>軽微な追加コンテンツ・修正</li>
+<li>大規模改修は別案件として見積・契約</li>
+</ul>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a></li>
+<li><a href="./new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a></li>
+<li><a href="../templates/delivery-reports.html"><code>templates/delivery-reports.md</code></a></li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

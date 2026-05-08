@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WP公開作業のトラブル — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>WP公開作業のトラブルシューティング</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> で詰まったときの対処集。</p>
+</blockquote>
+<hr>
+<h2>症状別の対処</h2>
+<h3>1. ログインできない</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ID/パスワード間違い</td>
+<td>再確認、何度も間違えるとIPロック</td>
+</tr>
+<tr>
+<td>IPロック（数回失敗で発動）</td>
+<td>AIに「Xserver IP ロック解除方法」と聞く、もしくはロック解除依頼をサーバー業者に</td>
+</tr>
+<tr>
+<td>ログインURLの変更（セキュリティプラグイン）</td>
+<td>クライアントに正規URLを再確認</td>
+</tr>
+</tbody></table>
+<h3>2. 画像のアップロードでエラー</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1ファイル容量制限（通常 1GB）</td>
+<td>サイズダウン、解像度を下げて再試行</td>
+</tr>
+<tr>
+<td>サーバー側の容量制限（<code>upload_max_filesize</code>）</td>
+<td>サーバー業者に相談、もしくは画像を WebP 化</td>
+</tr>
+<tr>
+<td>同名ファイル衝突</td>
+<td>古いものを先に削除してから再アップ</td>
+</tr>
+<tr>
+<td>ネットワーク不安定</td>
+<td>10〜15枚ずつ分割して再試行</td>
+</tr>
+</tbody></table>
+<h3>3. ページが真っ白／500エラー</h3>
+<p><strong>最優先</strong>: 即時復元する。原因調査は後。</p>
+<pre><code>Step 1: All-in-One WP Migration の「インポート」を開く
+Step 2: ステップ2-1で取得した .wpress ファイルをドラッグ＆ドロップ
+Step 3: 復元完了を待つ（数分）
+Step 4: 公開URLを別タブで開いて表示確認
+Step 5: クライアントに「一時的に乱れたが復旧した」旨を即報告
+Step 6: 落ち着いてから原因調査
+</code></pre>
+<h3>4. 崩れ・表示異常</h3>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>第一手</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ヘッダー二重表示</td>
+<td>統合方式B → 方式Aに切り替え検討 (<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a>)</td>
+</tr>
+<tr>
+<td>CSS が効かない</td>
+<td>テーマの優先度に負けている → <code>body.page-{slug}</code> でスコープ化</td>
+</tr>
+<tr>
+<td>JS が動かない</td>
+<td>jQuery 衝突 → IIFE で囲う or テーマ jQuery を回避</td>
+</tr>
+<tr>
+<td>画像が出ない</td>
+<td>パス間違い、ステップ3-1の画像アップロードを再確認</td>
+</tr>
+<tr>
+<td>フォントが違う</td>
+<td>Google Fonts の読み込みがブロックされている可能性、CSP確認</td>
+</tr>
+</tbody></table>
+<h3>5. プラグイン干渉</h3>
+<table>
+<thead>
+<tr>
+<th>プラグイン</th>
+<th>干渉ポイント</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Yoast SEO</td>
+<td>meta タグを上書きする → 固定ページ単位で Yoast meta を再設定</td>
+</tr>
+<tr>
+<td>Elementor 等 Page Builder</td>
+<td>ページ全体を Elementor が制御 → カスタムHTMLウィジェットを使うかテンプレート分離</td>
+</tr>
+<tr>
+<td>画像最適化系（Smush、EWWW）</td>
+<td>画像を勝手に変換 → 個別ファイル除外設定</td>
+</tr>
+<tr>
+<td>キャッシュ系（WP Rocket、W3 Total Cache）</td>
+<td>古いCSS/JSがキャッシュされる → 該当ページのキャッシュ除外</td>
+</tr>
+</tbody></table>
+<h3>6. スマホ表示で横スクロール発生</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>画像・iframe が <code>max-width: 100%</code> 未設定</td>
+<td>CSSに <code>img, iframe { max-width: 100%; height: auto; }</code> 追加</td>
+</tr>
+<tr>
+<td>テーブルがコンテナ幅を超える</td>
+<td><code>overflow-x: auto</code> でラップ</td>
+</tr>
+<tr>
+<td>絶対値（px）で固定された要素</td>
+<td>レスポンシブ単位（vw、%、<code>clamp()</code>）に置換</td>
+</tr>
+</tbody></table>
+<h3>7. Lighthouse パフォーマンスが低い</h3>
+<table>
+<thead>
+<tr>
+<th>スコア帯</th>
+<th>主な原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>50 未満</td>
+<td>画像未圧縮、外部スクリプト多数</td>
+</tr>
+<tr>
+<td>50-70</td>
+<td>LCP 遅延（ファーストビューが重い）</td>
+</tr>
+<tr>
+<td>70-90</td>
+<td>CLS（レイアウトシフト）、未使用CSS</td>
+</tr>
+<tr>
+<td>90+</td>
+<td>維持OK</td>
+</tr>
+</tbody></table>
+<p>対処:</p>
+<ul>
+<li>画像を WebP 化、<code>loading=&quot;lazy&quot;</code>、<code>width</code>/<code>height</code> 明示</li>
+<li>フォントは <code>font-display: swap</code>、必要最小限のウェイトのみ</li>
+<li>不要な外部スクリプト削除（GTM、ヒートマップ等を最低限に）</li>
+<li>Critical CSS をインライン化、それ以外は遅延読み込み</li>
+</ul>
+<hr>
+<h2>復元手順（バックアップから戻す）</h2>
+<h3>A. 完全復元（致命的不具合）</h3>
+<pre><code>1. WP管理画面の「All-in-One WP Migration」→「インポート」
+2. ステップ2-1で保存した .wpress ファイルをドラッグ＆ドロップ
+3. 復元完了まで待つ（数分〜数十分）
+4. ログイン情報がリセットされる場合があるので注意
+5. 公開URLを別タブで開いて表示確認
+</code></pre>
+<h3>B. ページ単体の復元（軽微な崩れ）</h3>
+<pre><code>1. 該当固定ページの編集画面を開く
+2. 編集欄を Ctrl+A → Delete でクリア
+3. ステップ2-3 で保存した本文テキストファイルを開く
+4. Ctrl+A → Ctrl+C でコピー
+5. WP編集欄に Ctrl+V で貼り付け
+6. 「更新」をクリック
+</code></pre>
+<h3>C. リビジョンから戻す（直近の編集を取り消し）</h3>
+<pre><code>1. 該当固定ページの編集画面を開く
+2. 右側「リビジョン」をクリック
+3. ステップ2-3 で控えたリビジョン番号より前のリビジョンを選択
+4. 「このリビジョンを復元」をクリック
+</code></pre>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-トラブル</li>
+<li><a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></li>
+<li><a href="./mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a> — 仙台事故の事例</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

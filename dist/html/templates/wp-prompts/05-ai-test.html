@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公開後 AI 自動テスト（5-AI） — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>公開後 AI 自動テストプロンプト（5-AI）</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-AI から呼び出される AI 指示文。
+このテンプレートをそのままコピーして {{プレースホルダ}} を埋め、Claude Code に貼り付ける。</p>
+</blockquote>
+<hr>
+<p>公開URL <code>{{公開URL}}</code> を Playwright で全自動テストしてください。</p>
+<h2>チェック項目</h2>
+<ol>
+<li>全リンクをクリック → 404・遷移先のズレを検出</li>
+<li>全ボタン（CTA・予約・問い合わせ・印刷）の動作確認</li>
+<li>電話（<code>tel:</code>）／メール（<code>mailto:</code>）リンクの起動確認</li>
+<li>ギャラリー: フィルター切替・ライトボックス開閉</li>
+<li>見積シミュレーター: プラン × 人数 × 設備 で金額が正しく変わるか</li>
+<li>レスポンシブ: 320 / 375 / 414 / 768 / 1024 / 1280 / 1920 px の各幅でレイアウト崩れチェック（各幅でフルページスクショ取得）</li>
+<li>Lighthouse スコア（モバイル＋デスクトップ）</li>
+<li>ブラウザコンソールエラーの有無</li>
+</ol>
+<h2>合格基準</h2>
+<ul>
+<li>すべてのリンク 200 OK／想定先に遷移</li>
+<li>すべてのCTA・ボタンが動作OK</li>
+<li>レスポンシブ 全幅でレイアウト崩れなし</li>
+<li>Lighthouse モバイル パフォーマンス 70以上 ／ LCP 2.5秒以内</li>
+<li>コンソールエラー 0件</li>
+</ul>
+<h2>レポート出力先</h2>
+<p><code>{{案件フォルダ}}/公開作業/AIテストレポート_{{YYYYMMDD}}.md</code>
+（V/ENTER WEB事業部の場合: <code>02_事業部別_EnterWebAI_AIWebサイト制作</code> 配下のクライアント別フォルダ）</p>
+<p>NG項目があれば、該当箇所のスクリーンショットも添付してレポートに記載してください。</p>
+<hr>
+<h2>AIテスト後の動き方</h2>
+<ol>
+<li>AIテストレポート_YYYYMMDD.md をDriveで開く</li>
+<li>全項目「OK」なら → <a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-8 へ進む</li>
+<li>「NG」項目があれば、原因と該当箇所をレポートで確認<ul>
+<li><strong>軽微な崩れ</strong> → Step 4-4「編集欄をクリア」 → Step 2-3 の本文バックアップを貼り戻す → 「更新」</li>
+<li><strong>致命的不具合</strong> → Step 2-1 の <code>.wpress</code> バックアップから All-in-One WP Migration で復元</li>
+</ul>
+</li>
+<li>修正後、もう一度 5-AI のAIテストを実行。すべてOKになるまで繰り返す</li>
+</ol>
+<h2>トラブルシューティング</h2>
+<ul>
+<li>Playwright モジュールが Codex 環境で読み込めない場合: <a href="../../troubleshooting/playwright-failures.html"><code>troubleshooting/playwright-failures.md</code></a></li>
+<li>Lighthouse が遅い・タイムアウトする場合: 画像最適化が不十分な可能性。再圧縮（TinyPNG / Squoosh）→ WebP変換</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

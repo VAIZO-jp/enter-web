@@ -3,9 +3,9 @@ node_modules/
 .pnp
 .pnp.js
 
-# Build outputs (regenerable)
-dist/html/
-dist/pdf/
+# Build outputs
+# NOTE: dist/html と dist/pdf は GitHub Pages から配信するため commit 対象。
+# 再ビルドは `npm run build`。
 dist/assets/
 
 # Logs

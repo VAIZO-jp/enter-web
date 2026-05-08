@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公開完了報告テンプレート — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>公開完了報告テンプレート</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-8 で作成する社内記録。
+Driveの【案件フォルダ】／公開作業／公開記録_YYYYMMDD.md として保存する。</p>
+</blockquote>
+<hr>
+<h2>ヘッダ</h2>
+<pre><code class="language-yaml">---
+案件名: {{クライアント正式名称}}
+公開日時: {{YYYY-MM-DD HH:MM}}
+担当開発者: {{氏名}}
+案件CTO: {{氏名}}
+公開URL: {{https://...}}
+---
+</code></pre>
+<h2>1. 公開作業概要</h2>
+<ul>
+<li><strong>対象ページ</strong>: {{固定ページ名 / LP / フルサイト}}</li>
+<li><strong>統合方式</strong>: {{方式A / B / C / D}}（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a> で選択した方式）</li>
+<li><strong>公開所要時間</strong>: {{XX分}}</li>
+<li><strong>特記事項</strong>: {{ある場合}}</li>
+</ul>
+<h2>2. バックアップ取得記録（Step 2）</h2>
+<table>
+<thead>
+<tr>
+<th>種別</th>
+<th>ファイル名</th>
+<th>取得時刻</th>
+<th>Drive保管URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2-1 All-in-One WP Migration（.wpress）</td>
+<td><code>{{ファイル名}}.wpress</code></td>
+<td>{{HH:MM}}</td>
+<td>{{URL}}</td>
+</tr>
+<tr>
+<td>2-2 標準XMLエクスポート</td>
+<td><code>{{ファイル名}}.xml</code></td>
+<td>{{HH:MM}}</td>
+<td>{{URL}}</td>
+</tr>
+<tr>
+<td>2-3 本文テキスト</td>
+<td><code>{{slug}}_backup_{{YYYYMMDD}}.html</code></td>
+<td>{{HH:MM}}</td>
+<td>{{URL}}</td>
+</tr>
+</tbody></table>
+<p>リビジョン番号: <code>{{NN}}</code>（戻すとき使う）</p>
+<h2>3. AIテストレポート（Step 5-AI）</h2>
+<ul>
+<li>レポート保管: <code>{{案件フォルダ}}/公開作業/AIテストレポート_{{YYYYMMDD}}.md</code></li>
+<li>結果サマリ:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>結果</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全リンク 404チェック</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>全ボタン動作</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>電話・メールリンク起動</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>ギャラリー機能</td>
+<td>OK / NG / 該当なし</td>
+<td></td>
+</tr>
+<tr>
+<td>レスポンシブ（320〜1920）</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>Lighthouse モバイル パフォーマンス</td>
+<td>{{スコア}}</td>
+<td>目標 70+</td>
+</tr>
+<tr>
+<td>Lighthouse LCP</td>
+<td>{{秒}}</td>
+<td>目標 2.5秒以内</td>
+</tr>
+<tr>
+<td>コンソールエラー</td>
+<td>{{件}}</td>
+<td>目標 0件</td>
+</tr>
+</tbody></table>
+<h2>4. メール宛先テスト送信（Step 5-メール）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> テスト送信実施: {{HH:MM}}</li>
+<li><input disabled="" type="checkbox"> クライアント受信確認: {{HH:MM}}</li>
+<li>受信スクショ: <code>{{案件フォルダ}}/公開作業/email_test_{{YYYYMMDD}}.png</code></li>
+</ul>
+<h2>5. 手動チェック結果（Step 5-2 〜 5-7）</h2>
+<p>5-AI で全項目OKなら省略可。NG項目があれば手動で再確認した結果を記載。</p>
+<table>
+<thead>
+<tr>
+<th>ステップ</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5-2 PCブラウザ見た目</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-3 スマホ表示</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-4 クリック・タップ</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-5 独自機能</td>
+<td>OK / NG / 該当なし</td>
+</tr>
+<tr>
+<td>5-6 SEO・SNS表示</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-7 表示速度</td>
+<td>OK / NG</td>
+</tr>
+</tbody></table>
+<h2>6. 公開直後スクリーンショット</h2>
+<ul>
+<li>PC表示: <code>{{案件フォルダ}}/公開作業/screenshot_pc_{{YYYYMMDD}}.png</code></li>
+<li>スマホ表示: <code>{{案件フォルダ}}/公開作業/screenshot_mobile_{{YYYYMMDD}}.png</code></li>
+</ul>
+<h2>7. クライアント連絡</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 公開完了報告メール送信: {{HH:MM}}（雛形: <a href="./client-emails/delivery-completion.html"><code>templates/client-emails/delivery-completion.md</code></a>）</li>
+<li><input disabled="" type="checkbox"> クライアント返信受領: {{YYYY-MM-DD HH:MM}}</li>
+<li>返信内容サマリ: {{...}}</li>
+</ul>
+<h2>8. 公開後30日以内のフォロー予定</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 1週間後: パフォーマンス再測定（Lighthouse）</li>
+<li><input disabled="" type="checkbox"> 2週間後: GA4 / GSC でアクセス推移確認</li>
+<li><input disabled="" type="checkbox"> 30日後: クライアントとの振り返りMTG設定</li>
+</ul>
+<p>詳細: <a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a></p>
+<h2>9. 学び・改善メモ</h2>
+<p>今回の案件で気づいた、次回以降に活かせる点：</p>
+<ul>
+<li>{{...}}</li>
+</ul>
+<p>トラブルシューティングへの追記候補があれば <a href="../troubleshooting/"><code>troubleshooting/</code></a> へPR。
+プロンプト改善があれば <a href="./codex-prompts/"><code>templates/codex-prompts/</code></a> へPR。</p>
+<h2>10. 関連ファイル</h2>
+<ul>
+<li>案件Drive: <code>{{案件フォルダ Drive ID}}</code></li>
+<li>GitHub PR: <code>{{PR URL}}</code></li>
+<li>VAIZO worklog Issue: <code>{{Issue URL}}</code></li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

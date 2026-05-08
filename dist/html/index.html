@@ -1,0 +1,5095 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V/ENTER WEB Handbook — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover-top">VAIZO INC. · V<span class="slash">/</span>ENTER WEB DEPT.</div>
+  <div class="cover-title">
+    <h1>V<span class="slash">/</span>ENTER<br>WEB</h1>
+    <div class="subtitle">事業部ハンドブック<br>HANDBOOK FOR AI-DRIVEN WEB OPERATIONS</div>
+  </div>
+  <div class="cover-bottom">
+    <div>v0.1 · 2026-05-09</div>
+    <div>FOR INTERNAL USE ONLY</div>
+  </div>
+</section>
+<section class="chapter toc"><h2>Table of Contents — 目次</h2><ol><li><a href="#chapter-00"><strong>GENESIS</strong> · はじめに</a></li><li style="margin-left:32px;"><a href="#introduction">Introduction — このリポジトリの読み方</a></li><li style="margin-left:32px;"><a href="#map">MAP — データ保存場所・アクセス地図</a></li><li><a href="#chapter-01"><strong>HANDBOOK</strong> · 事業部ハンドブック</a></li><li style="margin-left:32px;"><a href="#">事業部概要</a></li><li style="margin-left:32px;"><a href="#">営業プロセス</a></li><li style="margin-left:32px;"><a href="#vaizo-design-policy-v1">VAIZO Design Policy v1</a></li><li style="margin-left:32px;"><a href="#claude-codex">Claude × Codex 運用ガイド</a></li><li style="margin-left:32px;"><a href="#wordpress">WordPress 公開手順書（汎用版）</a></li><li style="margin-left:32px;"><a href="#2">脆弱性レポート営業の2つのライン</a></li><li style="margin-left:32px;"><a href="#day1">Day1 オンボーディング</a></li><li><a href="#chapter-02"><strong>TEMPLATES</strong> · テンプレート集</a></li><li style="margin-left:32px;"><a href="#codex">Codex プロンプト共通テンプレート</a></li><li style="margin-left:32px;"><a href="#fv">飲食・バー業態 FV</a></li><li style="margin-left:32px;"><a href="#">ライブハウス業態</a></li><li style="margin-left:32px;"><a href="#">コーポレートサイト業態（骨格）</a></li><li style="margin-left:32px;"><a href="#fv-6">FV後の6セクション拡張</a></li><li style="margin-left:32px;"><a href="#wp-4-pre">WP移行前監査プロンプト（4-pre）</a></li><li style="margin-left:32px;"><a href="#wp-4-0">WP最適化版作成プロンプト（4-0）</a></li><li style="margin-left:32px;"><a href="#ai-5-ai">公開後 AI 自動テスト（5-AI）</a></li><li style="margin-left:32px;"><a href="#">メール: 脆弱性レポート添付</a></li><li style="margin-left:32px;"><a href="#">メール: 提案</a></li><li style="margin-left:32px;"><a href="#">メール: 公開完了報告</a></li><li style="margin-left:32px;"><a href="#">公開完了報告テンプレート</a></li><li><a href="#chapter-03"><strong>DECISION TREES</strong> · 判断フロー</a></li><li style="margin-left:32px;"><a href="#wp">WP統合方式の選択</a></li><li style="margin-left:32px;"><a href="#">脆弱性レポート送付対象の判定</a></li><li style="margin-left:32px;"><a href="#ai-vs">AI vs 人間の境界</a></li><li style="margin-left:32px;"><a href="#">エスカレーション順</a></li><li><a href="#chapter-04"><strong>TROUBLESHOOTING</strong> · トラブルシューティング</a></li><li style="margin-left:32px;"><a href="#mailto">mailto: リグレッション事故</a></li><li style="margin-left:32px;"><a href="#wp">WP公開作業のトラブル</a></li><li style="margin-left:32px;"><a href="#codex-cli">Codex CLI のトラブル</a></li><li style="margin-left:32px;"><a href="#playwright">Playwright のトラブル</a></li><li><a href="#chapter-05"><strong>RUNBOOKS</strong> · ランブック</a></li><li style="margin-left:32px;"><a href="#">新規案件キックオフ</a></li><li style="margin-left:32px;"><a href="#">公開当日の段取り</a></li><li style="margin-left:32px;"><a href="#30">公開後30日のフォロー</a></li><li style="margin-left:32px;"><a href="#1password-teams">1Password Teams セットアップ</a></li></ol></section>
+<section class="chapter-divider">
+  <div class="chapter-num">CH 00</div>
+  <div class="chapter-title-en">GENESIS</div>
+  <div class="chapter-title-jp">はじめに</div>
+</section>
+<section id="introduction" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>V/ENTER WEB 事業部ハンドブック</h1>
+<blockquote>
+<p>AI（Claude Code + Codex CLI）でWebサイトを高速・高品質に作るための、実務用一元ドキュメント。</p>
+</blockquote>
+<p>このリポジトリは <strong>「未経験者 + AIエージェント」が見れば即動ける</strong> ことを目標に作られています。
+迷ったら <a href="./MAP.html"><code>MAP.md</code></a> と <a href="./handbook/"><code>handbook/</code></a> を最初に開いてください。</p>
+<hr>
+<h2>30秒で分かる V/ENTER WEB</h2>
+<ul>
+<li><strong>株式会社VAIZO の事業部</strong> の一つ。Webサイト制作を中心事業とする</li>
+<li>主軸は <strong>AI活用Web制作</strong>：Claude Code（司令塔）× Codex CLI（実装ドラフト）の分業</li>
+<li>営業手法は <strong>カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ</strong> の三点セット送付（月次300件規模）</li>
+<li>ターゲット業態：<strong>飲食店・バー・ライブハウス・ホームページ業者制作の店舗サイト</strong></li>
+<li>公開実例：<a href="https://retro-backpage.com/">retro-backpage.com</a>（仙台レトロバックページ様、2026-04-30公開）</li>
+</ul>
+<p>公式サイト <a href="https://vaizo.jp">vaizo.jp</a> には現時点で Enter Web の記載がないため、対外的な事業概要も社内向けには <a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a> で補完しています。</p>
+<hr>
+<h2>Day1 セットアップ（5分）</h2>
+<ol>
+<li><strong>このREADMEを読み終える</strong>（今ここ）</li>
+<li><strong><a href="./MAP.html"><code>MAP.md</code></a> を開く</strong> — Drive/Slack/1Password など、全ての情報の在処が1枚にまとまっています</li>
+<li><strong><a href="./handbook/06-onboarding.html"><code>handbook/06-onboarding.md</code></a> を開く</strong> — Day1チェックリストに沿ってアカウント・ツール準備</li>
+<li><strong>Slack <code>事業部別_enter-ai</code>（C0ARXUP0L21）に挨拶投稿</strong></li>
+<li><strong>最初の案件にアサインされたら <a href="./runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> に従う</strong></li>
+</ol>
+<hr>
+<h2>ナビゲーション</h2>
+<table>
+<thead>
+<tr>
+<th>何をしたい</th>
+<th>どこを開く</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>何がどこにあるか知りたい</td>
+<td><a href="./MAP.html"><code>MAP.md</code></a></td>
+</tr>
+<tr>
+<td>事業の全体像を知りたい</td>
+<td><a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a></td>
+</tr>
+<tr>
+<td>営業プロセスを知りたい</td>
+<td><a href="./handbook/01-sales-process.html"><code>handbook/01-sales-process.md</code></a></td>
+</tr>
+<tr>
+<td>デザインルールを知りたい</td>
+<td><a href="./handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a></td>
+</tr>
+<tr>
+<td>Claude × Codex の使い分け</td>
+<td><a href="./handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a></td>
+</tr>
+<tr>
+<td>WordPressに公開する手順</td>
+<td><a href="./handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a></td>
+</tr>
+<tr>
+<td>脆弱性レポートの送付ルール</td>
+<td><a href="./handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a></td>
+</tr>
+<tr>
+<td>新規メンバーのDay1</td>
+<td><a href="./handbook/06-onboarding.html"><code>handbook/06-onboarding.md</code></a></td>
+</tr>
+<tr>
+<td>新規案件の立ち上げ</td>
+<td><a href="./runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a></td>
+</tr>
+<tr>
+<td>公開当日の段取り</td>
+<td><a href="./runbooks/deploy-day.html"><code>runbooks/deploy-day.md</code></a></td>
+</tr>
+<tr>
+<td>公開後30日のフォロー</td>
+<td><a href="./runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a></td>
+</tr>
+<tr>
+<td>Codex に渡すプロンプト</td>
+<td><a href="./templates/codex-prompts/"><code>templates/codex-prompts/</code></a></td>
+</tr>
+<tr>
+<td>クライアント宛メール雛形</td>
+<td><a href="./templates/client-emails/"><code>templates/client-emails/</code></a></td>
+</tr>
+<tr>
+<td>何かに迷った（判断基準）</td>
+<td><a href="./decision-trees/"><code>decision-trees/</code></a></td>
+</tr>
+<tr>
+<td>何か壊れた・詰まった</td>
+<td><a href="./troubleshooting/"><code>troubleshooting/</code></a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>AIエージェント向けの読み方</h2>
+<p>このリポジトリはAIエージェント（Claude Code、Codex CLI）が読み込んで作業の参照元として使うことを想定しています。</p>
+<p><strong>推奨読み込み順（コンテキスト効率重視）:</strong></p>
+<ol>
+<li><code>README.md</code>（このファイル）</li>
+<li><code>MAP.md</code>（全体像）</li>
+<li>当該タスクに関係する <code>handbook/</code> の該当章</li>
+<li>当該タスクのテンプレ（<code>templates/</code>）</li>
+<li>詰まったら <code>troubleshooting/</code> と <code>decision-trees/</code></li>
+</ol>
+<p><strong>AIエージェントが守ること:</strong></p>
+<ul>
+<li>仕様外の機能を勝手に追加しない</li>
+<li>TODOで埋めず、その場で完成させる</li>
+<li><strong>軍事比喩・否定列挙・採用語・階層用語は使わない</strong>（<a href="./handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a> 参照）</li>
+<li>V/ブランド表記は <strong>半角スラッシュ「/」のみ</strong></li>
+<li>メールアドレスは <code>info@vaizo.jp</code> を使用（<code>.co.jp</code> は使わない）</li>
+<li>飲食/店舗案件は <strong>電話・LINE のCTAを必ず常設</strong></li>
+<li>本文 17px / テーブル 15px / 行間 1.9 厳守</li>
+</ul>
+<hr>
+<h2>コントリビュート</h2>
+<p>このリポジトリは <strong>VAIZO worklog 運用と地続き</strong> です。</p>
+<ul>
+<li>Issue: 新規案件は <code>.github/ISSUE_TEMPLATE/new-client.md</code> で起票</li>
+<li>Branch命名: <code>feature/&lt;issue-num&gt;-&lt;slug&gt;</code> または <code>personal/&lt;issue-num&gt;-&lt;slug&gt;</code></li>
+<li>PR: <code>pull_request_template.md</code> に従う</li>
+<li>レビュー: CODEOWNERS で自動アサインされる人がレビュー</li>
+<li>文書改善は <code>.github/ISSUE_TEMPLATE/doc-improvement.md</code> で歓迎</li>
+</ul>
+<p>slash command は VAIZO repo 側の <code>/worklog-start</code> <code>/worklog</code> を併用可。</p>
+<hr>
+<h2>ライセンス・公開ポリシー</h2>
+<p>本リポジトリは <strong>Private</strong>。VAIZO-jp organization のメンバーのみアクセス可能。
+業務委託メンバー（OneBe等）への共有は橋本CEO承認後、必要なディレクトリのみ Outside Collaborator として招待する運用。</p>
+<h2>連絡先</h2>
+<ul>
+<li>事業部全体・営業: 橋本友太郎（CEO）</li>
+<li>技術・手順書・本リポジトリ: 櫻井理也（CTO）</li>
+<li>制作担当: 櫻井みどり、小野寺陸斗</li>
+<li>業務委託パートナー: OneBe（<a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a> 参照）</li>
+</ul>
+<p>詳細は <a href="./MAP.html"><code>MAP.md</code></a> の「担当者連絡先」セクション。</p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="map" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>MAP — V/ENTER WEB 事業部 データ保存場所・アクセス地図</h1>
+<blockquote>
+<p>「何が、どこに、どうアクセスすれば手に入るか」を1枚で示すリポジトリの中で最も重要なファイル。
+新規メンバー・AIエージェントは <strong>必ず最初にここを開く</strong>。</p>
+</blockquote>
+<p>最終更新: 2026-05-09</p>
+<hr>
+<h2>0. 鉄則</h2>
+<table>
+<thead>
+<tr>
+<th>鉄則</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>機密はGitHubに置かない</strong></td>
+<td>パスワード・APIキー・顧客個人情報は 1Password Teams または Drive シークレットフォルダ</td>
+</tr>
+<tr>
+<td><strong>議事録の録音・文字起こし全文はGitHubに置かない</strong></td>
+<td>個人言及多量。GitHubには要点サマリのみ</td>
+</tr>
+<tr>
+<td><strong>「とりあえずローカル」は避ける</strong></td>
+<td>案件成果物は最終的に Drive または GitHub のどちらかに必ず正本を置く</td>
+</tr>
+<tr>
+<td><strong>正本がどちらか曖昧な状態を作らない</strong></td>
+<td>各資源の「正本（Source of Truth）」は本ファイルで明示</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1. リポジトリ・ソースコード</h2>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>場所</th>
+<th>正本</th>
+<th>アクセス権</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本リポジトリ（V/ENTER WEB ハンドブック）</strong></td>
+<td><code>VAIZO-jp/enter-web</code> (Private)</td>
+<td>GitHub</td>
+<td>VAIZO-jp organization メンバー</td>
+</tr>
+<tr>
+<td><strong>VAIZO worklog（業務記録Issue/PR）</strong></td>
+<td><code>VAIZO-jp/VAIZO</code> (Private)</td>
+<td>GitHub</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>案件成果物（WP最適化版HTML、デモコード）</strong></td>
+<td><code>VAIZO-jp/{client-slug}-site</code> (Private、案件ごと)</td>
+<td>GitHub</td>
+<td>案件ごとに招待</td>
+</tr>
+<tr>
+<td>ローカルワーク領域（一時的）</td>
+<td><code>C:\Users\nnkre\enter-web\</code> 等</td>
+<td>ローカル</td>
+<td>個人PC</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>2. ドキュメント・ナレッジ（Google Drive）</h2>
+<h3>共有ドライブB（メイン、ID: <code>0AKd10MEp7QHUUk9PVA</code>）</h3>
+<table>
+<thead>
+<tr>
+<th>パス</th>
+<th>フォルダID</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>02_事業部別_EnterWebAI_AIWebサイト制作/</code></td>
+<td><code>1I6ERLluC2LR4i6kpYgp8qTJYzQDITzV7</code></td>
+<td><strong>V/ENTER WEB事業部のメインフォルダ</strong>。案件ごとのサブフォルダ + マニュアル</td>
+</tr>
+<tr>
+<td>上記配下 <code>📚マニュアル/</code></td>
+<td><code>1bY70XbFtuwkNJ5ajHibE8-PsuT7KUHCH</code></td>
+<td>営業ガイドライン・WP公開手順書の正本（GitHub移管中）</td>
+</tr>
+<tr>
+<td>上記配下 <code>00_アライアンス_パートナー/</code></td>
+<td><code>1gFarVAjbm4u1c2trSjVVsKwMA8wgHivD</code></td>
+<td>OneBe等の業務委託パートナー資料</td>
+</tr>
+<tr>
+<td><code>006_経理部_事務系・経費精算等/</code></td>
+<td><code>1Ht8Eyfl1Y61aOp-wNFvy0evqhXA-73iK</code></td>
+<td>経費精算（Enter Web案件の発注書・請求書もここ）</td>
+</tr>
+<tr>
+<td><code>006_経理部.../01_帳票テンプレート/</code></td>
+<td><code>1Bv8-l2_Z6CldW8w716AU0EZ4I5wUdOI9</code></td>
+<td>請求書/領収書/支払通知書/納品書/見積書/発注書</td>
+</tr>
+<tr>
+<td><code>VAIZO_ブランドアセット/</code></td>
+<td><code>11KI_j_jqYTq8lApqWT4s90pViPQJZ40a</code></td>
+<td>ロゴ・キービジュアル・SNSテンプレ</td>
+</tr>
+</tbody></table>
+<h3>重要ドキュメントID（直接アクセス用）</h3>
+<table>
+<thead>
+<tr>
+<th>文書名</th>
+<th>Doc ID</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LP制作7ステップ</td>
+<td><code>1W3yK-bH3KLN1k6pGk3PDzWMA94AlncfczO8EtdxS6w4</code></td>
+<td>現役</td>
+</tr>
+<tr>
+<td>WP公開汎用版手順書（Drive版）</td>
+<td><code>1XK4epQJSMDqlXkXMx9bhlFgi1wkhundnJBlAK8bIyW4</code></td>
+<td><strong>GitHub <code>handbook/04-wp-publish-guide.md</code> に正本移管予定</strong></td>
+</tr>
+<tr>
+<td>Claude Code × Codex CLI 運用ガイド</td>
+<td><code>1qWTpds1dU3CKTpmQYhXpxl6yNJO9RfVjNX6leYKxvas</code></td>
+<td><strong>GitHub <code>handbook/03-codex-claude-workflow.md</code> に正本移管予定</strong></td>
+</tr>
+<tr>
+<td>V/ENTER 営業ガイドライン（脆弱性レポート）</td>
+<td><code>1VgoW0gmPaZVkZs1GSLvzYEDCBXPO0Dtt3nV_E2tM1Sw</code></td>
+<td><strong>GitHub <code>handbook/05-vulnerability-scan.md</code> に正本移管予定</strong></td>
+</tr>
+<tr>
+<td>WordPressへ下書き保存する手順</td>
+<td><code>1AnEhStpeb5xIC8gQI9TUHYIZS0HHZWI8wOW4fqS2RWE</code></td>
+<td>現役（v1.0、2026-04-22）</td>
+</tr>
+<tr>
+<td>仙台レトロバックページ修正ログ</td>
+<td><code>1KqjiYq5fP9-qYPgYJLTjDwpIi6_fEDWpPWsocJpcQK4</code></td>
+<td>案件記録（保存）</td>
+</tr>
+<tr>
+<td>VAIZO Design Policy v1</td>
+<td><code>1KB5KDcZGU_ukdsSilP_5h3FcFGcRXZLa4O0MlwiA-B0</code></td>
+<td><strong>GitHub <code>handbook/02-design-policy.md</code> に正本移管予定</strong></td>
+</tr>
+</tbody></table>
+<h3>Drive 書き込み用 OAuth トークン</h3>
+<ul>
+<li>場所: <code>C:\Users\nnkre\drive_upload\token.json</code></li>
+<li>スコープ: <code>drive.file</code>（自アプリ作成ファイルのみ書き込み）</li>
+<li>用途: 自動化スクリプトでDriveに新規ファイルアップロード</li>
+<li>詳細: メモリ <code>reference_drive_upload_token.md</code> 参照</li>
+</ul>
+<hr>
+<h2>3. 機密情報（1Password Teams - 導入予定）</h2>
+<blockquote>
+<p>Phase 1 で 1Password Teams をトライアル契約する。それまでは下記「暫定保管場所」を使用。</p>
+</blockquote>
+<h3>1Password Vault 設計（予定）</h3>
+<table>
+<thead>
+<tr>
+<th>Vault名</th>
+<th>内容</th>
+<th>アクセス権</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>VAIZO-Internal</code></td>
+<td>社内ツール（GitHub、Slack、Drive等）の管理者権限</td>
+<td>経営陣（橋本・櫻井CTO）</td>
+</tr>
+<tr>
+<td><code>Enter-Web-Operations</code></td>
+<td>WP管理画面・サーバー・ドメインの共有用</td>
+<td>VAIZER 5名 + 必要時のみOneBe</td>
+</tr>
+<tr>
+<td><code>Client-{client-slug}</code></td>
+<td>案件ごとのWP/サーバー/SaaSログイン</td>
+<td>案件アサイン者のみ</td>
+</tr>
+</tbody></table>
+<h3>暫定保管場所（1Password導入まで）</h3>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>暫定保管場所</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WP管理画面ログイン情報</td>
+<td><code>C:\Users\hashi\.vaizo\secrets\</code> または各個人PCのシークレットフォルダ</td>
+</tr>
+<tr>
+<td>サーバー・ドメインログイン</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Google系（GA4、GSC、GTM、広告）</td>
+<td>各VAIZER の Google アカウント上で権限付与</td>
+</tr>
+</tbody></table>
+<h3>絶対NG</h3>
+<ul>
+<li>Slack DM/Channel への直接貼付</li>
+<li>GitHub Issue/PR への直接貼付（プライベートでも避ける）</li>
+<li>Drive 共有可リンク化されたドキュメントへの直接貼付</li>
+</ul>
+<hr>
+<h2>4. Slack（VAIZO ワークスペース）</h2>
+<p>ワークスペースID: <code>T0APCH74JJY</code></p>
+<h3>V/ENTER WEB 関連チャンネル</h3>
+<table>
+<thead>
+<tr>
+<th>チャンネル名</th>
+<th>ID</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>事業部別_enter-ai</code></td>
+<td><code>C0ARXUP0L21</code></td>
+<td><strong>V/ENTER WEB の主チャンネル</strong>（旧名「事業部別_webのやつ」）</td>
+</tr>
+<tr>
+<td><code>all-onebe-vaizoアライアンスチーム</code></td>
+<td><code>C0B1C3ZKR4L</code></td>
+<td>OneBeパートナーシップ</td>
+</tr>
+<tr>
+<td><code>vaiso-onebe-ナレッジの種</code></td>
+<td><code>C0B12R4AQ67</code></td>
+<td>OneBe との知見共有</td>
+</tr>
+<tr>
+<td><code>claudeworks</code></td>
+<td><code>C0AQSNX4YLW</code></td>
+<td>Claude/AI実装作業</td>
+</tr>
+<tr>
+<td><code>事業別_v-aivou-ai導入支援</code></td>
+<td><code>C0AQDNXERKR</code></td>
+<td>関連事業（V/AIBOU）</td>
+</tr>
+<tr>
+<td><code>all-株式会社vaizo</code></td>
+<td><code>C0AP8VAUYSE</code></td>
+<td>全社一般</td>
+</tr>
+<tr>
+<td><code>情報システム部</code></td>
+<td><code>C0AQWRMB46R</code></td>
+<td>IT・アカウント発行</td>
+</tr>
+<tr>
+<td><code>経理部_経費精算-仕訳</code></td>
+<td><code>C0AVBV8AJ4W</code></td>
+<td>経費精算</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. 議事録・録音（Plaud + Drive）</h2>
+<table>
+<thead>
+<tr>
+<th>種別</th>
+<th>場所</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>録音生データ</td>
+<td>Plaud（外部サービス）</td>
+<td>Plaud アカウントで管理</td>
+</tr>
+<tr>
+<td>文字起こし共有リンク</td>
+<td>Plaud 公開リンク（Slackに投下）</td>
+<td>リンクは社内限定運用</td>
+</tr>
+<tr>
+<td>議事録要点サマリ</td>
+<td><strong>GitHub Issue または <code>worklog/YYYY-MM/</code></strong></td>
+<td>要点のみ転載、生データは置かない</td>
+</tr>
+<tr>
+<td>Tactiq 文字起こし</td>
+<td>案件ごとの Drive <code>議事録/</code> フォルダ</td>
+<td>クライアント関連は個人言及あり、外部送信禁止</td>
+</tr>
+</tbody></table>
+<p>直近の議事録例（2026-05-07 V/ENTER WEB会議）:</p>
+<ul>
+<li>Plaud共有リンク: <code>https://web.plaud.ai/s/pub_ec652187-...</code>（Slack #事業部別_enter-ai に投下済）</li>
+<li>テーマ: 手順書レビュー・デモサイト運用・脆弱性レポートとGit移行方針</li>
+</ul>
+<hr>
+<h2>6. 案件管理</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>場所</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>案件作業フォルダ（Drive）</td>
+<td><code>02_事業部別_EnterWebAI_AIWebサイト制作/{案件正式名称}/</code></td>
+</tr>
+<tr>
+<td>案件Issue（GitHub）</td>
+<td><code>VAIZO-jp/VAIZO</code> の <code>type:team</code> ラベル + <code>enter-web</code> ラベル</td>
+</tr>
+<tr>
+<td>案件成果物コード</td>
+<td><code>VAIZO-jp/{client-slug}-site</code>（必要時に作成）</td>
+</tr>
+<tr>
+<td>案件タイムシート</td>
+<td><code>vaizo-web-ops/</code> 配下 Excel（Phase 0 で社労士レビュー後に正式運用）</td>
+</tr>
+<tr>
+<td>修正ログ</td>
+<td>案件Drive直下の Excel（修正ID <code>F-{案件略号}-{YYYYMM}-{連番:03桁}</code>）</td>
+</tr>
+</tbody></table>
+<h3>公開済・進行中案件（2026-05-09時点）</h3>
+<table>
+<thead>
+<tr>
+<th>案件名</th>
+<th>クライアント</th>
+<th>公開URL</th>
+<th>フォルダID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仙台レトロバックページ</td>
+<td>有限会社シティアミューズプランニング</td>
+<td><a href="https://retro-backpage.com/">https://retro-backpage.com/</a></td>
+<td><code>1c8VIDSkvo6jI1ahjuE3tWdS0qYN2fQcx</code></td>
+</tr>
+<tr>
+<td>デモ_高級バー_TopView</td>
+<td>デモ案件（BAR NOIR）</td>
+<td>（未公開・デモ）</td>
+<td><code>1GAvzoiZejlZIUKd0bY0rPhIdRZhM_9Jb</code></td>
+</tr>
+<tr>
+<td>サンプル株式会社</td>
+<td>デモ案件</td>
+<td>（未公開・デモ）</td>
+<td><code>1k3Fq8DzLVH26OleyxaQSjtGcPMGMtLye</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>7. 外部サービス・SaaS</h2>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>用途</th>
+<th>管理者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GitHub (<code>VAIZO-jp</code> org)</td>
+<td>コード・ドキュメント</td>
+<td>櫻井理也CTO</td>
+</tr>
+<tr>
+<td>Google Workspace</td>
+<td>Drive・Gmail・Calendar</td>
+<td>橋本CEO</td>
+</tr>
+<tr>
+<td>Slack</td>
+<td>チームコミュニケーション</td>
+<td>橋本CEO</td>
+</tr>
+<tr>
+<td>Plaud</td>
+<td>録音・文字起こし</td>
+<td>個別アカウント</td>
+</tr>
+<tr>
+<td>Tactiq</td>
+<td>Meet/Zoom議事録</td>
+<td>個別アカウント</td>
+</tr>
+<tr>
+<td>Vercel</td>
+<td>デモサイトホスト</td>
+<td>櫻井理也CTO</td>
+</tr>
+<tr>
+<td>Cloudflare</td>
+<td>DNS・Workers（一部案件）</td>
+<td>櫻井理也CTO</td>
+</tr>
+<tr>
+<td>1Password Teams（導入予定）</td>
+<td>機密管理</td>
+<td>橋本CEO（予算）/ 櫻井CTO（運用）</td>
+</tr>
+<tr>
+<td>OpenAI（Codex CLI 経由）</td>
+<td>実装ドラフト</td>
+<td>各個人 ChatGPT Plus 以上</td>
+</tr>
+<tr>
+<td>Anthropic（Claude Code）</td>
+<td>司令塔・レビュー</td>
+<td>各個人 Claude Pro 以上</td>
+</tr>
+</tbody></table>
+<h3>外部スキャン・診断ツール（脆弱性レポート用）</h3>
+<p>詳細は <a href="./handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> を必ず確認してから使用すること。</p>
+<table>
+<thead>
+<tr>
+<th>ツール</th>
+<th>用途</th>
+<th>制約</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>securityheaders.com</td>
+<td>HTTPセキュリティヘッダ</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>Mozilla Observatory</td>
+<td>公開情報スコアリング</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>SSL Labs</td>
+<td>SSL/TLS設定診断</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>Lighthouse</td>
+<td>パフォーマンス・SEO</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>Wappalyzer / WhatRuns</td>
+<td>CMS・プラグイン検出</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>WPScan (<code>--no-banner</code>)</td>
+<td>WordPress公開情報</td>
+<td>パッシブ限定</td>
+</tr>
+<tr>
+<td>OWASP ZAP (Passive Scan のみ)</td>
+<td>公開情報の観察</td>
+<td>Active Scanは禁止</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>8. 担当者連絡先</h2>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>名前</th>
+<th>Slack User ID</th>
+<th>主管</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CEO・営業全体</td>
+<td>橋本友太郎</td>
+<td><code>U0ANTGMDFPZ</code></td>
+<td>営業・予算・経営判断</td>
+</tr>
+<tr>
+<td>CTO・技術全体</td>
+<td>櫻井理也</td>
+<td><code>U0AP5H2KM1B</code></td>
+<td>本リポジトリ・手順書・技術判断</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>櫻井みどり</td>
+<td>（Slackで確認）</td>
+<td>案件制作・QC</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>小野寺陸斗</td>
+<td><code>U0AS4UWBP6G</code></td>
+<td>案件制作・公開作業</td>
+</tr>
+<tr>
+<td>業務委託</td>
+<td>OneBe</td>
+<td>（アライアンスチーム）</td>
+<td>案件支援</td>
+</tr>
+</tbody></table>
+<h3>エスカレーション順</h3>
+<ol>
+<li>案件CTO（櫻井理也）にSlack DM</li>
+<li>反応がなければ Slack <code>#事業部別_enter-ai</code> でメンション</li>
+<li>緊急時は橋本CEOに連絡（番号は1Password共有 Vault に格納予定）</li>
+</ol>
+<hr>
+<h2>9. 会社情報（公式）</h2>
+<ul>
+<li><strong>株式会社VAIZO</strong> (<a href="https://vaizo.jp">vaizo.jp</a>)</li>
+<li>本店: 宮城県仙台市青葉区中央四丁目1番26号</li>
+<li>設立: 2026年4月、資本金: 625万円</li>
+<li>代表取締役: 橋本友太郎(CEO)、櫻井理也(CTO)</li>
+<li>メール: <code>info@vaizo.jp</code>（<code>.co.jp</code> は使わない）</li>
+</ul>
+<blockquote>
+<p><strong>注</strong>: vaizo.jp に V/ENTER WEB の事業説明はまだ未掲載（2026-05-09時点）。社内向け事業説明は <a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a> を参照。</p>
+</blockquote>
+<hr>
+<h2>10. このMAP.md自体のメンテナンス</h2>
+<ul>
+<li>月1回（毎月第1月曜）レビュー、更新</li>
+<li>新規SaaS導入・新規案件発生時は即追記</li>
+<li>リンク切れ・フォルダID変更は気づいた時点でPR</li>
+<li>Phase 3 で「リンク切れ自動検出 + Issue起票」のGitHub Actionsを導入予定</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section>
+<section class="chapter-divider">
+  <div class="chapter-num">CH 01</div>
+  <div class="chapter-title-en">HANDBOOK</div>
+  <div class="chapter-title-jp">事業部ハンドブック</div>
+</section>
+<section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>00 — V/ENTER WEB 事業部 概要</h1>
+<blockquote>
+<p>公式サイト <a href="https://vaizo.jp">vaizo.jp</a> には現時点（2026-05-09）で V/ENTER WEB 事業部の記載がない。
+本ドキュメントが社内向けの「正式な事業説明」として機能する。</p>
+</blockquote>
+<hr>
+<h2>1. ミッション</h2>
+<blockquote>
+<p>AI（Claude Code + Codex CLI）を実装ドラフト・司令塔として組み合わせ、
+飲食・店舗業態を中心に <strong>「速く・安く・上品な」Webサイト</strong> を量産する。</p>
+</blockquote>
+<p>「上品な」とは VAIZO Editorial の白黒ミニマルを基調とした審美性であり、テンプレ感を出さないこと。
+「速く」とは月次300件規模に耐える生産性であり、人間が手でゼロから書かないこと。</p>
+<h2>2. 提供サービス</h2>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>概要</th>
+<th>対象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AIサイト制作（フルリニューアル）</strong></td>
+<td>既存サイトをClaude×Codexで全面刷新、WordPressへ統合</td>
+<td>飲食・バー・ライブハウス・店舗</td>
+</tr>
+<tr>
+<td><strong>AIサイト制作（LP単発）</strong></td>
+<td>単発LPをスタンドアロンHTMLで制作、Vercel/GitHub Pages等にデプロイ</td>
+<td>新規開店・キャンペーン</td>
+</tr>
+<tr>
+<td><strong>脆弱性レポート + デザインアイデンティティ提案</strong></td>
+<td>公開情報スキャン + デザイン提案を無償送付。営業導線として運用</td>
+<td>既存サイトを持つ法人</td>
+</tr>
+<tr>
+<td><strong>WP移行・運用代行</strong></td>
+<td>既存サイトのWordPress移行、運用支援</td>
+<td>DIY疲れの個人事業主・店舗</td>
+</tr>
+</tbody></table>
+<h2>3. 営業プロセス（要約）</h2>
+<p>詳細は <a href="./01-sales-process.html"><code>01-sales-process.md</code></a> 参照。</p>
+<ol>
+<li>ターゲット選定（S/A/Bランク）</li>
+<li>公開情報スキャン（パッシブのみ。詳細 <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a>）</li>
+<li>デザインアイデンティティ + カスタムデモトップ作成</li>
+<li>脆弱性レポート + デモを無償送付</li>
+<li>反応があれば商談、契約、本制作</li>
+</ol>
+<h2>4. 制作プロセス（要約）</h2>
+<p>詳細は <a href="./03-codex-claude-workflow.html"><code>03-codex-claude-workflow.md</code></a> と <a href="./04-wp-publish-guide.html"><code>04-wp-publish-guide.md</code></a> 参照。</p>
+<ol>
+<li>仕様確定（Claude Code が <code>brief.md</code> をまとめる）</li>
+<li>Codex プロンプト組み立て（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> から雛形選択）</li>
+<li>Codex CLI で実装ドラフト生成（<code>codex exec</code>）</li>
+<li>Claude Code が差分レビュー、必要修正を直接Edit</li>
+<li>Playwright/web-cloner MCP で自己検収</li>
+<li>WP統合（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a> で方式選択）</li>
+<li>デモ環境（GitHub Pages + staticrypt）でクライアント確認</li>
+<li>本番反映、Playwright全自動テスト</li>
+<li>公開後30日フォロー（<a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a>）</li>
+</ol>
+<h2>5. チーム体制</h2>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>担当</th>
+<th>責任範囲</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CEO・営業統括</td>
+<td>橋本友太郎</td>
+<td>営業全体・予算判断・経営判断</td>
+</tr>
+<tr>
+<td>CTO・技術統括</td>
+<td>櫻井理也</td>
+<td>本リポジトリ・手順書・技術判断・最終レビュー</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>櫻井みどり</td>
+<td>案件制作・QC・脆弱性レポート二重チェック</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>小野寺陸斗</td>
+<td>案件制作・公開作業</td>
+</tr>
+<tr>
+<td>アライアンスパートナー</td>
+<td>OneBe</td>
+<td>案件支援（タスク単価ベース）</td>
+</tr>
+</tbody></table>
+<p>業務委託（OneBe）の運用は <strong>タスク単価ベース</strong> で「指揮命令性なし」を担保する。詳細はメモリ <code>project_onebe_partnership.md</code> および <code>project_vaizo_web_ops.md</code> の C1 制約を参照。</p>
+<h2>6. 5ファイル統合運用フレーム（v0.2）</h2>
+<p>事業部の業務管理は5ファイルExcelスイートで運用：</p>
+<ol>
+<li>WBS（制作工程）</li>
+<li>チェックリスト87項目</li>
+<li>修正ログ</li>
+<li>タイムシート（打刻記録のみ。給与計算は社労士に委ねる）</li>
+<li>業務委託費（タスク単価ベース）</li>
+</ol>
+<p>格納先: <code>C:\Users\nnkre\tmp\vaizo-web-ops\</code>
+詳細: メモリ <code>project_vaizo_web_ops.md</code></p>
+<p><strong>Phase 0 完了前は本格運用しない</strong>:</p>
+<ul>
+<li>顧問社労士レビュー（タイムシート方針）</li>
+<li>顧問弁護士レビュー（業務委託契約・瑕疵担保条項）</li>
+<li>全担当のExcel環境棚卸し（Mac混在ならGoogle Sheets化を検討）</li>
+</ul>
+<h2>7. ブランド原則</h2>
+<ul>
+<li><strong>VAIZOエディトリアル</strong>: 白黒のみ、ヘアライン罫線</li>
+<li><strong>書体</strong>: Inter 900 + Noto Sans JP 700（見出し）/ 本文系は Noto Sans JP 400</li>
+<li><strong>本文</strong>: 17px、テーブル: 15px、行間: 1.9</li>
+<li><strong>ロゴ</strong>: <code>vaizo_logo_{black/white}.svg</code>、改変禁止、最小幅 120px</li>
+<li><strong>V/表記</strong>: 半角スラッシュ「/」のみ。「V|」「V・」等は不可</li>
+<li><strong>メール</strong>: <code>info@vaizo.jp</code>（<code>.co.jp</code> は使わない）</li>
+<li><strong>NG表現</strong>: 軍事比喩・否定列挙・採用語・階層用語</li>
+</ul>
+<p>詳細: <a href="./02-design-policy.html"><code>02-design-policy.md</code></a></p>
+<h2>8. 月次300件スケールの目標</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>目標</th>
+<th>現状</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>月次脆弱性レポート送付</td>
+<td>300件</td>
+<td>Phase 0 開始前（実績なし）</td>
+</tr>
+<tr>
+<td>月次反応率（返信または問い合わせ）</td>
+<td>5%以上（15件/月）</td>
+<td>未測定</td>
+</tr>
+<tr>
+<td>月次成約率（送付ベース）</td>
+<td>1%以上（3件/月）</td>
+<td>未測定</td>
+</tr>
+<tr>
+<td>平均制作期間（合意〜公開）</td>
+<td>14日以内</td>
+<td>仙台レトロ実績: 約30日（要短縮）</td>
+</tr>
+<tr>
+<td>QC工数</td>
+<td>1案件3〜5分</td>
+<td>仙台レトロ: 修正対応 25件</td>
+</tr>
+</tbody></table>
+<p><strong>ボトルネック仮説</strong>:</p>
+<ul>
+<li>Codexプロンプト規格化未完で案件ごとに手書きしている</li>
+<li>WP統合方式が方式B（CSS衝突多発）になりがちで修正多発</li>
+<li>公開後の AIテスト未自動化で人手確認に時間がかかる</li>
+</ul>
+<p>→ Phase 1〜3 で順次解消予定。</p>
+<h2>9. 関連ドキュメント</h2>
+<ul>
+<li><a href="https://drive.google.com/file/d/1FQN6aaelty5Ie7Jy9x2phOYD2GAbgCYZ">VAIZO 1期目予算 v12.1</a> — 体制実態反映版</li>
+<li>メモリ <code>project_vaizo_web_ops.md</code> — 統合運用フレーム v0.2</li>
+<li>メモリ <code>project_onebe_partnership.md</code> — OneBeパートナーシップ条件</li>
+<li>メモリ <code>project_sales_process_v1.md</code> — 営業プロセスv1</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>01 — 営業プロセス</h1>
+<p>V/ENTER WEB の営業は <strong>「カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ」三点セット送付</strong> が中軸。
+本ファイルは骨格のみ。詳細は別途 Phase 2 で充実予定。</p>
+<hr>
+<h2>1. ターゲット選定</h2>
+<table>
+<thead>
+<tr>
+<th>ランク</th>
+<th>業態</th>
+<th>単価帯</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>銀座系高級バー、隠れ家業態、地方の伝説的店舗</td>
+<td>80万〜200万</td>
+<td>BAR NOIR（デモ）</td>
+</tr>
+<tr>
+<td>A</td>
+<td>飲食、ライブハウス、地方の老舗</td>
+<td>30万〜80万</td>
+<td>仙台レトロバックページ（実績）</td>
+</tr>
+<tr>
+<td>B</td>
+<td>ホームページ業者制作の店舗サイト、リニューアル放置型</td>
+<td>10万〜30万</td>
+<td>（継続発掘）</td>
+</tr>
+</tbody></table>
+<p>ターゲティング基準の詳細はメモリ <code>project_venter_targeting.md</code> 参照。</p>
+<h2>2. アプローチ手順</h2>
+<ol>
+<li>公開情報のみで脆弱性スキャン（必ず <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> の2ライン遵守）</li>
+<li>デザインアイデンティティ提案（既存サイトの「らしさ」を抽出して再構築案）</li>
+<li>カスタムデモトップ（FV）を Codex で生成（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a>）</li>
+<li>脆弱性レポート + デモURLをセットで送付（メール雛形 <a href="../templates/client-emails/"><code>templates/client-emails/</code></a>）</li>
+<li>反応があったら商談、契約、本制作</li>
+</ol>
+<h2>3. 月次目標（300件スケール）</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>目標</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>送付</td>
+<td>300件/月</td>
+</tr>
+<tr>
+<td>返信率</td>
+<td>5%以上</td>
+</tr>
+<tr>
+<td>商談化</td>
+<td>3%以上</td>
+</tr>
+<tr>
+<td>成約</td>
+<td>1%以上（≒3件/月）</td>
+</tr>
+</tbody></table>
+<h2>4. クレーム発生時の対応</h2>
+<p>詳細は <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> クレーム対応SOP参照。</p>
+<ul>
+<li>1次対応: 受信30分以内（小野寺・櫻井みどり）</li>
+<li>2次対応: 2時間以内（橋本CEO主導）</li>
+<li>削除依頼は24時間以内対応、ブラックリスト永久登録</li>
+</ul>
+<h2>5. 関連ドキュメント</h2>
+<ul>
+<li><a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a></li>
+<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a></li>
+<li><a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a></li>
+<li>メモリ <code>project_sales_process_v1.md</code></li>
+</ul>
+<hr>
+<p><strong>Phase 2 で本文充実予定</strong>: ターゲット発掘の具体手法、メール文面の精緻化、KPIダッシュボード設計、Slack/CRM運用フロー</p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="vaizo-design-policy-v1" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>02 — VAIZO Design Policy v1</h1>
+<blockquote>
+<p>Drive 版正本: Doc ID <code>1KB5KDcZGU_ukdsSilP_5h3FcFGcRXZLa4O0MlwiA-B0</code>
+本ファイルは GitHub への正本移管中。Phase 1 完了後、Drive 側は <code>MOVED_TO_GITHUB.md</code> リダイレクトに切り替える。</p>
+</blockquote>
+<hr>
+<h2>1. 基本原則</h2>
+<p>VAIZO エディトリアル: <strong>白黒のみ、ヘアライン罫線、大きな余白、微細グレイン</strong>。</p>
+<ul>
+<li>派手な色を使わない。アクセントが必要な業態（高級バー等）は <strong>控えめなゴールド <code>#b89b6a</code></strong> のみ可</li>
+<li>グラデーション・ドロップシャドウは原則使わない</li>
+<li>アイコンは線画（ヘアライン）またはシンプルな塗り</li>
+</ul>
+<h2>2. 配色</h2>
+<table>
+<thead>
+<tr>
+<th>トークン</th>
+<th>カラーコード</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--ink-black</code></td>
+<td><code>#0a0a0a</code></td>
+<td>主要テキスト・ヘッダ・罫線</td>
+</tr>
+<tr>
+<td><code>--ink-charcoal</code></td>
+<td><code>#1c1c1c</code></td>
+<td>サブテキスト</td>
+</tr>
+<tr>
+<td><code>--ink-graphite</code></td>
+<td><code>#3a3a3a</code></td>
+<td>キャプション・補助</td>
+</tr>
+<tr>
+<td><code>--paper-off-white</code></td>
+<td><code>#f5f3ee</code></td>
+<td>背景（オフホワイト）</td>
+</tr>
+<tr>
+<td><code>--paper-cream</code></td>
+<td><code>#faf7f2</code></td>
+<td>表のゼブラ・引用背景</td>
+</tr>
+<tr>
+<td><code>--paper-pure</code></td>
+<td><code>#ffffff</code></td>
+<td>強調背景</td>
+</tr>
+<tr>
+<td><code>--rule-hairline</code></td>
+<td><code>rgba(10,10,10,0.12)</code></td>
+<td>ヘアライン罫線</td>
+</tr>
+<tr>
+<td><code>--accent-gold</code></td>
+<td><code>#b89b6a</code></td>
+<td>アクセント（高級業態のみ）</td>
+</tr>
+</tbody></table>
+<p>業態別に高級バー等で <code>--accent-gold</code> を使ってよい。それ以外の業態は白黒厳守。</p>
+<h2>3. 書体</h2>
+<h3>見出し（英字）</h3>
+<ul>
+<li><strong>Inter 900</strong>（最も推す） / Cormorant Garamond / Playfair Display（高級業態）</li>
+</ul>
+<h3>見出し（日本語）</h3>
+<ul>
+<li><strong>Noto Sans JP 700</strong>（標準） / Noto Serif JP 700（高級業態）</li>
+</ul>
+<h3>本文</h3>
+<ul>
+<li><strong>Noto Sans JP 400</strong> または <strong>Noto Serif JP 400</strong>（業態次第）</li>
+<li>フォントサイズ: <strong>本文17px</strong>、<strong>テーブル15px</strong>、<strong>行間1.9</strong></li>
+</ul>
+<h3>数字・データ</h3>
+<ul>
+<li>Inter（Tabular Nums有効）</li>
+</ul>
+<pre><code class="language-css">font-feature-settings: &quot;tnum&quot; 1, &quot;lnum&quot; 1;
+</code></pre>
+<h2>4. レイアウト</h2>
+<ul>
+<li><strong>大きな余白</strong>: セクション間 <code>clamp(80px, 12vw, 160px)</code></li>
+<li><strong>コンテンツ最大幅</strong>: 1280px（編集系は 960px、長文は 760px）</li>
+<li><strong>グリッド</strong>: 12カラム、ガター 32px</li>
+<li><strong>ヘアライン罫線</strong>: 1px、<code>var(--rule-hairline)</code> 色</li>
+</ul>
+<h2>5. ロゴ</h2>
+<ul>
+<li>ファイル: <code>vaizo_logo_{black/white}.svg</code></li>
+<li>改変禁止</li>
+<li>最小幅 120px</li>
+<li>周囲のクリアスペース: ロゴ高さの1/3以上</li>
+</ul>
+<h2>6. ブランド表記</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>OK</th>
+<th>NG</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ブランド名</td>
+<td><code>V/ENTER WEB</code></td>
+<td>`V</td>
+</tr>
+<tr>
+<td>メールアドレス</td>
+<td><code>info@vaizo.jp</code></td>
+<td><code>info@vaizo.co.jp</code></td>
+</tr>
+<tr>
+<td>会社表記</td>
+<td><code>株式会社VAIZO</code></td>
+<td><code>(株)VAIZO</code>, <code>vaizo Inc.</code></td>
+</tr>
+</tbody></table>
+<h2>7. NG表現</h2>
+<p>以下は社内・対外問わず使用禁止：</p>
+<ul>
+<li><strong>軍事比喩</strong>: 「弾を撃つ」「攻める」「制圧する」「敵」「最前線」等</li>
+<li><strong>否定列挙</strong>: 「〜ではない」「〜できない」を3つ以上連ねた文</li>
+<li><strong>採用語</strong>: 「カルチャーフィット」「リファラル採用」等の業界臭い語</li>
+<li><strong>階層用語</strong>: 「下層」「上位」「下流」「下請け」等の上下関係を強調する語</li>
+</ul>
+<p>代替表現の例:</p>
+<table>
+<thead>
+<tr>
+<th>NG</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>「敵を制圧する」</td>
+<td>「課題を解決する」</td>
+</tr>
+<tr>
+<td>「下請け」</td>
+<td>「アライアンスパートナー」</td>
+</tr>
+<tr>
+<td>「炎上を防ぐ」</td>
+<td>「誠実な運用を保つ」</td>
+</tr>
+</tbody></table>
+<h2>8. ホバー・モーション</h2>
+<ul>
+<li>ホバーは <strong>控えめに</strong>（線が引かれる程度）</li>
+<li>モーションは0.2-0.4秒、easing は <code>cubic-bezier(0.4, 0, 0.2, 1)</code> 程度</li>
+<li><code>prefers-reduced-motion: reduce</code> 対応必須</li>
+</ul>
+<pre><code class="language-css">@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</code></pre>
+<h2>9. アクセシビリティ</h2>
+<ul>
+<li>コントラスト比: WCAG <strong>AA以上</strong>（本文 4.5:1、見出し 3:1）</li>
+<li>全ての画像に <code>alt</code> 属性</li>
+<li>フォーカスリング表示（<code>outline: 2px solid var(--ink-black)</code> 程度）</li>
+<li>セマンティックHTML（<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;footer&gt;</code>）</li>
+<li>スキップリンク（「本文へ」）</li>
+</ul>
+<h2>10. Codex/Claude が遵守すべき制約（再掲）</h2>
+<ul>
+<li>仕様外の機能を勝手に追加しない</li>
+<li>TODO で埋めず完成させる</li>
+<li>軍事比喩・否定列挙・採用語・階層用語は使わない</li>
+<li>飲食/店舗案件は <strong>電話・LINE のCTAを必ず常設</strong>（追従バー含む）</li>
+<li>V/ブランド表記は半角スラッシュ「/」のみ</li>
+<li>メールは <code>info@vaizo.jp</code>、<code>.co.jp</code> 不使用</li>
+<li>アイキャッチ + 本文画像が完全に揃っている</li>
+<li>コンソールエラーゼロ</li>
+<li>LCP / CLS の悪化なし</li>
+</ul>
+<h2>11. 関連ドキュメント</h2>
+<ul>
+<li><a href="../templates/codex-prompts/TEMPLATE.html"><code>templates/codex-prompts/TEMPLATE.md</code></a> — Codex プロンプトに本ポリシーを埋め込み済み</li>
+<li><a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a> — CSS衝突時の対処</li>
+<li>メモリ <code>feedback_figma_implementation.md</code> — Figma実装の11鉄則</li>
+</ul>
+<hr>
+<p><strong>v1.0 — 2026-05-09</strong></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="claude-codex" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>03 — Claude Code × Codex CLI 運用ガイド</h1>
+<blockquote>
+<p>Drive 版正本: Doc ID <code>1qWTpds1dU3CKTpmQYhXpxl6yNJO9RfVjNX6leYKxvas</code>（2026-05-07初版）
+本ファイルが GitHub 正本。Drive 側は Phase 1 完了後 <code>MOVED_TO_GITHUB.md</code> リダイレクト化。</p>
+</blockquote>
+<hr>
+<h2>1. 役割分担（固定）</h2>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>担当</th>
+<th>責任範囲</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>司令塔</strong></td>
+<td>Claude Code（Opus 4.7）</td>
+<td>仕様整理・計画・レビュー・統合・最終採否</td>
+</tr>
+<tr>
+<td><strong>実装ドラフト</strong></td>
+<td>Codex CLI（GPT-5.4 medium）</td>
+<td>仕様に基づく初版コード生成のみ</td>
+</tr>
+</tbody></table>
+<p><strong>異系統モデル分担の理由</strong>: Anthropic と OpenAI の異系統に分けることで、単独LLMの偏り・見落としを相互補完できる。実装はCodex、設計判断と統合はClaude、と責任を分けることでレビュー観点が明確になる。</p>
+<h2>2. 前提セットアップ（VAIZER全員1回だけ）</h2>
+<pre><code class="language-bash">npm install -g @openai/codex
+codex login              # ChatGPT Plus以上のアカウントでブラウザログイン
+codex --version          # 動作確認
+</code></pre>
+<h2>3. 標準ワークフロー（Claude → Codex → Claude 直列厳守）</h2>
+<h3>ステップ1：仕様確定（Claude Code）</h3>
+<p>案件ディレクトリ直下の <code>brief.md</code> に以下を書き出す：</p>
+<ul>
+<li>対象ファイル / コンポーネント</li>
+<li>入出力仕様</li>
+<li>制約（パフォーマンス・セキュリティ・ブランド規定）</li>
+<li>完了条件 (DoD)</li>
+</ul>
+<h3>ステップ2：Codex プロンプト組み立て（Claude Code）</h3>
+<p><a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> から業態別雛形を選んでコピーし、<code>codex_prompt.md</code> として案件ディレクトリに保存。</p>
+<h3>ステップ3：Codex 実行（PowerShell / bash）</h3>
+<pre><code class="language-powershell">codex exec `
+  --skip-git-repo-check `
+  --cd &quot;$PWD&quot; `
+  --output-last-message &quot;.\codex_out.md&quot; `
+  (Get-Content .\codex_prompt.md -Raw)
+</code></pre>
+<p>bash 版:</p>
+<pre><code class="language-bash">codex exec \
+  --skip-git-repo-check \
+  --cd &quot;$PWD&quot; \
+  --output-last-message &quot;./codex_out.md&quot; \
+  &quot;$(cat ./codex_prompt.md)&quot;
+</code></pre>
+<p><strong>事前条件</strong>:</p>
+<ul>
+<li><code>codex --version</code> が動作</li>
+<li><code>codex login</code> 済み</li>
+<li>セッション切れ時は <strong>無音で失敗する</strong> ため必ず疎通確認する（<a href="../troubleshooting/codex-cli-issues.html"><code>troubleshooting/codex-cli-issues.md</code></a>）</li>
+</ul>
+<h3>ステップ4：差分レビュー（Claude Code）</h3>
+<ul>
+<li><code>codex_out.md</code> を Claude Code が読み込み、仕様充足性を判定</li>
+<li>必要な修正は <strong>Claude Code が直接 Edit で適用</strong>（Codex に再投げしない、直列を崩さない）</li>
+<li>採否理由はコミットメッセージまたはPR本文に明記</li>
+</ul>
+<h3>ステップ5：自己検収</h3>
+<ul>
+<li>Playwright MCP でローカル起動 → スクショ（375 / 768 / 1280）+ コンソールエラー確認</li>
+<li>VAIZO Design Policy 準拠の最終チェック（<a href="./02-design-policy.html"><code>02-design-policy.md</code></a>）</li>
+<li>web-cloner MCP の <code>audit_site</code> / <code>design_review</code> を通すと A11y / SEO / セキュリティも一括確認可能</li>
+</ul>
+<h2>4. 品質チェックリスト（採用前必須）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 本文17px / テーブル15px / 行間1.9</li>
+<li><input disabled="" type="checkbox"> 飲食・店舗案件：電話 + LINE CTA を全ページ常設（追従バー含む）</li>
+<li><input disabled="" type="checkbox"> 否定列挙なし、「僕が改善したい」フレームで記述</li>
+<li><input disabled="" type="checkbox"> 軍事比喩・採用語・階層用語なし</li>
+<li><input disabled="" type="checkbox"> V/ブランド表記は半角スラッシュ「/」のみ</li>
+<li><input disabled="" type="checkbox"> メールは <code>info@vaizo.jp</code>、<code>.co.jp</code> 不使用</li>
+<li><input disabled="" type="checkbox"> アイキャッチ + 本文画像が完全に揃っている</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+<li><input disabled="" type="checkbox"> LCP / CLS の悪化なし</li>
+</ul>
+<h2>5. 案件ファイルの保存先</h2>
+<ul>
+<li>案件作業ディレクトリ: <code>02_事業部別_EnterWebAI_AIWebサイト制作/{案件正式名称}/</code> 配下</li>
+<li><code>brief.md</code> <code>codex_prompt.md</code> <code>codex_out.md</code> は案件直下に保管</li>
+<li>完成成果物（Vercel Preview URL、最終ZIP、納品物）も案件直下</li>
+<li>ナレッジ・テンプレ更新は本リポジトリへPR（複製を作らない）</li>
+</ul>
+<h2>6. ローカル一時生成の扱い</h2>
+<p>やむを得ずローカルで実行する場合（codex CLI実行など）、作業完了後にDriveまたはGitHubへアップして必ずローカル削除する。
+実行スクリプト本体は <code>mcp_*</code> 配下例外を活用してよいが、<strong>案件成果物・テンプレ・指示書は GitHub または Drive が正本</strong>。</p>
+<h2>7. 落とし穴と対策</h2>
+<table>
+<thead>
+<tr>
+<th>落とし穴</th>
+<th>対策</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Codex 対話モードはClaude Codeから制御不能</td>
+<td>必ず <code>codex exec</code>（非対話）</td>
+</tr>
+<tr>
+<td>ChatGPTセッション切れ時は無音失敗</td>
+<td>起動前に <code>codex --version</code> で疎通確認、<a href="../troubleshooting/codex-cli-issues.html"><code>troubleshooting/codex-cli-issues.md</code></a></td>
+</tr>
+<tr>
+<td>Claude と Codex の並行編集はファイル競合</td>
+<td><strong>Claude → Codex → Claude の直列</strong>を厳守</td>
+</tr>
+<tr>
+<td><code>--cd</code> 未指定だと意図しない場所を編集される</td>
+<td>案件ディレクトリ固定を徹底</td>
+</tr>
+<tr>
+<td>Playwright モジュール未読込（codex環境）</td>
+<td>別環境で実行、もしくは Playwright MCP を Claude側から起動</td>
+</tr>
+</tbody></table>
+<h2>8. モデル選択ガイド</h2>
+<table>
+<thead>
+<tr>
+<th>タスク</th>
+<th>推奨モデル</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FV1画面・小規模実装</td>
+<td><code>gpt-5.4-mini</code>（コスト効率）</td>
+</tr>
+<tr>
+<td>LP全セクション・複雑な構造</td>
+<td><code>gpt-5.4</code>（デフォルト）</td>
+</tr>
+<tr>
+<td>最高品質が必要</td>
+<td><code>gpt-5.4-pro</code></td>
+</tr>
+<tr>
+<td>エージェントコーディング統合</td>
+<td><code>gpt-5.3-codex</code></td>
+</tr>
+<tr>
+<td>リアルタイム高速</td>
+<td><code>gpt-5.3-codex-spark</code>（Pro限定）</td>
+</tr>
+</tbody></table>
+<p>Codex セッション内で <code>/model</code> で切替可能。</p>
+<h2>9. 容量枯渇時のフォールバック</h2>
+<p>ChatGPT Plus の Codex 容量が枯渇したら：</p>
+<ol>
+<li><strong>Claude Opus 4.7 で直接実装</strong>（VAIZER 1名 月 $20 で利用可能）</li>
+<li>それも不可なら <strong>Gemini 3.1 Pro Preview</strong> をフォールバック</li>
+</ol>
+<p>容量管理: 各個人 ChatGPT 設定画面で残量確認。</p>
+<h2>10. 関連ドキュメント</h2>
+<ul>
+<li><a href="../templates/codex-prompts/TEMPLATE.html"><code>templates/codex-prompts/TEMPLATE.md</code></a></li>
+<li><a href="../troubleshooting/codex-cli-issues.html"><code>troubleshooting/codex-cli-issues.md</code></a></li>
+<li><a href="./04-wp-publish-guide.html"><code>04-wp-publish-guide.md</code></a> Step 4-0 で Codex を使う場面</li>
+</ul>
+<hr>
+<p><strong>v1.0 — 2026-05-07初版（Drive版）</strong>
+<strong>v1.1 — 2026-05-09 GitHub正本移管</strong></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="wordpress" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>04 — WordPress 子ページ刷新・公開 手順書（汎用版）</h1>
+<blockquote>
+<p>Drive 版正本: Doc ID <code>1XK4epQJSMDqlXkXMx9bhlFgi1wkhundnJBlAK8bIyW4</code>（2026-05-01初版）
+本ファイルが GitHub 正本。Drive 側は Phase 1 完了後 <code>MOVED_TO_GITHUB.md</code> リダイレクト化。</p>
+</blockquote>
+<p>対象: 任意のWordPressサイトの任意の固定ページ（子ページ）の刷新・公開
+作成: VAIZO V/ENTER WEB事業部
+作成日: 2026-05-01 / 改訂: 2026-05-09 GitHub移管</p>
+<p>この手順書は、WordPressを初めて触る方でも進められるように書いた汎用テンプレートです。新しい案件のたびに「使う前のチェック」欄を埋めてから、上から順番に進めていけば公開まで到達できます。</p>
+<hr>
+<h2>★大前提（絶対ルール）</h2>
+<p><strong>迷ったら、すぐAIに聞きます。一人で悩まない。</strong></p>
+<table>
+<thead>
+<tr>
+<th>場面</th>
+<th>やること</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作で迷った／エラーが出た</td>
+<td>Claude Code（AI）に状況を貼って相談する</td>
+</tr>
+<tr>
+<td>原因の特定</td>
+<td>AIに任せる（エラーメッセージ・スクリーンショットを渡す）</td>
+</tr>
+<tr>
+<td>解決方法の検討と実行</td>
+<td>AIに任せる（「直して」と投げてOK）</td>
+</tr>
+<tr>
+<td>「これで合ってる？」の確認</td>
+<td>AIに見てもらう</td>
+</tr>
+<tr>
+<td>公開後のテスト・レポート出力</td>
+<td>AIにまとめてやらせる（ステップ5-AI 参照）</td>
+</tr>
+<tr>
+<td>復旧・バックアップからの戻し</td>
+<td>AIに「ステップ2のバックアップから戻したい、手順を出して」と投げる</td>
+</tr>
+</tbody></table>
+<p><strong>運用ルール</strong>: 「自分で考えて止まる」より「AIに聞いて進める」を優先。相談文は丁寧に書かなくてOK。「○○で詰まった、どうしたらいい？」レベルで投げる。スクリーンショット添付推奨。</p>
+<hr>
+<h2>使う前に：案件情報を埋める</h2>
+<pre><code>◇ クライアント名             ：__________________
+◇ 対象サイトのドメイン       ：__________________ （例：example.com）
+◇ 対象固定ページ名           ：__________________ （例：会社案内）
+◇ 対象固定ページの公開URL    ：__________________ （例：https://example.com/about/）
+◇ WP管理画面ログインURL      ：__________________ （例：https://example.com/wp-login.php）
+◇ 案件作業フォルダ（Drive）  ：__________________
+◇ 最終版HTMLファイル名       ：__________________ （例：proposal_01.html）
+◇ 担当開発者・案件CTO        ：__________________
+</code></pre>
+<p>以下の本文では、上記を <strong>【対象サイト】</strong>、<strong>【対象固定ページ】</strong>、<strong>【WP管理画面URL】</strong>、<strong>【最終版HTMLファイル】</strong>、<strong>【クライアント様】</strong>、<strong>【公開URL】</strong>、<strong>【案件フォルダ】</strong> と表記します。</p>
+<hr>
+<h2>この手順書でやること</h2>
+<p>【クライアント様】と事前に確認・同意いただいたデザインを、【対象サイト】の【対象固定ページ】に反映して公開します。</p>
+<ol>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%E3%82%923%E3%81%A4%E9%9B%86%E3%82%81%E3%82%8B">ステップ1</a></strong> 事前準備（必要な情報を集める）</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972%E7%8F%BE%E8%A1%8C%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E5%8F%96%E3%82%8B%E6%9C%80%E9%87%8D%E8%A6%81">ステップ2</a></strong> 現行サイトのバックアップを取る（最重要）</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973%E7%94%BB%E5%83%8F%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%97%E3%81%A6wordpress%E3%81%AB%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B">ステップ3</a></strong> 画像をダウンロードしてWordPressにアップロードする</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%974wp%E6%9C%80%E9%81%A9%E5%8C%96%E7%89%88%E3%81%AE%E4%BD%9C%E6%88%90%E3%83%87%E3%83%A2%E7%A2%BA%E8%AA%8D%E6%9C%AC%E7%95%AA%E8%B2%BC%E3%82%8A%E4%BB%98%E3%81%91">ステップ4</a></strong> WP最適化版の作成・デモ確認・本番貼り付け</li>
+<li><strong><a href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%975%E5%85%AC%E9%96%8B%E5%BE%8C%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%E5%85%AC%E9%96%8B%E7%9B%B4%E5%BE%8C%E3%81%AB%E5%BF%85%E3%81%9A%E5%AE%9F%E6%96%BD">ステップ5</a></strong> 公開後のテスト（公開直後に必ず実施）</li>
+</ol>
+<hr>
+<h2>ステップ1｜事前準備（必要な情報を3つ集める）</h2>
+<p>公開作業を始める前に、以下の5項目（1-A 〜 1-E）をすべてチェック・受領します。1つでも漏れていると後工程で詰まります。</p>
+<h3>1-A. 提案・合意フェーズの完了確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 提案書／提案HTML（複数案：例 ELEGANT_WHITE / HERITAGE_DARK / URBAN_MUSIC 等）をクライアントに共有済み</li>
+<li><input disabled="" type="checkbox"> クライアントが採用案を選定済み（メール／議事録に記録あり）</li>
+<li><input disabled="" type="checkbox"> 脆弱性診断レポートを事前にクライアントへ提示済み（赤／黄／緑の項目別に対応方針を合意）</li>
+<li><input disabled="" type="checkbox"> 議事録（Tactiq等での文字起こし）を【案件フォルダ】／議事録/ に保存済み</li>
+<li><input disabled="" type="checkbox"> 「最終確認OK」のクライアント返信が記録に残っている</li>
+<li><input disabled="" type="checkbox"> 修正対応表（修正ID／ステータス／スクショ／修正事項／修正確認）の運用が始まっている</li>
+</ul>
+<p>これらが揃っていない場合、本手順書の作業には進まず営業フェーズへ戻します。</p>
+<h3>1-B. WordPress管理画面のログイン情報（必須3点）</h3>
+<p>お客様から以下の3点を受領します：</p>
+<ol>
+<li>WordPress管理画面のログインURL（形式: <code>https://【対象ドメイン】/wp/wp-login.php</code> または <code>/wp-admin/</code>）</li>
+<li>管理者ID（ログイン名）</li>
+<li>管理者パスワード</li>
+</ol>
+<p><strong>【ヒント】受け取った情報は 1Password Teams の Vault <code>Client-{client-slug}</code> に保管。Drive や共有チャットに直接貼らない。</strong>（1Password導入前は <code>C:\Users\hashi\.vaizo\secrets\</code> に保管）</p>
+<h3>1-C. 周辺アカウント受領（優先度A）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ドメイン管理画面の権限（DNS設定／SSL強制／サブドメイン設定）</li>
+<li><input disabled="" type="checkbox"> レンタルサーバー管理画面（Xserver等。SSL常時化／サーバー設定／ファイルアップロード／HSTS設定）</li>
+<li><input disabled="" type="checkbox"> Google Analytics 4 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google Search Console 権限（インデックス管理／公開後のURL検査）</li>
+<li><input disabled="" type="checkbox"> Google Tag Manager 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google広告アカウント管理者権限（運用案件のみ）</li>
+<li><input disabled="" type="checkbox"> Google ビジネスプロフィール管理者権限（MEO案件のみ）</li>
+</ul>
+<h3>1-D. 写真・素材の受領状況の確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 全画像が「圧縮済み」かつ「ページ内の用途がわかる名前」にリネーム済み</li>
+<li><input disabled="" type="checkbox"> 【案件フォルダ】／01_WEBサイト刷新サービス／最新版／images に最終版が配置済み</li>
+<li><input disabled="" type="checkbox"> 受領追加写真（途中差し替え）がある場合は最終HTMLにすべて反映済み</li>
+<li><input disabled="" type="checkbox"> ロゴデータ（AI／SVG／高解像度PNG）が揃っている</li>
+</ul>
+<h3>1-E. クライアント連絡待ち項目の管理</h3>
+<p>公開直前まで決まっていなくても進められますが、本番反映前に必ず確定が必要：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 問い合わせメール送信先の最終確定（誤設定はリード喪失、影響度: <strong>高</strong>）</li>
+<li><input disabled="" type="checkbox"> 予約Google CalendarのID／共有URL（カレンダー機能がある場合）</li>
+<li><input disabled="" type="checkbox"> GTMコンテナID（既存テーマで設定済みなら不要）</li>
+<li><input disabled="" type="checkbox"> ファビコン／apple-touch-icon</li>
+<li><input disabled="" type="checkbox"> JSON-LD Eventの実データ（イベント情報を載せる場合）</li>
+</ul>
+<p>未確定項目は 【案件フォルダ】／公開作業/連絡待ちチェックリスト_YYYYMMDD.md に一覧化し、クライアントへの催促フローを回します。</p>
+<hr>
+<h2>ステップ2｜現行サイトのバックアップを取る（最重要）</h2>
+<p><strong>【なぜやるか】</strong> 公開後にデザインの崩れや不具合が起きたとき、すぐに元の状態に戻せる「保険」をかけておくため。バックアップを取らずに公開して問題が起きると、最悪の場合お客様のサイトが見られなくなります。</p>
+<p>このステップでは「念のため重ねて取る」ことを推奨。3種類のバックアップを順番に取得します。</p>
+<h3>2-1. ［推奨］All-in-One WP Migration でサイト全体をバックアップ</h3>
+<ol>
+<li>左メニュー「All-in-One WP Migration」→「エクスポート」</li>
+<li>「サイトのエクスポート先」をクリック → リスト表示</li>
+<li>「ファイル」をクリック</li>
+<li>「サイトを今すぐダウンロード」ボタンが出たら押して <code>.wpress</code> ファイルをPCに保存</li>
+<li>Driveの【案件フォルダ】／公開作業／バックアップ_YYYYMMDD/ に保存</li>
+</ol>
+<p><strong>戻し方</strong>: 同じプラグインの「インポート」から保存した <code>.wpress</code> をドラッグ＆ドロップで復元。</p>
+<h3>2-2. ［二重保険］WordPress標準のエクスポート</h3>
+<ol>
+<li>左メニュー「ツール」→「エクスポート」</li>
+<li>「すべてのコンテンツ」を選択</li>
+<li>「エクスポートファイルをダウンロード」→ XMLファイル取得</li>
+<li>Driveのバックアップフォルダに保存</li>
+</ol>
+<h3>2-3. ［ピンポイント］編集対象ページの本文をテキストファイルに保存</h3>
+<ol>
+<li>左メニュー「固定ページ」→「固定ページ一覧」→【対象固定ページ】を開く</li>
+<li>本文（HTML）の枠内をクリック → Ctrl+A → Ctrl+C</li>
+<li>メモ帳に貼付 → <code>【対象固定ページslug】_backup_YYYYMMDD.html</code> で保存</li>
+<li>Driveのバックアップフォルダに保存</li>
+<li>右側「リビジョン: ◯」の数字も控える（戻すとき使う番号）</li>
+</ol>
+<p><strong>【3種類のバックアップ・まとめ】</strong></p>
+<ul>
+<li>2-1（All-in-One WP Migration）→ サイト全部の完全コピー。最終的な保険</li>
+<li>2-2（標準エクスポート）→ コンテンツ部分のみのコピー</li>
+<li>2-3（本文コピー）→ 今回触るページだけのピンポイント保険。すぐに戻せる</li>
+</ul>
+<p><strong>【絶対のルール】</strong> 3つのファイルすべてをDriveの「公開作業／バックアップ_YYYYMMDD」フォルダにアップしてから、次のステップに進みます。</p>
+<hr>
+<h2>ステップ3｜画像をダウンロードしてWordPressにアップロードする</h2>
+<h3>3-1. 画像をダウンロード（圧縮・リネーム済みの最終版）</h3>
+<p><strong>【前提（実施済み）】</strong></p>
+<ul>
+<li>お客様と同意済みのデザインで使われている画像は、すべてVAIZO側で「圧縮」と「ページのどこに使うかわかる名前」へのリネーム作業を完了している</li>
+<li>最終版HTMLファイルの画像パスは、リネーム後のファイル名にすべて差し替え済み</li>
+</ul>
+<ol>
+<li>Google Drive【案件フォルダ】／01_WEBサイト刷新サービス／最新版／images を開く</li>
+<li>フォルダごと「ダウンロード」→ ZIP取得</li>
+<li>ZIPを解凍（extra / gallery 等のフォルダ確認）</li>
+</ol>
+<h3>3-2. WordPressの管理画面にログイン</h3>
+<p>【WP管理画面URL】をChromeで開く → ID/パスワード入力 → ログイン。</p>
+<h3>3-3. ダッシュボードからメディアへ移動</h3>
+<p>左メニュー「メディア」をクリック。</p>
+<h3>3-4. 画像を一括アップロード</h3>
+<ol>
+<li>「メディアファイルを追加」→ グレーの大きな枠が表示</li>
+<li>解凍した画像フォルダの中身を全選択 → ドラッグ＆ドロップ</li>
+<li>緑色のチェックマーク確認</li>
+</ol>
+<p><strong>【ポイント】</strong></p>
+<ul>
+<li>1度に大量にアップすると失敗する → 10〜15枚ずつ分けて</li>
+<li>同名ファイル衝突時は自動で <code>-1.jpg</code> 等が付く。差し替えたい場合は古いものを先に削除</li>
+<li>1ファイル最大1GBまで</li>
+</ul>
+<h3>3-5. アップロード結果を確認</h3>
+<p>「メディア」→「ライブラリ」で一覧表示。アップした画像が並んでいれば成功。</p>
+<hr>
+<h2>ステップ4｜WP最適化版の作成・デモ確認・本番貼り付け</h2>
+<p>このステップは、（A）最終版HTMLを WordPress 用に最適化 → （B）デモ環境で動作確認 → （C）OKなら本番に貼り付け、の3段階で進めます。</p>
+<p>スタンドアロンHTMLをそのままWPに貼ると、テーマの <code>&lt;head&gt;</code>/<code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> と重複してレイアウトが崩れたりCSS衝突を起こすため、必ず「WP最適化版」を作ってデモで確認してから本番に貼ります。</p>
+<h3>4-pre. WP移行前チェックシート（事前監査・必須）</h3>
+<p>最終版HTMLを最適化に進める前に、AIに「監査」させて何が衝突するか・何を書き換えるべきかをリスト化。</p>
+<p><strong>【AIに事前監査を依頼するプロンプト】</strong> → <a href="../templates/wp-prompts/04-pre-audit.html"><code>templates/wp-prompts/04-pre-audit.md</code></a></p>
+<p>監査項目（A〜J）:</p>
+<ul>
+<li>A. 構造的問題（<code>&lt;DOCTYPE&gt;</code>/<code>&lt;html&gt;</code>/<code>&lt;head&gt;</code>/<code>&lt;body&gt;</code>/<code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code>/<code>&lt;nav&gt;</code> の有無と重複）</li>
+<li>B. 画像パス（相対パス・絶対URL・外部CDN・GitHub Pages URL等）</li>
+<li>C. 外部URL／canonical／JSON-LD（書換が必要なURLを全箇所リスト化）</li>
+<li>D. CSP／セキュリティヘッダ</li>
+<li>E. 動的要素／フォーム／カレンダー</li>
+<li>F. <strong>統合方式の判断</strong>（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a> 参照）</li>
+<li>G. WPプラグイン干渉（Yoast SEO／Page Builder／キャッシュ系）</li>
+<li>H. QAチェックリスト</li>
+<li>I. クライアント連絡待ち項目</li>
+<li>J. リスクと対応</li>
+</ul>
+<p><strong>統合方式 選択の判断基準</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>評価</th>
+<th>適用条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A: カスタムページテンプレート（page-{slug}.php）</strong></td>
+<td>★★★★★</td>
+<td>テーマファイル編集可能、PHP書ける担当者あり</td>
+</tr>
+<tr>
+<td>B: 固定ページ＋Custom HTMLブロック</td>
+<td>★★</td>
+<td>テーマ編集権限なし。CSS衝突に注意・スコープ化必須</td>
+</tr>
+<tr>
+<td>C: ショートコード化</td>
+<td>★★★</td>
+<td>複数ページで再利用したい</td>
+</tr>
+<tr>
+<td>D: 別ドメイン／サブディレクトリで静的HTML</td>
+<td>★</td>
+<td>最終手段</td>
+</tr>
+</tbody></table>
+<p>詳細フローチャート: <a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></p>
+<h3>4-0. WP最適化版HTMLの作成とデモ確認</h3>
+<p><strong>【AIにWP最適化を依頼するプロンプト】</strong> → <a href="../templates/wp-prompts/04-0-optimize.html"><code>templates/wp-prompts/04-0-optimize.md</code></a></p>
+<p>最適化要件:</p>
+<ol>
+<li><code>&lt;head&gt;</code>内の meta / link / style を WP テーマと重複しないように整理</li>
+<li><code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code>/<code>&lt;nav&gt;</code> はテーマと統合（削除）</li>
+<li>インラインCSSは body スコープ化（<code>body.page-【slug】 .xxx { ... }</code>）</li>
+<li>インラインJSはIIFEまたはモジュール化</li>
+<li>canonical / og:url / twitter:url / JSON-LD を【公開URL】に書換</li>
+<li>画像src を WPメディアアップロード後のURL（<code>https://【対象ドメイン】/wp-content/uploads/YYYY/MM/</code>）に一括置換</li>
+<li>CSP meta タグは WPサーバ設定と整合がなければ削除</li>
+<li>GTM / GA タグは既存テーマで設定済みなら削除</li>
+</ol>
+<p><strong>【AIにデモ環境を構築してもらう】</strong></p>
+<ul>
+<li>GitHub Pages にデプロイ（リポジトリは <strong>必ずプライベート＋招待制</strong>で運用。公開リポジトリだとコードが読まれて脆弱性を突かれる可能性）</li>
+<li>リポジトリ名: <code>{案件略称}-wp-demo</code></li>
+<li>ブランチ: <code>main</code></li>
+<li>パスワード保護する場合は staticrypt 等で</li>
+</ul>
+<p><strong>【3段階デモ運用（推奨）】</strong></p>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① クライアント確認用デモ</td>
+<td>GitHub Pages プライベート + staticrypt保護。デザイン・コピー・写真の最終OKをもらう</td>
+</tr>
+<tr>
+<td>② 開発確認用デモ</td>
+<td>ローカルWP or ステージングWPで実際にテーマ統合確認。CSS／プラグイン干渉を実証</td>
+</tr>
+<tr>
+<td>③ 本番（4-1以降）</td>
+<td>②でAIテスト全項目OKならここに進む</td>
+</tr>
+</tbody></table>
+<h3>4-1. GitHubからWP最適化版HTMLをダウンロード</h3>
+<ol>
+<li>AIから渡されたGitHubリポジトリのURLを開く</li>
+<li><code>【最終版HTMLファイル】_wp.html</code> をクリック</li>
+<li>右上の「Raw」ボタン横のダウンロードアイコン → PCに保存</li>
+</ol>
+<h3>4-2〜4-4. メモ帳経由・本文クリア</h3>
+<ol>
+<li>ダウンロードしたHTMLをメモ帳で開く → Ctrl+A → Ctrl+C</li>
+<li>編集画面の本文枠で Ctrl+A → Delete</li>
+<li>メモ帳ウィンドウは閉じずに残す（万一の再コピー用）</li>
+</ol>
+<h3>4-5. 新しいHTMLを貼り付け</h3>
+<p>空になった本文枠で Ctrl+V。</p>
+<h3>4-6. プレビューで見た目を確認</h3>
+<p>「変更をプレビュー」→ 別タブで確認:</p>
+<ul>
+<li>写真がすべて表示されている</li>
+<li>見出し・本文・テーブル等のレイアウトが崩れていない</li>
+<li>スマホ表示で崩れない（F12 → スマホアイコン）</li>
+<li>電話番号タップ／メールリンクが押せる</li>
+<li>予約・問い合わせなどのCTAが動く</li>
+</ul>
+<p><strong>【プレビューで問題があったとき】</strong> AIに「プレビューでこういう症状」とスクショを渡して原因特定を依頼。詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<h3>4-7. 「更新」をクリックして本番反映</h3>
+<ol>
+<li>編集画面右側「公開」ボックスの青い「更新」ボタンをクリック</li>
+<li>「固定ページを更新しました」と表示されれば本番反映完了</li>
+</ol>
+<p><strong>【公開直後にやること】</strong></p>
+<ul>
+<li>【公開URL】を別タブで開いて確認</li>
+<li>Ctrl+F5 でスーパーリロード（古い表示が残らないようにキャッシュを破棄）</li>
+<li>PCとスマホ両方で表示を確認</li>
+</ul>
+<hr>
+<h2>ステップ5｜公開後のテスト（公開直後に必ず実施）</h2>
+<p>公開ボタンを押したら終わりではありません。「ちゃんと動いているか」を必ずテストします。</p>
+<h3>5-AI. ［★最推奨・最速］AIに全自動でテストさせる</h3>
+<p>Claude Code に <a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> のプロンプトをそのまま貼り付けて送信。AIがPlaywrightで全リンク・全ボタン・全機能・レスポンシブ・Lighthouseまで自動チェック。</p>
+<p>チェック項目:</p>
+<ol>
+<li>全リンクをクリック → 404・遷移先ズレ検出</li>
+<li>全ボタン（CTA・予約・問い合わせ・印刷）の動作確認</li>
+<li>電話（<code>tel:</code>）／メール（<code>mailto:</code>）リンク起動確認</li>
+<li>ギャラリー: フィルター切替・ライトボックス</li>
+<li>見積シミュレーター動作確認</li>
+<li>レスポンシブ: 320 / 375 / 414 / 768 / 1024 / 1280 / 1920 px</li>
+<li>Lighthouseスコア（モバイル＋デスクトップ）</li>
+<li>ブラウザコンソールエラー</li>
+</ol>
+<p>合格基準:</p>
+<ul>
+<li>すべてのリンク 200 OK／想定先に遷移</li>
+<li>すべてのCTA・ボタンが動作OK</li>
+<li>レスポンシブ 全幅でレイアウト崩れなし</li>
+<li>Lighthouse モバイル パフォーマンス70以上 ／ LCP 2.5秒以内</li>
+<li>コンソールエラー 0件</li>
+</ul>
+<h3>5-メール. メール宛先のテスト送信（公開前必須・リード喪失防止）</h3>
+<p>問い合わせフォームのメール宛先設定ミスは「リード喪失」として影響度が最も高い項目です。</p>
+<ol>
+<li>本番ページの問い合わせフォームを開く</li>
+<li>テストデータ（件名「公開前テスト送信」、本文「テスト送信。気にせず削除してください。」）で送信</li>
+<li>クライアントに「いまテストメールを送ったので受信を確認してください」と Slack／電話で連絡</li>
+<li>クライアントから「届いた」の返信をもらえれば確定</li>
+<li>届かない場合は WP管理画面のフォーム設定（Contact Form 7 等）の宛先設定を確認 → 修正 → 再送信</li>
+<li>クライアントに送信ログ・受信スクショを残してもらい、案件フォルダに保存</li>
+</ol>
+<h3>5-1〜5-7. 手動チェック（AI不可時のフォールバック）</h3>
+<p>5-AI で全項目OKなら、5-1〜5-7 はスキップして 5-8 に進んでOK。</p>
+<ul>
+<li>5-1. キャッシュ破棄（Ctrl+F5）</li>
+<li>5-2. PCブラウザでの見た目チェック</li>
+<li>5-3. スマホ表示のチェック</li>
+<li>5-4. クリック・タップ動作チェック</li>
+<li>5-5. 見積シミュレーター／予約カレンダー等の独自機能チェック</li>
+<li>5-6. SEO・SNS表示の確認（Twitter Card / Facebook Debugger / GSC URL検査）</li>
+<li>5-7. 表示速度のチェック（Lighthouse モバイル＋デスクトップ）</li>
+</ul>
+<h3>5-8. 関係者への連絡・社内記録</h3>
+<ol>
+<li>お客様に「公開完了報告」を連絡（<a href="../templates/delivery-reports.html"><code>templates/delivery-reports.md</code></a> 参照）</li>
+<li>Driveの【案件フォルダ】／公開作業／公開記録_YYYYMMDD.md に以下を残す:<ul>
+<li>公開日時</li>
+<li>公開URL</li>
+<li>5-2〜5-7のチェック結果（OK/NG）</li>
+<li>スクリーンショット（公開直後のPCとスマホ表示）</li>
+<li>バックアップファイルの場所（ステップ2で取った3つ）</li>
+<li>トラブル時の連絡先（案件CTO・担当開発者）</li>
+</ul>
+</li>
+</ol>
+<h3>5-トラブル. 公開後にトラブルが見つかったら</h3>
+<ol>
+<li><strong>まずAIに状況を渡す</strong>（スクショ＋エラー文）→ 原因特定と復旧手順を出してもらう</li>
+<li>慌てない。ステップ2で3重のバックアップを取っているので必ず戻せる</li>
+<li>軽微（崩れ等）→ ステップ4-4でクリア → ステップ2-3のテキストを貼り戻す → 「更新」</li>
+<li>重大（真っ白／500エラー等）→ All-in-One WP Migrationの「インポート」から、ステップ2-1の <code>.wpress</code> を復元</li>
+<li>復元したらお客様に「一時的に表示が乱れたが復旧した」旨を即報告。原因を調べてから再公開</li>
+</ol>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<hr>
+<h2>困ったときは</h2>
+<p><strong>まず最初にやること: AIに相談する</strong></p>
+<p>状況のスクリーンショット＋エラーメッセージをAIに貼って、「原因と対処を出して」と投げる。</p>
+<p><strong>よくあるトラブル（参考。最終判断はAIに）</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>第一手</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ログインできない</td>
+<td>ID/パスワード再確認、何度も間違えるとロック。AIに「IPロック解除方法」</td>
+</tr>
+<tr>
+<td>画像のアップロードでエラー</td>
+<td>容量制限の可能性。サイズを下げて再試行。AIにスクショ＋エラー文</td>
+</tr>
+<tr>
+<td>ページが真っ白／500エラー</td>
+<td>ステップ2-1の <code>.wpress</code> から即復元</td>
+</tr>
+<tr>
+<td>崩れ・表示異常</td>
+<td>ステップ4-4でクリア → ステップ2-3の本文バックアップを貼り戻す</td>
+</tr>
+</tbody></table>
+<p><strong>それでも解決しなかったとき</strong>:</p>
+<ul>
+<li>案件CTO（櫻井理也）にSlack DM</li>
+<li>AIとのやり取りログを一緒に共有すると引き継ぎが格段に早くなる</li>
+</ul>
+<hr>
+<p><strong>v1.0 — 2026-05-01初版（Drive版）</strong>
+<strong>v1.1 — 2026-05-09 GitHub正本移管</strong></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="2" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>05 — V/ENTER WEB 営業ガイドライン：脆弱性レポート送付の2つのライン</h1>
+<blockquote>
+<p>Drive 版正本: Doc ID <code>1VgoW0gmPaZVkZs1GSLvzYEDCBXPO0Dtt3nV_E2tM1Sw</code>（2026-05-03 v1.0）
+本ファイルが GitHub 正本。Drive 側は Phase 1 完了後 <code>MOVED_TO_GITHUB.md</code> リダイレクト化。</p>
+</blockquote>
+<p>策定日: 2026年5月3日（v1.0 初版）/ 2026-05-09 GitHub移管
+責任者: 橋本友太郎（CEO）
+対象: V/ENTER WEB事業部 全メンバー</p>
+<hr>
+<h2>このドキュメントの目的</h2>
+<p>V/ENTER の営業戦術として、見込み客（飲食店・ライブハウス等）の既存サイトをスキャンし、脆弱性レポートをデザインアイデンティティ・トップページデモとセットで送付する。</p>
+<p>この営業手法は、合法かつ誠実に運用すれば成約率を大きく押し上げる強力な手段となる一方、運用を誤ると以下のリスクが発生する：</p>
+<ul>
+<li>法的リスク（不正アクセス禁止法違反）</li>
+<li>道義的リスク（クライアント側の不快感・SNS炎上・業界での評判低下）</li>
+<li>信用リスク（誤検知の指摘で専門性を疑われる）</li>
+</ul>
+<p>これらを回避するため、本ドキュメントで定める「2つのライン」を必ず守ること。</p>
+<hr>
+<h2>ライン1：法的ライン（スキャン手法の制約）</h2>
+<h3>原則</h3>
+<p>不正アクセス禁止法（日本国法）の対象は「アクセス制御を破る／回避する」行為である。</p>
+<ul>
+<li><strong>公開情報を外部から観察する 受動的（パッシブ）スキャン は合法</strong></li>
+<li><strong>脆弱性を実際に試す 能動的（アクティブ）スキャン は違法リスクあり</strong></li>
+</ul>
+<h3>使用OK：パッシブスキャンツール（公開情報の観察）</h3>
+<table>
+<thead>
+<tr>
+<th>ツール</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>securityheaders.com</td>
+<td>HTTPセキュリティヘッダ評価</td>
+</tr>
+<tr>
+<td>Mozilla Observatory</td>
+<td>公開情報スコアリング</td>
+</tr>
+<tr>
+<td>SSL Labs</td>
+<td>SSL/TLS設定診断</td>
+</tr>
+<tr>
+<td>Lighthouse</td>
+<td>パフォーマンス／ベストプラクティス／SEO／アクセシビリティ</td>
+</tr>
+<tr>
+<td>Wappalyzer / WhatRuns</td>
+<td>CMS・プラグイン・バージョン検出</td>
+</tr>
+<tr>
+<td>sslyze</td>
+<td>SSL/TLS パッシブモード</td>
+</tr>
+<tr>
+<td>WPScan (<code>--no-banner</code> オプション)</td>
+<td>公開情報のみ</td>
+</tr>
+<tr>
+<td>OWASP ZAP の Passive Scan モード限定</td>
+<td>公開情報の観察</td>
+</tr>
+<tr>
+<td>ヘッダ取得（curl -I 等の通常HTTPリクエスト）</td>
+<td>公開情報</td>
+</tr>
+</tbody></table>
+<h3>使用NG：アクティブスキャン／攻撃ツール</h3>
+<table>
+<thead>
+<tr>
+<th>ツール</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sqlmap</td>
+<td>SQLインジェクション試行</td>
+</tr>
+<tr>
+<td>Burp Suite Active Scanner</td>
+<td>攻撃ペイロード送信</td>
+</tr>
+<tr>
+<td>Nikto Active mode</td>
+<td>アクティブスキャン</td>
+</tr>
+<tr>
+<td>Metasploit</td>
+<td>エクスプロイト</td>
+</tr>
+<tr>
+<td>ブルートフォース系全般（Hydra・Medusa等）</td>
+<td>認証突破試行</td>
+</tr>
+<tr>
+<td>認証突破の試行</td>
+<td>違法</td>
+</tr>
+<tr>
+<td>ディレクトリトラバーサル試行</td>
+<td>違法</td>
+</tr>
+<tr>
+<td>広範囲ポートスキャン</td>
+<td>グレーゾーン</td>
+</tr>
+<tr>
+<td>DDoS／フラッディング系</td>
+<td>違法</td>
+</tr>
+<tr>
+<td>OWASP ZAP の Active Scan モード</td>
+<td>攻撃ペイロード送信</td>
+</tr>
+</tbody></table>
+<h3>判断基準（迷ったらこの3問）</h3>
+<ol>
+<li>このスキャンは外部から見える情報のみを観察しているか？</li>
+<li>攻撃ペイロードを送信していないか？</li>
+<li>認証や制御を突破していないか？</li>
+</ol>
+<p>すべて YES なら OK。一つでも NO なら使用しない。</p>
+<hr>
+<h2>ライン2：道義的ライン（送り方のトーン）</h2>
+<h3>原則</h3>
+<p>合法であっても、送り方を間違えるとクレーム・炎上の原因となる。</p>
+<p>「お役に立てれば」のトーンを守り、押し付け・脅し・直結セールスを避ける。</p>
+<h3>必須要素：レポートに必ず含めること</h3>
+<ol>
+<li>冒頭に「公開情報の範囲で確認しました」と明記する</li>
+<li>「無料の参考資料です」と位置付ける</li>
+<li>「対応は専門業者にご相談ください」と一言入れる（押し売り回避）</li>
+<li>「不要であれば破棄してください」と明記する</li>
+<li>パスワード保護をかける（メール本文にパスワードを同送しない／別経路 or 後送）</li>
+<li>非エンジニア向け解消手順書を添付する（橋本CEO設計）</li>
+</ol>
+<h3>避ける表現</h3>
+<ul>
+<li>「あなたのサイトは危険です」（恐怖訴求）</li>
+<li>「すぐに対応が必要」（煽り）</li>
+<li>「うちで全部対応できます」（直結セールス）</li>
+<li>「ご返答お願いします」（催促）</li>
+<li>専門用語の羅列（手順書で対処）</li>
+</ul>
+<h3>推奨される表現例</h3>
+<ul>
+<li>「公開情報の範囲で確認したところ、◯◯の改善余地が見受けられました」</li>
+<li>「ご参考までにお送りします。専門業者にご相談される際の材料としてお役立てください」</li>
+<li>「ご不要の場合はお手数ですが破棄してください」</li>
+</ul>
+<hr>
+<h2>送付対象のセーフガード</h2>
+<h3>送付OK</h3>
+<ul>
+<li>法人の公開コーポレート・店舗サイト（情報を公にしている主体）</li>
+<li>飲食・ライブハウス等のV/ENTERターゲット業態（S／A／Bランク）</li>
+<li>ホームページ業者制作の店舗サイト</li>
+</ul>
+<h3>慎重対応（送付前に橋本CEO確認）</h3>
+<ul>
+<li>政府機関・医療機関（公的責任のある機関は別ルール適用）</li>
+<li>認証付き会員制サイト（私的領域に該当）</li>
+<li>個人ブログ・個人サイト</li>
+</ul>
+<p>詳細フロー: <a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a></p>
+<hr>
+<h2>削除依頼SOP</h2>
+<ol>
+<li>削除依頼を受けたら、<strong>24時間以内に返信</strong></li>
+<li>受信メール・該当データを即削除</li>
+<li>ブラックリスト管理シートに登録（OPS_Sheet TASKSタブ「VENTER_BlackList」）</li>
+<li>二度と送付しない（送信リストの除外フラグを永続化）</li>
+<li>削除依頼の文面を記録（後日のクレーム再発時の証跡として保存）</li>
+</ol>
+<hr>
+<h2>クレーム対応SOP</h2>
+<h3>1次対応：受信から30分以内</h3>
+<ul>
+<li>小野寺陸斗 or 櫻井みどり が即返信<ul>
+<li>文面例：「ご連絡ありがとうございます。担当責任者へエスカレーションします」</li>
+</ul>
+</li>
+<li>橋本CEO・櫻井理也CTOへSlack DMで即時通知</li>
+</ul>
+<h3>2次対応：受信から2時間以内</h3>
+<ul>
+<li>橋本CEO主導で個別対応</li>
+<li>必要に応じて謝罪・削除・関係先への連絡停止</li>
+<li>内容によっては顧問弁護士・顧問税理士へ相談</li>
+</ul>
+<h3>記録</h3>
+<ul>
+<li>クレーム発生案件は OPS_Sheet TASKS に「VENTER_クレーム対応」として記録</li>
+<li>月次振り返りで件数・原因を集計、ガイドラインへ反映</li>
+</ul>
+<hr>
+<h2>再送付ルール</h2>
+<ul>
+<li>反応がなくても、同一ドメインへの再送付は <strong>3ヶ月以上空ける</strong></li>
+<li>ブラックリスト登録先は <strong>永久に再送付しない</strong></li>
+<li>3ヶ月経過後の再送付は、テンプレを必ず差し替えてから実施する</li>
+</ul>
+<hr>
+<h2>品質管理（QC）ルール</h2>
+<h3>誤検知の二重チェック</h3>
+<ul>
+<li>自動スキャン結果は必ず櫻井みどりが目視で確認する</li>
+<li>「修正済み」「該当しない」項目はレポートから除外する</li>
+<li>1件あたり3〜5分のQC工数を確保する</li>
+</ul>
+<h3>テンプレ更新</h3>
+<ul>
+<li>スキャンツールの定期メンテナンス（月1回）</li>
+<li>業界の脆弱性トレンド反映（CTO 櫻井理也が月次レビュー）</li>
+<li>ガイドライン違反事例があれば即座にテンプレへ反映</li>
+</ul>
+<hr>
+<h2>違反した場合の対処</h2>
+<h3>ライン1（法的ライン）違反時</h3>
+<ul>
+<li>即時に運用停止</li>
+<li>該当データを削除</li>
+<li>法的リスク評価（顧問弁護士に相談）</li>
+<li>VAIZO経営陣（橋本CEO・櫻井理也CTO）で対応方針を決定</li>
+</ul>
+<h3>ライン2（道義的ライン）違反時</h3>
+<ul>
+<li>該当案件のクレーム対応を最優先</li>
+<li>文面・運用ルールを修正</li>
+<li>月次振り返りで全社共有</li>
+</ul>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="./01-sales-process.html"><code>handbook/01-sales-process.md</code></a> — 営業プロセス全体</li>
+<li><a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a> — 送付OK/慎重/NG判断</li>
+<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a> — 脆弱性レポート添付メール雛形</li>
+<li>メモリ <code>project_venter_targeting.md</code> — V/ENTERターゲティング基準</li>
+<li>メモリ <code>project_sales_process_v1.md</code> — 営業プロセスv1</li>
+</ul>
+<hr>
+<h2>改訂履歴</h2>
+<ul>
+<li>2026-05-03 v1.0 初版作成（橋本CEO判断・脆弱性レポート営業の運用ルールを正式策定）</li>
+<li>2026-05-09 v1.1 GitHub正本移管（Drive版は <code>MOVED_TO_GITHUB.md</code> リダイレクト）</li>
+</ul>
+<hr>
+<p>策定: 株式会社VAIZO V/ENTER WEB事業部
+責任者: 橋本友太郎（CEO）</p>
+<p><strong>本ガイドラインに違反した運用は禁止する。判断に迷う場合は橋本CEOへエスカレーションすること。</strong></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="day1" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>06 — Day1 オンボーディングチェックリスト</h1>
+<blockquote>
+<p>新規メンバーが V/ENTER WEB 事業部に参加した最初の日に、上から順に進めれば1日で稼働可能になる。</p>
+</blockquote>
+<hr>
+<h2>⚠️ Phase 0 完了前の制約</h2>
+<p>業務委託・外部協力者向けの一部項目は、以下の Phase 0 タスク完了後に解禁される：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 顧問社労士レビュー（タイムシート方針）</li>
+<li><input disabled="" type="checkbox"> 顧問弁護士レビュー（業務委託契約書・瑕疵担保条項）</li>
+</ul>
+<p>詳細: <a href="./00-overview.html"><code>handbook/00-overview.md</code></a> §6 および メモリ <code>project_vaizo_web_ops.md</code></p>
+<hr>
+<h2>Day 1: アカウント・ツール準備（午前）</h2>
+<h3>必須アカウント</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>GitHub</strong> アカウント作成 → <code>VAIZO-jp</code> org への招待を受領</li>
+<li><input disabled="" type="checkbox"> <strong>Slack</strong> ワークスペース <code>vaizo-one-team.slack.com</code> への招待を受領</li>
+<li><input disabled="" type="checkbox"> <strong>Google Workspace</strong>（@vaizo.jp ドメイン）アカウント受領</li>
+<li><input disabled="" type="checkbox"> <strong>1Password Teams</strong> Vault招待を受領（Phase 1 完了後）</li>
+<li><input disabled="" type="checkbox"> <strong>Plaud</strong> 個別アカウント作成</li>
+<li><input disabled="" type="checkbox"> <strong>Tactiq</strong> 個別アカウント作成</li>
+</ul>
+<h3>開発環境（実装担当者のみ）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Node.js 20以上 + npm</li>
+<li><input disabled="" type="checkbox"> OpenAI Codex CLI: <code>npm install -g @openai/codex</code> → <code>codex login</code>（ChatGPT Plus以上必要）</li>
+<li><input disabled="" type="checkbox"> Claude Code CLI: 公式手順に従いインストール → ログイン（Claude Pro以上）</li>
+<li><input disabled="" type="checkbox"> Git 設定（<code>user.name</code>, <code>user.email</code>）</li>
+<li><input disabled="" type="checkbox"> エディタ（VS Code推奨、Cursor可）</li>
+<li><input disabled="" type="checkbox"> 1Password CLI（任意、シークレット参照を効率化）</li>
+</ul>
+<h3>本リポジトリのクローン</h3>
+<pre><code class="language-bash">gh repo clone VAIZO-jp/enter-web
+cd enter-web
+</code></pre>
+<p>または</p>
+<pre><code class="language-bash">git clone https://github.com/VAIZO-jp/enter-web.git
+cd enter-web
+</code></pre>
+<hr>
+<h2>Day 1: ドキュメント確認（午後）</h2>
+<h3>30分で読むべき5本</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../README.html"><code>README.md</code></a>（このリポジトリの入口）</li>
+<li><input disabled="" type="checkbox"> <a href="../MAP.html"><code>MAP.md</code></a>（データ保存場所・アクセス地図）★最重要</li>
+<li><input disabled="" type="checkbox"> <a href="./00-overview.html"><code>handbook/00-overview.md</code></a>（事業全体像）</li>
+<li><input disabled="" type="checkbox"> <a href="./02-design-policy.html"><code>handbook/02-design-policy.md</code></a>（VAIZO Design Policy）</li>
+<li><input disabled="" type="checkbox"> <a href="./03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a>（実装ワークフロー）</li>
+</ul>
+<h3>役割別の追加読書（1〜2時間）</h3>
+<h4>営業担当の場合</h4>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./01-sales-process.html"><code>handbook/01-sales-process.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a>（<strong>最重要</strong>：法的・道義的ライン）</li>
+<li><input disabled="" type="checkbox"> <a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="../templates/client-emails/"><code>templates/client-emails/</code></a> 全雛形</li>
+</ul>
+<h4>制作担当の場合</h4>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a>（<strong>最重要</strong>：5ステップ公開手順）</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/TEMPLATE.html"><code>templates/codex-prompts/TEMPLATE.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> 業態別雛形を全て眺める</li>
+<li><input disabled="" type="checkbox"> <a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></li>
+<li><input disabled="" type="checkbox"> <a href="../runbooks/deploy-day.html"><code>runbooks/deploy-day.md</code></a></li>
+</ul>
+<h4>CTO/技術リード補佐の場合</h4>
+<ul>
+<li>上記すべて + 全 <a href="../troubleshooting/"><code>troubleshooting/</code></a> ファイル</li>
+</ul>
+<hr>
+<h2>Day 1: 実機検証（夕方）</h2>
+<h3>営業担当</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> のパッシブスキャンツール3つを自分のサイト（<code>vaizo.jp</code> 等の許可サイト）で試す<ul>
+<li>securityheaders.com</li>
+<li>Mozilla Observatory</li>
+<li>SSL Labs</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> スコア確認、レポートのスクショを取る</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/client-emails/"><code>templates/client-emails/</code></a> の脆弱性レポート添付メール雛形を読み、文体に違和感がないか確認</li>
+</ul>
+<h3>制作担当</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Codex CLI で「Hello World HTML」を生成してみる<pre><code class="language-bash">mkdir codex-hello &amp;&amp; cd codex-hello
+echo &quot;シンプルなHTMLでHello Worldと表示するindex.htmlを作って&quot; &gt; codex_prompt.md
+codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &quot;./codex_out.md&quot; &quot;$(cat ./codex_prompt.md)&quot;
+cat codex_out.md
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"> 生成された <code>index.html</code> をブラウザで開いて確認</li>
+<li><input disabled="" type="checkbox"> Claude Code に「このHTMLをVAIZO Design Policyに沿って修正して」と依頼してみる</li>
+<li><input disabled="" type="checkbox"> <a href="../troubleshooting/codex-cli-issues.html"><code>troubleshooting/codex-cli-issues.md</code></a> を読み、無音失敗のパターンを把握</li>
+</ul>
+<hr>
+<h2>Day 1: Slack 挨拶投稿</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>#事業部別_enter-ai</code>（C0ARXUP0L21）に挨拶投稿<ul>
+<li>自己紹介（役割、得意領域、これまでの経験）</li>
+<li>Day1で気になった点・質問</li>
+<li>困ったときの連絡方法</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> <code>#all-株式会社vaizo</code>（C0AP8VAUYSE）にも自己紹介投稿（任意）</li>
+</ul>
+<hr>
+<h2>Day 2 以降: 段階的アサイン</h2>
+<h3>Day 2-3: 既存案件の観察</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 仙台レトロバックページ（<a href="https://retro-backpage.com/">retro-backpage.com</a>）の Drive フォルダ（<code>1c8VIDSkvo6jI1ahjuE3tWdS0qYN2fQcx</code>）を読む</li>
+<li><input disabled="" type="checkbox"> BAR NOIR デモ（Drive <code>1GAvzoiZejlZIUKd0bY0rPhIdRZhM_9Jb</code>）の <code>codex_prompt.md</code> <code>codex_out.md</code> <code>index.html</code> を読む</li>
+<li><input disabled="" type="checkbox"> 公開済サイトで <a href="../troubleshooting/mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a> の事故再発防止策を読む</li>
+</ul>
+<h3>Day 4-5: 練習案件</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 自分の知人・家族のサイトで（許可を得て）脆弱性スキャン → デモ作成 → レビュー（実際のクライアントには送らない）</li>
+<li><input disabled="" type="checkbox"> CTOにレビュー依頼</li>
+</ul>
+<h3>Week 2: 最初の本番案件アサイン</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> に従って案件キックオフ</li>
+<li><input disabled="" type="checkbox"> CTOがメンターとして付き、各ステップで都度チェック</li>
+</ul>
+<hr>
+<h2>困ったとき</h2>
+<table>
+<thead>
+<tr>
+<th>何に困った</th>
+<th>どうする</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作で詰まった</td>
+<td>まずAIに聞く（<a href="./04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> 大前提）</td>
+</tr>
+<tr>
+<td>判断に迷う</td>
+<td><a href="../decision-trees/"><code>decision-trees/</code></a> を見る</td>
+</tr>
+<tr>
+<td>エラー・故障</td>
+<td><a href="../troubleshooting/"><code>troubleshooting/</code></a> を見る</td>
+</tr>
+<tr>
+<td>上記でも解決しない</td>
+<td>案件CTO（櫻井理也）にSlack DM、もしくは <code>#事業部別_enter-ai</code> でメンション</td>
+</tr>
+<tr>
+<td>緊急</td>
+<td>橋本CEO（電話番号は1Password共有）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>30日後の振り返り</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 最初に詰まったポイントを整理して <a href="../troubleshooting/"><code>troubleshooting/</code></a> に追記PR</li>
+<li><input disabled="" type="checkbox"> このオンボーディング手順で「分かりにくかった」点を本ファイルへの改善PR</li>
+<li><input disabled="" type="checkbox"> CTOと1on1（30分）</li>
+</ul>
+<p>新規メンバーがこの手順を完了したら、本ファイル末尾に名前と日付をチェックインします（PRで本人が記入）：</p>
+<pre><code class="language-markdown">## オンボーディング完了者
+
+- 2026-05-XX: 〇〇〇〇（役割）
+</code></pre>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section>
+<section class="chapter-divider">
+  <div class="chapter-num">CH 02</div>
+  <div class="chapter-title-en">TEMPLATES</div>
+  <div class="chapter-title-jp">テンプレート集</div>
+</section>
+<section id="codex" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト共通テンプレート</h1>
+<blockquote>
+<p>このテンプレートを案件ディレクトリにコピーし、{{プレースホルダ}}を埋めて <code>codex_prompt.md</code> として保存する。
+業態別の雛形（<code>bar-or-restaurant-fv.md</code>、<code>live-house.md</code>、<code>corporate.md</code>、<code>extension-sections.md</code>）は、このテンプレートを継承して各業態の制約を上書きする。</p>
+</blockquote>
+<p>使用方法は <a href="../../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> を参照。</p>
+<hr>
+<h2>役割</h2>
+<p>あなたは V/ENTER WEB事業部の <strong>実装ドラフト担当</strong> です。仕様に基づき初版コードを書いてください。設計判断・統合・最終採否は Claude Code（司令塔）が行います。</p>
+<h2>参照ファイル</h2>
+<ul>
+<li>{{案件ディレクトリ}}/<code>brief.md</code>（仕様サマリ）</li>
+<li>VAIZO Design Policy v1（要点は本プロンプト内に再掲）</li>
+</ul>
+<h2>案件情報</h2>
+<ul>
+<li><strong>業態</strong>: {{飲食 / バー / ライブハウス / コーポレート / 店舗 / その他}}</li>
+<li><strong>クライアント名</strong>: {{正式名称}}</li>
+<li><strong>屋号 / プロダクト名</strong>: {{表記名}}</li>
+<li><strong>対象URL（最終公開予定）</strong>: {{<a href="https://example.com/...%7D%7D">https://example.com/...}}</a></li>
+<li><strong>対象ページ種別</strong>: {{LP単発 / WP固定ページ刷新 / フルサイト}}</li>
+</ul>
+<h2>仕様</h2>
+<h3>入力</h3>
+<p>{{ここに対象データ・既存HTML・要件を箇条書き}}</p>
+<h3>出力</h3>
+<p>{{ここに期待する成果物（ファイルパス・形式）を箇条書き}}</p>
+<h3>制約</h3>
+<ul>
+<li>パフォーマンス: LCP 2.5秒以内、CLS 0.1以下、コンソールエラー 0件</li>
+<li>セキュリティ: 外部参照は最小限、CSP整合</li>
+<li>アクセシビリティ: WCAG AA以上、<code>alt</code> / <code>aria</code> 属性適切に</li>
+<li>ブランド規定: 後述の「VAIZO Design Policy 要点」遵守</li>
+</ul>
+<h3>完了条件 (DoD)</h3>
+<p>{{ここに具体的な完了条件を箇条書き}}</p>
+<p>例：</p>
+<ul>
+<li><input disabled="" type="checkbox"> {{案件ファイル名}}.html を1ファイルで開けば全要件を満たす</li>
+<li><input disabled="" type="checkbox"> Lighthouse モバイル パフォーマンス 70以上</li>
+<li><input disabled="" type="checkbox"> 全リンク・全CTAが想定通り動作</li>
+<li><input disabled="" type="checkbox"> HTML5として妥当（html-validate 通過）</li>
+</ul>
+<h2>出力要件</h2>
+<ul>
+<li><strong>スタック</strong>: {{Next.js 15 App Router + Tailwind v4 + shadcn/ui / 単一HTML（CSSはhead内・JS最小限） / WordPress固定ページ用最適化版}}</li>
+<li><strong>対象パス</strong>: {{ファイルパス}}</li>
+<li><strong>コメント</strong>: 仕様非自明な箇所のみ短く</li>
+</ul>
+<h2>VAIZO Design Policy 要点（厳守）</h2>
+<p>詳細は <a href="../../handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a> 参照。</p>
+<h3>配色</h3>
+<ul>
+<li>主色: <code>--ink-black: #0a0a0a</code></li>
+<li>背景: <code>--paper-off-white: #f5f3ee</code>（または <code>#ffffff</code>）</li>
+<li>罫線: <code>--rule-hairline: rgba(10,10,10,0.12)</code> / 1px</li>
+<li>アクセント: 高級業態のみ <code>--accent-gold: #b89b6a</code></li>
+</ul>
+<h3>書体</h3>
+<ul>
+<li>英字見出し: Inter 900 / Cormorant Garamond / Playfair Display（高級業態）</li>
+<li>日本語見出し: Noto Sans JP 700 / Noto Serif JP 700（高級業態）</li>
+<li>本文: Noto Sans JP 400</li>
+<li><strong>本文 17px / テーブル 15px / 行間 1.9 厳守</strong></li>
+</ul>
+<h3>レイアウト</h3>
+<ul>
+<li>大きな余白、ヘアライン罫線</li>
+<li>セクション間ガター: <code>clamp(80px, 12vw, 160px)</code></li>
+<li>コンテンツ最大幅: 1280px（編集系960px、長文760px）</li>
+</ul>
+<h3>モーション</h3>
+<ul>
+<li>控えめ（線が引かれる程度）</li>
+<li><code>prefers-reduced-motion: reduce</code> 対応必須</li>
+</ul>
+<h2>守ってほしいこと（絶対）</h2>
+<ul>
+<li>❌ 仕様外の機能を勝手に追加しない（フォーム・モーダル・SNSアイコン羅列は不要）</li>
+<li>❌ TODO で埋めず、その場で完成させる</li>
+<li>❌ 軍事比喩・否定列挙・採用語・階層用語は使わない</li>
+<li>✅ 飲食/店舗案件は <strong>電話・LINE のCTAを必ず常設</strong>（追従バー含む）</li>
+<li>✅ V/ブランド表記は半角スラッシュ「/」のみ</li>
+<li>✅ メールは <code>info@vaizo.jp</code>（<code>.co.jp</code> 不使用）</li>
+<li>✅ 「〜していただきます」より「します」を優先（過剰丁寧は避ける）</li>
+<li>✅ 価格・住所・時間は仕様書記載のまま使用（プレースホルダ表記OK）</li>
+<li>✅ 画像は外部URL不要、SVG/CSSで雰囲気を作る（指定がある場合を除く）</li>
+<li>✅ アクセシビリティ: コントラストAA以上、見出し階層、aria属性、スキップリンク</li>
+</ul>
+<h2>NG表現の代替</h2>
+<table>
+<thead>
+<tr>
+<th>NG</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>「敵を制圧する」</td>
+<td>「課題を解決する」</td>
+</tr>
+<tr>
+<td>「下請け」</td>
+<td>「アライアンスパートナー」</td>
+</tr>
+<tr>
+<td>「炎上を防ぐ」</td>
+<td>「誠実な運用を保つ」</td>
+</tr>
+<tr>
+<td>「完全保証」</td>
+<td>「自信を持ってお届けする」</td>
+</tr>
+</tbody></table>
+<h2>完了基準（再掲）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> {{ファイル名}} を開くと、上記要件をすべて満たした状態で表示される</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+<li><input disabled="" type="checkbox"> W3C的に妥当なHTML5</li>
+<li><input disabled="" type="checkbox"> レスポンシブ: 320 / 375 / 414 / 768 / 1024 / 1280 / 1920 px の各幅でレイアウト崩れなし</li>
+<li><input disabled="" type="checkbox"> アクセシビリティ: コントラストAA、フォーカスリング、prefers-reduced-motion対応</li>
+</ul>
+<h2>最終アウトプット</h2>
+<p>{{出力先ファイル}} の完全なコードと、必要であれば短い実装メモを返してください。</p>
+<hr>
+<h2>改訂履歴</h2>
+<ul>
+<li>2026-05-09 v1.0 初版（BAR NOIR・仙台レトロの実プロンプトから抽象化）</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="fv" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：飲食・バー業態 FV（First View）</h1>
+<blockquote>
+<p>このテンプレートは BAR NOIR デモ案件（2026-05-07）から抽象化したもの。
+飲食店・バー業態の <strong>トップビュー1画面</strong>（縦スクロール不要）を生成するためのプロンプト雛形。</p>
+</blockquote>
+<p>使用方法: 案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt.md</code> としてリネーム。</p>
+<hr>
+<h2>タスク: {{業態}}公式サイトのトップビュー（1ページ・スクロールなしの最初の1画面）</h2>
+<h2>役割</h2>
+<p>あなたは V/ENTER WEB事業部の実装ドラフト担当です。仕様に基づきトップビューを完成形で書いてください。</p>
+<h2>成果物</h2>
+<ul>
+<li>単一HTMLファイル <code>index.html</code>（CSSはhead内に内包、画像は外部URL不要・SVGまたはCSSグラデーションで表現）</li>
+<li>静的サイトとしてダブルクリックで開けば即見られる状態</li>
+</ul>
+<h2>想定店舗</h2>
+<ul>
+<li><strong>業態</strong>: {{大人の隠れ家バー / オーセンティックバー / イタリアン / 鮨 / 焼肉 / 居酒屋}}</li>
+<li><strong>立地</strong>: {{銀座の路地裏、地下1階、カウンター8席のみ}}</li>
+<li><strong>屋号</strong>: {{&quot;BAR NOIR&quot;（ノワール）}}</li>
+<li><strong>ミッション</strong>: {{一杯のために訪れる夜を、丁寧に。}}</li>
+<li><strong>客層</strong>: {{30代後半〜60代、紹介・常連中心、初めての客にも丁寧に応対}}</li>
+</ul>
+<h2>デザイン要件（非交渉）</h2>
+<ul>
+<li>ファーストビュー1画面で完結（縦スクロール不要、横幅100vw・高さ100vh想定）</li>
+<li><strong>配色</strong>: 黒（<code>#0a0a0a</code> 基調）、ホワイトオフ（<code>#f5f3ee</code>）、極控えめなゴールドアクセント（<code>#b89b6a</code>）— 派手な金は使わない</li>
+<li><strong>書体</strong>: セリフ系英字（Playfair Display または Cormorant Garamond）+ 明朝系日本語（Noto Serif JP）。Google Fontsで読み込み可</li>
+<li><strong>レイアウト</strong>: 左に縦書き屋号 or ロゴ、中央〜右に余白多めのキャッチ、下部に小さくナビゲーション</li>
+<li><strong>ナビ</strong>: ABOUT / {{WHISKY / DRINKS / MENU}} / RESERVATION / ACCESS</li>
+<li><strong>キャッチコピー</strong>:<ul>
+<li>メイン: 「{{一杯のために訪れる、銀座の夜。}}」</li>
+<li>英文サブ: &quot;{{A counter for those who choose silence.}}&quot;</li>
+</ul>
+</li>
+<li><strong>営業情報の小さな表示</strong>: &quot;{{OPEN 19:00 / LAST CALL 02:00 / SUNDAY CLOSED}}&quot;</li>
+<li><strong>予約電話番号</strong>: <code>{{03-0000-0000}}</code> を右上に配置（電話のみ受付という設定）</li>
+<li>全体に1〜2pxの細罫線・上品な余白・微細なテクスチャ感（ノイズフィルター/グレイン）を適度に</li>
+<li>ホバー時の挙動は控えめに（線が引かれる程度）</li>
+</ul>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>仕様外の機能を勝手に追加しない（フォーム・モーダル・SNSアイコン羅列は不要）</li>
+<li>軍事比喩・否定列挙・採用語は使わない</li>
+<li>TODO で埋めず、その場で完成させる</li>
+<li>画像は外部URL不要。SVG/CSSで雰囲気を作る</li>
+<li>アクセシビリティ: コントラスト比AA以上、<code>alt</code> / <code>aria</code> 適切に</li>
+<li>飲食/店舗案件のため、追従バーで電話番号CTAを常設（FV段階では非表示でもOK、後段セクションで表示）</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>index.html</code> を開くと、上記要件をすべて満たしたトップビューが1画面で表示される</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+<li><input disabled="" type="checkbox"> W3C的に妥当なHTML5</li>
+<li><input disabled="" type="checkbox"> <code>npx --yes html-validate index.html</code> 通過</li>
+</ul>
+<h2>最終アウトプット</h2>
+<p><code>index.html</code> の完全なコードと、必要であれば短い実装メモを返してください。</p>
+<hr>
+<h2>拡張パターン（FV後にLP化する場合）</h2>
+<p>FVが承認されたら、<a href="./extension-sections.html"><code>extension-sections.md</code></a> を使って6セクションを追加し、1ページ完結のLPに展開する。</p>
+<h2>過去案件の参考</h2>
+<ul>
+<li>BAR NOIR デモ: Drive <code>1GAvzoiZejlZIUKd0bY0rPhIdRZhM_9Jb</code><ul>
+<li><code>codex_prompt.md</code>（FV版）</li>
+<li><code>codex_prompt_v2.md</code>（6セクション拡張版）</li>
+<li><code>codex_out.md</code>、<code>codex_out_v2.md</code></li>
+<li><code>index.html</code>（32KB、html-validate通過済み）</li>
+</ul>
+</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：ライブハウス業態</h1>
+<blockquote>
+<p>このテンプレートは仙台レトロバックページ案件（公開: 2026-04-30、retro-backpage.com）から抽象化したもの。
+ライブハウス・音楽スポット業態のトップ + イベント表示を生成するためのプロンプト雛形。</p>
+</blockquote>
+<p>使用方法: 案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt.md</code> としてリネーム。</p>
+<hr>
+<h2>タスク: {{ライブハウス名}}公式サイトのトップ + イベント表示</h2>
+<h2>役割</h2>
+<p>V/ENTER WEB事業部の実装ドラフト担当として、ライブハウス向けのトップページ + 直近イベント表示を完成形で書く。</p>
+<h2>成果物</h2>
+<ul>
+<li>単一HTMLファイル <code>index.html</code>（CSSはhead内、JS最小限）</li>
+<li>またはWP固定ページ用最適化版（<code>{{slug}}_wp.html</code>）</li>
+</ul>
+<h2>想定店舗</h2>
+<ul>
+<li><strong>業態</strong>: ライブハウス / 音楽スポット / クラブ</li>
+<li><strong>立地</strong>: {{仙台中心部、地下、キャパ100名}}</li>
+<li><strong>屋号</strong>: {{&quot;retro backpage&quot;}}</li>
+<li><strong>ミッション</strong>: {{音と人が交差する、街の止まり木。}}</li>
+<li><strong>客層</strong>: {{20代〜40代、音楽好き、地元コミュニティ、観光客}}</li>
+</ul>
+<h2>デザイン要件</h2>
+<ul>
+<li><strong>トーン</strong>: HERITAGE_DARK / URBAN_MUSIC 系統（クラシックロックや渋いジャズに似合う）</li>
+<li><strong>配色</strong>: 主色 <code>#0a0a0a</code> ベース、アクセントに業態に合わせた色（{{ネオン管風 / アンバー / 燻んだレッド}}）</li>
+<li><strong>書体</strong>: タイポグラフィ重め。Inter 900 + Noto Sans JP 700。歌詞・引用には Noto Serif JP も可</li>
+<li><strong>レイアウト</strong>:<ul>
+<li>ヒーロー: 大きなキャッチ + 直近ライブのカウントダウン or バナー</li>
+<li>イベントカード（時系列）: 日付 / 出演 / チケット情報 / 詳細リンク</li>
+<li>About / Access / ブッキング問い合わせ</li>
+<li>必須: 電話 + LINE のCTAを追従バーで常設</li>
+</ul>
+</li>
+<li><strong>JSON-LD <code>Event</code></strong>: 直近のライブ情報を構造化データ化（GSC リッチ結果用）</li>
+</ul>
+<h2>イベントセクション仕様</h2>
+<pre><code>{{
+  &quot;events&quot;: [
+    {
+      &quot;date&quot;: &quot;2026-05-15&quot;,
+      &quot;title&quot;: &quot;{{ライブタイトル}}&quot;,
+      &quot;artists&quot;: [&quot;{{出演者1}}&quot;, &quot;{{出演者2}}&quot;],
+      &quot;open&quot;: &quot;18:00&quot;,
+      &quot;start&quot;: &quot;19:00&quot;,
+      &quot;advance_price&quot;: 3500,
+      &quot;door_price&quot;: 4000,
+      &quot;ticket_url&quot;: &quot;{{チケット販売URL}}&quot;
+    }
+  ]
+}}
+</code></pre>
+<p>イベントカードは縦タイムライン形式。過去のイベントは別アコーディオンで隠す。</p>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>仕様外の機能（チャット・予約フォーム等）は勝手に追加しない</li>
+<li>軍事比喩・否定列挙・採用語は使わない</li>
+<li>「敷居が高い」「真の音楽好き」等の選別的表現は避け、開かれたトーンに</li>
+<li>飲食・店舗案件のため、<strong>電話 + LINE のCTAを全ページで追従バー常設</strong></li>
+<li>メールは <code>info@vaizo.jp</code> を使用、<code>.co.jp</code> 不使用</li>
+<li>文字サイズ: 本文17px、テーブル15px、行間1.9厳守</li>
+<li>アクセシビリティ: コントラスト比AA以上、フォーカスリング、<code>prefers-reduced-motion</code> 対応</li>
+</ul>
+<h2>⚠️ 過去のリグレッション事故（必読）</h2>
+<p>仙台レトロ案件で <code>mailto:</code> の cc 形式修正により全メーラー起動不能のリグレッション事故が発生（修正ID <code>F-RBP-202605-001/025/026</code>）。詳細: <a href="../../troubleshooting/mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a></p>
+<p><strong>今回のプロンプトでは</strong>:</p>
+<ul>
+<li><code>mailto:</code> リンクの形式は <code>mailto:address?subject=...&amp;body=...</code> 形式（カンマ区切りcc不可）</li>
+<li>複数宛先が必要な場合は <code>mailto:to1@example.com?cc=cc1@example.com,cc2@example.com</code> 形式</li>
+<li>必ず実機（Outlook / Gmail / Apple Mail）で起動テストする</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>index.html</code> または <code>{{slug}}_wp.html</code> を開くと全要件を満たして表示</li>
+<li><input disabled="" type="checkbox"> JSON-LD <code>Event</code> が GSC リッチ結果テストツールで有効と判定される</li>
+<li><input disabled="" type="checkbox"> <code>mailto:</code> がOutlook / Gmail / Apple Mail で正常起動</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+<li><input disabled="" type="checkbox"> レスポンシブ全幅でレイアウト崩れなし</li>
+<li><input disabled="" type="checkbox"> Lighthouse モバイル パフォーマンス 70以上、LCP 2.5秒以内</li>
+</ul>
+<h2>最終アウトプット</h2>
+<p><code>{{ファイル名}}</code> の完全なコードと、JSON-LDの実例、<code>mailto:</code> 起動確認のチェック手順を返してください。</p>
+<hr>
+<h2>過去案件の参考</h2>
+<ul>
+<li>仙台レトロバックページ: Drive <code>1c8VIDSkvo6jI1ahjuE3tWdS0qYN2fQcx</code><ul>
+<li>公開URL: <a href="https://retro-backpage.com/">https://retro-backpage.com/</a></li>
+<li>修正対応表: 25件以上（mailto事故含む）</li>
+<li>公開日: 2026-04-30</li>
+</ul>
+</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：コーポレートサイト業態（骨格）</h1>
+<blockquote>
+<p>骨格レベル（Phase 1）。Phase 2 で本文充実予定。</p>
+</blockquote>
+<hr>
+<h2>タスク: {{企業名}}コーポレートサイト</h2>
+<h2>役割</h2>
+<p>V/ENTER WEB事業部の実装ドラフト担当として、コーポレートサイトのトップページを生成。</p>
+<h2>想定企業</h2>
+<ul>
+<li><strong>業態</strong>: {{製造業 / サービス業 / IT / 士業 / 医療 / 教育}}</li>
+<li><strong>規模</strong>: {{従業員数 / 年商}}</li>
+<li><strong>対象</strong>: {{B2B / B2C / 採用候補}}</li>
+</ul>
+<h2>デザイン要件</h2>
+<ul>
+<li>VAIZOエディトリアル白黒基調</li>
+<li>信頼感重視、過剰な装飾を避ける</li>
+<li>セクション構成例:<ul>
+<li>HERO（ミッション + キービジュアル）</li>
+<li>SERVICES（事業領域）</li>
+<li>WORKS / CASE STUDY（実績）</li>
+<li>COMPANY（会社概要）</li>
+<li>NEWS（更新情報、可能なら自動取得）</li>
+<li>CONTACT（問い合わせフォーム + 電話 + メール）</li>
+</ul>
+</li>
+</ul>
+<h2>⚠️ コーポレートサイト特有の注意</h2>
+<ul>
+<li>IR情報・適時開示などの法定開示事項がある場合は別ページとして用意</li>
+<li>採用情報がある場合は専用セクション、ただし「採用語」は使わない（<a href="../../handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a> 参照）</li>
+<li>個人情報の取り扱い・プライバシーポリシー・特定商取引法表記など必須</li>
+</ul>
+<h2>完了条件・守ってほしいこと</h2>
+<p><a href="./TEMPLATE.html"><code>TEMPLATE.md</code></a> の共通要件に従う。</p>
+<hr>
+<p><strong>Phase 2 で本文充実予定</strong>: 業種別パターン（製造業・士業・医療・SaaS等）、SEO構造化データの推奨、IR/採用ページの分離設計</p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="fv-6" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：FV後の6セクション拡張パターン</h1>
+<blockquote>
+<p>BAR NOIR デモ v2（2026-05-07）から抽象化。
+FV1画面の <code>index.html</code> を起点に、その下に売上に繋がる6セクションを追加して1ページ完結のLPに仕立て直す。</p>
+</blockquote>
+<p>使用方法: FVが承認された後、案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt_v2.md</code> としてリネーム。</p>
+<hr>
+<h2>タスク: {{屋号}}公式サイトを「売上に繋がるLP」に拡張</h2>
+<h2>役割</h2>
+<p>V/ENTER WEB事業部の実装ドラフト担当。既存の <code>index.html</code>（FV）を活かし、その下に売上に繋がる6セクションを追加して、1ページの完成版LPに仕立て直す。</p>
+<h2>起点ファイル</h2>
+<ul>
+<li><code>index.html</code>（既存。FV部分はデザインを維持）</li>
+</ul>
+<h2>出力</h2>
+<ul>
+<li>同じ <code>index.html</code> を上書き</li>
+<li>CSSは引き続き <code>&lt;head&gt;</code> 内に内包</li>
+<li>JS最小限のみ可（IntersectionObserver による静かなフェードイン）</li>
+<li>外部画像URL不要、SVG / CSS で雰囲気を作る</li>
+</ul>
+<h2>構造（縦スクロールLP）</h2>
+<ol>
+<li><strong>HERO（既存FV）</strong> ← そのまま維持。<code>body</code> の <code>overflow:hidden</code> は解除し縦スクロール可に</li>
+<li><strong>CONCEPT</strong> — 店の哲学</li>
+<li><strong>SPACE</strong> — 内装の佇まい</li>
+<li><strong>{{業態固有セクション1}}</strong> — 例: WHISKY &amp; DRINKS（バー）/ MENU（飲食）/ EVENTS（ライブハウス）/ SERVICES（コーポレート）</li>
+<li><strong>{{業態固有セクション2}}</strong> — 例: A NIGHT AT {{屋号}}（時系列利用イメージ）/ STORY（コーポレート）</li>
+<li><strong>RESERVATION / CONTACT</strong> — 予約方法 or 問い合わせ</li>
+<li><strong>ACCESS</strong> — 行き方 + 略地図（CSSで描画）</li>
+<li><strong>FOOTER</strong> — 屋号・住所・電話・営業時間</li>
+</ol>
+<p>各セクション間の縦ガターは <code>clamp(80px, 12vw, 160px)</code>。世界観統一。</p>
+<h2>セクション仕様（業態別カスタマイズ）</h2>
+<p>業態に応じて 4-5 のセクション内容を入れ替える。下記は飲食・バー業態の例：</p>
+<h3>4. WHISKY &amp; DRINKS（バー）</h3>
+<ul>
+<li>リード文（17px / 行間1.9 / Noto Serif JP）</li>
+<li>シグネチャー3種（カードレイアウト、各カード黒地に細罫線・ゴールドアクセント）</li>
+<li><strong>価格目安</strong>を表で明示（不安解消が目的）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>目安</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>チャージ</td>
+<td>お一人様 ¥{{2,000}}</td>
+</tr>
+<tr>
+<td>一杯あたり</td>
+<td>¥{{1,800}}〜¥{{4,500}}</td>
+</tr>
+<tr>
+<td>一夜あたり</td>
+<td>¥{{8,000}}〜¥{{15,000}} / 人</td>
+</tr>
+<tr>
+<td>お支払い</td>
+<td>現金・各種カード</td>
+</tr>
+</tbody></table>
+<p>表の文字: 15px / 行間1.9</p>
+<h3>5. A NIGHT AT {{屋号}}（時系列）</h3>
+<p>縦タイムライン（左に時刻、右にコピー）：</p>
+<ul>
+<li><strong>{{19:00}}</strong> — {{コピー1}}</li>
+<li><strong>{{19:05}}</strong> — {{コピー2}}</li>
+<li><strong>{{20:30}}</strong> — {{コピー3}}</li>
+<li><strong>{{22:00}}</strong> — {{コピー4}}</li>
+<li><strong>{{02:00}}</strong> — {{コピー5}}</li>
+</ul>
+<p>各タイムスロットの左に細罫線・ゴールドの点</p>
+<h3>6. RESERVATION</h3>
+<ul>
+<li>受付時間 / キャンセル / ドレスコード を左カラム</li>
+<li>大きく電話番号 + tel: リンクボタン を右カラム</li>
+</ul>
+<h3>7. ACCESS</h3>
+<ul>
+<li>住所 / 最寄駅 / 目印 を左カラム</li>
+<li>CSSで描いた略地図（道・駅マーカー・店マーカーの抽象表現）を右カラム</li>
+</ul>
+<h2>追従要素（全画面共通・業態問わず）</h2>
+<ul>
+<li><strong>右下に電話予約フローティングボタン</strong>（<code>tel:{{0300000000}}</code>、半透明黒・ゴールド枠・スクロール時のみ表示）</li>
+<li>既存FV時は非表示、CONCEPTセクション以降から表示</li>
+<li>飲食・店舗案件は <strong>LINE CTAも併記</strong>（タイプ:<code>https://lin.ee/xxxxx</code>）</li>
+</ul>
+<h2>デザイン規定（再掲）</h2>
+<ul>
+<li>配色: 既存維持（黒 / オフホワイト / 控えめゴールド）</li>
+<li>書体: Noto Serif JP（本文）/ Cormorant Garamond / Playfair Display（英字見出し）</li>
+<li><strong>本文 17px / テーブル 15px / 行間 1.9</strong> 厳守</li>
+<li>セリフ系・大きな余白・薄い罫線・微細グレイン継続</li>
+<li>ホバーは控えめ（線が引かれる程度）</li>
+</ul>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>既存FVのデザインは破壊しない</li>
+<li>軍事比喩・否定列挙・採用語禁止</li>
+<li>「〜していただきます」より「します」を優先（過剰丁寧は避ける）</li>
+<li>TODOで埋めず、その場で完成</li>
+<li>価格・住所・時間は仕様書記載のまま使用（プレースホルダ表記OK）</li>
+<li>アクセシビリティ: コントラストAA以上、見出し階層、<code>aria</code> 属性、<code>prefers-reduced-motion</code> 対応</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 1つの <code>index.html</code> を開くと縦スクロールで全セクションが表示</li>
+<li><input disabled="" type="checkbox"> HERO→CONCEPT→SPACE→{{業態固有1}}→{{業態固有2}}→RESERVATION→ACCESS→FOOTER の順</li>
+<li><input disabled="" type="checkbox"> 追従電話 + LINE ボタンが2セクション目以降に表示</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+<li><input disabled="" type="checkbox"> HTML5として妥当</li>
+<li><input disabled="" type="checkbox"> レスポンシブ全幅でレイアウト崩れなし</li>
+</ul>
+<h2>最終アウトプット</h2>
+<p><code>index.html</code> の完全書き直しコードを返してください。</p>
+<hr>
+<h2>過去案件の参考</h2>
+<ul>
+<li>BAR NOIR デモ v2: Drive <code>1GAvzoiZejlZIUKd0bY0rPhIdRZhM_9Jb</code><ul>
+<li><code>codex_prompt_v2.md</code></li>
+<li><code>codex_out_v2.md</code></li>
+<li><code>index.html</code>（最終版）</li>
+</ul>
+</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="wp-4-pre" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>WP移行前監査プロンプト（4-pre）</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-pre から呼び出される AI 指示文。
+このテンプレートをそのままコピーして {{プレースホルダ}} を埋め、Claude Code に貼り付ける。</p>
+</blockquote>
+<hr>
+<p>最終版HTML（<code>{{最終版HTMLファイル名}}</code>）と対象WordPressサイト（<code>{{対象サイトURL}}</code>）について、WP移行前のチェックを以下のA〜J項で実施し、Markdownレポートを返してください。</p>
+<h2>チェック項目</h2>
+<h3>A. 構造的問題</h3>
+<p><code>&lt;!DOCTYPE&gt;</code> / <code>&lt;html&gt;</code> / <code>&lt;head&gt;</code> / <code>&lt;body&gt;</code> / <code>&lt;header&gt;</code> / <code>&lt;footer&gt;</code> / <code>&lt;nav&gt;</code> の有無と、テーマとの重複箇所を一覧化。</p>
+<h3>B. 画像パス</h3>
+<p>相対パス・絶対URL・外部CDN・GitHub Pages URL等を一覧化、置換対象を特定。</p>
+<h3>C. 外部URL／canonical／JSON-LD</h3>
+<p>書換が必要なURLを全箇所リスト化（旧URL→<code>{{公開URL}}</code>）。</p>
+<h3>D. CSP／セキュリティヘッダ</h3>
+<p><code>&lt;meta&gt;</code> CSP、HSTS、サーバ側設定との整合をチェック。</p>
+<h3>E. 動的要素／フォーム／カレンダー</h3>
+<p>静的化／動的化の判断、メール宛先確定状況をチェック。</p>
+<h3>F. 統合方式の判断</h3>
+<p>以下4方式から推奨を選定：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>評価</th>
+<th>適用条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A: カスタムページテンプレート（page-{slug}.php）</strong></td>
+<td>★★★★★</td>
+<td>テーマheader/footerを呼ばない最上策</td>
+</tr>
+<tr>
+<td>B: 固定ページ＋Custom HTMLブロック</td>
+<td>★★</td>
+<td>簡単だがCSS衝突多発</td>
+</tr>
+<tr>
+<td>C: ショートコード化</td>
+<td>★★★</td>
+<td>複数ページで再利用したい</td>
+</tr>
+<tr>
+<td>D: 別ドメイン／サブディレクトリで静的HTML</td>
+<td>★</td>
+<td>最終手段</td>
+</tr>
+</tbody></table>
+<p>判断フローチャート: <a href="../../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></p>
+<h3>G. WPプラグイン干渉</h3>
+<ul>
+<li>Yoast SEO（meta上書き）</li>
+<li>Elementor等Page Builder</li>
+<li>画像CDN・最適化系</li>
+<li>キャッシュ系</li>
+</ul>
+<p>の干渉可能性を「高/中/低」で評価。</p>
+<h3>H. QAチェックリスト</h3>
+<p>公開前の動作確認項目を列挙（<a href="../../runbooks/deploy-day.html"><code>runbooks/deploy-day.md</code></a> 参照）。</p>
+<h3>I. クライアント連絡待ち項目</h3>
+<p>メール宛先／カレンダーID／GTM等で未確定の項目を抽出。</p>
+<h3>J. リスクと対応</h3>
+<table>
+<thead>
+<tr>
+<th>リスクID</th>
+<th>影響度（高/中/低）</th>
+<th>内容</th>
+<th>対応策</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>出力先</h2>
+<p><code>{{案件フォルダ}}/01_WEBサイト刷新サービス/docs/wp-migration-check_{{YYYYMMDD}}.md</code></p>
+<hr>
+<h2>監査レポートを受け取ったら</h2>
+<ol>
+<li><strong>F項（統合方式）</strong> で AI が推奨する方式に沿って、4-0の最適化要件を調整（通常は方式A：カスタムページテンプレート推奨）</li>
+<li><strong>G項（プラグイン干渉）</strong> が「中」以上なら、対象プラグインの一時停止／除外設定を事前に決める</li>
+<li><strong>I項（連絡待ち）</strong> が残っているならクライアントに催促 → 確定するまで本番貼付は保留</li>
+<li><strong>J項（リスク）</strong> を案件CTO・クライアントと共有 → 対応策を合意してから 4-0 へ進む</li>
+</ol>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="wp-4-0" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>WP最適化版作成プロンプト（4-0）</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-0 から呼び出される AI 指示文。
+このテンプレートをそのままコピーして {{プレースホルダ}} を埋め、Claude Code に貼り付ける。</p>
+</blockquote>
+<hr>
+<h2>WP最適化を依頼</h2>
+<p>最終版HTML（<code>{{最終版HTMLファイル名}}</code>）を WordPress 固定ページ用に最適化してください。</p>
+<h2>最適化要件</h2>
+<ol>
+<li><code>&lt;head&gt;</code> 内の <code>&lt;meta&gt;</code> / <code>&lt;link&gt;</code> / <code>&lt;style&gt;</code> を WP テーマと重複しないように整理</li>
+<li><code>&lt;header&gt;</code> / <code>&lt;footer&gt;</code> / <code>&lt;nav&gt;</code> はテーマに同等のものがあるため削除（テーマ側と統合）</li>
+<li><strong>インラインCSSは body スコープ化</strong>（例: <code>body.page-{{対象固定ページslug}} .xxx { ... }</code> で囲って既存テーマCSSと干渉しないように）</li>
+<li>インラインJSはIIFEまたはモジュール化（テーマjQuery等との衝突を防止）</li>
+<li><code>canonical</code> / <code>og:url</code> / <code>twitter:url</code> / JSON-LD の <code>url</code> を <code>{{公開URL}}</code> に書き換え</li>
+<li>画像 <code>src</code> を WPメディアアップロード後のURL（<code>https://{{対象ドメイン}}/wp-content/uploads/YYYY/MM/</code>）に一括置換</li>
+<li>CSP <code>&lt;meta&gt;</code> タグは WPサーバ設定と整合がなければ削除</li>
+<li>GTM / GA タグは既存テーマで設定済みなら削除</li>
+</ol>
+<h2>出力先</h2>
+<p><code>{{案件フォルダ}}/01_WEBサイト刷新サービス/WP最適化版/{{最終版HTMLファイル名}}_wp.html</code></p>
+<p>加えて、最適化前後の差分（diff）と、各変更点の理由を Markdown で同フォルダに置いてください。</p>
+<hr>
+<h2>デモ環境構築の依頼</h2>
+<p>上記で出力した「WP最適化版HTML」をデモ環境にホストして、確認URLを教えてください。</p>
+<h3>デモ環境の作り方（推奨）</h3>
+<ul>
+<li><strong>GitHub Pages にデプロイ</strong>。リポジトリは <strong>必ずプライベート＋招待制</strong> で運用（公開リポジトリだとコードが読まれて脆弱性を突かれる可能性があるため、VAIZO方針で禁止）</li>
+<li>クライアント確認用に共有する場合は <strong>staticrypt</strong> 等のパスワード保護プレビューを使う</li>
+<li>リポジトリ名: <code>{{案件略称}}-wp-demo</code></li>
+<li>ブランチ: <code>main</code></li>
+<li>パスワード保護する場合はパスワードも返してください</li>
+</ul>
+<h3>確認URL（とパスワード）を返してください</h3>
+<hr>
+<h2>デモ確認のチェック手順</h2>
+<ol>
+<li>AIから渡されたデモURLをChromeで開く（パスワード保護なら受領パスを入力）</li>
+<li><a href="./05-ai-test.html"><code>05-ai-test.md</code></a> のプロンプトを「対象URL＝デモURL」に書き換えて、AIに全自動テストを依頼</li>
+<li>AIテストレポートで全項目OKなら、本番貼り付け（4-1）に進む</li>
+<li>NGがあれば、AIに「ここを直して」と差分とレポートを渡して再最適化を依頼。OKになるまで繰り返す</li>
+</ol>
+<h2>3段階デモ運用（推奨）</h2>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① クライアント確認用デモ</td>
+<td>GitHub Pages プライベート＋staticrypt保護。デザイン・コピー・写真の最終OKをもらう</td>
+</tr>
+<tr>
+<td>② 開発確認用デモ</td>
+<td>ローカルWP or ステージングWPで実際にWPテーマと統合確認</td>
+</tr>
+<tr>
+<td>③ 本番（4-1以降）</td>
+<td>②でAIテスト全項目OKならここに進む</td>
+</tr>
+</tbody></table>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="ai-5-ai" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>公開後 AI 自動テストプロンプト（5-AI）</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-AI から呼び出される AI 指示文。
+このテンプレートをそのままコピーして {{プレースホルダ}} を埋め、Claude Code に貼り付ける。</p>
+</blockquote>
+<hr>
+<p>公開URL <code>{{公開URL}}</code> を Playwright で全自動テストしてください。</p>
+<h2>チェック項目</h2>
+<ol>
+<li>全リンクをクリック → 404・遷移先のズレを検出</li>
+<li>全ボタン（CTA・予約・問い合わせ・印刷）の動作確認</li>
+<li>電話（<code>tel:</code>）／メール（<code>mailto:</code>）リンクの起動確認</li>
+<li>ギャラリー: フィルター切替・ライトボックス開閉</li>
+<li>見積シミュレーター: プラン × 人数 × 設備 で金額が正しく変わるか</li>
+<li>レスポンシブ: 320 / 375 / 414 / 768 / 1024 / 1280 / 1920 px の各幅でレイアウト崩れチェック（各幅でフルページスクショ取得）</li>
+<li>Lighthouse スコア（モバイル＋デスクトップ）</li>
+<li>ブラウザコンソールエラーの有無</li>
+</ol>
+<h2>合格基準</h2>
+<ul>
+<li>すべてのリンク 200 OK／想定先に遷移</li>
+<li>すべてのCTA・ボタンが動作OK</li>
+<li>レスポンシブ 全幅でレイアウト崩れなし</li>
+<li>Lighthouse モバイル パフォーマンス 70以上 ／ LCP 2.5秒以内</li>
+<li>コンソールエラー 0件</li>
+</ul>
+<h2>レポート出力先</h2>
+<p><code>{{案件フォルダ}}/公開作業/AIテストレポート_{{YYYYMMDD}}.md</code>
+（V/ENTER WEB事業部の場合: <code>02_事業部別_EnterWebAI_AIWebサイト制作</code> 配下のクライアント別フォルダ）</p>
+<p>NG項目があれば、該当箇所のスクリーンショットも添付してレポートに記載してください。</p>
+<hr>
+<h2>AIテスト後の動き方</h2>
+<ol>
+<li>AIテストレポート_YYYYMMDD.md をDriveで開く</li>
+<li>全項目「OK」なら → <a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-8 へ進む</li>
+<li>「NG」項目があれば、原因と該当箇所をレポートで確認<ul>
+<li><strong>軽微な崩れ</strong> → Step 4-4「編集欄をクリア」 → Step 2-3 の本文バックアップを貼り戻す → 「更新」</li>
+<li><strong>致命的不具合</strong> → Step 2-1 の <code>.wpress</code> バックアップから All-in-One WP Migration で復元</li>
+</ul>
+</li>
+<li>修正後、もう一度 5-AI のAIテストを実行。すべてOKになるまで繰り返す</li>
+</ol>
+<h2>トラブルシューティング</h2>
+<ul>
+<li>Playwright モジュールが Codex 環境で読み込めない場合: <a href="../../troubleshooting/playwright-failures.html"><code>troubleshooting/playwright-failures.md</code></a></li>
+<li>Lighthouse が遅い・タイムアウトする場合: 画像最適化が不十分な可能性。再圧縮（TinyPNG / Squoosh）→ WebP変換</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>メール雛形：脆弱性レポート添付（カバーレター）</h1>
+<blockquote>
+<p><a href="../../handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> のライン2「道義的ライン」を厳守。
+脆弱性レポート + デザインアイデンティティ + カスタムデモトップ を3点セット送付する際のメール雛形。</p>
+</blockquote>
+<hr>
+<h2>件名（推奨）</h2>
+<pre><code>【ご参考】{{屋号 / 企業名}}様のWebサイトについて、公開情報からの気づきを少しまとめました
+</code></pre>
+<p>NGな件名:</p>
+<ul>
+<li>「あなたのサイトは危険です！」</li>
+<li>「至急ご対応ください」</li>
+<li>「制作のご提案」（→ 直結セールス感が強い）</li>
+</ul>
+<h2>本文（雛形）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+突然のご連絡失礼いたします。
+株式会社VAIZO V/ENTER WEB事業部の{{差出人氏名}}と申します。
+
+{{屋号 / 企業名}}様のWebサイトを公開情報の範囲で拝見し、
+小さな改善余地が見受けられたため、無料の参考資料としてお送りいたします。
+
+【お送りする内容】
+1. 公開情報スキャンレポート（ZIP・パスワード保護）
+   - パスワードは別メールでお送りします
+2. 非エンジニア向けの解消手順書
+3. デザインの方向性のご提案（カスタムデモ1案）
+
+いずれもご参考までの資料です。
+対応のご相談は、お付き合いのある業者様や、信頼できる専門業者にご相談されることをおすすめします。
+
+ご不要でしたらお手数ですが破棄してください。
+営業のご返答は不要です。{{屋号}}様の運営の一助になれば幸いです。
+
+末筆ながら、{{業界 / 業態}}でのさらなるご活躍をお祈り申し上げます。
+
+──────────────
+株式会社VAIZO V/ENTER WEB事業部
+{{差出人氏名}}（{{役割}}）
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>守るルール（再掲）</h2>
+<ul>
+<li>✅ 冒頭に「公開情報の範囲で確認しました」と明記</li>
+<li>✅ 「無料の参考資料です」と位置付け</li>
+<li>✅ 「対応は専門業者にご相談ください」と一言入れる（押し売り回避）</li>
+<li>✅ 「不要であれば破棄してください」と明記</li>
+<li>✅ 添付ZIPはパスワード保護</li>
+<li>✅ パスワードは <strong>別メールで後送</strong>（同送NG）</li>
+<li>✅ 「営業のご返答は不要です」と書く（クレーム抑制）</li>
+<li>❌ 「あなたのサイトは危険です」（恐怖訴求）</li>
+<li>❌ 「すぐに対応が必要」（煽り）</li>
+<li>❌ 「うちで全部対応できます」（直結セールス）</li>
+<li>❌ 「ご返答お願いします」（催促）</li>
+<li>❌ 専門用語の羅列（手順書で対処）</li>
+</ul>
+<h2>チェックリスト（送信前）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 件名・本文に NG表現が含まれていない</li>
+<li><input disabled="" type="checkbox"> 添付ZIPがパスワード保護されている</li>
+<li><input disabled="" type="checkbox"> パスワードを別メールで送る準備ができている</li>
+<li><input disabled="" type="checkbox"> 送付先が <a href="../../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a> の「送付OK」基準を満たす</li>
+<li><input disabled="" type="checkbox"> ブラックリストと照合した</li>
+<li><input disabled="" type="checkbox"> 同一ドメインへの前回送付から3ヶ月以上空いている</li>
+<li><input disabled="" type="checkbox"> レポート内容を櫻井みどりが目視確認済み（QC）</li>
+<li><input disabled="" type="checkbox"> 解消手順書を非エンジニア向けに整えてある</li>
+</ul>
+<h2>クレーム発生時</h2>
+<ul>
+<li>受信30分以内: 小野寺・櫻井みどり が即返信</li>
+<li>2時間以内: 橋本CEO主導で個別対応</li>
+<li>削除依頼は24時間以内、ブラックリスト永久登録</li>
+</ul>
+<p>詳細: <a href="../../handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> クレーム対応SOP</p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>メール雛形：提案メール（骨格）</h1>
+<blockquote>
+<p>商談を経て、デザイン3案 + 見積を提出する際のメール雛形。</p>
+</blockquote>
+<hr>
+<h2>件名</h2>
+<pre><code>{{屋号 / 企業名}}様 Webサイトリニューアル ご提案資料一式（{{案件番号 or YYYYMMDD}}）
+</code></pre>
+<h2>本文（雛形）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。VAIZO V/ENTER WEB の {{差出人氏名}} です。
+先日はお打ち合わせのお時間をいただきありがとうございました。
+
+ご相談いただいた内容に基づき、デザインの方向性として3案を整理しました。
+いずれも公開URLでご覧いただけます（パスワード保護あり、PWは別途）。
+
+【ご提案資料】
+1. デザイン3案（プライベートデモURL）
+   ・案A: ELEGANT_WHITE → {{URL_A}}
+   ・案B: HERITAGE_DARK → {{URL_B}}
+   ・案C: URBAN_MUSIC → {{URL_C}}
+
+2. 各案の構造と意図（PDF）
+3. お見積書
+
+【ご決定いただきたい3点】
+1. 採用案（A/B/Cまたは複数のミックス）
+2. 文章・写真等の素材ご提供のスケジュール
+3. 公開希望日
+
+ご不明点・ご相談はメールもしくはお電話でお気軽にどうぞ。
+
+──────────────
+株式会社VAIZO V/ENTER WEB事業部
+{{差出人氏名}}（{{役割}}）
+info@vaizo.jp
+──────────────
+</code></pre>
+<hr>
+<p><strong>Phase 2 で本文充実予定</strong>: 業態別の差し替えポイント、見積根拠の説明文、契約書ドラフトへのリンク</p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>メール雛形：公開完了報告</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-8 で送付。</p>
+</blockquote>
+<hr>
+<h2>件名</h2>
+<pre><code>【公開完了】{{屋号 / 企業名}}様 Webサイトリニューアル 公開のご報告
+</code></pre>
+<h2>本文（雛形）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。VAIZO V/ENTER WEB の {{差出人氏名}} です。
+
+本日 {{YYYY-MM-DD HH:MM}}、{{屋号}} 様のWebサイトリニューアルの公開作業が完了しました。
+
+【公開URL】
+{{公開URL}}
+
+【確認のお願い】
+お手元のPC・スマートフォンから、下記の点をご確認いただけますと幸いです。
+
+1. トップページとお問い合わせフォームが正しく表示されるか
+2. 電話番号タップ・メールリンクが正しく起動するか
+3. 主要なCTA（{{予約 / お問い合わせ / 申込み}}）が動作するか
+4. 文言・写真にお気づきの点がないか
+
+【自動テスト結果】
+公開直後にPlaywrightで全自動テストを実施し、全{{N}}項目OKを確認しています。
+詳細レポートは {{Driveレポート共有URL}} にあります。
+
+【公開後30日以内のサポート】
+公開後30日間は、軽微な修正・調整は無償で承ります。
+{{瑕疵担保期間として契約書記載の期間}}は瑕疵担保の対象です。
+
+何かお気づきの点がございましたら、メールもしくはお電話でご連絡ください。
+
+末筆ながら、{{屋号}}様のますますのご繁栄をお祈り申し上げます。
+
+──────────────
+株式会社VAIZO V/ENTER WEB事業部
+{{差出人氏名}}（{{役割}}）
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>添付推奨</h2>
+<ul>
+<li>公開後の全幅スクリーンショット（PC + スマホ）</li>
+<li>AIテストレポートのサマリ（合格項目数 / NG項目数）</li>
+<li>バックアップファイルの保管場所説明（不測の事態に備えて）</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>公開完了報告テンプレート</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-8 で作成する社内記録。
+Driveの【案件フォルダ】／公開作業／公開記録_YYYYMMDD.md として保存する。</p>
+</blockquote>
+<hr>
+<h2>ヘッダ</h2>
+<pre><code class="language-yaml">---
+案件名: {{クライアント正式名称}}
+公開日時: {{YYYY-MM-DD HH:MM}}
+担当開発者: {{氏名}}
+案件CTO: {{氏名}}
+公開URL: {{https://...}}
+---
+</code></pre>
+<h2>1. 公開作業概要</h2>
+<ul>
+<li><strong>対象ページ</strong>: {{固定ページ名 / LP / フルサイト}}</li>
+<li><strong>統合方式</strong>: {{方式A / B / C / D}}（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a> で選択した方式）</li>
+<li><strong>公開所要時間</strong>: {{XX分}}</li>
+<li><strong>特記事項</strong>: {{ある場合}}</li>
+</ul>
+<h2>2. バックアップ取得記録（Step 2）</h2>
+<table>
+<thead>
+<tr>
+<th>種別</th>
+<th>ファイル名</th>
+<th>取得時刻</th>
+<th>Drive保管URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2-1 All-in-One WP Migration（.wpress）</td>
+<td><code>{{ファイル名}}.wpress</code></td>
+<td>{{HH:MM}}</td>
+<td>{{URL}}</td>
+</tr>
+<tr>
+<td>2-2 標準XMLエクスポート</td>
+<td><code>{{ファイル名}}.xml</code></td>
+<td>{{HH:MM}}</td>
+<td>{{URL}}</td>
+</tr>
+<tr>
+<td>2-3 本文テキスト</td>
+<td><code>{{slug}}_backup_{{YYYYMMDD}}.html</code></td>
+<td>{{HH:MM}}</td>
+<td>{{URL}}</td>
+</tr>
+</tbody></table>
+<p>リビジョン番号: <code>{{NN}}</code>（戻すとき使う）</p>
+<h2>3. AIテストレポート（Step 5-AI）</h2>
+<ul>
+<li>レポート保管: <code>{{案件フォルダ}}/公開作業/AIテストレポート_{{YYYYMMDD}}.md</code></li>
+<li>結果サマリ:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>結果</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全リンク 404チェック</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>全ボタン動作</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>電話・メールリンク起動</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>ギャラリー機能</td>
+<td>OK / NG / 該当なし</td>
+<td></td>
+</tr>
+<tr>
+<td>レスポンシブ（320〜1920）</td>
+<td>OK / NG</td>
+<td></td>
+</tr>
+<tr>
+<td>Lighthouse モバイル パフォーマンス</td>
+<td>{{スコア}}</td>
+<td>目標 70+</td>
+</tr>
+<tr>
+<td>Lighthouse LCP</td>
+<td>{{秒}}</td>
+<td>目標 2.5秒以内</td>
+</tr>
+<tr>
+<td>コンソールエラー</td>
+<td>{{件}}</td>
+<td>目標 0件</td>
+</tr>
+</tbody></table>
+<h2>4. メール宛先テスト送信（Step 5-メール）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> テスト送信実施: {{HH:MM}}</li>
+<li><input disabled="" type="checkbox"> クライアント受信確認: {{HH:MM}}</li>
+<li>受信スクショ: <code>{{案件フォルダ}}/公開作業/email_test_{{YYYYMMDD}}.png</code></li>
+</ul>
+<h2>5. 手動チェック結果（Step 5-2 〜 5-7）</h2>
+<p>5-AI で全項目OKなら省略可。NG項目があれば手動で再確認した結果を記載。</p>
+<table>
+<thead>
+<tr>
+<th>ステップ</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5-2 PCブラウザ見た目</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-3 スマホ表示</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-4 クリック・タップ</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-5 独自機能</td>
+<td>OK / NG / 該当なし</td>
+</tr>
+<tr>
+<td>5-6 SEO・SNS表示</td>
+<td>OK / NG</td>
+</tr>
+<tr>
+<td>5-7 表示速度</td>
+<td>OK / NG</td>
+</tr>
+</tbody></table>
+<h2>6. 公開直後スクリーンショット</h2>
+<ul>
+<li>PC表示: <code>{{案件フォルダ}}/公開作業/screenshot_pc_{{YYYYMMDD}}.png</code></li>
+<li>スマホ表示: <code>{{案件フォルダ}}/公開作業/screenshot_mobile_{{YYYYMMDD}}.png</code></li>
+</ul>
+<h2>7. クライアント連絡</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 公開完了報告メール送信: {{HH:MM}}（雛形: <a href="./client-emails/delivery-completion.html"><code>templates/client-emails/delivery-completion.md</code></a>）</li>
+<li><input disabled="" type="checkbox"> クライアント返信受領: {{YYYY-MM-DD HH:MM}}</li>
+<li>返信内容サマリ: {{...}}</li>
+</ul>
+<h2>8. 公開後30日以内のフォロー予定</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 1週間後: パフォーマンス再測定（Lighthouse）</li>
+<li><input disabled="" type="checkbox"> 2週間後: GA4 / GSC でアクセス推移確認</li>
+<li><input disabled="" type="checkbox"> 30日後: クライアントとの振り返りMTG設定</li>
+</ul>
+<p>詳細: <a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a></p>
+<h2>9. 学び・改善メモ</h2>
+<p>今回の案件で気づいた、次回以降に活かせる点：</p>
+<ul>
+<li>{{...}}</li>
+</ul>
+<p>トラブルシューティングへの追記候補があれば <a href="../troubleshooting/"><code>troubleshooting/</code></a> へPR。
+プロンプト改善があれば <a href="./codex-prompts/"><code>templates/codex-prompts/</code></a> へPR。</p>
+<h2>10. 関連ファイル</h2>
+<ul>
+<li>案件Drive: <code>{{案件フォルダ Drive ID}}</code></li>
+<li>GitHub PR: <code>{{PR URL}}</code></li>
+<li>VAIZO worklog Issue: <code>{{Issue URL}}</code></li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section>
+<section class="chapter-divider">
+  <div class="chapter-num">CH 03</div>
+  <div class="chapter-title-en">DECISION TREES</div>
+  <div class="chapter-title-jp">判断フロー</div>
+</section>
+<section id="wp" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：WP統合方式の選択（A / B / C / D）</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-pre F項 から参照される判断ツリー。</p>
+</blockquote>
+<hr>
+<h2>4方式の評価</h2>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>評価</th>
+<th>適用条件</th>
+<th>主リスク</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A: カスタムページテンプレート（page-{slug}.php）</strong></td>
+<td>★★★★★</td>
+<td>テーマファイル編集可 + PHP書ける担当者あり</td>
+<td>テーマアップデートで上書きされる可能性（子テーマ化必須）</td>
+</tr>
+<tr>
+<td><strong>B: 固定ページ + Custom HTMLブロック</strong></td>
+<td>★★</td>
+<td>テーマ編集権限なし／触りたくない</td>
+<td>CSS衝突多発、JS干渉、テーマ <code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> 重複</td>
+</tr>
+<tr>
+<td><strong>C: ショートコード化</strong></td>
+<td>★★★</td>
+<td>複数ページで再利用したい</td>
+<td>プラグイン依存、保守性が下がる</td>
+</tr>
+<tr>
+<td><strong>D: 別ドメイン／サブディレクトリで静的HTML</strong></td>
+<td>★</td>
+<td>他案で対応不可、最終手段</td>
+<td>SEO効果分散、ブランド統一性低下、運用二重化</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>判断フロー</h2>
+<pre><code>┌────────────────────────────────────────────────┐
+│ Q1. テーマファイル編集権限はあるか？              │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ Q2へ
+        │
+        └── NO ──→ Q3へ
+
+┌────────────────────────────────────────────────┐
+│ Q2. PHPを書ける担当者がチーム or クライアントに    │
+│     いるか？                                    │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ ★★★★★ 方式A: カスタムページテンプレート
+        │           （子テーマ化必須）
+        │
+        └── NO ──→ Q3へ
+
+┌────────────────────────────────────────────────┐
+│ Q3. このコンテンツを複数ページで再利用するか？     │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ ★★★ 方式C: ショートコード化
+        │           （プラグイン依存に注意）
+        │
+        └── NO ──→ Q4へ
+
+┌────────────────────────────────────────────────┐
+│ Q4. 既存テーマと統合してブランド統一性を担保        │
+│     したいか？                                   │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ─→ ★★ 方式B: Custom HTMLブロック
+        │           （CSS衝突リスク）
+        │
+        └── NO ──→ ★ 方式D: 別ドメイン／サブディレクトリ
+                    （最終手段）
+</code></pre>
+<hr>
+<h2>各方式の実装メモ</h2>
+<h3>方式A: カスタムページテンプレート</h3>
+<pre><code class="language-php">&lt;?php
+/*
+Template Name: V/ENTER WEB - {{ページ名}}
+*/
+?&gt;
+&lt;!-- WPテーマの header / footer は呼ばない --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html &lt;?php language_attributes(); ?&gt;&gt;
+&lt;head&gt;
+  &lt;?php wp_head(); ?&gt;
+  &lt;!-- カスタムCSS, OGP, JSON-LD はここに --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- WP最適化版HTMLの本文をここに --&gt;
+  &lt;?php wp_footer(); ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>配置先: <code>wp-content/themes/{子テーマ}/page-{slug}.php</code></li>
+<li>固定ページ編集画面から「テンプレート」で選択</li>
+<li>子テーマ必須（親テーマ更新で消えないように）</li>
+</ul>
+<h3>方式B: Custom HTMLブロック</h3>
+<ul>
+<li>編集画面で「カスタムHTML」ブロックを追加</li>
+<li>インラインCSSは <code>body.page-{slug} ...</code> で必ずスコープ化</li>
+<li>JSは IIFE で囲って衝突回避</li>
+<li>テーマ <code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> は表示されたまま（重複しないこと）</li>
+</ul>
+<h3>方式C: ショートコード</h3>
+<pre><code class="language-php">function venter_lp_section_shortcode() {
+  ob_start();
+  ?&gt;
+  &lt;!-- HTML本文 --&gt;
+  &lt;?php
+  return ob_get_clean();
+}
+add_shortcode(&#39;venter_lp&#39;, &#39;venter_lp_section_shortcode&#39;);
+</code></pre>
+<ul>
+<li>固定ページ・記事内で <code>[venter_lp]</code> で呼び出し可能</li>
+<li>子テーマ <code>functions.php</code> または専用プラグイン化</li>
+</ul>
+<h3>方式D: 別ドメイン／サブディレクトリ</h3>
+<ul>
+<li>Vercel / GitHub Pages / S3+CloudFront 等で静的ホスト</li>
+<li>メインドメインからリンクのみ</li>
+<li>canonical で SEO 影響を最小化</li>
+</ul>
+<hr>
+<h2>過去案件の実例</h2>
+<table>
+<thead>
+<tr>
+<th>案件</th>
+<th>採用方式</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仙台レトロバックページ</td>
+<td>方式B（Custom HTML）</td>
+<td>mailto事故等のリグレッションあり、最終的に整理して公開</td>
+</tr>
+<tr>
+<td>BAR NOIR デモ</td>
+<td>方式A前提（ステージングは静的）</td>
+<td>デモ段階のため未統合</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>エスカレーション</h2>
+<p>判断に迷う場合: 案件CTO（櫻井理也）に Slack DM で相談。</p>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：脆弱性レポート送付対象の判定</h1>
+<blockquote>
+<p><a href="../handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> のセーフガードから参照される判断ツリー。</p>
+</blockquote>
+<hr>
+<h2>判断フロー</h2>
+<pre><code>┌────────────────────────────────────────────────┐
+│ Q1. 対象は法人の公開コーポレート・店舗サイトか？   │
+│     （個人ブログ・個人サイトではない）             │
+└────────────────────────────────────────────────┘
+        │
+        ├── NO ───→ ❌ 送付NG（個人領域に介入しない）
+        │
+        └── YES ──→ Q2へ
+
+┌────────────────────────────────────────────────┐
+│ Q2. 政府機関・医療機関・教育機関か？               │
+│     （公的責任のある機関）                        │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ⚠️ 慎重対応：橋本CEO確認後に判断
+        │
+        └── NO ───→ Q3へ
+
+┌────────────────────────────────────────────────┐
+│ Q3. 認証付き会員制サイトか？                      │
+│     （ログインしないと中身が見えない）              │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ⚠️ 慎重対応：橋本CEO確認後に判断
+        │
+        └── NO ───→ Q4へ
+
+┌────────────────────────────────────────────────┐
+│ Q4. ブラックリストに登録されているか？             │
+│     （過去に削除依頼を受けた）                     │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ❌ 送付NG（永久リスト・再送禁止）
+        │
+        └── NO ───→ Q5へ
+
+┌────────────────────────────────────────────────┐
+│ Q5. 同一ドメインへの前回送付から3ヶ月以上空いて    │
+│     いるか？                                    │
+└────────────────────────────────────────────────┘
+        │
+        ├── NO ───→ ❌ 送付NG（再送ポリシー違反）
+        │
+        └── YES ──→ Q6へ
+
+┌────────────────────────────────────────────────┐
+│ Q6. パッシブスキャンで意味のあるレポートが        │
+│     生成できたか？                                │
+└────────────────────────────────────────────────┘
+        │
+        ├── NO ───→ ❌ 送付NG（実質情報がない）
+        │
+        └── YES ──→ ✅ 送付OK
+                   （櫻井みどりQC通過後送信）
+</code></pre>
+<hr>
+<h2>「慎重対応」のエスカレーション手順</h2>
+<h3>政府機関・医療機関・教育機関の場合</h3>
+<ul>
+<li>橋本CEO に Slack DM</li>
+<li>顧問弁護士相談を経て判断</li>
+<li>通常 NG が多いが、「業務委託としての診断依頼が事前にある」「公開フィードバック窓口が明示されている」場合のみ可</li>
+</ul>
+<h3>認証付き会員制サイトの場合</h3>
+<ul>
+<li>ログイン後の領域はスキャンしない（パッシブの範囲外）</li>
+<li>公開トップ・ログインフォームのみをスキャン対象とする</li>
+<li>それでも個人情報が露出している場合（誤公開等）は橋本CEOに即報告</li>
+</ul>
+<hr>
+<h2>送付ターゲットランク（再掲）</h2>
+<table>
+<thead>
+<tr>
+<th>ランク</th>
+<th>業態</th>
+<th>単価帯</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>銀座系高級バー、隠れ家業態、地方の伝説的店舗</td>
+<td>80万〜200万</td>
+<td>BAR NOIR</td>
+</tr>
+<tr>
+<td>A</td>
+<td>飲食、ライブハウス、地方の老舗</td>
+<td>30万〜80万</td>
+<td>仙台レトロバックページ</td>
+</tr>
+<tr>
+<td>B</td>
+<td>ホームページ業者制作の店舗サイト</td>
+<td>10万〜30万</td>
+<td>（継続発掘）</td>
+</tr>
+</tbody></table>
+<p>S/A/B 以外の業態（IT企業・SaaS等）は基本的にターゲット外。</p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> — 法的ライン・道義的ライン</li>
+<li><a href="../templates/client-emails/vulnerability-report-cover.html"><code>templates/client-emails/vulnerability-report-cover.md</code></a> — 送付メール雛形</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="ai-vs" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：「AIに任せる」vs「人間が確認」の境界</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> の「迷ったらAI」原則を補足する判断基準。</p>
+</blockquote>
+<hr>
+<h2>原則</h2>
+<p>V/ENTER WEB は <strong>「AIに任せて進める」</strong> が基本姿勢。ただし、<strong>人手確認が必須の領域</strong> がある。</p>
+<hr>
+<h2>カテゴリ別の判断</h2>
+<h3>✅ AIに完全に任せてよい（人手確認不要）</h3>
+<ul>
+<li>HTML / CSS / JS の実装ドラフト生成</li>
+<li>WP最適化版の作成（4-pre 監査含む）</li>
+<li>Playwright 全自動テスト（5-AI）</li>
+<li>画像のリサイズ・圧縮・WebP変換</li>
+<li>Lighthouse スコア測定</li>
+<li>コンソールエラー検出</li>
+<li>文章の校正（誤字脱字・口調の統一）</li>
+<li>翻訳・要約</li>
+</ul>
+<h3>⚠️ AIに任せて、人手で必ず最終確認する（QC必須）</h3>
+<ul>
+<li><strong>脆弱性スキャンレポート</strong>: 誤検知の二重チェック（櫻井みどり、3-5分/件）</li>
+<li><strong>デザインのブランド整合</strong>: VAIZO Design Policy 準拠を最終目視</li>
+<li><strong>コピーライティングの感情・温度</strong>: 軍事比喩・否定列挙等の検出</li>
+<li><strong>クライアント向けメール</strong>: 道義的ライン違反の検出（恐怖訴求・煽り等）</li>
+<li><strong>WP統合方式の選定</strong>: AIの推奨を尊重しつつCTOが最終判断</li>
+<li><strong>公開前の見た目スクショ</strong>: クライアントが認識した最終案と一致するか</li>
+</ul>
+<h3>❌ AIに任せず、必ず人間が実行・判断する</h3>
+<ul>
+<li><strong>クライアントへの送信</strong> (脆弱性レポート添付メール、提案メール、公開報告)<ul>
+<li>理由: 道義的判断・関係性・タイミング</li>
+</ul>
+</li>
+<li><strong>メール宛先のテスト送信受信確認</strong> (5-メール)<ul>
+<li>理由: クライアントの実機での受信が最終確認</li>
+</ul>
+</li>
+<li><strong>クライアントとの口頭コミュニケーション</strong> (会議・電話)<ul>
+<li>理由: 信頼関係・空気感</li>
+</ul>
+</li>
+<li><strong>法的判断</strong> (削除依頼対応・クレーム対応の最終判断)<ul>
+<li>理由: 顧問弁護士相談を要する領域</li>
+</ul>
+</li>
+<li><strong>金額・契約条件の最終決定</strong><ul>
+<li>理由: 経営判断</li>
+</ul>
+</li>
+<li><strong>業務委託契約の指揮命令性に触れる判断</strong><ul>
+<li>理由: 偽装請負の法的リスク</li>
+</ul>
+</li>
+<li><strong>個人情報の扱い</strong><ul>
+<li>理由: 個人情報保護法・関係法令</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>判断フロー（簡易版）</h2>
+<pre><code>┌────────────────────────────────────────────────┐
+│ Q1. このタスクの結果を「クライアントに直接送る」    │
+│     ／「対外公開する」？                          │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ⚠️ 必ず人手で最終確認 + 該当者承認
+        │
+        └── NO ───→ Q2へ
+
+┌────────────────────────────────────────────────┐
+│ Q2. 法的・道義的リスクがある領域？                 │
+│     （脆弱性・契約・個人情報）                     │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ❌ AIに任せず人間が判断
+        │           （必要なら顧問弁護士相談）
+        │
+        └── NO ───→ Q3へ
+
+┌────────────────────────────────────────────────┐
+│ Q3. ブランド整合・コピー感情・デザイン審美が       │
+│     関わる？                                    │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ ⚠️ AIに任せて最終目視確認
+        │
+        └── NO ───→ ✅ AIに完全に任せる
+</code></pre>
+<hr>
+<h2>AI が止まったら、ためらわず人間にエスカレーション</h2>
+<p>AIが「これ以上判断できない」と返した場合、もしくは複数回試行しても結果が改善しない場合：</p>
+<ol>
+<li>AI とのやり取りログをスクショまたはコピー</li>
+<li>案件CTO（櫻井理也）に Slack DM</li>
+<li>詳細は <a href="./escalation.html"><code>escalation.md</code></a></li>
+</ol>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> — 「迷ったらAI」原則</li>
+<li><a href="../troubleshooting/"><code>troubleshooting/</code></a> — AIで対処できなかったケースのナレッジ</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：エスカレーション順</h1>
+<blockquote>
+<p>詰まったとき・困ったときの「誰に・どう連絡するか」のフローチャート。</p>
+</blockquote>
+<hr>
+<h2>エスカレーション順</h2>
+<pre><code>Step 1: 自力 + AI で 30分試行
+   ├── 解決 ✓ → 完了。学びを troubleshooting/ に追記PR
+   └── 30分経過 → Step 2
+
+Step 2: 案件CTO（櫻井理也）に Slack DM
+   ├── 内容: 状況・スクショ・AIとのログ・試したこと
+   ├── 反応1時間以内 → 解決へ
+   └── 反応なし → Step 3
+
+Step 3: #事業部別_enter-ai でメンション @here
+   ├── 関連メンバー全員に共有
+   ├── 反応30分以内 → 解決へ
+   └── 反応なし or 緊急 → Step 4
+
+Step 4: 橋本CEO に Slack DM or 電話
+   ├── 緊急時のみ（通常は Step 2-3 で対応）
+   └── 連絡先: 1Password共有 Vault に格納
+</code></pre>
+<hr>
+<h2>ケース別のエスカレーション先</h2>
+<table>
+<thead>
+<tr>
+<th>ケース</th>
+<th>エスカレーション先</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>技術的な詰まり（実装・デバッグ）</td>
+<td>櫻井CTO → #claudeworks → 橋本CEO</td>
+</tr>
+<tr>
+<td>WP公開作業中のトラブル</td>
+<td>櫻井CTO → #事業部別_enter-ai</td>
+</tr>
+<tr>
+<td>クライアントからのクレーム</td>
+<td>小野寺・櫻井みどり（30分以内）→ 橋本CEO（2時間以内）</td>
+</tr>
+<tr>
+<td>脆弱性レポートの削除依頼</td>
+<td>24時間以内に 小野寺・櫻井みどり が返信 → ブラックリスト永久登録 → 櫻井CTO に通知</td>
+</tr>
+<tr>
+<td>法的相談（不正アクセス禁止法・契約・個人情報）</td>
+<td>橋本CEO → 顧問弁護士</td>
+</tr>
+<tr>
+<td>経理・支払い</td>
+<td>#経理部_経費精算-仕訳</td>
+</tr>
+<tr>
+<td>業務委託（OneBe）の調整</td>
+<td>#all-onebe-vaizoアライアンスチーム</td>
+</tr>
+<tr>
+<td>アカウント発行・権限</td>
+<td>#情報システム部</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>緊急時（公開直後の致命的トラブル）</h2>
+<p>例: 公開後にサイトが真っ白になった、500エラーが頻発、個人情報が露出した</p>
+<pre><code>1. まず深呼吸（2秒）
+2. ステップ2-1のバックアップ（.wpress）から All-in-One WP Migration で即復元
+   ※ 慌てない。バックアップを取っているから戻せる
+3. 復元したらクライアントに「一時的に表示が乱れたが復旧した」旨を即報告
+4. 櫻井CTO + 橋本CEO に Slack DM で並行報告
+5. 原因調査は復旧後に落ち着いて行う
+6. 学びを troubleshooting/ に追記PR
+</code></pre>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<hr>
+<h2>エスカレーション時の伝え方</h2>
+<p>良い例:</p>
+<blockquote>
+<p>仙台レトロバックページ案件で公開作業中。
+Step 4-6 のプレビューで、ヘッダーがテーマと二重表示されている。
+AIに3回直してもらったが解決せず。
+スクショ添付：[image]
+AI とのやり取りログ：[link]
+状態: 公開ボタンは押していない。Step 2-3 のバックアップは取得済み。
+相談内容: 方式B → 方式A に切り替えるべきか、別の対処があるか、どちらか判断したい。</p>
+</blockquote>
+<p>ダメな例:</p>
+<blockquote>
+<p>動かない、助けて</p>
+</blockquote>
+<p>→ 状況・試したこと・期待する判断 の3点を必ず添える。</p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../troubleshooting/"><code>troubleshooting/</code></a> — 既知の問題と対処</li>
+<li><a href="../MAP.html"><code>MAP.md</code></a> — 担当者連絡先</li>
+<li><a href="./ai-vs-human.html"><code>decision-trees/ai-vs-human.md</code></a> — AI vs 人間の境界</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section>
+<section class="chapter-divider">
+  <div class="chapter-num">CH 04</div>
+  <div class="chapter-title-en">TROUBLESHOOTING</div>
+  <div class="chapter-title-jp">トラブルシューティング</div>
+</section>
+<section id="mailto" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>mailto: リグレッション事故の事例と再発防止</h1>
+<blockquote>
+<p>仙台レトロバックページ案件（2026-04月、修正ID <code>F-RBP-202605-001/025/026</code>）で発生した実事故の記録。
+このページの存在自体が「VAIZO V/ENTER WEB 統合運用フレーム v0.2」の策定動機となった。</p>
+</blockquote>
+<hr>
+<h2>事故の概要</h2>
+<h3>何が起きたか</h3>
+<p>仙台レトロバックページの本番公開後、<code>mailto:</code> リンクから問い合わせメーラーを起動しようとすると <strong>全てのメーラー（Outlook、Gmail、Apple Mail）でメーラーが起動しなくなった</strong>。</p>
+<h3>原因</h3>
+<p>修正対応 #25 → #26 で、複数宛先の指定方法を以下のように変更した：</p>
+<pre><code class="language-html">&lt;!-- 修正前（動作していた） --&gt;
+&lt;a href=&quot;mailto:to@example.com,cc1@example.com,cc2@example.com&quot;&gt;
+
+&lt;!-- 修正後（動作しない） --&gt;
+&lt;a href=&quot;mailto:to@example.com?cc=cc1@example.com,cc2@example.com&quot;&gt;
+</code></pre>
+<p>カンマ区切りcc → <code>?cc=</code> 形式 への変更自体は仕様上正しいが、<strong>対象環境（Outlook 365 + Apple Mail + Gmail Web）の一部で <code>mailto:</code> URL のエンコードが正しく解釈されない</strong> 結果、リンクが無効化された。</p>
+<h3>影響</h3>
+<ul>
+<li>公開後 約24時間、お問い合わせフォームが実質機能しないままだった</li>
+<li>リード喪失の可能性（実害は確認できなかったが、影響度「高」）</li>
+<li>クライアント・関係者に修正対応で工数発生</li>
+</ul>
+<h3>なぜ気付くのが遅れたか</h3>
+<ol>
+<li>修正対応表（修正ログ）にステータス・優先度・担当・工数の管理がなかった</li>
+<li>リグレッションテスト（公開前の <code>mailto:</code> 起動確認）が手順に組み込まれていなかった</li>
+<li>Step 5-メール（実機テスト送信）の運用が始まる前の事故だった</li>
+</ol>
+<hr>
+<h2>教訓</h2>
+<h3>Lesson 1: <code>mailto:</code> の修正は必ず実機で起動確認</h3>
+<ul>
+<li>修正後、Outlook / Gmail / Apple Mail の少なくとも2環境で起動テスト</li>
+<li>スマホ実機（iOS Mail、Android Gmail）でも確認</li>
+</ul>
+<h3>Lesson 2: リグレッションテストを手順に組み込む</h3>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール として正式手順化済み。</p>
+<h3>Lesson 3: 修正ログの運用標準化</h3>
+<p>修正ID <code>F-{案件略号}-{YYYYMM}-{連番:03桁}</code> で管理。
+ステータス・優先度・担当・工数・スクショを必須項目化。</p>
+<p>詳細: メモリ <code>project_vaizo_web_ops.md</code> § C3</p>
+<h3>Lesson 4: 「公開2週間以内の瑕疵担保」の契約明記</h3>
+<p>公開後の不具合を「サービス範囲」として無償対応するか、「契約外」として有償対応するかの線引き。
+顧問弁護士確認後に契約書に明記。</p>
+<p>詳細: メモリ <code>project_vaizo_web_ops.md</code> § W7</p>
+<hr>
+<h2>再発防止チェックリスト</h2>
+<p>公開前に以下を必ず実施：</p>
+<ul>
+<li><input disabled="" type="checkbox"> <code>mailto:</code> リンクを Outlook / Gmail / Apple Mail で起動確認</li>
+<li><input disabled="" type="checkbox"> スマホ実機（iOS Mail、Android Gmail）で起動確認</li>
+<li><input disabled="" type="checkbox"> 複数宛先がある場合、<code>mailto:to@...?cc=cc1@...,cc2@...</code> 形式が正しく動くか確認</li>
+<li><input disabled="" type="checkbox"> 件名・本文プリセットが文字化けしないか確認（URLエンコードに注意）</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> のチェック項目③で AI が <code>tel:</code> <code>mailto:</code> を検証</li>
+</ul>
+<p>公開後：</p>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール 実機テスト送信を必ず実施</li>
+<li><input disabled="" type="checkbox"> クライアント側で受信確認まで完了</li>
+</ul>
+<hr>
+<h2><code>mailto:</code> の正しい記述例</h2>
+<h3>単一宛先</h3>
+<pre><code class="language-html">&lt;a href=&quot;mailto:info@example.com&quot;&gt;お問い合わせ&lt;/a&gt;
+</code></pre>
+<h3>件名・本文プリセット</h3>
+<pre><code class="language-html">&lt;a href=&quot;mailto:info@example.com?subject=お問い合わせ&amp;body=お世話になります。&quot;&gt;
+  お問い合わせ
+&lt;/a&gt;
+</code></pre>
+<p>URLエンコード推奨（特に日本語）：</p>
+<pre><code class="language-html">&lt;a href=&quot;mailto:info@example.com?subject=%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&amp;body=%E3%81%8A%E4%B8%96%E8%A9%B1%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82&quot;&gt;
+  お問い合わせ
+&lt;/a&gt;
+</code></pre>
+<h3>複数宛先（cc）</h3>
+<pre><code class="language-html">&lt;a href=&quot;mailto:to@example.com?cc=cc1@example.com,cc2@example.com&quot;&gt;
+  お問い合わせ
+&lt;/a&gt;
+</code></pre>
+<h3>複数宛先（to のカンマ区切り、推奨されない）</h3>
+<pre><code class="language-html">&lt;!-- 古い書き方。互換性のため動くが推奨しない --&gt;
+&lt;a href=&quot;mailto:to1@example.com,to2@example.com&quot;&gt;
+</code></pre>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール</li>
+<li><a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a></li>
+<li><a href="../templates/codex-prompts/live-house.html"><code>templates/codex-prompts/live-house.md</code></a> — 仙台レトロを基にした雛形（事故注意書き含む）</li>
+<li>メモリ <code>project_vaizo_web_ops.md</code> — 統合運用フレーム v0.2 の策定動機</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="wp" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>WP公開作業のトラブルシューティング</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> で詰まったときの対処集。</p>
+</blockquote>
+<hr>
+<h2>症状別の対処</h2>
+<h3>1. ログインできない</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ID/パスワード間違い</td>
+<td>再確認、何度も間違えるとIPロック</td>
+</tr>
+<tr>
+<td>IPロック（数回失敗で発動）</td>
+<td>AIに「Xserver IP ロック解除方法」と聞く、もしくはロック解除依頼をサーバー業者に</td>
+</tr>
+<tr>
+<td>ログインURLの変更（セキュリティプラグイン）</td>
+<td>クライアントに正規URLを再確認</td>
+</tr>
+</tbody></table>
+<h3>2. 画像のアップロードでエラー</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1ファイル容量制限（通常 1GB）</td>
+<td>サイズダウン、解像度を下げて再試行</td>
+</tr>
+<tr>
+<td>サーバー側の容量制限（<code>upload_max_filesize</code>）</td>
+<td>サーバー業者に相談、もしくは画像を WebP 化</td>
+</tr>
+<tr>
+<td>同名ファイル衝突</td>
+<td>古いものを先に削除してから再アップ</td>
+</tr>
+<tr>
+<td>ネットワーク不安定</td>
+<td>10〜15枚ずつ分割して再試行</td>
+</tr>
+</tbody></table>
+<h3>3. ページが真っ白／500エラー</h3>
+<p><strong>最優先</strong>: 即時復元する。原因調査は後。</p>
+<pre><code>Step 1: All-in-One WP Migration の「インポート」を開く
+Step 2: ステップ2-1で取得した .wpress ファイルをドラッグ＆ドロップ
+Step 3: 復元完了を待つ（数分）
+Step 4: 公開URLを別タブで開いて表示確認
+Step 5: クライアントに「一時的に乱れたが復旧した」旨を即報告
+Step 6: 落ち着いてから原因調査
+</code></pre>
+<h3>4. 崩れ・表示異常</h3>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>第一手</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ヘッダー二重表示</td>
+<td>統合方式B → 方式Aに切り替え検討 (<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a>)</td>
+</tr>
+<tr>
+<td>CSS が効かない</td>
+<td>テーマの優先度に負けている → <code>body.page-{slug}</code> でスコープ化</td>
+</tr>
+<tr>
+<td>JS が動かない</td>
+<td>jQuery 衝突 → IIFE で囲う or テーマ jQuery を回避</td>
+</tr>
+<tr>
+<td>画像が出ない</td>
+<td>パス間違い、ステップ3-1の画像アップロードを再確認</td>
+</tr>
+<tr>
+<td>フォントが違う</td>
+<td>Google Fonts の読み込みがブロックされている可能性、CSP確認</td>
+</tr>
+</tbody></table>
+<h3>5. プラグイン干渉</h3>
+<table>
+<thead>
+<tr>
+<th>プラグイン</th>
+<th>干渉ポイント</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Yoast SEO</td>
+<td>meta タグを上書きする → 固定ページ単位で Yoast meta を再設定</td>
+</tr>
+<tr>
+<td>Elementor 等 Page Builder</td>
+<td>ページ全体を Elementor が制御 → カスタムHTMLウィジェットを使うかテンプレート分離</td>
+</tr>
+<tr>
+<td>画像最適化系（Smush、EWWW）</td>
+<td>画像を勝手に変換 → 個別ファイル除外設定</td>
+</tr>
+<tr>
+<td>キャッシュ系（WP Rocket、W3 Total Cache）</td>
+<td>古いCSS/JSがキャッシュされる → 該当ページのキャッシュ除外</td>
+</tr>
+</tbody></table>
+<h3>6. スマホ表示で横スクロール発生</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>画像・iframe が <code>max-width: 100%</code> 未設定</td>
+<td>CSSに <code>img, iframe { max-width: 100%; height: auto; }</code> 追加</td>
+</tr>
+<tr>
+<td>テーブルがコンテナ幅を超える</td>
+<td><code>overflow-x: auto</code> でラップ</td>
+</tr>
+<tr>
+<td>絶対値（px）で固定された要素</td>
+<td>レスポンシブ単位（vw、%、<code>clamp()</code>）に置換</td>
+</tr>
+</tbody></table>
+<h3>7. Lighthouse パフォーマンスが低い</h3>
+<table>
+<thead>
+<tr>
+<th>スコア帯</th>
+<th>主な原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>50 未満</td>
+<td>画像未圧縮、外部スクリプト多数</td>
+</tr>
+<tr>
+<td>50-70</td>
+<td>LCP 遅延（ファーストビューが重い）</td>
+</tr>
+<tr>
+<td>70-90</td>
+<td>CLS（レイアウトシフト）、未使用CSS</td>
+</tr>
+<tr>
+<td>90+</td>
+<td>維持OK</td>
+</tr>
+</tbody></table>
+<p>対処:</p>
+<ul>
+<li>画像を WebP 化、<code>loading=&quot;lazy&quot;</code>、<code>width</code>/<code>height</code> 明示</li>
+<li>フォントは <code>font-display: swap</code>、必要最小限のウェイトのみ</li>
+<li>不要な外部スクリプト削除（GTM、ヒートマップ等を最低限に）</li>
+<li>Critical CSS をインライン化、それ以外は遅延読み込み</li>
+</ul>
+<hr>
+<h2>復元手順（バックアップから戻す）</h2>
+<h3>A. 完全復元（致命的不具合）</h3>
+<pre><code>1. WP管理画面の「All-in-One WP Migration」→「インポート」
+2. ステップ2-1で保存した .wpress ファイルをドラッグ＆ドロップ
+3. 復元完了まで待つ（数分〜数十分）
+4. ログイン情報がリセットされる場合があるので注意
+5. 公開URLを別タブで開いて表示確認
+</code></pre>
+<h3>B. ページ単体の復元（軽微な崩れ）</h3>
+<pre><code>1. 該当固定ページの編集画面を開く
+2. 編集欄を Ctrl+A → Delete でクリア
+3. ステップ2-3 で保存した本文テキストファイルを開く
+4. Ctrl+A → Ctrl+C でコピー
+5. WP編集欄に Ctrl+V で貼り付け
+6. 「更新」をクリック
+</code></pre>
+<h3>C. リビジョンから戻す（直近の編集を取り消し）</h3>
+<pre><code>1. 該当固定ページの編集画面を開く
+2. 右側「リビジョン」をクリック
+3. ステップ2-3 で控えたリビジョン番号より前のリビジョンを選択
+4. 「このリビジョンを復元」をクリック
+</code></pre>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-トラブル</li>
+<li><a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a></li>
+<li><a href="./mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a> — 仙台事故の事例</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="codex-cli" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex CLI トラブルシューティング</h1>
+<blockquote>
+<p><a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> の補足。</p>
+</blockquote>
+<hr>
+<h2>1. 無音失敗（最も多い）</h2>
+<h3>症状</h3>
+<p><code>codex exec</code> を実行しても、出力ファイル（<code>codex_out.md</code>）が空・もしくは作られない。エラーメッセージも出ない。</p>
+<h3>原因</h3>
+<p>ChatGPT セッションが切れている。</p>
+<h3>対処</h3>
+<pre><code class="language-bash"># 1. バージョン確認（疎通確認）
+codex --version
+
+# 2. 再ログイン
+codex login
+# → ブラウザが開く → ChatGPT アカウントでログイン
+
+# 3. もう一度 exec
+codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &quot;./codex_out.md&quot; &quot;$(cat ./codex_prompt.md)&quot;
+</code></pre>
+<h3>予防策</h3>
+<p>各案件の起動前に毎回 <code>codex --version</code> を打つ。</p>
+<hr>
+<h2>2. <code>--cd</code> 未指定で意図しないディレクトリが編集される</h2>
+<h3>症状</h3>
+<p>Codex が案件と無関係の場所（ホームディレクトリ等）にファイルを作成する。</p>
+<h3>原因</h3>
+<p><code>--cd</code> オプションを付け忘れ、Codex の現在ディレクトリが意図しない場所だった。</p>
+<h3>対処</h3>
+<pre><code class="language-bash"># 必ず --cd &quot;$PWD&quot; を付ける
+codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &quot;./codex_out.md&quot; &quot;$(cat ./codex_prompt.md)&quot;
+</code></pre>
+<p>PowerShell の場合:</p>
+<pre><code class="language-powershell">codex exec `
+  --skip-git-repo-check `
+  --cd &quot;$PWD&quot; `
+  --output-last-message &quot;.\codex_out.md&quot; `
+  (Get-Content .\codex_prompt.md -Raw)
+</code></pre>
+<hr>
+<h2>3. 対話モードに入って制御不能</h2>
+<h3>症状</h3>
+<p><code>codex</code> を引数なしで起動するとREPL（対話モード）に入り、Claude Code から制御できない。</p>
+<h3>対処</h3>
+<p>必ず <code>codex exec</code>（非対話モード）を使う。<code>exec</code> を忘れない。</p>
+<pre><code class="language-bash"># NG: 対話モードに入る
+codex &quot;...&quot;
+
+# OK: 非対話モード
+codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &quot;./codex_out.md&quot; &quot;...&quot;
+</code></pre>
+<hr>
+<h2>4. Playwright モジュールが読み込めない</h2>
+<h3>症状</h3>
+<p>Codex が出力したコード末尾に「Playwright確認は環境で <code>playwright</code> モジュールを読み込めず未実施です」と書かれる。</p>
+<h3>原因</h3>
+<p>Codex CLI のサンドボックス環境内に Playwright がインストールされていない。</p>
+<h3>対処</h3>
+<p>Playwright によるブラウザ確認は <strong>Claude Code 側 + Playwright MCP</strong> で実行する。Codex 側ではドラフト生成のみに留める。</p>
+<pre><code>1. Codex は HTML/CSS/JS を生成するのみ
+2. Claude Code が Playwright MCP を使ってブラウザで確認
+3. スクショ・コンソールエラー検出は Claude 側で
+</code></pre>
+<p>詳細: <a href="./playwright-failures.html"><code>troubleshooting/playwright-failures.md</code></a></p>
+<hr>
+<h2>5. ChatGPT Plus 容量枯渇</h2>
+<h3>症状</h3>
+<p><code>codex exec</code> を打つと「Rate limit exceeded」「Quota exceeded」のようなエラー。</p>
+<h3>対処</h3>
+<p><a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> §9 のフォールバック順:</p>
+<ol>
+<li><strong>Claude Opus 4.7 で直接実装</strong>（VAIZER 1名 月 $20 で利用可能）</li>
+<li>それも不可なら <strong>Gemini 3.1 Pro Preview</strong> をフォールバック</li>
+</ol>
+<p>容量回復は通常 24時間後。緊急ならClaude/Geminiに切替。</p>
+<hr>
+<h2>6. モデル切替</h2>
+<h3>操作</h3>
+<p>Codex セッション内で <code>/model</code> コマンド：</p>
+<pre><code>/model gpt-5.4-mini    # 軽量・高速
+/model gpt-5.4         # デフォルト
+/model gpt-5.4-pro     # 最高品質
+/model gpt-5.3-codex   # コーディング特化
+</code></pre>
+<h3>推奨</h3>
+<table>
+<thead>
+<tr>
+<th>タスク</th>
+<th>推奨モデル</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FV1画面・小規模実装</td>
+<td><code>gpt-5.4-mini</code></td>
+</tr>
+<tr>
+<td>LP全セクション・複雑な構造</td>
+<td><code>gpt-5.4</code></td>
+</tr>
+<tr>
+<td>最高品質が必要</td>
+<td><code>gpt-5.4-pro</code></td>
+</tr>
+</tbody></table>
+<p>詳細: <a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> §8</p>
+<hr>
+<h2>7. プロンプトが守られない（仕様外の機能を勝手に追加する）</h2>
+<h3>症状</h3>
+<p>「フォームを追加しないで」と書いたのに追加された。</p>
+<h3>対処</h3>
+<p>プロンプト末尾に <strong>明示的に再強調</strong> する：</p>
+<pre><code>## 厳守事項（最優先）
+
+- 仕様外の機能を勝手に追加しない
+- 特に: フォーム、モーダル、SNSアイコン羅列、お問い合わせウィジェットは追加しない
+- 追加が必要と思っても、まず判断を Claude（司令塔）に戻す
+</code></pre>
+<p>そもそも <a href="../templates/codex-prompts/TEMPLATE.html"><code>templates/codex-prompts/TEMPLATE.md</code></a> に「守ってほしいこと」セクションがあるので、これをコピペして使うこと。</p>
+<hr>
+<h2>8. 出力が長すぎてコピペできない</h2>
+<h3>対処</h3>
+<p><code>--output-last-message</code> オプションでファイル出力させる：</p>
+<pre><code class="language-bash">codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &quot;./codex_out.md&quot; &quot;...&quot;
+cat codex_out.md
+</code></pre>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a></li>
+<li><a href="../templates/codex-prompts/TEMPLATE.html"><code>templates/codex-prompts/TEMPLATE.md</code></a></li>
+<li><a href="./playwright-failures.html"><code>troubleshooting/playwright-failures.md</code></a></li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="playwright" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Playwright 関連のトラブルシューティング</h1>
+<blockquote>
+<p><a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> や <a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> で Playwright が使えない場合の対処。</p>
+</blockquote>
+<hr>
+<h2>1. Codex 環境で Playwright モジュールが読み込めない</h2>
+<h3>症状</h3>
+<p>Codex が「<code>playwright</code> モジュールを読み込めず未実施」と出力。</p>
+<h3>原因</h3>
+<p>Codex CLI のサンドボックス環境に Playwright がインストールされていない。</p>
+<h3>対処</h3>
+<p><strong>Claude Code + Playwright MCP</strong> で代替する：</p>
+<ol>
+<li>Claude Code 側に Playwright MCP を有効化</li>
+<li><code>templates/wp-prompts/05-ai-test.md</code> のプロンプトを Claude Code に直接投げる</li>
+<li>Claude が Playwright MCP 経由でブラウザ起動・テスト・スクショ取得</li>
+</ol>
+<p>代替手段（ローカル Playwright）：</p>
+<pre><code class="language-bash">npm init -y
+npm install -D playwright
+npx playwright install chromium
+
+# テストスクリプトを書いて実行
+node test-script.mjs
+</code></pre>
+<hr>
+<h2>2. ローカルで Playwright がブラウザを起動しない</h2>
+<h3>症状</h3>
+<p><code>playwright install</code> 済みなのに <code>browser.launch()</code> が失敗する。</p>
+<h3>原因 / 対処</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chromium がインストールされていない</td>
+<td><code>npx playwright install chromium</code></td>
+</tr>
+<tr>
+<td>ヘッドレスモードで動かない（Linux）</td>
+<td><code>xvfb-run</code> で実行、または <code>headless: true</code></td>
+</tr>
+<tr>
+<td>Windows でパス問題</td>
+<td><code>playwright install</code> を管理者権限で再実行</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>3. Lighthouse スコアが取得できない</h2>
+<h3>症状</h3>
+<p>Playwright Lighthouse プラグインが動かない。</p>
+<h3>対処</h3>
+<p>代替: <a href="https://developers.google.com/speed/docs/insights/v5/get-started">PageSpeed Insights API</a> を使う</p>
+<pre><code class="language-bash">curl &quot;https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={{公開URL}}&amp;strategy=mobile&quot;
+</code></pre>
+<p>または PageSpeed Insights の Web UI:</p>
+<ul>
+<li><a href="https://pagespeed.web.dev/">https://pagespeed.web.dev/</a></li>
+</ul>
+<hr>
+<h2>4. ヘッドレスでスクショが乱れる</h2>
+<h3>症状</h3>
+<p><code>page.screenshot()</code> がデバイスピクセル比やフォントレンダリングで実機と異なる。</p>
+<h3>対処</h3>
+<pre><code class="language-javascript">const browser = await chromium.launch({ headless: true });
+const context = await browser.newContext({
+  viewport: { width: 375, height: 812 },
+  deviceScaleFactor: 2,         // Retina 相当
+  isMobile: true,
+  hasTouch: true,
+  userAgent: &#39;Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) ...&#39;,
+});
+</code></pre>
+<p>特定の幅でテストする場合:</p>
+<pre><code class="language-javascript">const widths = [320, 375, 414, 768, 1024, 1280, 1920];
+for (const width of widths) {
+  const context = await browser.newContext({ viewport: { width, height: 800 } });
+  const page = await context.newPage();
+  await page.goto(&#39;{{公開URL}}&#39;);
+  await page.screenshot({ path: `screenshot-${width}.png`, fullPage: true });
+}
+</code></pre>
+<hr>
+<h2>5. CORS / mixed content エラー</h2>
+<h3>症状</h3>
+<p>Playwright で外部リソース（Google Fonts、CDN画像）が読み込まれない。</p>
+<h3>対処</h3>
+<ul>
+<li><code>--ignore-certificate-errors</code> を Chromium 起動オプションに追加</li>
+<li>もしくはローカルプロキシ経由でリソースを配信</li>
+</ul>
+<hr>
+<h2>6. Playwright が遅い・タイムアウト</h2>
+<h3>対処</h3>
+<pre><code class="language-javascript">// タイムアウトを延長
+page.setDefaultTimeout(60000);  // 60秒
+
+// 不要なリソースをブロック
+await page.route(&#39;**/*.{png,jpg,jpeg,gif,webp}&#39;, route =&gt; route.abort());
+</code></pre>
+<p>LCPが遅い原因が画像なら、それ自体が課題なので画像最適化を先に。</p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> — 公開後テストプロンプト</li>
+<li><a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> §自己検収</li>
+<li><a href="./codex-cli-issues.html"><code>troubleshooting/codex-cli-issues.md</code></a> §4</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section>
+<section class="chapter-divider">
+  <div class="chapter-num">CH 05</div>
+  <div class="chapter-title-en">RUNBOOKS</div>
+  <div class="chapter-title-jp">ランブック</div>
+</section>
+<section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：新規案件キックオフ（30項目チェックリスト）</h1>
+<blockquote>
+<p>新規クライアントの案件アサイン直後、本リストを上から順に進める。
+各項目に責任者・所要時間・成果物を明示。</p>
+</blockquote>
+<hr>
+<h2>1. 案件番号・命名（5分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 案件略号（3〜4文字）を決める（例: 仙台レトロ→<code>RBP</code>、BAR NOIR→<code>BNR</code>）</li>
+<li><input disabled="" type="checkbox"> 正式名称をクライアントから受領（株式会社○○、有限会社○○ 等）</li>
+<li><input disabled="" type="checkbox"> Slack <code>#事業部別_enter-ai</code> で案件発生を共有</li>
+</ul>
+<p>担当: 案件CTO（櫻井理也）</p>
+<h2>2. Drive フォルダ作成（10分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>02_事業部別_EnterWebAI_AIWebサイト制作/</code> 配下に <code>{{正式名称}}/</code> フォルダ作成</li>
+<li><input disabled="" type="checkbox"> 子フォルダ作成:<ul>
+<li><code>01_WEBサイト刷新サービス/</code>（成果物・最新版）</li>
+<li><code>01_WEBサイト刷新サービス/最新版/images/</code></li>
+<li><code>01_WEBサイト刷新サービス/WP最適化版/</code></li>
+<li><code>01_WEBサイト刷新サービス/docs/</code>（議事録・契約・監査レポート）</li>
+<li><code>公開作業/</code></li>
+<li><code>公開作業/バックアップ_YYYYMMDD/</code>（公開当日に作成）</li>
+<li><code>議事録/</code></li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> フォルダID（最上位）を本ファイル末尾の「案件メタ情報」に記録</li>
+</ul>
+<p>担当: 案件アサイン者</p>
+<h2>3. GitHub Issue 起票（10分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>VAIZO-jp/VAIZO</code> リポジトリで <code>.github/ISSUE_TEMPLATE/team.md</code> でIssue作成</li>
+<li><input disabled="" type="checkbox"> ラベル: <code>type:team</code>, <code>enter-web</code>, <code>status:in-progress</code></li>
+<li><input disabled="" type="checkbox"> タイトル: <code>[{{案件略号}}] {{正式名称}} Webサイトリニューアル</code></li>
+<li><input disabled="" type="checkbox"> Issue 番号を控える</li>
+<li><input disabled="" type="checkbox"> ブランチ作成: <code>feature/{{issue-num}}-{{案件略号}}-kickoff</code></li>
+</ul>
+<p>担当: 案件アサイン者</p>
+<h2>4. 1Password Vault 作成（5分・Phase 1完了後）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 1Password で Vault <code>Client-{{案件略号}}</code> 作成</li>
+<li><input disabled="" type="checkbox"> WP管理画面・サーバー・ドメイン・SaaS等のログインを格納予定の領域として準備</li>
+<li><input disabled="" type="checkbox"> アサインメンバーをメンバー追加</li>
+</ul>
+<p>担当: 櫻井CTO（Vault管理者）</p>
+<h2>5. 契約・見積書（30分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 見積書を Drive <code>006_経理部_事務系・経費精算等/01_帳票テンプレート/</code> の見積テンプレで作成</li>
+<li><input disabled="" type="checkbox"> 業務委託契約書テンプレを準備（社労士・弁護士レビュー済の最新版）</li>
+<li><input disabled="" type="checkbox"> クライアントに送付、捺印・返送を待つ</li>
+<li><input disabled="" type="checkbox"> 返送された契約書を Drive 案件フォルダ <code>01_WEBサイト刷新サービス/docs/契約/</code> に保管</li>
+</ul>
+<p>担当: 橋本CEO</p>
+<h2>6. キックオフMTG設定（15分）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Google Calendar で 60分のMTGをクライアントと設定</li>
+<li><input disabled="" type="checkbox"> Plaud + Tactiq 起動準備（録音・文字起こし）</li>
+<li><input disabled="" type="checkbox"> アジェンダ:<ul>
+<li>案件目的・KPI</li>
+<li>スケジュール</li>
+<li>体制（担当者）</li>
+<li>必要な情報・素材の受領計画</li>
+<li>決定権者の確認</li>
+<li>公開希望日</li>
+</ul>
+</li>
+</ul>
+<p>担当: 案件CTO</p>
+<h2>7. 必要情報の受領計画（MTG中に確定）</h2>
+<p>WP公開作業に必要な情報・アカウント（<a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 1 参照）：</p>
+<h3>必須3点</h3>
+<ul>
+<li><input disabled="" type="checkbox"> WordPress管理画面ログインURL</li>
+<li><input disabled="" type="checkbox"> 管理者ID</li>
+<li><input disabled="" type="checkbox"> 管理者パスワード</li>
+</ul>
+<h3>周辺アカウント（優先度A）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ドメイン管理画面の権限</li>
+<li><input disabled="" type="checkbox"> レンタルサーバー管理画面</li>
+<li><input disabled="" type="checkbox"> Google Analytics 4 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google Search Console 権限</li>
+<li><input disabled="" type="checkbox"> Google Tag Manager 管理者権限</li>
+<li><input disabled="" type="checkbox"> Google広告アカウント管理者権限（運用案件のみ）</li>
+<li><input disabled="" type="checkbox"> Google ビジネスプロフィール管理者権限（MEO案件のみ）</li>
+</ul>
+<h3>素材</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ロゴデータ（AI / SVG / 高解像度PNG）</li>
+<li><input disabled="" type="checkbox"> 写真・画像（圧縮前の元データ）</li>
+<li><input disabled="" type="checkbox"> 文章原稿</li>
+<li><input disabled="" type="checkbox"> 既存サイトの構造資料</li>
+</ul>
+<p>担当: 案件アサイン者</p>
+<h2>8. デザイン提案（3〜5営業日）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> から業態別雛形を選択</li>
+<li><input disabled="" type="checkbox"> FV3案を Codex で生成（<a href="../templates/codex-prompts/bar-or-restaurant-fv.html"><code>bar-or-restaurant-fv.md</code></a> 等）</li>
+<li><input disabled="" type="checkbox"> Claude Code でレビュー → 修正</li>
+<li><input disabled="" type="checkbox"> GitHub プライベートリポジトリ <code>VAIZO-jp/{{案件略号}}-site</code> 作成、staticrypt保護でデプロイ</li>
+<li><input disabled="" type="checkbox"> 提案メール送付（<a href="../templates/client-emails/proposal.html"><code>templates/client-emails/proposal.md</code></a>）</li>
+</ul>
+<p>担当: 制作担当 + 案件CTO</p>
+<h2>9. 採用案決定〜本制作開始</h2>
+<ul>
+<li><input disabled="" type="checkbox"> クライアントから採用案決定の返信受領</li>
+<li><input disabled="" type="checkbox"> FV → 6セクション拡張（<a href="../templates/codex-prompts/extension-sections.html"><code>templates/codex-prompts/extension-sections.md</code></a>）</li>
+<li><input disabled="" type="checkbox"> 修正対応表の運用開始（修正ID <code>F-{{案件略号}}-{{YYYYMM}}-{{連番:03桁}}</code>）</li>
+</ul>
+<p>担当: 制作担当</p>
+<h2>10. 公開作業</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a> に従って公開当日の段取り</li>
+</ul>
+<p>担当: 案件アサイン者 + 案件CTO</p>
+<hr>
+<h2>案件メタ情報（記入欄）</h2>
+<pre><code class="language-yaml">---
+案件略号: {{}}
+正式名称: {{}}
+業態: {{}}
+公開URL予定: {{}}
+ドメイン: {{}}
+契約日: {{}}
+公開希望日: {{}}
+担当開発者: {{}}
+案件CTO: {{}}
+クライアント担当者: {{}}
+クライアント決定権者: {{}}
+予算: {{}}
+スケジュール:
+  - キックオフ: {{}}
+  - 提案: {{}}
+  - 採用案決定: {{}}
+  - 本制作: {{}}
+  - デモ確認: {{}}
+  - 公開: {{}}
+Drive案件フォルダID: {{}}
+GitHub案件Issue: {{}}
+GitHub案件Repo: {{}}
+1Password Vault: Client-{{案件略号}}
+---
+</code></pre>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a></li>
+<li><a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a></li>
+<li><a href="./post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a></li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：公開当日の段取り</h1>
+<blockquote>
+<p><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> の5ステップを実行する当日のタイムライン版。</p>
+</blockquote>
+<hr>
+<h2>公開当日の標準スケジュール（半日想定）</h2>
+<h3>09:00 — 朝の確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 1 の事前準備チェックリストを再確認</li>
+<li><input disabled="" type="checkbox"> クライアントとの「最終確認OK」が記録に残っているか確認</li>
+<li><input disabled="" type="checkbox"> WP管理画面に正常ログインできるか確認</li>
+<li><input disabled="" type="checkbox"> 必要な情報・素材が全て揃っているか確認</li>
+</ul>
+<h3>09:30 — バックアップ取得（最重要）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> All-in-One WP Migration エクスポート（<code>.wpress</code>）</li>
+<li><input disabled="" type="checkbox"> WordPress 標準XMLエクスポート</li>
+<li><input disabled="" type="checkbox"> 編集対象ページの本文テキスト保存</li>
+<li><input disabled="" type="checkbox"> 3ファイルすべてを Drive <code>公開作業/バックアップ_{{YYYYMMDD}}/</code> に保存</li>
+<li><input disabled="" type="checkbox"> <strong>3つ揃ってから次に進む</strong>（鉄則）</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 2</p>
+<h3>10:00 — 画像アップロード</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 圧縮・リネーム済みの最終版画像を Drive からダウンロード</li>
+<li><input disabled="" type="checkbox"> WordPress メディアライブラリに10〜15枚ずつ分けてアップロード</li>
+<li><input disabled="" type="checkbox"> アップロード完了確認（緑のチェックマーク）</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 3</p>
+<h3>11:00 — WP最適化版作成 + デモ確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/04-pre-audit.html"><code>templates/wp-prompts/04-pre-audit.md</code></a> で事前監査実行</li>
+<li><input disabled="" type="checkbox"> 統合方式を確定（<a href="../decision-trees/wp-integration-method.html"><code>decision-trees/wp-integration-method.md</code></a>）</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/04-0-optimize.html"><code>templates/wp-prompts/04-0-optimize.md</code></a> で最適化版作成</li>
+<li><input disabled="" type="checkbox"> GitHub プライベートリポジトリ + staticrypt でデモ環境構築</li>
+<li><input disabled="" type="checkbox"> クライアント確認用デモを共有</li>
+<li><input disabled="" type="checkbox"> 開発確認用デモ（ローカルWP or ステージング）でテーマ統合確認</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-pre, 4-0</p>
+<h3>13:00 — 本番反映（昼食後）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> WP最適化版HTMLをダウンロード（GitHub から Raw コピー）</li>
+<li><input disabled="" type="checkbox"> 編集対象ページの編集画面を開く</li>
+<li><input disabled="" type="checkbox"> 本文枠を Ctrl+A → Delete でクリア</li>
+<li><input disabled="" type="checkbox"> Ctrl+V で貼り付け</li>
+<li><input disabled="" type="checkbox"> プレビューで見た目確認（PCとスマホ）</li>
+<li><input disabled="" type="checkbox"> 「更新」ボタンクリック → 本番反映完了</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-1〜4-7</p>
+<h3>13:30 — 公開直後の確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 公開URL を別タブで開く</li>
+<li><input disabled="" type="checkbox"> Ctrl+F5 でスーパーリロード</li>
+<li><input disabled="" type="checkbox"> PCとスマホ両方で表示確認</li>
+</ul>
+<h3>14:00 — Playwright 全自動テスト</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> のプロンプトを Claude Code に投げる</li>
+<li><input disabled="" type="checkbox"> 全リンク・全CTA・レスポンシブ・Lighthouse・コンソールエラーを自動チェック</li>
+<li><input disabled="" type="checkbox"> レポートを Drive <code>公開作業/AIテストレポート_{{YYYYMMDD}}.md</code> に保存</li>
+<li><input disabled="" type="checkbox"> <strong>全項目OKを確認してから次へ</strong></li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-AI</p>
+<h3>14:30 — メール宛先テスト送信（リード喪失防止）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 本番ページの問い合わせフォームでテスト送信</li>
+<li><input disabled="" type="checkbox"> クライアントに「いまテストメールを送ったので受信を確認してください」と Slack/電話</li>
+<li><input disabled="" type="checkbox"> クライアントから「届いた」の返信を待つ</li>
+<li><input disabled="" type="checkbox"> 届かない場合はフォーム設定確認 → 修正 → 再送信</li>
+<li><input disabled="" type="checkbox"> 受信スクショを案件フォルダに保存</li>
+</ul>
+<p>詳細: <a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-メール</p>
+<h3>15:00 — 公開完了報告</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../templates/client-emails/delivery-completion.html"><code>templates/client-emails/delivery-completion.md</code></a> で完了報告メール作成</li>
+<li><input disabled="" type="checkbox"> 添付：公開後スクショ（PC/スマホ）、AIテストレポートサマリ</li>
+<li><input disabled="" type="checkbox"> クライアントに送信</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/delivery-reports.html"><code>templates/delivery-reports.md</code></a> で社内記録を Drive に保存</li>
+<li><input disabled="" type="checkbox"> Slack <code>#事業部別_enter-ai</code> で完了アナウンス</li>
+<li><input disabled="" type="checkbox"> GitHub Issue を <code>status:completed</code> に更新、PR をマージ</li>
+</ul>
+<h3>15:30 — 振り返り</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 当日詰まった点を <a href="../troubleshooting/"><code>troubleshooting/</code></a> に追記候補としてメモ</li>
+<li><input disabled="" type="checkbox"> プロンプトの改善点を <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> への追記候補としてメモ</li>
+<li><input disabled="" type="checkbox"> 後日 PR 起票</li>
+</ul>
+<hr>
+<h2>緊急時の対応</h2>
+<h3>公開後にサイトが真っ白／500エラー</h3>
+<pre><code>1. 慌てない。深呼吸。
+2. All-in-One WP Migration の「インポート」を開く
+3. 朝に取った .wpress バックアップをドラッグ＆ドロップ
+4. 復元完了を待つ
+5. 公開URLで表示確認
+6. クライアントに即報告（「一時的に表示が乱れたが復旧した」）
+7. 櫻井CTO + 橋本CEO に Slack DM
+</code></pre>
+<p>詳細: <a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a></p>
+<h3>mailto: が動かない</h3>
+<pre><code>1. 修正方法を確認 (troubleshooting/mailto-regression.md)
+2. 修正後、Outlook / Gmail / Apple Mail で起動確認
+3. スマホ実機（iOS Mail / Android Gmail）で起動確認
+4. クライアントに修正完了報告
+</code></pre>
+<p>詳細: <a href="../troubleshooting/mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a></p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> — 5ステップ詳細</li>
+<li><a href="./new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> — キックオフ</li>
+<li><a href="./post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a> — 公開後フォロー</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="30" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：公開後30日のフォロー</h1>
+<blockquote>
+<p>公開して終わりではなく、30日間で「公開時に取り切れなかったSEO・解析・改修」を完了させる。</p>
+</blockquote>
+<hr>
+<h2>Day 0（公開当日）</h2>
+<ul>
+<li><a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a> を完了</li>
+</ul>
+<hr>
+<h2>Day 1（公開翌日）</h2>
+<h3>朝のチェック</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 公開URLを開いて、夜間にトラブルが起きていないか確認</li>
+<li><input disabled="" type="checkbox"> GA4 / GSC でアクセスが計測されているか確認</li>
+<li><input disabled="" type="checkbox"> 問い合わせフォームに前日のテストメール以外の反応がないか確認</li>
+</ul>
+<h3>Google Search Console 設定</h3>
+<ul>
+<li><input disabled="" type="checkbox"> サイトマップ送信（<code>https://{{ドメイン}}/sitemap.xml</code>）</li>
+<li><input disabled="" type="checkbox"> URL検査で公開URLのインデックス状況確認</li>
+<li><input disabled="" type="checkbox"> 必要なら「インデックス登録をリクエスト」</li>
+</ul>
+<hr>
+<h2>Week 1（公開後1週間）</h2>
+<h3>Lighthouse 再計測</h3>
+<ul>
+<li><input disabled="" type="checkbox"> PC / モバイル両方で Lighthouse 計測</li>
+<li><input disabled="" type="checkbox"> パフォーマンス・SEO・アクセシビリティ・ベストプラクティス スコアを記録</li>
+<li><input disabled="" type="checkbox"> 公開当日のスコアと比較</li>
+<li><input disabled="" type="checkbox"> 70 未満の項目があれば改修計画</li>
+</ul>
+<h3>コンソールエラー確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Chrome DevTools で公開URL を開き、コンソールエラーがないか</li>
+<li><input disabled="" type="checkbox"> エラーがあれば原因調査・修正</li>
+</ul>
+<h3>Search Console モバイルユーザビリティ</h3>
+<ul>
+<li><input disabled="" type="checkbox"> モバイルユーザビリティの問題がないか確認</li>
+<li><input disabled="" type="checkbox"> あれば修正（タップ要素のサイズ、コンテンツ幅等）</li>
+</ul>
+<h3>軽微な調整</h3>
+<ul>
+<li><input disabled="" type="checkbox"> クライアントから受けた「公開後のお気づきの点」を反映</li>
+<li><input disabled="" type="checkbox"> 修正は契約上の「公開後XX日以内の瑕疵担保」範囲か確認</li>
+</ul>
+<hr>
+<h2>Week 2（公開後2週間）</h2>
+<h3>GA4 / GSC アクセス推移確認</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 公開後2週間のセッション数・PV・直帰率を記録</li>
+<li><input disabled="" type="checkbox"> 想定との差異を確認</li>
+<li><input disabled="" type="checkbox"> 流入チャネル（Organic / Direct / Referral / Social）の構成確認</li>
+</ul>
+<h3>競合サイトとの比較（任意）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> パッシブスキャンツールで競合上位サイトを確認</li>
+<li><input disabled="" type="checkbox"> パフォーマンス・SEOで明らかに劣る項目があれば改修候補</li>
+</ul>
+<hr>
+<h2>Week 3-4（公開後3-4週間）</h2>
+<h3>コンテンツ追加の検討</h3>
+<ul>
+<li><input disabled="" type="checkbox"> クライアントから「ブログ記事」「お知らせ」等の追加コンテンツ要望ヒアリング</li>
+<li><input disabled="" type="checkbox"> 必要なら追加見積</li>
+</ul>
+<h3>MEO（Googleビジネスプロフィール）連携</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Google Maps での店舗情報が正しいか確認</li>
+<li><input disabled="" type="checkbox"> サイトURL がプロフィールに登録されているか確認</li>
+<li><input disabled="" type="checkbox"> 写真・営業時間の更新</li>
+</ul>
+<h3>SNS 連携（必要なら）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Instagram / X / Facebook 等とのリンク確認</li>
+<li><input disabled="" type="checkbox"> OGP画像が正しく表示されるか確認（Twitter Card / Facebook Debugger）</li>
+</ul>
+<hr>
+<h2>Day 30（公開後30日）</h2>
+<h3>振り返りMTG（クライアントと）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 30分のMTG設定</li>
+<li><input disabled="" type="checkbox"> アジェンダ:<ul>
+<li>30日間のアクセス推移</li>
+<li>問い合わせ・予約等のCV件数</li>
+<li>クライアント側で気づいた点</li>
+<li>改修・追加コンテンツの希望</li>
+<li>次のフェーズ（運用継続契約・追加プロジェクト）</li>
+</ul>
+</li>
+</ul>
+<h3>30日後レポート</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Drive 案件フォルダ <code>公開作業/30日後レポート_{{YYYYMMDD}}.md</code> を作成</li>
+<li><input disabled="" type="checkbox"> 内容:<ul>
+<li>公開日・経過日数</li>
+<li>GA4 アクセス推移グラフ</li>
+<li>GSC インプレッション・クリック数推移</li>
+<li>Lighthouse スコア（公開時 → 30日後）</li>
+<li>問い合わせ・予約等のCV件数</li>
+<li>クライアントからの主要フィードバック</li>
+<li>今後の改修・運用方針</li>
+</ul>
+</li>
+</ul>
+<h3>内部振り返り</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../troubleshooting/"><code>troubleshooting/</code></a> への追記が必要な学びがあるかレビュー</li>
+<li><input disabled="" type="checkbox"> <a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> のプロンプト改善PRを起票</li>
+<li><input disabled="" type="checkbox"> チーム内で 15分の振り返り（Slack スレッドでも可）</li>
+</ul>
+<hr>
+<h2>Day 60-90（運用フェーズ）</h2>
+<p>公開30日を超えたら、運用契約 or 追加プロジェクトのフェーズへ。</p>
+<ul>
+<li>月次運用レポート（GA4 / GSC / Lighthouse）</li>
+<li>月1回のクライアントMTG</li>
+<li>軽微な追加コンテンツ・修正</li>
+<li>大規模改修は別案件として見積・契約</li>
+</ul>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="./deploy-day.html"><code>runbooks/deploy-day.md</code></a></li>
+<li><a href="./new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a></li>
+<li><a href="../templates/delivery-reports.html"><code>templates/delivery-reports.md</code></a></li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section><section id="1password-teams" class="chapter handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：1Password Teams 契約・セットアップ手順書</h1>
+<blockquote>
+<p>Phase 1 で実行する。櫻井CTOが主導、橋本CEOが予算承認。</p>
+</blockquote>
+<hr>
+<h2>なぜ 1Password Teams か</h2>
+<p>現状、WP管理画面ログイン情報・サーバー認証情報・SaaSログインが各個人PCのローカル（<code>C:\Users\hashi\.vaizo\secrets\</code>等）に分散して保管されている。</p>
+<p>これは以下のリスクをはらむ：</p>
+<ol>
+<li><strong>アクセス不能リスク</strong>: 担当者の個人PCに障害が起きたら他のメンバーが対応できない</li>
+<li><strong>二重管理リスク</strong>: 複数人で同じ案件を扱う際、最新パスワードがどこにあるか分からない</li>
+<li><strong>退職時リスク</strong>: メンバーが退職した際、当人が握っていた認証情報の引継ぎが煩雑</li>
+<li><strong>監査ログ不在</strong>: 誰がいつどのパスワードを参照したかの記録がない</li>
+</ol>
+<p>1Password Teams を導入することで上記すべてに対応できる。</p>
+<hr>
+<h2>コスト試算</h2>
+<ul>
+<li>プラン: 1Password Teams Business</li>
+<li>料金: 月額 $7.99/ユーザー（年契約）または $9.99/ユーザー（月契約）</li>
+<li>VAIZER 5名: 月額 $40 〜 $50（年間 $480 〜 $600）</li>
+</ul>
+<p>橋本CEO予算承認後に契約。</p>
+<hr>
+<h2>セットアップ手順</h2>
+<h3>Step 1: トライアル契約（櫻井CTO）</h3>
+<ol>
+<li><a href="https://1password.com/teams/">https://1password.com/teams/</a> にアクセス</li>
+<li>「Try free for 14 days」をクリック</li>
+<li>必要情報を入力:<ul>
+<li>チーム名: <code>VAIZO</code></li>
+<li>管理者メール: <code>info@vaizo.jp</code> 配下の管理者専用アドレス（例: <code>admin@vaizo.jp</code>）</li>
+<li>言語: 日本語</li>
+</ul>
+</li>
+<li>クレジットカード登録（トライアル中は課金されない）</li>
+<li>「Secret Key」を安全な場所に保管（重要）</li>
+</ol>
+<h3>Step 2: Vault 設計（櫻井CTO）</h3>
+<p>トライアル開始後、Vault 構造を以下のように作成：</p>
+<table>
+<thead>
+<tr>
+<th>Vault名</th>
+<th>内容</th>
+<th>アクセス権</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Personal</code></td>
+<td>個人用（既定）</td>
+<td>各個人</td>
+</tr>
+<tr>
+<td><code>Shared</code></td>
+<td>全員アクセス可（既定）</td>
+<td>全VAIZER</td>
+</tr>
+<tr>
+<td><code>VAIZO-Internal</code></td>
+<td>社内ツール管理者権限（GitHub・Slack・Drive 等）</td>
+<td>経営陣（橋本CEO・櫻井CTO）</td>
+</tr>
+<tr>
+<td><code>Enter-Web-Operations</code></td>
+<td>共通の運用認証（VAIZO自体のサーバー・ドメイン）</td>
+<td>VAIZER 5名</td>
+</tr>
+<tr>
+<td><code>Client-{slug}</code></td>
+<td>案件ごとの認証情報</td>
+<td>案件アサイン者のみ（必要時招待）</td>
+</tr>
+</tbody></table>
+<h3>Step 3: VAIZER 招待（櫻井CTO）</h3>
+<ol>
+<li>1Password Web画面 → 「Admin Console」→「People」→「Invite Member」</li>
+<li>各VAIZER のメールアドレスを入力</li>
+<li>デフォルト Vault は <code>Personal</code> + <code>Shared</code></li>
+<li>個別案件の Vault は案件アサイン時に追加</li>
+</ol>
+<p>VAIZER 招待リスト（Phase 1 時点）:</p>
+<ul>
+<li><input disabled="" type="checkbox"> 橋本友太郎（CEO）</li>
+<li><input disabled="" type="checkbox"> 櫻井理也（CTO）</li>
+<li><input disabled="" type="checkbox"> 櫻井みどり（制作）</li>
+<li><input disabled="" type="checkbox"> 小野寺陸斗（制作）</li>
+<li><input disabled="" type="checkbox"> OneBe代表（必要時のみ案件単位で）</li>
+</ul>
+<h3>Step 4: 既存 secrets の移管（櫻井CTO + 橋本CEO）</h3>
+<ol>
+<li><code>C:\Users\hashi\.vaizo\secrets\</code> にある全認証情報をリストアップ</li>
+<li>各ファイルを 1Password の対応 Vault に新規アイテムとして登録</li>
+<li>アイテム種別:<ul>
+<li>WP管理画面: <code>Login</code> カテゴリ（URL + ユーザー名 + パスワード）</li>
+<li>サーバー: <code>Server</code> カテゴリ</li>
+<li>APIキー: <code>API Credential</code> カテゴリ</li>
+</ul>
+</li>
+<li>移管確認後、ローカルファイルは <strong>暗号化バックアップ → 削除</strong><ul>
+<li>ローカルバックアップ先: <code>C:\Users\hashi\.vaizo\secrets-archived\encrypted.zip</code>（パスフレーズ保護）</li>
+<li>その後、<code>secrets\</code> フォルダの中身を削除（フォルダは残す）</li>
+</ul>
+</li>
+</ol>
+<h3>Step 5: 1Password CLI 導入（任意・実装担当者）</h3>
+<p>スクリプトから認証情報を呼び出せるようにする：</p>
+<pre><code class="language-bash"># Windows (winget)
+winget install AgileBits.1Password.CLI
+
+# 動作確認
+op --version
+
+# サインイン
+op signin
+</code></pre>
+<p>スクリプトでの使用例:</p>
+<pre><code class="language-bash"># WP管理画面パスワードを環境変数にセット
+export WP_PASSWORD=$(op read &quot;op://Client-RBP/wp-admin/password&quot;)
+
+# Codex CLI で参照
+codex exec ... --env &quot;WP_PASSWORD=$WP_PASSWORD&quot; ...
+</code></pre>
+<h3>Step 6: 運用ルール周知（櫻井CTO）</h3>
+<h4>鉄則</h4>
+<ol>
+<li><strong>本番認証情報は Slack/メール/Drive/GitHub に直接貼らない</strong></li>
+<li><strong>認証情報を渡したい時は 1Password の「Share」機能で時限式リンクを生成</strong></li>
+<li><strong>退職・契約終了時は該当 Vault からの権限削除を即実行</strong></li>
+<li><strong>2要素認証（2FA）必須</strong>: 全ユーザーに対して強制設定</li>
+<li><strong>Master Password は Slack/メール/Drive に書かない</strong></li>
+</ol>
+<h4>教育</h4>
+<ul>
+<li>全VAIZER に <a href="./06-onboarding.html"><code>handbook/06-onboarding.md</code></a> の更新版を周知</li>
+<li>30分の Zoom セッションで全員の初期セットアップを支援</li>
+</ul>
+<h3>Step 7: 14日トライアル後の本契約判断（橋本CEO）</h3>
+<p>トライアル14日後に：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 利用率（誰が何を保管したか）を確認</li>
+<li><input disabled="" type="checkbox"> コスト・運用負荷とリスク低減のバランスを評価</li>
+<li><input disabled="" type="checkbox"> 本契約 or 別ソリューション（Bitwarden Teams、社内自前 等）を判断</li>
+</ul>
+<p>本契約推奨: 月額 $40-50 で得られるリスク低減は十分に見合う。</p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../MAP.html"><code>MAP.md</code></a> §3 機密情報（1Password Teams - 導入予定）</li>
+<li><a href="../handbook/06-onboarding.html"><code>handbook/06-onboarding.md</code></a> Day1 セットアップ</li>
+<li><a href="../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 1-B WPログイン情報</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</section>
+</body>
+</html>

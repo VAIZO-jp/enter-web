@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WP最適化版作成プロンプト（4-0） — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>WP最適化版作成プロンプト（4-0）</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 4-0 から呼び出される AI 指示文。
+このテンプレートをそのままコピーして {{プレースホルダ}} を埋め、Claude Code に貼り付ける。</p>
+</blockquote>
+<hr>
+<h2>WP最適化を依頼</h2>
+<p>最終版HTML（<code>{{最終版HTMLファイル名}}</code>）を WordPress 固定ページ用に最適化してください。</p>
+<h2>最適化要件</h2>
+<ol>
+<li><code>&lt;head&gt;</code> 内の <code>&lt;meta&gt;</code> / <code>&lt;link&gt;</code> / <code>&lt;style&gt;</code> を WP テーマと重複しないように整理</li>
+<li><code>&lt;header&gt;</code> / <code>&lt;footer&gt;</code> / <code>&lt;nav&gt;</code> はテーマに同等のものがあるため削除（テーマ側と統合）</li>
+<li><strong>インラインCSSは body スコープ化</strong>（例: <code>body.page-{{対象固定ページslug}} .xxx { ... }</code> で囲って既存テーマCSSと干渉しないように）</li>
+<li>インラインJSはIIFEまたはモジュール化（テーマjQuery等との衝突を防止）</li>
+<li><code>canonical</code> / <code>og:url</code> / <code>twitter:url</code> / JSON-LD の <code>url</code> を <code>{{公開URL}}</code> に書き換え</li>
+<li>画像 <code>src</code> を WPメディアアップロード後のURL（<code>https://{{対象ドメイン}}/wp-content/uploads/YYYY/MM/</code>）に一括置換</li>
+<li>CSP <code>&lt;meta&gt;</code> タグは WPサーバ設定と整合がなければ削除</li>
+<li>GTM / GA タグは既存テーマで設定済みなら削除</li>
+</ol>
+<h2>出力先</h2>
+<p><code>{{案件フォルダ}}/01_WEBサイト刷新サービス/WP最適化版/{{最終版HTMLファイル名}}_wp.html</code></p>
+<p>加えて、最適化前後の差分（diff）と、各変更点の理由を Markdown で同フォルダに置いてください。</p>
+<hr>
+<h2>デモ環境構築の依頼</h2>
+<p>上記で出力した「WP最適化版HTML」をデモ環境にホストして、確認URLを教えてください。</p>
+<h3>デモ環境の作り方（推奨）</h3>
+<ul>
+<li><strong>GitHub Pages にデプロイ</strong>。リポジトリは <strong>必ずプライベート＋招待制</strong> で運用（公開リポジトリだとコードが読まれて脆弱性を突かれる可能性があるため、VAIZO方針で禁止）</li>
+<li>クライアント確認用に共有する場合は <strong>staticrypt</strong> 等のパスワード保護プレビューを使う</li>
+<li>リポジトリ名: <code>{{案件略称}}-wp-demo</code></li>
+<li>ブランチ: <code>main</code></li>
+<li>パスワード保護する場合はパスワードも返してください</li>
+</ul>
+<h3>確認URL（とパスワード）を返してください</h3>
+<hr>
+<h2>デモ確認のチェック手順</h2>
+<ol>
+<li>AIから渡されたデモURLをChromeで開く（パスワード保護なら受領パスを入力）</li>
+<li><a href="./05-ai-test.html"><code>05-ai-test.md</code></a> のプロンプトを「対象URL＝デモURL」に書き換えて、AIに全自動テストを依頼</li>
+<li>AIテストレポートで全項目OKなら、本番貼り付け（4-1）に進む</li>
+<li>NGがあれば、AIに「ここを直して」と差分とレポートを渡して再最適化を依頼。OKになるまで繰り返す</li>
+</ol>
+<h2>3段階デモ運用（推奨）</h2>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① クライアント確認用デモ</td>
+<td>GitHub Pages プライベート＋staticrypt保護。デザイン・コピー・写真の最終OKをもらう</td>
+</tr>
+<tr>
+<td>② 開発確認用デモ</td>
+<td>ローカルWP or ステージングWPで実際にWPテーマと統合確認</td>
+</tr>
+<tr>
+<td>③ 本番（4-1以降）</td>
+<td>②でAIテスト全項目OKならここに進む</td>
+</tr>
+</tbody></table>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

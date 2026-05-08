@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAP — データ保存場所・アクセス地図 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>MAP — V/ENTER WEB 事業部 データ保存場所・アクセス地図</h1>
+<blockquote>
+<p>「何が、どこに、どうアクセスすれば手に入るか」を1枚で示すリポジトリの中で最も重要なファイル。
+新規メンバー・AIエージェントは <strong>必ず最初にここを開く</strong>。</p>
+</blockquote>
+<p>最終更新: 2026-05-09</p>
+<hr>
+<h2>0. 鉄則</h2>
+<table>
+<thead>
+<tr>
+<th>鉄則</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>機密はGitHubに置かない</strong></td>
+<td>パスワード・APIキー・顧客個人情報は 1Password Teams または Drive シークレットフォルダ</td>
+</tr>
+<tr>
+<td><strong>議事録の録音・文字起こし全文はGitHubに置かない</strong></td>
+<td>個人言及多量。GitHubには要点サマリのみ</td>
+</tr>
+<tr>
+<td><strong>「とりあえずローカル」は避ける</strong></td>
+<td>案件成果物は最終的に Drive または GitHub のどちらかに必ず正本を置く</td>
+</tr>
+<tr>
+<td><strong>正本がどちらか曖昧な状態を作らない</strong></td>
+<td>各資源の「正本（Source of Truth）」は本ファイルで明示</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1. リポジトリ・ソースコード</h2>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>場所</th>
+<th>正本</th>
+<th>アクセス権</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本リポジトリ（V/ENTER WEB ハンドブック）</strong></td>
+<td><code>VAIZO-jp/enter-web</code> (Private)</td>
+<td>GitHub</td>
+<td>VAIZO-jp organization メンバー</td>
+</tr>
+<tr>
+<td><strong>VAIZO worklog（業務記録Issue/PR）</strong></td>
+<td><code>VAIZO-jp/VAIZO</code> (Private)</td>
+<td>GitHub</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>案件成果物（WP最適化版HTML、デモコード）</strong></td>
+<td><code>VAIZO-jp/{client-slug}-site</code> (Private、案件ごと)</td>
+<td>GitHub</td>
+<td>案件ごとに招待</td>
+</tr>
+<tr>
+<td>ローカルワーク領域（一時的）</td>
+<td><code>C:\Users\nnkre\enter-web\</code> 等</td>
+<td>ローカル</td>
+<td>個人PC</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>2. ドキュメント・ナレッジ（Google Drive）</h2>
+<h3>共有ドライブB（メイン、ID: <code>0AKd10MEp7QHUUk9PVA</code>）</h3>
+<table>
+<thead>
+<tr>
+<th>パス</th>
+<th>フォルダID</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>02_事業部別_EnterWebAI_AIWebサイト制作/</code></td>
+<td><code>1I6ERLluC2LR4i6kpYgp8qTJYzQDITzV7</code></td>
+<td><strong>V/ENTER WEB事業部のメインフォルダ</strong>。案件ごとのサブフォルダ + マニュアル</td>
+</tr>
+<tr>
+<td>上記配下 <code>📚マニュアル/</code></td>
+<td><code>1bY70XbFtuwkNJ5ajHibE8-PsuT7KUHCH</code></td>
+<td>営業ガイドライン・WP公開手順書の正本（GitHub移管中）</td>
+</tr>
+<tr>
+<td>上記配下 <code>00_アライアンス_パートナー/</code></td>
+<td><code>1gFarVAjbm4u1c2trSjVVsKwMA8wgHivD</code></td>
+<td>OneBe等の業務委託パートナー資料</td>
+</tr>
+<tr>
+<td><code>006_経理部_事務系・経費精算等/</code></td>
+<td><code>1Ht8Eyfl1Y61aOp-wNFvy0evqhXA-73iK</code></td>
+<td>経費精算（Enter Web案件の発注書・請求書もここ）</td>
+</tr>
+<tr>
+<td><code>006_経理部.../01_帳票テンプレート/</code></td>
+<td><code>1Bv8-l2_Z6CldW8w716AU0EZ4I5wUdOI9</code></td>
+<td>請求書/領収書/支払通知書/納品書/見積書/発注書</td>
+</tr>
+<tr>
+<td><code>VAIZO_ブランドアセット/</code></td>
+<td><code>11KI_j_jqYTq8lApqWT4s90pViPQJZ40a</code></td>
+<td>ロゴ・キービジュアル・SNSテンプレ</td>
+</tr>
+</tbody></table>
+<h3>重要ドキュメントID（直接アクセス用）</h3>
+<table>
+<thead>
+<tr>
+<th>文書名</th>
+<th>Doc ID</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LP制作7ステップ</td>
+<td><code>1W3yK-bH3KLN1k6pGk3PDzWMA94AlncfczO8EtdxS6w4</code></td>
+<td>現役</td>
+</tr>
+<tr>
+<td>WP公開汎用版手順書（Drive版）</td>
+<td><code>1XK4epQJSMDqlXkXMx9bhlFgi1wkhundnJBlAK8bIyW4</code></td>
+<td><strong>GitHub <code>handbook/04-wp-publish-guide.md</code> に正本移管予定</strong></td>
+</tr>
+<tr>
+<td>Claude Code × Codex CLI 運用ガイド</td>
+<td><code>1qWTpds1dU3CKTpmQYhXpxl6yNJO9RfVjNX6leYKxvas</code></td>
+<td><strong>GitHub <code>handbook/03-codex-claude-workflow.md</code> に正本移管予定</strong></td>
+</tr>
+<tr>
+<td>V/ENTER 営業ガイドライン（脆弱性レポート）</td>
+<td><code>1VgoW0gmPaZVkZs1GSLvzYEDCBXPO0Dtt3nV_E2tM1Sw</code></td>
+<td><strong>GitHub <code>handbook/05-vulnerability-scan.md</code> に正本移管予定</strong></td>
+</tr>
+<tr>
+<td>WordPressへ下書き保存する手順</td>
+<td><code>1AnEhStpeb5xIC8gQI9TUHYIZS0HHZWI8wOW4fqS2RWE</code></td>
+<td>現役（v1.0、2026-04-22）</td>
+</tr>
+<tr>
+<td>仙台レトロバックページ修正ログ</td>
+<td><code>1KqjiYq5fP9-qYPgYJLTjDwpIi6_fEDWpPWsocJpcQK4</code></td>
+<td>案件記録（保存）</td>
+</tr>
+<tr>
+<td>VAIZO Design Policy v1</td>
+<td><code>1KB5KDcZGU_ukdsSilP_5h3FcFGcRXZLa4O0MlwiA-B0</code></td>
+<td><strong>GitHub <code>handbook/02-design-policy.md</code> に正本移管予定</strong></td>
+</tr>
+</tbody></table>
+<h3>Drive 書き込み用 OAuth トークン</h3>
+<ul>
+<li>場所: <code>C:\Users\nnkre\drive_upload\token.json</code></li>
+<li>スコープ: <code>drive.file</code>（自アプリ作成ファイルのみ書き込み）</li>
+<li>用途: 自動化スクリプトでDriveに新規ファイルアップロード</li>
+<li>詳細: メモリ <code>reference_drive_upload_token.md</code> 参照</li>
+</ul>
+<hr>
+<h2>3. 機密情報（1Password Teams - 導入予定）</h2>
+<blockquote>
+<p>Phase 1 で 1Password Teams をトライアル契約する。それまでは下記「暫定保管場所」を使用。</p>
+</blockquote>
+<h3>1Password Vault 設計（予定）</h3>
+<table>
+<thead>
+<tr>
+<th>Vault名</th>
+<th>内容</th>
+<th>アクセス権</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>VAIZO-Internal</code></td>
+<td>社内ツール（GitHub、Slack、Drive等）の管理者権限</td>
+<td>経営陣（橋本・櫻井CTO）</td>
+</tr>
+<tr>
+<td><code>Enter-Web-Operations</code></td>
+<td>WP管理画面・サーバー・ドメインの共有用</td>
+<td>VAIZER 5名 + 必要時のみOneBe</td>
+</tr>
+<tr>
+<td><code>Client-{client-slug}</code></td>
+<td>案件ごとのWP/サーバー/SaaSログイン</td>
+<td>案件アサイン者のみ</td>
+</tr>
+</tbody></table>
+<h3>暫定保管場所（1Password導入まで）</h3>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>暫定保管場所</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WP管理画面ログイン情報</td>
+<td><code>C:\Users\hashi\.vaizo\secrets\</code> または各個人PCのシークレットフォルダ</td>
+</tr>
+<tr>
+<td>サーバー・ドメインログイン</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>Google系（GA4、GSC、GTM、広告）</td>
+<td>各VAIZER の Google アカウント上で権限付与</td>
+</tr>
+</tbody></table>
+<h3>絶対NG</h3>
+<ul>
+<li>Slack DM/Channel への直接貼付</li>
+<li>GitHub Issue/PR への直接貼付（プライベートでも避ける）</li>
+<li>Drive 共有可リンク化されたドキュメントへの直接貼付</li>
+</ul>
+<hr>
+<h2>4. Slack（VAIZO ワークスペース）</h2>
+<p>ワークスペースID: <code>T0APCH74JJY</code></p>
+<h3>V/ENTER WEB 関連チャンネル</h3>
+<table>
+<thead>
+<tr>
+<th>チャンネル名</th>
+<th>ID</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>事業部別_enter-ai</code></td>
+<td><code>C0ARXUP0L21</code></td>
+<td><strong>V/ENTER WEB の主チャンネル</strong>（旧名「事業部別_webのやつ」）</td>
+</tr>
+<tr>
+<td><code>all-onebe-vaizoアライアンスチーム</code></td>
+<td><code>C0B1C3ZKR4L</code></td>
+<td>OneBeパートナーシップ</td>
+</tr>
+<tr>
+<td><code>vaiso-onebe-ナレッジの種</code></td>
+<td><code>C0B12R4AQ67</code></td>
+<td>OneBe との知見共有</td>
+</tr>
+<tr>
+<td><code>claudeworks</code></td>
+<td><code>C0AQSNX4YLW</code></td>
+<td>Claude/AI実装作業</td>
+</tr>
+<tr>
+<td><code>事業別_v-aivou-ai導入支援</code></td>
+<td><code>C0AQDNXERKR</code></td>
+<td>関連事業（V/AIBOU）</td>
+</tr>
+<tr>
+<td><code>all-株式会社vaizo</code></td>
+<td><code>C0AP8VAUYSE</code></td>
+<td>全社一般</td>
+</tr>
+<tr>
+<td><code>情報システム部</code></td>
+<td><code>C0AQWRMB46R</code></td>
+<td>IT・アカウント発行</td>
+</tr>
+<tr>
+<td><code>経理部_経費精算-仕訳</code></td>
+<td><code>C0AVBV8AJ4W</code></td>
+<td>経費精算</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. 議事録・録音（Plaud + Drive）</h2>
+<table>
+<thead>
+<tr>
+<th>種別</th>
+<th>場所</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>録音生データ</td>
+<td>Plaud（外部サービス）</td>
+<td>Plaud アカウントで管理</td>
+</tr>
+<tr>
+<td>文字起こし共有リンク</td>
+<td>Plaud 公開リンク（Slackに投下）</td>
+<td>リンクは社内限定運用</td>
+</tr>
+<tr>
+<td>議事録要点サマリ</td>
+<td><strong>GitHub Issue または <code>worklog/YYYY-MM/</code></strong></td>
+<td>要点のみ転載、生データは置かない</td>
+</tr>
+<tr>
+<td>Tactiq 文字起こし</td>
+<td>案件ごとの Drive <code>議事録/</code> フォルダ</td>
+<td>クライアント関連は個人言及あり、外部送信禁止</td>
+</tr>
+</tbody></table>
+<p>直近の議事録例（2026-05-07 V/ENTER WEB会議）:</p>
+<ul>
+<li>Plaud共有リンク: <code>https://web.plaud.ai/s/pub_ec652187-...</code>（Slack #事業部別_enter-ai に投下済）</li>
+<li>テーマ: 手順書レビュー・デモサイト運用・脆弱性レポートとGit移行方針</li>
+</ul>
+<hr>
+<h2>6. 案件管理</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>場所</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>案件作業フォルダ（Drive）</td>
+<td><code>02_事業部別_EnterWebAI_AIWebサイト制作/{案件正式名称}/</code></td>
+</tr>
+<tr>
+<td>案件Issue（GitHub）</td>
+<td><code>VAIZO-jp/VAIZO</code> の <code>type:team</code> ラベル + <code>enter-web</code> ラベル</td>
+</tr>
+<tr>
+<td>案件成果物コード</td>
+<td><code>VAIZO-jp/{client-slug}-site</code>（必要時に作成）</td>
+</tr>
+<tr>
+<td>案件タイムシート</td>
+<td><code>vaizo-web-ops/</code> 配下 Excel（Phase 0 で社労士レビュー後に正式運用）</td>
+</tr>
+<tr>
+<td>修正ログ</td>
+<td>案件Drive直下の Excel（修正ID <code>F-{案件略号}-{YYYYMM}-{連番:03桁}</code>）</td>
+</tr>
+</tbody></table>
+<h3>公開済・進行中案件（2026-05-09時点）</h3>
+<table>
+<thead>
+<tr>
+<th>案件名</th>
+<th>クライアント</th>
+<th>公開URL</th>
+<th>フォルダID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仙台レトロバックページ</td>
+<td>有限会社シティアミューズプランニング</td>
+<td><a href="https://retro-backpage.com/">https://retro-backpage.com/</a></td>
+<td><code>1c8VIDSkvo6jI1ahjuE3tWdS0qYN2fQcx</code></td>
+</tr>
+<tr>
+<td>デモ_高級バー_TopView</td>
+<td>デモ案件（BAR NOIR）</td>
+<td>（未公開・デモ）</td>
+<td><code>1GAvzoiZejlZIUKd0bY0rPhIdRZhM_9Jb</code></td>
+</tr>
+<tr>
+<td>サンプル株式会社</td>
+<td>デモ案件</td>
+<td>（未公開・デモ）</td>
+<td><code>1k3Fq8DzLVH26OleyxaQSjtGcPMGMtLye</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>7. 外部サービス・SaaS</h2>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>用途</th>
+<th>管理者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GitHub (<code>VAIZO-jp</code> org)</td>
+<td>コード・ドキュメント</td>
+<td>櫻井理也CTO</td>
+</tr>
+<tr>
+<td>Google Workspace</td>
+<td>Drive・Gmail・Calendar</td>
+<td>橋本CEO</td>
+</tr>
+<tr>
+<td>Slack</td>
+<td>チームコミュニケーション</td>
+<td>橋本CEO</td>
+</tr>
+<tr>
+<td>Plaud</td>
+<td>録音・文字起こし</td>
+<td>個別アカウント</td>
+</tr>
+<tr>
+<td>Tactiq</td>
+<td>Meet/Zoom議事録</td>
+<td>個別アカウント</td>
+</tr>
+<tr>
+<td>Vercel</td>
+<td>デモサイトホスト</td>
+<td>櫻井理也CTO</td>
+</tr>
+<tr>
+<td>Cloudflare</td>
+<td>DNS・Workers（一部案件）</td>
+<td>櫻井理也CTO</td>
+</tr>
+<tr>
+<td>1Password Teams（導入予定）</td>
+<td>機密管理</td>
+<td>橋本CEO（予算）/ 櫻井CTO（運用）</td>
+</tr>
+<tr>
+<td>OpenAI（Codex CLI 経由）</td>
+<td>実装ドラフト</td>
+<td>各個人 ChatGPT Plus 以上</td>
+</tr>
+<tr>
+<td>Anthropic（Claude Code）</td>
+<td>司令塔・レビュー</td>
+<td>各個人 Claude Pro 以上</td>
+</tr>
+</tbody></table>
+<h3>外部スキャン・診断ツール（脆弱性レポート用）</h3>
+<p>詳細は <a href="./handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> を必ず確認してから使用すること。</p>
+<table>
+<thead>
+<tr>
+<th>ツール</th>
+<th>用途</th>
+<th>制約</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>securityheaders.com</td>
+<td>HTTPセキュリティヘッダ</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>Mozilla Observatory</td>
+<td>公開情報スコアリング</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>SSL Labs</td>
+<td>SSL/TLS設定診断</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>Lighthouse</td>
+<td>パフォーマンス・SEO</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>Wappalyzer / WhatRuns</td>
+<td>CMS・プラグイン検出</td>
+<td>パッシブ・OK</td>
+</tr>
+<tr>
+<td>WPScan (<code>--no-banner</code>)</td>
+<td>WordPress公開情報</td>
+<td>パッシブ限定</td>
+</tr>
+<tr>
+<td>OWASP ZAP (Passive Scan のみ)</td>
+<td>公開情報の観察</td>
+<td>Active Scanは禁止</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>8. 担当者連絡先</h2>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>名前</th>
+<th>Slack User ID</th>
+<th>主管</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CEO・営業全体</td>
+<td>橋本友太郎</td>
+<td><code>U0ANTGMDFPZ</code></td>
+<td>営業・予算・経営判断</td>
+</tr>
+<tr>
+<td>CTO・技術全体</td>
+<td>櫻井理也</td>
+<td><code>U0AP5H2KM1B</code></td>
+<td>本リポジトリ・手順書・技術判断</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>櫻井みどり</td>
+<td>（Slackで確認）</td>
+<td>案件制作・QC</td>
+</tr>
+<tr>
+<td>制作担当</td>
+<td>小野寺陸斗</td>
+<td><code>U0AS4UWBP6G</code></td>
+<td>案件制作・公開作業</td>
+</tr>
+<tr>
+<td>業務委託</td>
+<td>OneBe</td>
+<td>（アライアンスチーム）</td>
+<td>案件支援</td>
+</tr>
+</tbody></table>
+<h3>エスカレーション順</h3>
+<ol>
+<li>案件CTO（櫻井理也）にSlack DM</li>
+<li>反応がなければ Slack <code>#事業部別_enter-ai</code> でメンション</li>
+<li>緊急時は橋本CEOに連絡（番号は1Password共有 Vault に格納予定）</li>
+</ol>
+<hr>
+<h2>9. 会社情報（公式）</h2>
+<ul>
+<li><strong>株式会社VAIZO</strong> (<a href="https://vaizo.jp">vaizo.jp</a>)</li>
+<li>本店: 宮城県仙台市青葉区中央四丁目1番26号</li>
+<li>設立: 2026年4月、資本金: 625万円</li>
+<li>代表取締役: 橋本友太郎(CEO)、櫻井理也(CTO)</li>
+<li>メール: <code>info@vaizo.jp</code>（<code>.co.jp</code> は使わない）</li>
+</ul>
+<blockquote>
+<p><strong>注</strong>: vaizo.jp に V/ENTER WEB の事業説明はまだ未掲載（2026-05-09時点）。社内向け事業説明は <a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a> を参照。</p>
+</blockquote>
+<hr>
+<h2>10. このMAP.md自体のメンテナンス</h2>
+<ul>
+<li>月1回（毎月第1月曜）レビュー、更新</li>
+<li>新規SaaS導入・新規案件発生時は即追記</li>
+<li>リンク切れ・フォルダID変更は気づいた時点でPR</li>
+<li>Phase 3 で「リンク切れ自動検出 + Issue起票」のGitHub Actionsを導入予定</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

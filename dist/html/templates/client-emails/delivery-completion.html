@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>メール: 公開完了報告 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>メール雛形：公開完了報告</h1>
+<blockquote>
+<p><a href="../../handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a> Step 5-8 で送付。</p>
+</blockquote>
+<hr>
+<h2>件名</h2>
+<pre><code>【公開完了】{{屋号 / 企業名}}様 Webサイトリニューアル 公開のご報告
+</code></pre>
+<h2>本文（雛形）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。VAIZO V/ENTER WEB の {{差出人氏名}} です。
+
+本日 {{YYYY-MM-DD HH:MM}}、{{屋号}} 様のWebサイトリニューアルの公開作業が完了しました。
+
+【公開URL】
+{{公開URL}}
+
+【確認のお願い】
+お手元のPC・スマートフォンから、下記の点をご確認いただけますと幸いです。
+
+1. トップページとお問い合わせフォームが正しく表示されるか
+2. 電話番号タップ・メールリンクが正しく起動するか
+3. 主要なCTA（{{予約 / お問い合わせ / 申込み}}）が動作するか
+4. 文言・写真にお気づきの点がないか
+
+【自動テスト結果】
+公開直後にPlaywrightで全自動テストを実施し、全{{N}}項目OKを確認しています。
+詳細レポートは {{Driveレポート共有URL}} にあります。
+
+【公開後30日以内のサポート】
+公開後30日間は、軽微な修正・調整は無償で承ります。
+{{瑕疵担保期間として契約書記載の期間}}は瑕疵担保の対象です。
+
+何かお気づきの点がございましたら、メールもしくはお電話でご連絡ください。
+
+末筆ながら、{{屋号}}様のますますのご繁栄をお祈り申し上げます。
+
+──────────────
+株式会社VAIZO V/ENTER WEB事業部
+{{差出人氏名}}（{{役割}}）
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>添付推奨</h2>
+<ul>
+<li>公開後の全幅スクリーンショット（PC + スマホ）</li>
+<li>AIテストレポートのサマリ（合格項目数 / NG項目数）</li>
+<li>バックアップファイルの保管場所説明（不測の事態に備えて）</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

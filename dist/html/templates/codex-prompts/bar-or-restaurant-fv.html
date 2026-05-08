@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>飲食・バー業態 FV — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：飲食・バー業態 FV（First View）</h1>
+<blockquote>
+<p>このテンプレートは BAR NOIR デモ案件（2026-05-07）から抽象化したもの。
+飲食店・バー業態の <strong>トップビュー1画面</strong>（縦スクロール不要）を生成するためのプロンプト雛形。</p>
+</blockquote>
+<p>使用方法: 案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt.md</code> としてリネーム。</p>
+<hr>
+<h2>タスク: {{業態}}公式サイトのトップビュー（1ページ・スクロールなしの最初の1画面）</h2>
+<h2>役割</h2>
+<p>あなたは V/ENTER WEB事業部の実装ドラフト担当です。仕様に基づきトップビューを完成形で書いてください。</p>
+<h2>成果物</h2>
+<ul>
+<li>単一HTMLファイル <code>index.html</code>（CSSはhead内に内包、画像は外部URL不要・SVGまたはCSSグラデーションで表現）</li>
+<li>静的サイトとしてダブルクリックで開けば即見られる状態</li>
+</ul>
+<h2>想定店舗</h2>
+<ul>
+<li><strong>業態</strong>: {{大人の隠れ家バー / オーセンティックバー / イタリアン / 鮨 / 焼肉 / 居酒屋}}</li>
+<li><strong>立地</strong>: {{銀座の路地裏、地下1階、カウンター8席のみ}}</li>
+<li><strong>屋号</strong>: {{&quot;BAR NOIR&quot;（ノワール）}}</li>
+<li><strong>ミッション</strong>: {{一杯のために訪れる夜を、丁寧に。}}</li>
+<li><strong>客層</strong>: {{30代後半〜60代、紹介・常連中心、初めての客にも丁寧に応対}}</li>
+</ul>
+<h2>デザイン要件（非交渉）</h2>
+<ul>
+<li>ファーストビュー1画面で完結（縦スクロール不要、横幅100vw・高さ100vh想定）</li>
+<li><strong>配色</strong>: 黒（<code>#0a0a0a</code> 基調）、ホワイトオフ（<code>#f5f3ee</code>）、極控えめなゴールドアクセント（<code>#b89b6a</code>）— 派手な金は使わない</li>
+<li><strong>書体</strong>: セリフ系英字（Playfair Display または Cormorant Garamond）+ 明朝系日本語（Noto Serif JP）。Google Fontsで読み込み可</li>
+<li><strong>レイアウト</strong>: 左に縦書き屋号 or ロゴ、中央〜右に余白多めのキャッチ、下部に小さくナビゲーション</li>
+<li><strong>ナビ</strong>: ABOUT / {{WHISKY / DRINKS / MENU}} / RESERVATION / ACCESS</li>
+<li><strong>キャッチコピー</strong>:<ul>
+<li>メイン: 「{{一杯のために訪れる、銀座の夜。}}」</li>
+<li>英文サブ: &quot;{{A counter for those who choose silence.}}&quot;</li>
+</ul>
+</li>
+<li><strong>営業情報の小さな表示</strong>: &quot;{{OPEN 19:00 / LAST CALL 02:00 / SUNDAY CLOSED}}&quot;</li>
+<li><strong>予約電話番号</strong>: <code>{{03-0000-0000}}</code> を右上に配置（電話のみ受付という設定）</li>
+<li>全体に1〜2pxの細罫線・上品な余白・微細なテクスチャ感（ノイズフィルター/グレイン）を適度に</li>
+<li>ホバー時の挙動は控えめに（線が引かれる程度）</li>
+</ul>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>仕様外の機能を勝手に追加しない（フォーム・モーダル・SNSアイコン羅列は不要）</li>
+<li>軍事比喩・否定列挙・採用語は使わない</li>
+<li>TODO で埋めず、その場で完成させる</li>
+<li>画像は外部URL不要。SVG/CSSで雰囲気を作る</li>
+<li>アクセシビリティ: コントラスト比AA以上、<code>alt</code> / <code>aria</code> 適切に</li>
+<li>飲食/店舗案件のため、追従バーで電話番号CTAを常設（FV段階では非表示でもOK、後段セクションで表示）</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>index.html</code> を開くと、上記要件をすべて満たしたトップビューが1画面で表示される</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+<li><input disabled="" type="checkbox"> W3C的に妥当なHTML5</li>
+<li><input disabled="" type="checkbox"> <code>npx --yes html-validate index.html</code> 通過</li>
+</ul>
+<h2>最終アウトプット</h2>
+<p><code>index.html</code> の完全なコードと、必要であれば短い実装メモを返してください。</p>
+<hr>
+<h2>拡張パターン（FV後にLP化する場合）</h2>
+<p>FVが承認されたら、<a href="./extension-sections.html"><code>extension-sections.md</code></a> を使って6セクションを追加し、1ページ完結のLPに展開する。</p>
+<h2>過去案件の参考</h2>
+<ul>
+<li>BAR NOIR デモ: Drive <code>1GAvzoiZejlZIUKd0bY0rPhIdRZhM_9Jb</code><ul>
+<li><code>codex_prompt.md</code>（FV版）</li>
+<li><code>codex_prompt_v2.md</code>（6セクション拡張版）</li>
+<li><code>codex_out.md</code>、<code>codex_out_v2.md</code></li>
+<li><code>index.html</code>（32KB、html-validate通過済み）</li>
+</ul>
+</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

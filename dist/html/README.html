@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introduction — このリポジトリの読み方 — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>V/ENTER WEB 事業部ハンドブック</h1>
+<blockquote>
+<p>AI（Claude Code + Codex CLI）でWebサイトを高速・高品質に作るための、実務用一元ドキュメント。</p>
+</blockquote>
+<p>このリポジトリは <strong>「未経験者 + AIエージェント」が見れば即動ける</strong> ことを目標に作られています。
+迷ったら <a href="./MAP.html"><code>MAP.md</code></a> と <a href="./handbook/"><code>handbook/</code></a> を最初に開いてください。</p>
+<hr>
+<h2>30秒で分かる V/ENTER WEB</h2>
+<ul>
+<li><strong>株式会社VAIZO の事業部</strong> の一つ。Webサイト制作を中心事業とする</li>
+<li>主軸は <strong>AI活用Web制作</strong>：Claude Code（司令塔）× Codex CLI（実装ドラフト）の分業</li>
+<li>営業手法は <strong>カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ</strong> の三点セット送付（月次300件規模）</li>
+<li>ターゲット業態：<strong>飲食店・バー・ライブハウス・ホームページ業者制作の店舗サイト</strong></li>
+<li>公開実例：<a href="https://retro-backpage.com/">retro-backpage.com</a>（仙台レトロバックページ様、2026-04-30公開）</li>
+</ul>
+<p>公式サイト <a href="https://vaizo.jp">vaizo.jp</a> には現時点で Enter Web の記載がないため、対外的な事業概要も社内向けには <a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a> で補完しています。</p>
+<hr>
+<h2>Day1 セットアップ（5分）</h2>
+<ol>
+<li><strong>このREADMEを読み終える</strong>（今ここ）</li>
+<li><strong><a href="./MAP.html"><code>MAP.md</code></a> を開く</strong> — Drive/Slack/1Password など、全ての情報の在処が1枚にまとまっています</li>
+<li><strong><a href="./handbook/06-onboarding.html"><code>handbook/06-onboarding.md</code></a> を開く</strong> — Day1チェックリストに沿ってアカウント・ツール準備</li>
+<li><strong>Slack <code>事業部別_enter-ai</code>（C0ARXUP0L21）に挨拶投稿</strong></li>
+<li><strong>最初の案件にアサインされたら <a href="./runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> に従う</strong></li>
+</ol>
+<hr>
+<h2>ナビゲーション</h2>
+<table>
+<thead>
+<tr>
+<th>何をしたい</th>
+<th>どこを開く</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>何がどこにあるか知りたい</td>
+<td><a href="./MAP.html"><code>MAP.md</code></a></td>
+</tr>
+<tr>
+<td>事業の全体像を知りたい</td>
+<td><a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a></td>
+</tr>
+<tr>
+<td>営業プロセスを知りたい</td>
+<td><a href="./handbook/01-sales-process.html"><code>handbook/01-sales-process.md</code></a></td>
+</tr>
+<tr>
+<td>デザインルールを知りたい</td>
+<td><a href="./handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a></td>
+</tr>
+<tr>
+<td>Claude × Codex の使い分け</td>
+<td><a href="./handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a></td>
+</tr>
+<tr>
+<td>WordPressに公開する手順</td>
+<td><a href="./handbook/04-wp-publish-guide.html"><code>handbook/04-wp-publish-guide.md</code></a></td>
+</tr>
+<tr>
+<td>脆弱性レポートの送付ルール</td>
+<td><a href="./handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a></td>
+</tr>
+<tr>
+<td>新規メンバーのDay1</td>
+<td><a href="./handbook/06-onboarding.html"><code>handbook/06-onboarding.md</code></a></td>
+</tr>
+<tr>
+<td>新規案件の立ち上げ</td>
+<td><a href="./runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a></td>
+</tr>
+<tr>
+<td>公開当日の段取り</td>
+<td><a href="./runbooks/deploy-day.html"><code>runbooks/deploy-day.md</code></a></td>
+</tr>
+<tr>
+<td>公開後30日のフォロー</td>
+<td><a href="./runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a></td>
+</tr>
+<tr>
+<td>Codex に渡すプロンプト</td>
+<td><a href="./templates/codex-prompts/"><code>templates/codex-prompts/</code></a></td>
+</tr>
+<tr>
+<td>クライアント宛メール雛形</td>
+<td><a href="./templates/client-emails/"><code>templates/client-emails/</code></a></td>
+</tr>
+<tr>
+<td>何かに迷った（判断基準）</td>
+<td><a href="./decision-trees/"><code>decision-trees/</code></a></td>
+</tr>
+<tr>
+<td>何か壊れた・詰まった</td>
+<td><a href="./troubleshooting/"><code>troubleshooting/</code></a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>AIエージェント向けの読み方</h2>
+<p>このリポジトリはAIエージェント（Claude Code、Codex CLI）が読み込んで作業の参照元として使うことを想定しています。</p>
+<p><strong>推奨読み込み順（コンテキスト効率重視）:</strong></p>
+<ol>
+<li><code>README.md</code>（このファイル）</li>
+<li><code>MAP.md</code>（全体像）</li>
+<li>当該タスクに関係する <code>handbook/</code> の該当章</li>
+<li>当該タスクのテンプレ（<code>templates/</code>）</li>
+<li>詰まったら <code>troubleshooting/</code> と <code>decision-trees/</code></li>
+</ol>
+<p><strong>AIエージェントが守ること:</strong></p>
+<ul>
+<li>仕様外の機能を勝手に追加しない</li>
+<li>TODOで埋めず、その場で完成させる</li>
+<li><strong>軍事比喩・否定列挙・採用語・階層用語は使わない</strong>（<a href="./handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a> 参照）</li>
+<li>V/ブランド表記は <strong>半角スラッシュ「/」のみ</strong></li>
+<li>メールアドレスは <code>info@vaizo.jp</code> を使用（<code>.co.jp</code> は使わない）</li>
+<li>飲食/店舗案件は <strong>電話・LINE のCTAを必ず常設</strong></li>
+<li>本文 17px / テーブル 15px / 行間 1.9 厳守</li>
+</ul>
+<hr>
+<h2>コントリビュート</h2>
+<p>このリポジトリは <strong>VAIZO worklog 運用と地続き</strong> です。</p>
+<ul>
+<li>Issue: 新規案件は <code>.github/ISSUE_TEMPLATE/new-client.md</code> で起票</li>
+<li>Branch命名: <code>feature/&lt;issue-num&gt;-&lt;slug&gt;</code> または <code>personal/&lt;issue-num&gt;-&lt;slug&gt;</code></li>
+<li>PR: <code>pull_request_template.md</code> に従う</li>
+<li>レビュー: CODEOWNERS で自動アサインされる人がレビュー</li>
+<li>文書改善は <code>.github/ISSUE_TEMPLATE/doc-improvement.md</code> で歓迎</li>
+</ul>
+<p>slash command は VAIZO repo 側の <code>/worklog-start</code> <code>/worklog</code> を併用可。</p>
+<hr>
+<h2>ライセンス・公開ポリシー</h2>
+<p>本リポジトリは <strong>Private</strong>。VAIZO-jp organization のメンバーのみアクセス可能。
+業務委託メンバー（OneBe等）への共有は橋本CEO承認後、必要なディレクトリのみ Outside Collaborator として招待する運用。</p>
+<h2>連絡先</h2>
+<ul>
+<li>事業部全体・営業: 橋本友太郎（CEO）</li>
+<li>技術・手順書・本リポジトリ: 櫻井理也（CTO）</li>
+<li>制作担当: 櫻井みどり、小野寺陸斗</li>
+<li>業務委託パートナー: OneBe（<a href="./handbook/00-overview.html"><code>handbook/00-overview.md</code></a> 参照）</li>
+</ul>
+<p>詳細は <a href="./MAP.html"><code>MAP.md</code></a> の「担当者連絡先」セクション。</p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

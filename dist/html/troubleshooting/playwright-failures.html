@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playwright のトラブル — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Playwright 関連のトラブルシューティング</h1>
+<blockquote>
+<p><a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> や <a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> で Playwright が使えない場合の対処。</p>
+</blockquote>
+<hr>
+<h2>1. Codex 環境で Playwright モジュールが読み込めない</h2>
+<h3>症状</h3>
+<p>Codex が「<code>playwright</code> モジュールを読み込めず未実施」と出力。</p>
+<h3>原因</h3>
+<p>Codex CLI のサンドボックス環境に Playwright がインストールされていない。</p>
+<h3>対処</h3>
+<p><strong>Claude Code + Playwright MCP</strong> で代替する：</p>
+<ol>
+<li>Claude Code 側に Playwright MCP を有効化</li>
+<li><code>templates/wp-prompts/05-ai-test.md</code> のプロンプトを Claude Code に直接投げる</li>
+<li>Claude が Playwright MCP 経由でブラウザ起動・テスト・スクショ取得</li>
+</ol>
+<p>代替手段（ローカル Playwright）：</p>
+<pre><code class="language-bash">npm init -y
+npm install -D playwright
+npx playwright install chromium
+
+# テストスクリプトを書いて実行
+node test-script.mjs
+</code></pre>
+<hr>
+<h2>2. ローカルで Playwright がブラウザを起動しない</h2>
+<h3>症状</h3>
+<p><code>playwright install</code> 済みなのに <code>browser.launch()</code> が失敗する。</p>
+<h3>原因 / 対処</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chromium がインストールされていない</td>
+<td><code>npx playwright install chromium</code></td>
+</tr>
+<tr>
+<td>ヘッドレスモードで動かない（Linux）</td>
+<td><code>xvfb-run</code> で実行、または <code>headless: true</code></td>
+</tr>
+<tr>
+<td>Windows でパス問題</td>
+<td><code>playwright install</code> を管理者権限で再実行</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>3. Lighthouse スコアが取得できない</h2>
+<h3>症状</h3>
+<p>Playwright Lighthouse プラグインが動かない。</p>
+<h3>対処</h3>
+<p>代替: <a href="https://developers.google.com/speed/docs/insights/v5/get-started">PageSpeed Insights API</a> を使う</p>
+<pre><code class="language-bash">curl &quot;https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={{公開URL}}&amp;strategy=mobile&quot;
+</code></pre>
+<p>または PageSpeed Insights の Web UI:</p>
+<ul>
+<li><a href="https://pagespeed.web.dev/">https://pagespeed.web.dev/</a></li>
+</ul>
+<hr>
+<h2>4. ヘッドレスでスクショが乱れる</h2>
+<h3>症状</h3>
+<p><code>page.screenshot()</code> がデバイスピクセル比やフォントレンダリングで実機と異なる。</p>
+<h3>対処</h3>
+<pre><code class="language-javascript">const browser = await chromium.launch({ headless: true });
+const context = await browser.newContext({
+  viewport: { width: 375, height: 812 },
+  deviceScaleFactor: 2,         // Retina 相当
+  isMobile: true,
+  hasTouch: true,
+  userAgent: &#39;Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) ...&#39;,
+});
+</code></pre>
+<p>特定の幅でテストする場合:</p>
+<pre><code class="language-javascript">const widths = [320, 375, 414, 768, 1024, 1280, 1920];
+for (const width of widths) {
+  const context = await browser.newContext({ viewport: { width, height: 800 } });
+  const page = await context.newPage();
+  await page.goto(&#39;{{公開URL}}&#39;);
+  await page.screenshot({ path: `screenshot-${width}.png`, fullPage: true });
+}
+</code></pre>
+<hr>
+<h2>5. CORS / mixed content エラー</h2>
+<h3>症状</h3>
+<p>Playwright で外部リソース（Google Fonts、CDN画像）が読み込まれない。</p>
+<h3>対処</h3>
+<ul>
+<li><code>--ignore-certificate-errors</code> を Chromium 起動オプションに追加</li>
+<li>もしくはローカルプロキシ経由でリソースを配信</li>
+</ul>
+<hr>
+<h2>6. Playwright が遅い・タイムアウト</h2>
+<h3>対処</h3>
+<pre><code class="language-javascript">// タイムアウトを延長
+page.setDefaultTimeout(60000);  // 60秒
+
+// 不要なリソースをブロック
+await page.route(&#39;**/*.{png,jpg,jpeg,gif,webp}&#39;, route =&gt; route.abort());
+</code></pre>
+<p>LCPが遅い原因が画像なら、それ自体が課題なので画像最適化を先に。</p>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../templates/wp-prompts/05-ai-test.html"><code>templates/wp-prompts/05-ai-test.md</code></a> — 公開後テストプロンプト</li>
+<li><a href="../handbook/03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> §自己検収</li>
+<li><a href="./codex-cli-issues.html"><code>troubleshooting/codex-cli-issues.md</code></a> §4</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>営業プロセス — V/ENTER WEB Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>01 — 営業プロセス</h1>
+<p>V/ENTER WEB の営業は <strong>「カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ」三点セット送付</strong> が中軸。
+本ファイルは骨格のみ。詳細は別途 Phase 2 で充実予定。</p>
+<hr>
+<h2>1. ターゲット選定</h2>
+<table>
+<thead>
+<tr>
+<th>ランク</th>
+<th>業態</th>
+<th>単価帯</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>銀座系高級バー、隠れ家業態、地方の伝説的店舗</td>
+<td>80万〜200万</td>
+<td>BAR NOIR（デモ）</td>
+</tr>
+<tr>
+<td>A</td>
+<td>飲食、ライブハウス、地方の老舗</td>
+<td>30万〜80万</td>
+<td>仙台レトロバックページ（実績）</td>
+</tr>
+<tr>
+<td>B</td>
+<td>ホームページ業者制作の店舗サイト、リニューアル放置型</td>
+<td>10万〜30万</td>
+<td>（継続発掘）</td>
+</tr>
+</tbody></table>
+<p>ターゲティング基準の詳細はメモリ <code>project_venter_targeting.md</code> 参照。</p>
+<h2>2. アプローチ手順</h2>
+<ol>
+<li>公開情報のみで脆弱性スキャン（必ず <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> の2ライン遵守）</li>
+<li>デザインアイデンティティ提案（既存サイトの「らしさ」を抽出して再構築案）</li>
+<li>カスタムデモトップ（FV）を Codex で生成（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a>）</li>
+<li>脆弱性レポート + デモURLをセットで送付（メール雛形 <a href="../templates/client-emails/"><code>templates/client-emails/</code></a>）</li>
+<li>反応があったら商談、契約、本制作</li>
+</ol>
+<h2>3. 月次目標（300件スケール）</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>目標</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>送付</td>
+<td>300件/月</td>
+</tr>
+<tr>
+<td>返信率</td>
+<td>5%以上</td>
+</tr>
+<tr>
+<td>商談化</td>
+<td>3%以上</td>
+</tr>
+<tr>
+<td>成約</td>
+<td>1%以上（≒3件/月）</td>
+</tr>
+</tbody></table>
+<h2>4. クレーム発生時の対応</h2>
+<p>詳細は <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> クレーム対応SOP参照。</p>
+<ul>
+<li>1次対応: 受信30分以内（小野寺・櫻井みどり）</li>
+<li>2次対応: 2時間以内（橋本CEO主導）</li>
+<li>削除依頼は24時間以内対応、ブラックリスト永久登録</li>
+</ul>
+<h2>5. 関連ドキュメント</h2>
+<ul>
+<li><a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a></li>
+<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a></li>
+<li><a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a></li>
+<li>メモリ <code>project_sales_process_v1.md</code></li>
+</ul>
+<hr>
+<p><strong>Phase 2 で本文充実予定</strong>: ターゲット発掘の具体手法、メール文面の精緻化、KPIダッシュボード設計、Slack/CRM運用フロー</p>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>
