@@ -23,6 +23,7 @@ const ROOT = path.resolve(__dirname, "..");
 const DIST_HTML = path.join(ROOT, "dist", "html");
 const DIST_PDF = path.join(ROOT, "dist", "pdf");
 const CSS_PATH = path.join(ROOT, "dist", "css", "vaizo-editorial.css");
+const DOCS_DIR = path.join(ROOT, "docs"); // GitHub Pages 配信ディレクトリ
 
 // ============================================================
 // 1. ハンドブック構造の定義（順序が PDF の章立てになる）
@@ -361,6 +362,25 @@ async function buildPdf(htmlPath) {
 // 8. メイン
 // ============================================================
 
+// ============================================================
+// 9. docs/ にコピー（GitHub Pages 用）
+// ============================================================
+
+async function copyToDocs() {
+  console.log("📦 Copying to docs/ for GitHub Pages...");
+  await fs.rm(DOCS_DIR, { recursive: true, force: true });
+  await fs.cp(DIST_HTML, DOCS_DIR, { recursive: true });
+  await ensureDir(path.join(DOCS_DIR, "pdf"));
+  const pdfSrc = path.join(DIST_PDF, "V_ENTER_WEB_Handbook.pdf");
+  try {
+    await fs.copyFile(pdfSrc, path.join(DOCS_DIR, "pdf", "V_ENTER_WEB_Handbook.pdf"));
+  } catch {
+    console.warn("  ⚠️  PDF が見当たらないため pdf/ コピーをスキップ");
+  }
+  await fs.writeFile(path.join(DOCS_DIR, ".nojekyll"), "");
+  console.log(`  ✓ docs/ updated`);
+}
+
 async function main() {
   const start = Date.now();
   console.log("🛠  V/ENTER WEB Handbook Builder");
@@ -376,6 +396,8 @@ async function main() {
   if (!HTML_ONLY) {
     await buildPdf(combinedHtmlPath);
   }
+
+  await copyToDocs();
 
   const elapsed = ((Date.now() - start) / 1000).toFixed(1);
   console.log(`✅ Done in ${elapsed}s`);
