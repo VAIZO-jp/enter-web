@@ -692,6 +692,104 @@ No photography — abstract SVG/CSS textures only.</pre>
 
     </div>
   </details>
+
+  <details class="toggle">
+    <summary class="toggle__summary">Codex デモサイト生成の指示</summary>
+    <div class="toggle__body">
+
+      <h4>事前準備（チェックリスト）</h4>
+      <ul>
+        <li>TOP Full-LP の参考画像（top-fulllp.png）が生成済み</li>
+        <li>案件情報.xlsx の Client / Reference / Brand が記入済み</li>
+        <li>Codex デスクトップアプリにログイン済み</li>
+      </ul>
+
+      <h4>Codex への指示文（コピペ用）</h4>
+      <p>Codex デスクトップで新規チャットを開き、上記2ファイルを添付してから下記をそのまま投げる。</p>
+<pre>## 役割
+あなたは V/ENTER WEB事業部の実装担当です。
+仕様に基づきデモサイトを完成形で書いてください。
+
+## 添付
+- top-fulllp.png : TOP の縦長LP一枚絵（レイアウトの正本）
+- 案件情報.xlsx  : Client / Reference / Brand
+
+## 出力
+- 単一 HTML ファイル index.html
+- CSS は &lt;head&gt; 内に内包（外部CSSなし）
+- JS は最小限（IntersectionObserver によるフェードインのみ可）
+- 写真は SVG / CSS で抽象表現（外部画像URLなし）
+- ダブルクリックで開けば即見られる状態
+
+## 仕様
+- top-fulllp.png のレイアウト・余白・コピー位置を忠実に再現
+- 文字情報は 案件情報.xlsx の Client セクションから採用
+  （屋号 / 業態 / 電話 / 住所 / 営業時間 / メール / SNS）
+- 配色・書体は Reference の「採用する方向性」に従う
+- VAIZO Editorial 厳守:
+  - 本文 17px / テーブル 15px / 行間 1.9
+  - ヘアライン 1px 罫線
+  - Inter 900 + Noto Sans JP 700
+    (高級業態は Cormorant Garamond + Noto Serif JP)
+  - 白黒基調 + アクセントゴールド #b89b6a (高級業態のみ)
+- 飲食・店舗業態は追従の電話・LINE CTA を 2セクション目以降に表示
+
+## 守ってほしいこと
+- 仕様外の機能（フォーム・モーダル・SNS羅列等）を勝手に追加しない
+- TODO で埋めず、その場で完成させる
+- 軍事比喩・否定列挙・採用語・階層用語は使わない
+- 「〜していただきます」より「します」を優先
+- メールは info@vaizo.jp を採用（.co.jp 不使用）
+- V/ ブランド表記は半角スラッシュのみ
+
+## 完了条件
+- index.html を開くと8セクションすべてが縦スクロールで表示
+- コンソールエラー 0件
+- HTML5 として妥当
+- レスポンシブ 320 / 375 / 768 / 1280 / 1920px で崩れなし
+- アクセシビリティ: コントラスト AA 以上 / prefers-reduced-motion 対応
+
+最終アウトプットとして、index.html の完全なコードを返してください。</pre>
+
+      <h4>修正・レビュー時の追加指示</h4>
+      <p>初版が返ってきたあと、Codex に追加で投げるテンプレ。</p>
+
+      <p><strong>レイアウト修正：</strong></p>
+<pre>該当箇所のスクリーンショットを添付の上:
+
+「ここのレイアウトを top-fulllp.png の {{該当セクション名}} と
+ 同じに直してください。{{具体的な修正点 例: 余白を広く / 罫線を消す}}」</pre>
+
+      <p><strong>VAIZO Editorial 違反チェック：</strong></p>
+<pre>「以下を確認し、違反があれば修正してください:
+ 1. 軍事比喩・否定列挙・採用語・階層用語が含まれていないか
+ 2. メールアドレスが info@vaizo.jp になっているか
+ 3. V/ ブランド表記が半角スラッシュのみか
+ 4. 本文 17px / 行間 1.9 が守られているか
+ 5. 飲食・店舗の場合、追従の電話・LINE CTA があるか」</pre>
+
+      <p><strong>仕上げ最適化：</strong></p>
+<pre>「html-validate で検証して、エラーがあれば修正してください。
+ Lighthouse モバイルでパフォーマンススコアが 70 以上になるよう
+ 最適化してください（画像 lazy load / フォント display:swap など）。」</pre>
+
+      <h4>出力ファイルの保存先</h4>
+      <ul>
+        <li>初版: 案件フォルダ <span class="var">/demo/v1/index.html</span></li>
+        <li>修正版: 案件フォルダ <span class="var">/demo/v2/index.html</span> (バージョン分けて保存)</li>
+        <li>採用版: GitHub Pages にデプロイ <span class="var">VAIZO-jp/{{案件略号}}-demo</span></li>
+      </ul>
+
+      <h4>ありがちな失敗と対処</h4>
+      <ul>
+        <li><strong>Codex が勝手にフォームやモーダルを追加</strong> → 「仕様外の機能を削除してください」と再指示</li>
+        <li><strong>外部画像 URL を使ってくる</strong> → 「写真は全て SVG / CSS で抽象表現に書き換えてください」</li>
+        <li><strong>本文サイズが 16px や 14px で出力される</strong> → 「VAIZO Editorial の 17px に統一してください」</li>
+        <li><strong>レスポンシブで横スクロール発生</strong> → 「img / iframe / table に max-width:100% を追加してください」</li>
+      </ul>
+
+    </div>
+  </details>
 </section>
 
 <!-- ============== COMMIT 02 ============== -->
