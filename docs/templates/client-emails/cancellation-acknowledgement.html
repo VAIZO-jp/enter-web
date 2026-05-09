@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>メール: 解約受領確認 — V/ENTER WEB Handbook</title>
+<meta name="description" content="月次運用契約の解約申し出を受領した際の確認メール。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/templates/client-emails/cancellation-acknowledgement.html">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="メール: 解約受領確認 — V/ENTER WEB Handbook">
+<meta property="og:description" content="月次運用契約の解約申し出を受領した際の確認メール。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/templates/client-emails/cancellation-acknowledgement.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="メール: 解約受領確認 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="月次運用契約の解約申し出を受領した際の確認メール。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>メール雛形：解約受領確認</h1>
+<blockquote>
+<p>月次運用契約の解約申し出を受領した際の確認メール。</p>
+</blockquote>
+<hr>
+<h2>件名</h2>
+<pre><code>【解約受領】{{屋号 / 企業名}}様 月次運用契約解約のご連絡を承りました
+</code></pre>
+<h2>本文（雛形）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。
+株式会社VAIZO V/ENTER WEB事業部の {{差出人氏名}} です。
+
+このたびは月次運用契約解約のご連絡をいただき、ありがとうございました。
+内容を確認いたしましたので、ご報告いたします。
+
+──────────────
+■ 解約条件の確認
+──────────────
+
+契約書に基づき:
+- 解約申出日: {{YYYY-MM-DD}}
+- 契約終了日: {{解約申出日 + 1ヶ月後}}
+- 最終請求月: {{YYYY-MM}}（解約月分）
+
+──────────────
+■ 引き渡し計画
+──────────────
+
+契約終了日（{{YYYY-MM-DD}}）までに、以下を引き渡しいたします:
+1. すべての権限・アカウント情報の整理
+2. 制作中・運用中のコンテンツの最終版
+3. アクセス解析・SEOレポートの最終版
+
+ご質問・ご要望があれば、契約終了日までの間お気軽にご連絡ください。
+
+──────────────
+■ 今後について
+──────────────
+
+引き続き、{{屋号}}様の発展を心よりお祈りしております。
+将来的に再度のご相談やお力添えが必要な際は、いつでもお声がけください。
+
+──────────────
+株式会社VAIZO V/ENTER WEB事業部
+{{差出人氏名}}（{{役割}}）
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>関連</h2>
+<ul>
+<li><a href="../../handbook/09-client-offboarding.html"><code>handbook/09-client-offboarding.md</code></a> §3-B 運用契約解約</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

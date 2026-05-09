@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>経理・請求フロー — V/ENTER WEB Handbook</title>
+<meta name="description" content="案件単位の経理・請求・入金管理の標準フロー。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/handbook/08-finance-billing.html">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="経理・請求フロー — V/ENTER WEB Handbook">
+<meta property="og:description" content="案件単位の経理・請求・入金管理の標準フロー。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/handbook/08-finance-billing.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="経理・請求フロー — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="案件単位の経理・請求・入金管理の標準フロー。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>08 — 経理・請求フロー</h1>
+<blockquote>
+<p>案件単位の経理・請求・入金管理の標準フロー。</p>
+</blockquote>
+<hr>
+<h2>1. 全体フロー</h2>
+<pre><code>キックオフ → 見積発行 → 契約締結 → 着手金請求（30%）→ 制作 → 公開
+   → 中間金請求（30%）→ 公開後30日 → 残金請求（40%）→ 入金確認 → 案件クローズ
+</code></pre>
+<p>請求3分割は標準。案件規模・契約条件に応じて 1回（公開後一括）または 2回（半金 + 半金）も可。</p>
+<h2>2. 担当・権限</h2>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>担当</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>見積作成</td>
+<td>案件CTO（櫻井理也）</td>
+</tr>
+<tr>
+<td>契約書作成・送付</td>
+<td>橋本CEO + 顧問弁護士テンプレ</td>
+</tr>
+<tr>
+<td>請求書発行</td>
+<td>経理部 + 案件CTO</td>
+</tr>
+<tr>
+<td>入金確認</td>
+<td>経理部</td>
+</tr>
+<tr>
+<td>督促</td>
+<td>経理部 → 橋本CEO エスカレーション</td>
+</tr>
+</tbody></table>
+<h2>3. 単価ガイドライン</h2>
+<p>業態ランク別の標準単価：</p>
+<table>
+<thead>
+<tr>
+<th>ランク</th>
+<th>単価帯</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>80万〜200万</td>
+<td>銀座系高級バー、隠れ家業態</td>
+</tr>
+<tr>
+<td>A</td>
+<td>30万〜80万</td>
+<td>飲食、ライブハウス、地方の老舗</td>
+</tr>
+<tr>
+<td>B</td>
+<td>10万〜30万</td>
+<td>ホームページ業者制作の店舗サイト、リニューアル放置型</td>
+</tr>
+</tbody></table>
+<p>オプション:</p>
+<ul>
+<li>ロゴ刷新: +10万〜30万</li>
+<li>撮影手配: +5万〜20万</li>
+<li>文章執筆代行: +5万〜15万</li>
+<li>月次運用契約: 月額3万〜10万（<a href="../decision-trees/contract-type.html"><code>decision-trees/contract-type.md</code></a> 参照）</li>
+</ul>
+<h2>4. 見積発行</h2>
+<h3>見積テンプレート</h3>
+<p>Drive <code>006_経理部_事務系・経費精算等/01_帳票テンプレート/</code> にあるVAIZO公式見積書テンプレを使用。
+フォルダID: <code>1Bv8-l2_Z6CldW8w716AU0EZ4I5wUdOI9</code></p>
+<h3>必須項目</h3>
+<ul>
+<li>件名（例: <code>{{屋号}}様 Webサイトリニューアル ご提案資料一式</code>）</li>
+<li>見積日 / 有効期限（標準30日）</li>
+<li>案件番号（<a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> §1 参照）</li>
+<li>内訳（基本料金 / オプション / 月次運用 等）</li>
+<li>小計 / 消費税 / 合計</li>
+<li>支払条件（着手金30% / 中間金30% / 残金40%、または1回払い）</li>
+<li>振込先</li>
+</ul>
+<h3>メール送付</h3>
+<p>雛形: <a href="../templates/client-emails/estimate.html"><code>templates/client-emails/estimate.md</code></a></p>
+<h2>5. 契約書</h2>
+<h3>標準契約書</h3>
+<p>Drive <code>006_経理部_事務系・経費精算等/02_契約書テンプレート/</code> の VAIZO 標準業務委託契約書を使用。
+顧問弁護士レビュー済（Phase 0 完了後の最新版）。</p>
+<h3>必須条項</h3>
+<ul>
+<li>業務範囲</li>
+<li>納期</li>
+<li>検収条件</li>
+<li>報酬・支払条件</li>
+<li>瑕疵担保期間（標準: 公開後14日間、契約により延長可）</li>
+<li>知的財産権の帰属</li>
+<li>秘密保持</li>
+<li>解除条件</li>
+<li>損害賠償の上限</li>
+</ul>
+<h3>業務委託パートナー（OneBe等）との契約</h3>
+<ul>
+<li>単価表添付（指揮命令性なしを明記）</li>
+<li>偽装請負回避: タスク単価ベース、稼働時間管理しない</li>
+<li>詳細: メモリ <code>project_onebe_partnership.md</code></li>
+</ul>
+<h3>メール送付</h3>
+<p>雛形: <a href="../templates/client-emails/contract.html"><code>templates/client-emails/contract.md</code></a></p>
+<h2>6. 請求書発行</h2>
+<h3>タイミング</h3>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>発行日</th>
+<th>金額</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>着手金</td>
+<td>契約書捺印日</td>
+<td>見積総額 × 30%</td>
+</tr>
+<tr>
+<td>中間金</td>
+<td>制作着手から2週間後</td>
+<td>見積総額 × 30%</td>
+</tr>
+<tr>
+<td>残金</td>
+<td>公開後30日</td>
+<td>見積総額 × 40%</td>
+</tr>
+</tbody></table>
+<h3>請求書テンプレート</h3>
+<p>Drive <code>01_帳票テンプレート/</code> の請求書テンプレを使用。</p>
+<h3>必須項目</h3>
+<ul>
+<li>案件番号</li>
+<li>請求日 / 支払期限（標準: 翌月末）</li>
+<li>振込先（VAIZO 法人口座）</li>
+<li>内訳・金額</li>
+<li>適格請求書発行事業者番号（インボイス番号、Phase 0完了後に明記）</li>
+</ul>
+<h3>メール送付</h3>
+<p>雛形: <a href="../templates/client-emails/invoice.html"><code>templates/client-emails/invoice.md</code></a></p>
+<h2>7. 入金確認</h2>
+<ul>
+<li>経理部が VAIZO 法人口座を週次で確認</li>
+<li>入金確認後、Slack <code>#経理部_経費精算-仕訳</code>（C0AVBV8AJ4W）で報告</li>
+<li>案件CTO に連絡 → クライアントに領収書送付（必要時）</li>
+<li>Drive 案件フォルダ <code>00_経理/入金記録/</code> に記録</li>
+</ul>
+<h2>8. 督促フロー</h2>
+<h3>支払期限超過</h3>
+<table>
+<thead>
+<tr>
+<th>経過日数</th>
+<th>対応</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+1営業日</td>
+<td>経理部 → クライアント担当者にメール（テンプレ: <code>templates/client-emails/reminder-1.md</code>、Phase 2 で追加予定）</td>
+</tr>
+<tr>
+<td>+5営業日</td>
+<td>経理部 → 案件CTO に連絡、CTO が電話</td>
+</tr>
+<tr>
+<td>+10営業日</td>
+<td>橋本CEO 主導、書面催告書（顧問弁護士監修）</td>
+</tr>
+<tr>
+<td>+30営業日</td>
+<td>法的措置検討</td>
+</tr>
+</tbody></table>
+<h2>9. 業務委託パートナー（OneBe等）への支払い</h2>
+<ul>
+<li>案件完了後、OneBe からの請求書受領</li>
+<li>VAIZE 経理部が確認 → 翌月末払い</li>
+<li>支払通知書を Drive <code>006_経理部.../03_業務委託費/</code> に保管</li>
+<li>詳細: メモリ <code>project_vaizo_web_ops.md</code> § C1（業務委託費は ⑤業務委託費でタスク単価ベース管理）</li>
+</ul>
+<h2>10. インボイス制度対応</h2>
+<ul>
+<li>VAIZO は適格請求書発行事業者（番号は Phase 0 完了後に公開）</li>
+<li>業務委託パートナーから受領する請求書は適格請求書要件を満たすか確認</li>
+<li>不備があれば修正依頼</li>
+</ul>
+<h2>11. 月次経理締め</h2>
+<ul>
+<li>毎月5日: 前月分の売上・経費を仕訳確定</li>
+<li>毎月10日: 予実管理レポート（社内共有）</li>
+<li>詳細: メモリ <code>project_vaizo_web_ops.md</code> § C4（月次集約xlsx 経由のみ）</li>
+</ul>
+<h2>12. 関連ドキュメント</h2>
+<ul>
+<li><a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> §5 契約・見積書</li>
+<li><a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a> §Day 30 — 残金請求のタイミング</li>
+<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a> — 各種メール雛形</li>
+<li><a href="../decision-trees/contract-type.html"><code>decision-trees/contract-type.md</code></a> — 契約形態の選択</li>
+<li><a href="../MAP.html"><code>MAP.md</code></a> §2 経理関連 Drive フォルダ</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

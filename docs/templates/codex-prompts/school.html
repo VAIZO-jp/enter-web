@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スクール・教育業態 — V/ENTER WEB Handbook</title>
+<meta name="description" content="民間スクール・予備校・専門学校・カルチャースクール・オンライン講座向け雛形。 「合格・成果実績」「講師の質」「カリキュラムの分かりやすさ」を3軸に、伝統校 or モダン校で配色を切り替える。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/templates/codex-prompts/school.html">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="スクール・教育業態 — V/ENTER WEB Handbook">
+<meta property="og:description" content="民間スクール・予備校・専門学校・カルチャースクール・オンライン講座向け雛形。 「合格・成果実績」「講師の質」「カリキュラムの分かりやすさ」を3軸に、伝統校 or モダン校で配色を切り替える。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/templates/codex-prompts/school.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="スクール・教育業態 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="民間スクール・予備校・専門学校・カルチャースクール・オンライン講座向け雛形。 「合格・成果実績」「講師の質」「カリキュラムの分かりやすさ」を3軸に、伝統校 or モダン校で配色を切り替える。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：スクール・教育業態</h1>
+<blockquote>
+<p>民間スクール・予備校・専門学校・カルチャースクール・オンライン講座向け雛形。
+「合格・成果実績」「講師の質」「カリキュラムの分かりやすさ」を3軸に、伝統校 or モダン校で配色を切り替える。</p>
+</blockquote>
+<p>⚠️ <strong>景品表示法・特定商取引法に注意</strong>: 合格保証・返金条件・受講料表記には法規制あり。</p>
+<p>使用方法: 案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt.md</code> としてリネーム。</p>
+<hr>
+<h2>タスク: {{スクール名}}サイト</h2>
+<h2>役割</h2>
+<p>V/ENTER WEB事業部の実装ドラフト担当として、スクールLPを完成形で生成。</p>
+<h2>想定スクール</h2>
+<ul>
+<li><strong>業態</strong>: 学習塾 / 予備校 / 専門学校 / オンライン講座 / 資格スクール / 語学スクール / カルチャースクール / プログラミングスクール</li>
+<li><strong>受講者層</strong>: {{小中高生 / 大学生 / 社会人 / シニア}}</li>
+<li><strong>対面 or オンライン</strong>: {{}}</li>
+<li><strong>校舎所在地</strong>: {{都道府県 + 市区町村}}</li>
+<li><strong>設立</strong>: {{YYYY年}}</li>
+<li><strong>総生徒数 / 累計卒業生数</strong>: {{}}</li>
+<li><strong>代表的な実績</strong>: {{合格率 / 就職率 / 資格取得数等}}</li>
+</ul>
+<h2>デザイン要件</h2>
+<ul>
+<li>VAIZOエディトリアル白黒基調 + アクセント</li>
+<li>アクセントカラー（学校の方向性に応じて）:<ul>
+<li>伝統校・名門校: エンジ <code>#7a1d1d</code>（伝統・信頼）</li>
+<li>モダン・プログラミング系: シアン <code>#0066cc</code>（先進）</li>
+<li>カルチャースクール: ベージュ <code>#d4c4a8</code>（温かみ）</li>
+<li>子供向け: 純黒（VAIZO 白黒のみ）</li>
+</ul>
+</li>
+<li>書体:<ul>
+<li>伝統校: Cormorant Garamond + Noto Serif JP 700</li>
+<li>モダン校: Inter 900 + Noto Sans JP 700</li>
+</ul>
+</li>
+<li>本文 17px / テーブル 15px / 行間 1.9 厳守</li>
+</ul>
+<h2>セクション構成</h2>
+<h3>1. HERO</h3>
+<ul>
+<li>メインキャッチ（例: 「あなたの学びを、確かな実績で」）</li>
+<li>英文サブ（例: &quot;Education with proven results&quot;）</li>
+<li>大きなキービジュアル（生徒・講師の写真 or 校舎）</li>
+<li>主要な実績数字（合格率 / 就職率 / 講座満足度 等）</li>
+<li>「資料請求」「無料体験」「お問い合わせ」CTA</li>
+</ul>
+<h3>2. RESULTS（実績）</h3>
+<ul>
+<li>数字で示せる実績を最前面に</li>
+<li>例:<ul>
+<li>「{{2025年度合格率: 92%}}」</li>
+<li>「累計合格者 {{N}}名」</li>
+<li>「平均偏差値アップ +{{N}}」</li>
+</ul>
+</li>
+<li>グラフや表で視覚化</li>
+</ul>
+<p>⚠️ 合格保証・返金保証は明確な条件記載なしに使わない（景表法）</p>
+<h3>3. CURRICULUM（カリキュラム）</h3>
+<ul>
+<li>コース一覧（カード形式 or 表形式）</li>
+<li>各コース: 期間 / 受講料 / 対象 / 特徴</li>
+<li>ステップ別カリキュラム（基礎 → 応用 → 演習）</li>
+</ul>
+<h3>4. INSTRUCTORS（講師紹介）</h3>
+<ul>
+<li>顔写真 + 氏名 + 経歴 + 担当科目 + 一言</li>
+<li>講師の権威・経験を明示</li>
+</ul>
+<h3>5. VOICE（合格者・受講者の声）</h3>
+<ul>
+<li>体験談 4〜6件</li>
+<li>顔写真（モザイクや匿名化可） + 名前（イニシャル） + コース + 結果 + 体験談</li>
+</ul>
+<p>⚠️ 体験談は「個人の感想であり、効果を保証するものではありません」明記</p>
+<h3>6. FACILITY（校舎・教室紹介）</h3>
+<ul>
+<li>内観写真 / 自習室 / 図書資料 / 設備</li>
+<li>設備の充実度をアピール</li>
+</ul>
+<h3>7. ACCESS</h3>
+<ul>
+<li>校舎住所・最寄駅・徒歩X分</li>
+<li>Google Maps 埋込</li>
+<li>オンラインの場合: 受講可能な時間帯・必要な機材</li>
+</ul>
+<h3>8. PRICING（受講料）</h3>
+<ul>
+<li>入学金・受講料・教材費を明示</li>
+<li>分割払い / 奨学金制度 / 返金条件</li>
+<li>⚠️ 特定商取引法対応: 受講料総額・契約期間・解約条件を明記</li>
+</ul>
+<h3>9. FAQ</h3>
+<ul>
+<li>6〜10件</li>
+<li>例:<ul>
+<li>「無料体験はありますか？」</li>
+<li>「途中で辞めることはできますか？」</li>
+<li>「振替授業は可能ですか？」</li>
+<li>「兄弟割引はありますか？」</li>
+</ul>
+</li>
+</ul>
+<h3>10. CONTACT / TRIAL</h3>
+<ul>
+<li>資料請求フォーム</li>
+<li>無料体験申込フォーム</li>
+<li>お問い合わせ電話・メール</li>
+<li>LINE 公式アカウント</li>
+</ul>
+<h3>11. FOOTER</h3>
+<ul>
+<li>スクール名・住所・電話</li>
+<li>設置者・代表者</li>
+<li>教育基本法・各種法令の遵守表記</li>
+<li>プライバシーポリシー / 特定商取引法表記</li>
+</ul>
+<h2>追従要素</h2>
+<ul>
+<li>下部追従バー（スマホ）:<ul>
+<li>「資料請求」（フォームへ）</li>
+<li>「無料体験」（フォームへ）</li>
+<li>「お問い合わせ」<code>tel:</code></li>
+</ul>
+</li>
+</ul>
+<h2>景表法・特商法遵守</h2>
+<h3>NG表現</h3>
+<ul>
+<li>❌ 「合格率100%」（実績データなし）</li>
+<li>❌ 「絶対合格」「必ず受かる」（断言）</li>
+<li>❌ 「日本一の合格率」（最上級・証拠なき）</li>
+<li>❌ 「他校より優秀」（比較優位）</li>
+<li>❌ 体験談を一般化した表現</li>
+</ul>
+<h3>必須表記（特商法対応）</h3>
+<ul>
+<li>事業者名・所在地・代表者名・電話番号</li>
+<li>受講料総額（税込）</li>
+<li>支払時期・方法</li>
+<li>役務（授業）の提供時期</li>
+<li>中途解約・返金条件</li>
+<li>連絡先</li>
+</ul>
+<h3>体験談ルール</h3>
+<ul>
+<li>「個人の感想であり、効果を保証するものではありません」明記</li>
+<li>過大な誇張・作為的記載なし</li>
+</ul>
+<h2>SEO・構造化データ</h2>
+<ul>
+<li>JSON-LD <code>EducationalOrganization</code> または <code>School</code></li>
+<li><code>Course</code> 構造化データ（コース別）</li>
+<li>営業時間 <code>openingHoursSpecification</code></li>
+</ul>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>仕様外の機能を勝手に追加しない</li>
+<li>景表法・特商法NG表現を絶対に使わない</li>
+<li>体験談には「個人の感想」明記</li>
+<li>「採用語」を避ける（教育業界では特に注意）</li>
+<li>軍事比喩・否定列挙・階層用語は使わない</li>
+<li>文字サイズ: 本文17px、テーブル15px、行間1.9厳守</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>index.html</code> を開くと全要件を満たして表示</li>
+<li><input disabled="" type="checkbox"> 景表法 NG表現なし</li>
+<li><input disabled="" type="checkbox"> 特定商取引法表記が完全</li>
+<li><input disabled="" type="checkbox"> 体験談に「個人の感想」明記</li>
+<li><input disabled="" type="checkbox"> レスポンシブ全幅でレイアウト崩れなし</li>
+<li><input disabled="" type="checkbox"> Lighthouse モバイル パフォーマンス 70以上</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+</ul>
+<h2>法的レビュー</h2>
+<p>公開前に必ず：</p>
+<ul>
+<li>顧問弁護士または景表法に詳しい行政書士のレビュー</li>
+<li>特商法表記は事業者情報を最新化</li>
+<li>受講料表記は税込・分割条件を明確化</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

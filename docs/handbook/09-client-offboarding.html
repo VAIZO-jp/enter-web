@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>クライアントオフボーディング — V/ENTER WEB Handbook</title>
+<meta name="description" content="案件終了・運用契約終了時の標準フロー。属人化を防ぎ、スムーズな引き渡しを実現する。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/handbook/09-client-offboarding.html">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="クライアントオフボーディング — V/ENTER WEB Handbook">
+<meta property="og:description" content="案件終了・運用契約終了時の標準フロー。属人化を防ぎ、スムーズな引き渡しを実現する。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/handbook/09-client-offboarding.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="クライアントオフボーディング — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="案件終了・運用契約終了時の標準フロー。属人化を防ぎ、スムーズな引き渡しを実現する。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>09 — クライアントオフボーディング</h1>
+<blockquote>
+<p>案件終了・運用契約終了時の標準フロー。属人化を防ぎ、スムーズな引き渡しを実現する。</p>
+</blockquote>
+<hr>
+<h2>1. オフボーディングが必要なケース</h2>
+<table>
+<thead>
+<tr>
+<th>ケース</th>
+<th>主な原因</th>
+<th>緊急度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>正常終了</strong></td>
+<td>制作完了 + 公開後30日のフォロー終了</td>
+<td>低</td>
+</tr>
+<tr>
+<td><strong>運用契約解約</strong></td>
+<td>クライアント側の意思決定</td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>トラブル終了</strong></td>
+<td>クレーム発展、関係悪化</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>VAIZO 側都合の終了</strong></td>
+<td>業務領域外、リソース不足</td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>クライアント側の事業終了・倒産</strong></td>
+<td>不可抗力</td>
+<td>中</td>
+</tr>
+</tbody></table>
+<h2>2. オフボーディング標準フロー</h2>
+<h3>Day 0: 終了通知</h3>
+<ul>
+<li>クライアント or VAIZO が解約・終了を通知</li>
+<li>文書（メール）で記録</li>
+<li>案件CTO + 橋本CEO + 経理部に共有</li>
+</ul>
+<h3>Day 1-3: 引き渡し計画</h3>
+<h4>クライアント側に渡すもの</h4>
+<ul>
+<li><input disabled="" type="checkbox"> WordPress管理画面ログイン情報（既に渡している場合は再確認）</li>
+<li><input disabled="" type="checkbox"> サーバー管理画面ログイン情報</li>
+<li><input disabled="" type="checkbox"> ドメイン管理画面の権限移譲（VAIZO が代理取得していた場合）</li>
+<li><input disabled="" type="checkbox"> Google Analytics 4 / Search Console / Tag Manager の権限移譲</li>
+<li><input disabled="" type="checkbox"> サイトコード一式（GitHub repo の export または ZIP）</li>
+<li><input disabled="" type="checkbox"> 画像素材一式（圧縮前の元データ含む）</li>
+<li><input disabled="" type="checkbox"> 制作中のドキュメント（議事録 / デザイン提案 / 修正対応表）</li>
+</ul>
+<h4>VAIZO 側に残すもの・破棄するもの</h4>
+<ul>
+<li><input disabled="" type="checkbox"> バックアップ <code>.wpress</code> ファイル（30日後に破棄）</li>
+<li><input disabled="" type="checkbox"> クライアント情報（個人情報保護法に従い削除 or 匿名化）</li>
+<li><input disabled="" type="checkbox"> 1Password Vault <code>Client-{slug}</code> のアクセス権削除（VAIZER 全員）</li>
+</ul>
+<h3>Day 4-7: 公式引き渡し</h3>
+<ul>
+<li><input disabled="" type="checkbox"> クライアントとの最終MTG（30分）</li>
+<li><input disabled="" type="checkbox"> 引き渡し物リストの確認 → クライアントから「受領確認」のメール</li>
+<li><input disabled="" type="checkbox"> 残金請求書発行（<a href="./08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> §6）</li>
+<li><input disabled="" type="checkbox"> 公開URLの権限移譲確認（DNS / SSL 等）</li>
+</ul>
+<h3>Day 8-30: アフターケア</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 軽微な質問対応（無償、契約上の瑕疵担保期間内）</li>
+<li><input disabled="" type="checkbox"> 引き渡し後の不具合は追加見積で対応</li>
+<li><input disabled="" type="checkbox"> 入金確認</li>
+</ul>
+<h3>Day 30: 完全クローズ</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 全データ・権限の VAIZO 側から削除（バックアップ含む）</li>
+<li><input disabled="" type="checkbox"> 1Password Vault 完全削除</li>
+<li><input disabled="" type="checkbox"> Drive 案件フォルダを「アーカイブ」に移動</li>
+<li><input disabled="" type="checkbox"> GitHub Issue を <code>status:closed</code> ラベルでクローズ</li>
+<li><input disabled="" type="checkbox"> CHANGELOG / Slack <code>#事業部別_enter-ai</code> で完了報告</li>
+</ul>
+<h2>3. ケース別の追加対応</h2>
+<h3>A. 正常終了（推奨パス）</h3>
+<ul>
+<li>クライアントから「ありがとう」の温かい引き渡し</li>
+<li>月次運用契約への移行を提案（<a href="../decision-trees/contract-type.html"><code>decision-trees/contract-type.md</code></a>）</li>
+<li>公開後3ヶ月・6ヶ月の振り返りMTG提案（次案件・口コミ獲得）</li>
+</ul>
+<h3>B. 運用契約解約</h3>
+<ul>
+<li>解約理由をヒアリング（次案件への学び）</li>
+<li>「VAIZO サービス改善のため、率直な意見を聞かせてほしい」とアンケート（任意）</li>
+<li>解約後の運用引き継ぎ先（次の業者）への協力姿勢</li>
+</ul>
+<h3>C. トラブル終了（クレーム発展）</h3>
+<p>詳細は <a href="../runbooks/incident-response.html"><code>runbooks/incident-response.md</code></a> を必ず参照。</p>
+<ul>
+<li>橋本CEO主導、顧問弁護士相談</li>
+<li>文書での記録を徹底</li>
+<li>「VAIZO 側の責任」「クライアント側の責任」を明確化</li>
+<li>損害賠償・返金の交渉</li>
+<li>守秘義務の確認・延長</li>
+<li>再連絡禁止リスト追加（<a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> ブラックリスト運用）</li>
+</ul>
+<h3>D. VAIZO 側都合の終了</h3>
+<ul>
+<li>30日以上前にクライアントに通知（業界慣習）</li>
+<li>後継業者の紹介（VAIZO のアライアンスパートナー）</li>
+<li>引き渡し作業を VAIZO 側が責任を持って完了</li>
+<li>該当VAIZER のキャリアプランへの影響を内部でケア</li>
+</ul>
+<h3>E. クライアント側の事業終了・倒産</h3>
+<ul>
+<li>サイト・ドメインの存続意思を確認</li>
+<li>売上回収困難なら早期に経理判断（債権放棄 vs 法的回収）</li>
+<li>顧問税理士・弁護士相談</li>
+<li>VAIZO 側のデータ保管期間: 法定 5年または契約に従う</li>
+</ul>
+<h2>4. 引き渡しドキュメント・テンプレ</h2>
+<h3><code>templates/handover-checklist.md</code>（Phase 2 で追加予定）</h3>
+<p>引き渡し時のチェックリスト雛形。</p>
+<h3>メール雛形</h3>
+<ul>
+<li>引き渡し完了報告: <a href="../templates/client-emails/handover-completion.html"><code>templates/client-emails/handover-completion.md</code></a>（Phase 2 で追加予定）</li>
+<li>解約受領確認: <a href="../templates/client-emails/cancellation-acknowledgement.html"><code>templates/client-emails/cancellation-acknowledgement.md</code></a>（Phase 2 で追加予定）</li>
+</ul>
+<h2>5. 個人情報の取り扱い</h2>
+<ul>
+<li>個人情報保護法に従い、必要のない個人データは削除</li>
+<li>ただし、契約書・請求書は法定保管期間（5年〜7年）保管</li>
+<li>完全削除前に「保管対象」「破棄対象」を経理 + CTO で確認</li>
+</ul>
+<h2>6. アフターセールス（次の案件への布石）</h2>
+<ul>
+<li>公開3ヶ月後の自動メール（<a href="../templates/client-emails/follow-up-3m.html"><code>templates/client-emails/follow-up-3m.md</code></a> Phase 2 予定）</li>
+<li>VAIZO のニュースレター登録案内</li>
+<li>アライアンスパートナーとしての継続関係（クライアント側で別案件発生時の優先紹介）</li>
+</ul>
+<h2>7. 関連ドキュメント</h2>
+<ul>
+<li><a href="./08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> — 経理・請求フロー</li>
+<li><a href="../runbooks/incident-response.html"><code>runbooks/incident-response.md</code></a> — トラブル対応</li>
+<li><a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a> — 公開後30日のフォロー</li>
+<li><a href="../decision-trees/contract-type.html"><code>decision-trees/contract-type.md</code></a> — 契約形態の選択</li>
+<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a> — メール雛形集</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

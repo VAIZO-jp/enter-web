@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ナレッジ管理・更新運用 — V/ENTER WEB Handbook</title>
+<meta name="description" content="本リポジトリを「生きた運用文書」として保つための更新ルール。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/handbook/07-knowledge-management.html">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ナレッジ管理・更新運用 — V/ENTER WEB Handbook">
+<meta property="og:description" content="本リポジトリを「生きた運用文書」として保つための更新ルール。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/handbook/07-knowledge-management.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ナレッジ管理・更新運用 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="本リポジトリを「生きた運用文書」として保つための更新ルール。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>07 — ナレッジ管理・更新運用</h1>
+<blockquote>
+<p>本リポジトリを「生きた運用文書」として保つための更新ルール。</p>
+</blockquote>
+<hr>
+<h2>1. 基本原則</h2>
+<p>V/ENTER WEB ハンドブックは <strong>読むためでなく、書き換えるため</strong> にある。</p>
+<ul>
+<li>案件で詰まった → <code>troubleshooting/</code> に追記</li>
+<li>良いプロンプトを書いた → <code>templates/codex-prompts/</code> に追加</li>
+<li>判断に迷った → <code>decision-trees/</code> に追加</li>
+<li>公開後の学び → <code>runbooks/post-launch-30days.md</code> で振り返り → 各所に反映</li>
+</ul>
+<p><strong>「読んだらそのままにしない、必ず1行は変える」</strong> が VAIZER 文化。</p>
+<h2>2. 更新タイミング</h2>
+<table>
+<thead>
+<tr>
+<th>タイミング</th>
+<th>更新する場所</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>案件着手時</td>
+<td><code>runbooks/new-client-kickoff.md</code> のチェックリスト確認、不足項目あれば追記PR</td>
+</tr>
+<tr>
+<td>案件中（詰まった時）</td>
+<td><code>troubleshooting/</code> に「何が起きた・どう解決した」を追記</td>
+</tr>
+<tr>
+<td>案件公開直後</td>
+<td><code>runbooks/deploy-day.md</code> の改善ポイント、<code>templates/delivery-reports.md</code> で振り返り</td>
+</tr>
+<tr>
+<td>公開後30日</td>
+<td><code>runbooks/post-launch-30days.md</code> のフィードバック収集 → 各文書反映</td>
+</tr>
+<tr>
+<td>月次</td>
+<td>全 VAIZER で15分の振り返りMTG、改善PR を1人1本</td>
+</tr>
+<tr>
+<td>四半期</td>
+<td>顧問社労士・弁護士・税理士のレビュー反映</td>
+</tr>
+</tbody></table>
+<h2>3. 更新ワークフロー</h2>
+<h3>軽微な修正（誤字、リンク切れ、追記）</h3>
+<pre><code class="language-bash">git checkout -b personal/typo-N-handbook-XX
+# 編集
+git add ...
+git commit -m &quot;docs(handbook): 04-wp-publish-guide の typo 修正&quot;
+git push -u origin HEAD
+gh pr create --fill
+gh pr merge --squash --auto  # 自己マージOK
+</code></pre>
+<h3>構造変更（新規章追加、章間の関係性変更）</h3>
+<ol>
+<li>Issue 起票（<code>.github/ISSUE_TEMPLATE/doc-improvement.md</code>）</li>
+<li>CTO とSlackで方針確認</li>
+<li>ブランチ作成 <code>feature/&lt;issue&gt;-&lt;slug&gt;</code></li>
+<li>修正 + ローカルビルド確認（<code>npm run build</code>）</li>
+<li>PR 作成、CODEOWNERS の自動レビュアーが承認</li>
+<li>マージ</li>
+</ol>
+<h3>新規業態の Codex プロンプト雛形</h3>
+<ol>
+<li>1〜2件の実案件で実証（雛形を案件直下で書く）</li>
+<li>案件公開後、雛形を <code>templates/codex-prompts/{業態}.md</code> に汎用化</li>
+<li>PR で追加、CTO レビュー</li>
+<li><code>templates/codex-prompts/README.md</code> に業態リスト追加</li>
+</ol>
+<h2>4. リンク整合性の維持</h2>
+<ul>
+<li>他ドキュメント参照は相対リンクで書く（書き方は既存ファイルを参照）</li>
+<li>絶対URL（<code>https://github.com/...</code>）は外部サービスのみ</li>
+<li>月1回 <code>npm run lint:links</code> でリンク切れ検出</li>
+<li>リンク先のファイル名・パスを変更する場合は、参照側もまとめて修正</li>
+</ul>
+<h2>5. 公開と機密の境界</h2>
+<p>詳細は <a href="../MAP.html"><code>MAP.md</code></a> §0 鉄則 参照。</p>
+<p>GitHub Pages で公開しているため、以下は <strong>絶対に書かない</strong>:</p>
+<ul>
+<li>パスワード・APIキー・OAuth トークン</li>
+<li>顧客のメールアドレス（<code>info@example.com</code> 等の汎用は除く）</li>
+<li>業務委託パートナーの個人情報（実名以外の連絡先）</li>
+<li>案件単価の具体額（範囲表記は可）</li>
+<li>競合他社への評価コメント</li>
+</ul>
+<p>書いていいもの（公開前提）:</p>
+<ul>
+<li>営業手法のフレームワーク</li>
+<li>AI活用ノウハウ</li>
+<li>VAIZO Design Policy</li>
+<li>公開済みクライアント事例（公開URLが既に出ているもの）</li>
+</ul>
+<h2>6. 文書のバージョニング</h2>
+<ul>
+<li>ハンドブック全体: <code>CHANGELOG.md</code> に記録</li>
+<li>主要文書（<code>02-design-policy.md</code> 等）: 末尾に <code>## 改訂履歴</code> セクション</li>
+<li>セマンティックバージョン: <code>vMAJOR.MINOR.PATCH</code><ul>
+<li>MAJOR: 構造変更・破壊的変更</li>
+<li>MINOR: 新規章・機能追加</li>
+<li>PATCH: 軽微な修正</li>
+</ul>
+</li>
+</ul>
+<h2>7. オーナーシップ（CODEOWNERS）</h2>
+<ul>
+<li>営業・事業全体: 橋本CEO + 櫻井CTO</li>
+<li>技術・実装: 櫻井CTO</li>
+<li>経理: 経理部（全社）</li>
+<li>詳細: <a href="../.github/CODEOWNERS"><code>.github/CODEOWNERS</code></a></li>
+</ul>
+<h2>8. 月次レビューチェックリスト</h2>
+<p>毎月第1月曜の振り返りMTGで以下を確認：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 先月のPR数（目標: VAIZER 1人 1PR/月）</li>
+<li><input disabled="" type="checkbox"> リンク切れ件数（目標: 0件）</li>
+<li><input disabled="" type="checkbox"> <code>troubleshooting/</code> 追記件数</li>
+<li><input disabled="" type="checkbox"> <code>templates/</code> 追加件数</li>
+<li><input disabled="" type="checkbox"> 月次 KPI（脆弱性レポート送付件数、反応率、成約件数）</li>
+<li><input disabled="" type="checkbox"> 次月の改善目標</li>
+</ul>
+<h2>9. 関連</h2>
+<ul>
+<li><a href="../CONTRIBUTING.html"><code>CONTRIBUTING.md</code></a> — コントリビュート手順</li>
+<li><a href="../CHANGELOG.html"><code>CHANGELOG.md</code></a> — 変更履歴</li>
+<li><a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a> — 案件後の振り返り</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

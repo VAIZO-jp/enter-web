@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>メール: 見積書送付 — V/ENTER WEB Handbook</title>
+<meta name="description" content="商談前 or 商談後の概算見積書送付。提案書一式と一緒に送る場合は proposal.md を使用。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/templates/client-emails/estimate.html">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="メール: 見積書送付 — V/ENTER WEB Handbook">
+<meta property="og:description" content="商談前 or 商談後の概算見積書送付。提案書一式と一緒に送る場合は proposal.md を使用。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/templates/client-emails/estimate.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="メール: 見積書送付 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="商談前 or 商談後の概算見積書送付。提案書一式と一緒に送る場合は proposal.md を使用。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>メール雛形：見積書送付</h1>
+<blockquote>
+<p>商談前 or 商談後の概算見積書送付。提案書一式と一緒に送る場合は <a href="./proposal.html"><code>proposal.md</code></a> を使用。</p>
+</blockquote>
+<hr>
+<h2>件名</h2>
+<pre><code>【お見積】{{屋号 / 企業名}}様 {{案件名 例: Webサイトリニューアル}} お見積書をお送りします
+</code></pre>
+<h2>本文（雛形）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。
+株式会社VAIZO V/ENTER WEB事業部の {{差出人氏名}} です。
+
+ご依頼いただいた {{案件名}} につきまして、お見積書を作成いたしました。
+添付ファイルをご確認ください。
+
+──────────────
+■ 見積概要
+──────────────
+
+案件名: {{案件名}}
+基本料金: {{金額}} 円（税込）
+オプション: {{有無、ある場合内訳}}
+合計: {{合計金額}} 円（税込）
+
+支払条件: {{着手金30% / 中間金30% / 残金40% など}}
+有効期限: {{発行日 + 30日}}
+
+──────────────
+■ 見積範囲
+──────────────
+
+- {{含まれる作業1: トップページ + N子ページの制作}}
+- {{含まれる作業2: 写真選定（最大Nカット）・文章調整}}
+- {{含まれる作業3: WordPress固定ページ統合}}
+- {{含まれる作業4: 公開後30日のサポート}}
+- {{含まれる作業5: 脆弱性チェック・基本的なSEO対策}}
+
+──────────────
+■ 見積範囲外
+──────────────
+
+- 撮影手配（オプション +{{金額}}円）
+- ロゴ刷新（オプション +{{金額}}円）
+- 月次運用契約（別途お見積）
+
+──────────────
+■ 次のステップ
+──────────────
+
+見積内容にご了承いただける場合、下記のいずれかでご返信ください:
+1. 「契約締結に進みたい」→ 契約書ドラフトをお送りします
+2. 「内容を調整したい」→ 調整希望項目をご教示ください
+3. 「他社見積と比較中」→ 比較期限のご連絡をいただけますと幸いです
+
+ご不明点・調整希望は、メールもしくはお電話でお気軽にどうぞ。
+
+──────────────
+株式会社VAIZO V/ENTER WEB事業部
+{{差出人氏名}}（{{役割}}）
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>添付</h2>
+<ul>
+<li>見積書PDF（Drive <code>006_経理部.../01_帳票テンプレート/見積書テンプレート/</code> を使用）</li>
+<li>必要なら制作範囲の詳細PDF</li>
+</ul>
+<h2>チェックリスト</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 見積書の発行日・有効期限・案件番号が記載されている</li>
+<li><input disabled="" type="checkbox"> 振込先・適格請求書発行事業者番号が正しい</li>
+<li><input disabled="" type="checkbox"> 税込・税別が明確</li>
+<li><input disabled="" type="checkbox"> 含まれる作業・含まれない作業が明確</li>
+<li><input disabled="" type="checkbox"> 支払条件が明記されている</li>
+<li><input disabled="" type="checkbox"> 文体: 過剰丁寧を避け、具体的な内容に集中</li>
+</ul>
+<h2>関連</h2>
+<ul>
+<li><a href="../../handbook/08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> §4 見積発行</li>
+<li><a href="./contract.html"><code>templates/client-emails/contract.md</code></a> — 契約書送付</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>クレーム・障害対応 — V/ENTER WEB Handbook</title>
+<meta name="description" content="営業送付・案件中・公開後で発生したクレーム・障害への対応標準フロー。 「沈黙が一番のリスク」が原則。素早い1次返信を最優先。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/runbooks/incident-response.html">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="クレーム・障害対応 — V/ENTER WEB Handbook">
+<meta property="og:description" content="営業送付・案件中・公開後で発生したクレーム・障害への対応標準フロー。 「沈黙が一番のリスク」が原則。素早い1次返信を最優先。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/runbooks/incident-response.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="クレーム・障害対応 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="営業送付・案件中・公開後で発生したクレーム・障害への対応標準フロー。 「沈黙が一番のリスク」が原則。素早い1次返信を最優先。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Runbook：クレーム・障害発生時の対応</h1>
+<blockquote>
+<p>営業送付・案件中・公開後で発生したクレーム・障害への対応標準フロー。
+「沈黙が一番のリスク」が原則。素早い1次返信を最優先。</p>
+</blockquote>
+<hr>
+<h2>1. インシデント分類</h2>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>優先度</th>
+<th>主担当</th>
+<th>エスカレーション</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>削除依頼（脆弱性レポート受領者）</td>
+<td>中</td>
+<td>小野寺・櫻井みどり</td>
+<td>24時間以内に対応、ブラックリスト永久登録</td>
+</tr>
+<tr>
+<td>クライアントクレーム（軽度）</td>
+<td>中</td>
+<td>案件CTO</td>
+<td>30分以内に1次返信 → 2時間以内に方針返答</td>
+</tr>
+<tr>
+<td>クライアントクレーム（重度）</td>
+<td>高</td>
+<td>橋本CEO主導</td>
+<td>30分以内に1次返信 → 2時間以内に橋本CEOから直接対応</td>
+</tr>
+<tr>
+<td>公開サイト障害（500エラー等）</td>
+<td>最高</td>
+<td>案件CTO</td>
+<td>バックアップから即復元 → 5分以内にクライアント連絡</td>
+</tr>
+<tr>
+<td>法的トラブル（損害賠償等）</td>
+<td>最高</td>
+<td>橋本CEO</td>
+<td>顧問弁護士に即相談</td>
+</tr>
+<tr>
+<td>第三者からの権利侵害告知</td>
+<td>高</td>
+<td>橋本CEO</td>
+<td>24時間以内に内部調査 → 顧問弁護士相談</td>
+</tr>
+<tr>
+<td>SNS炎上・ネガティブ拡散</td>
+<td>高</td>
+<td>橋本CEO</td>
+<td>沈黙せず、状況を確認したうえで誠実な対応</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>2. 一般原則</h2>
+<h3>2.1 沈黙しない</h3>
+<ul>
+<li>1次返信は「内容ある返答」でなくてよい</li>
+<li>「ご連絡ありがとうございます。担当責任者へ即エスカレーションします。本日中に方針をご返答いたします」で十分</li>
+<li>沈黙は責任放棄に見える → 関係を破綻させる</li>
+</ul>
+<h3>2.2 嘘をつかない</h3>
+<ul>
+<li>「すぐ直します」と言って直せないと信頼ゼロ</li>
+<li>「現在調査中です。○時までに状況をご報告します」と時刻を切る</li>
+<li>状況不明なら「不明である」と正直に伝える</li>
+</ul>
+<h3>2.3 文書で記録する</h3>
+<ul>
+<li>すべてのやり取りはメール or Slack で文書化</li>
+<li>電話・対面の場合は終了直後に「本日のお電話の内容を整理させていただきます」とメール送付</li>
+<li>法的トラブルの可能性があればDriveに証跡保存</li>
+</ul>
+<h3>2.4 個人で抱え込まない</h3>
+<ul>
+<li>担当者が一人で対応しない（バーンアウト・判断ミスの原因）</li>
+<li>すぐに案件CTO・橋本CEOに共有</li>
+<li>共有=責任分散ではない、判断の質を上げる</li>
+</ul>
+<hr>
+<h2>3. 削除依頼（脆弱性レポート受領者）</h2>
+<h3>3.1 受領メール例</h3>
+<blockquote>
+<p>「貴社からのメールは不要です。今後一切送らないでください。」</p>
+</blockquote>
+<h3>3.2 対応手順（24時間以内）</h3>
+<pre><code>1. 即返信（30分以内）
+   雛形: 「ご連絡ありがとうございます。直ちに送付リストから除外し、頂いたメール・データはすべて削除いたします。
+          ご不快な思いをさせてしまい、誠に申し訳ございません。」
+
+2. ブラックリスト登録（OPS_Sheet TASKS タブ「VENTER_BlackList」）
+   - ドメイン
+   - 受領日
+   - 削除理由（簡潔に）
+
+3. 受領メール・添付データ・関連スクショを削除
+
+4. 案件CTO に Slack DM で報告
+
+5. 月次振り返りで件数集計・傾向分析
+</code></pre>
+<h3>3.3 二度と送付しない</h3>
+<ul>
+<li>ブラックリスト登録先は <strong>永久に再送付しない</strong></li>
+<li>別担当者が知らずに送付しないよう、ターゲットリスト作成時に必ず照合</li>
+</ul>
+<h3>3.4 詳細</h3>
+<p><a href="../handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §削除依頼SOP</p>
+<hr>
+<h2>4. クライアントクレーム（軽度）</h2>
+<h3>4.1 例</h3>
+<ul>
+<li>「この修正、思っていたものと違います」</li>
+<li>「お問い合わせフォームから来たメールが届かないようです」</li>
+<li>「Lighthouse のスコアが思ったより低いですが」</li>
+</ul>
+<h3>4.2 対応手順</h3>
+<pre><code>1. 30分以内に1次返信
+   雛形: 「ご連絡ありがとうございます。直ちに状況を確認し、本日中に方針をご返答いたします。
+          ご不便をおかけし、申し訳ございません。」
+
+2. 案件CTO + 橋本CEO に Slack DM で共有
+
+3. 状況調査（〜2時間）
+   - 該当箇所のコード確認
+   - 公開URLでの再現確認
+   - AIテストレポート再走（templates/wp-prompts/05-ai-test.md）
+
+4. 2時間以内に方針返答
+   - 原因（VAIZO側 / クライアント側 / 第三者起因）
+   - 対応方針（即修正 / 翌営業日対応 / 追加見積）
+   - スケジュール（〇月〇日までに対応完了）
+
+5. 修正実施 → 完了報告
+
+6. 修正対応表（修正ID `F-{案件略号}-{YYYYMM}-{連番:03桁}`）に記録
+</code></pre>
+<hr>
+<h2>5. クライアントクレーム（重度）</h2>
+<h3>5.1 例</h3>
+<ul>
+<li>「サイトに掲載された内容で営業損失が出た」</li>
+<li>「契約書と異なる成果物だ。返金してほしい」</li>
+<li>「弁護士に相談している」</li>
+</ul>
+<h3>5.2 対応手順</h3>
+<pre><code>1. 30分以内に1次返信（小野寺・櫻井みどりが）
+   雛形: 「ご連絡ありがとうございます。担当責任者の橋本へ即エスカレーションいたしました。
+          本日中に直接ご連絡を差し上げます。」
+
+2. 橋本CEO に電話連絡（即時）
+
+3. 2時間以内に橋本CEOから直接対応
+   - 電話 or 対面でヒアリング
+   - 文書でやり取り内容を記録
+   - 顧問弁護士への事前相談（「念のため」レベルでよい）
+
+4. 状況評価
+   - VAIZO側の責任 → 謝罪 + 修正 + 必要なら返金・損害賠償
+   - クライアント側の認識違い → 契約書・議事録で事実確認 + 丁寧な説明
+   - グレーゾーン → 弁護士相談 + 妥協点の協議
+
+5. 文書で合意形成
+   - 解決方法を文書化（メール・覚書）
+   - 双方の合意を記録
+
+6. 振り返りで再発防止策を立案
+   - troubleshooting/ に追加
+   - 契約書・運用フローの改善
+</code></pre>
+<h3>5.3 やってはいけないこと</h3>
+<ul>
+<li>❌ 一人で抱え込む（必ず橋本CEOに即報告）</li>
+<li>❌ 感情的な返信（24時間ルール: 強い感情があれば1日寝かせる）</li>
+<li>❌ 法的判断を素人で行う（顧問弁護士相談が安い投資）</li>
+<li>❌ SNS で言い訳・反論（炎上拡大）</li>
+</ul>
+<hr>
+<h2>6. 公開サイト障害（500エラー・真っ白等）</h2>
+<h3>6.1 検知タイミング</h3>
+<ul>
+<li>クライアントからの通報</li>
+<li>VAIZO側の監視（Phase 3 で導入予定）</li>
+<li>自動テスト（GitHub Actions、Phase 3 予定）</li>
+</ul>
+<h3>6.2 対応手順（最優先）</h3>
+<pre><code>1. 復元（5分以内）
+   - All-in-One WP Migration の「インポート」を開く
+   - 公開当日に取得した .wpress バックアップから復元
+   - 復元後、公開URL で表示確認
+   詳細: troubleshooting/wp-publish-issues.md
+
+2. クライアント連絡（10分以内）
+   雛形: 「公開サイトに一時的に表示の乱れが発生しましたが、復旧いたしました。
+          原因を調査の上、本日中に詳細をご報告いたします。
+          ご心配をおかけして申し訳ございません。」
+
+3. 案件CTO + 橋本CEO に Slack DM 並行報告
+
+4. 原因調査（落ち着いてから）
+   - WP更新による互換性破壊
+   - プラグイン更新の干渉
+   - サーバー障害
+   - ハッキング（その場合はサーバー業者連絡）
+
+5. 復旧策・再発防止策を立案
+   - troubleshooting/wp-publish-issues.md に追加
+   - 該当案件の修正対応表に記録
+</code></pre>
+<h3>6.3 ハッキングが疑われる場合</h3>
+<ul>
+<li>即サーバー業者に連絡（SSH切断・ログ取得）</li>
+<li>顧問弁護士相談</li>
+<li>警察相談（被害届の検討）</li>
+<li>クライアントにも直接報告</li>
+<li>パスワードを全更新</li>
+</ul>
+<hr>
+<h2>7. 法的トラブル（損害賠償・訴訟等）</h2>
+<h3>7.1 受領内容例</h3>
+<ul>
+<li>内容証明郵便</li>
+<li>弁護士からのメール</li>
+<li>訴訟通知</li>
+</ul>
+<h3>7.2 対応手順</h3>
+<pre><code>1. 受領後、即橋本CEOへ
+   - 自分で返信せず、橋本CEOの判断を待つ
+   - 受領した文書を Drive 案件フォルダ「法的対応」に保管
+
+2. 顧問弁護士に即相談
+   - 24時間以内に1回目の相談MTG
+   - 内容と影響評価
+   - 対応方針の決定
+
+3. 文書での回答
+   - 顧問弁護士監修の上で回答
+   - 期限内（通常2週間）に返答
+
+4. VAIZER 全員に共有
+   - Slack #all-株式会社vaizo で簡潔に状況共有
+   - 全員が「黙る」協力体制（外部に話さない）
+
+5. 解決後の振り返り
+   - 契約書・運用フローの改善
+   - 経営判断としての教訓
+</code></pre>
+<hr>
+<h2>8. 第三者からの権利侵害告知</h2>
+<h3>8.1 例</h3>
+<ul>
+<li>「公開しているサイトの画像に、当方の著作物が無断使用されている」</li>
+<li>「文章が剽窃されている」</li>
+<li>「商標権を侵害している」</li>
+</ul>
+<h3>8.2 対応手順</h3>
+<pre><code>1. 24時間以内に1次返信（橋本CEO主導）
+   雛形: 「ご連絡ありがとうございます。直ちに内部調査を行い、
+          〇〇月〇〇日までに方針をご返答いたします。」
+
+2. 内部調査（48時間以内）
+   - 該当画像・文章のソース確認
+   - 提供先（クライアント側 / フォトストック / VAIZO側生成）の追跡
+   - 著作権・商標権の所在確認
+
+3. 顧問弁護士相談
+
+4. 結論
+   - 事実関係に誤り（VAIZOに非なし）→ 丁寧な説明 + 証拠提示
+   - 一部に問題あり → 該当箇所削除 + 謝罪 + 再発防止
+   - 全面的に問題あり → 削除 + 謝罪 + 必要なら賠償
+
+5. クライアントへの報告
+   - 該当箇所がクライアント素材由来の場合、原因を共有
+</code></pre>
+<hr>
+<h2>9. SNS炎上・ネガティブ拡散</h2>
+<h3>9.1 検知</h3>
+<ul>
+<li>VAIZER 自身の発見</li>
+<li>クライアントからの通報</li>
+<li>Google アラート（vaizo / V/ENTER で設定推奨）</li>
+</ul>
+<h3>9.2 対応手順</h3>
+<pre><code>1. 状況確認（拡散規模・内容の正否）
+   - スクショ取得（証跡保存）
+   - 発言者の意図・背景を確認
+
+2. 沈黙ではなく、誠実な対応
+   - 状況に応じた返答（謝罪 / 説明 / 訂正依頼）
+   - 第三者を巻き込まない
+
+3. 橋本CEO + 顧問弁護士相談
+   - 反論すべきか / 沈静化を待つか / 法的対応か
+
+4. 全VAIZER で連携
+   - Slack #all-株式会社vaizo で状況共有
+   - 個人SNSでの反論禁止（炎上拡大）
+
+5. 解決後の振り返り
+   - 文体・運用ルールの改善
+   - 再発防止
+</code></pre>
+<hr>
+<h2>10. 関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §クレーム対応SOP</li>
+<li><a href="../troubleshooting/wp-publish-issues.html"><code>troubleshooting/wp-publish-issues.md</code></a> — 公開作業の障害</li>
+<li><a href="../troubleshooting/mailto-regression.html"><code>troubleshooting/mailto-regression.md</code></a> — 仙台事故の事例</li>
+<li><a href="../decision-trees/escalation.html"><code>decision-trees/escalation.md</code></a> — エスカレーション順</li>
+<li><a href="../handbook/09-client-offboarding.html"><code>handbook/09-client-offboarding.md</code></a> §3-C トラブル終了</li>
+<li><a href="../SECURITY.html"><code>SECURITY.md</code></a> — 脆弱性報告先</li>
+</ul>
+<hr>
+<h2>11. インシデント記録テンプレ</h2>
+<p>すべてのインシデントは Drive <code>02_事業部別_EnterWebAI_AIWebサイト制作/_incidents/</code> に記録：</p>
+<pre><code>incident_{{YYYYMMDD}}_{{案件略号}}_{{種類}}.md
+</code></pre>
+<p>記録項目:</p>
+<ul>
+<li>発生日時</li>
+<li>種類（削除依頼 / クレーム軽度 / クレーム重度 / 障害 / 法的 / 権利侵害 / SNS炎上）</li>
+<li>概要</li>
+<li>影響範囲</li>
+<li>対応経緯（時系列）</li>
+<li>解決結果</li>
+<li>学びと再発防止策</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

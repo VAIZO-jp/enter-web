@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>不動産仲介業態 — V/ENTER WEB Handbook</title>
+<meta name="description" content="不動産仲介・賃貸管理・売買仲介向け雛形。 宅地建物取引業法（宅建業法）に基づく必須表記、SUUMO・HOMES からの流入を意識した構成。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/templates/codex-prompts/real-estate.html">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不動産仲介業態 — V/ENTER WEB Handbook">
+<meta property="og:description" content="不動産仲介・賃貸管理・売買仲介向け雛形。 宅地建物取引業法（宅建業法）に基づく必須表記、SUUMO・HOMES からの流入を意識した構成。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/templates/codex-prompts/real-estate.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不動産仲介業態 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="不動産仲介・賃貸管理・売買仲介向け雛形。 宅地建物取引業法（宅建業法）に基づく必須表記、SUUMO・HOMES からの流入を意識した構成。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>Codex プロンプト：不動産仲介業態</h1>
+<blockquote>
+<p>不動産仲介・賃貸管理・売買仲介向け雛形。
+宅地建物取引業法（宅建業法）に基づく必須表記、SUUMO・HOMES からの流入を意識した構成。</p>
+</blockquote>
+<p>⚠️ <strong>宅建業法・誇大広告等の禁止</strong>: 「最安値」「絶対」等の使用不可。下記「宅建業法遵守」必読。</p>
+<p>使用方法: 案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt.md</code> としてリネーム。</p>
+<hr>
+<h2>タスク: {{屋号}}不動産仲介サイト</h2>
+<h2>役割</h2>
+<p>V/ENTER WEB事業部の実装ドラフト担当として、不動産仲介LPを完成形で生成。</p>
+<h2>想定企業</h2>
+<ul>
+<li><strong>業態</strong>: 賃貸仲介 / 売買仲介 / 賃貸管理 / 投資用物件</li>
+<li><strong>宅建業免許番号</strong>: {{都道府県知事(N)第XXXXXXXX号 または 国土交通大臣(N)第XXXXXXXX号}}</li>
+<li><strong>本店所在地</strong>: {{都道府県 + 市区町村}}</li>
+<li><strong>取扱エリア</strong>: {{駅・市区町村単位で具体的に}}</li>
+<li><strong>強み</strong>: {{学生街特化 / ファミリー向け / 投資用 / リノベ物件}}</li>
+<li><strong>代表者</strong>: {{氏名 + 宅建士登録番号}}</li>
+</ul>
+<h2>デザイン要件</h2>
+<ul>
+<li>VAIZOエディトリアル白黒基調 + ネイビー <code>#1e3a5f</code>（信頼感）</li>
+<li>書体:<ul>
+<li>英字: Inter 900（信頼・モダン）</li>
+<li>日本語: Noto Sans JP 700</li>
+</ul>
+</li>
+<li>装飾レベル: 低</li>
+<li>本文 17px / テーブル 15px / 行間 1.9 厳守</li>
+</ul>
+<h2>セクション構成</h2>
+<h3>1. HERO</h3>
+<ul>
+<li>メインキャッチ（例: 「あなたの暮らしを、{{エリア名}}で」）</li>
+<li>取扱エリア・物件種別を明示</li>
+<li>物件検索フォーム（駅 / 賃料 / 間取り）または「お問い合わせはこちら」CTA</li>
+</ul>
+<h3>2. SEARCH（物件検索）</h3>
+<p>外部システム連携が一般的:</p>
+<ul>
+<li>いえらぶ</li>
+<li>ノマドクラウド（賃貸特化）</li>
+<li>スリーエースシステム（売買特化）</li>
+<li>iframe埋込 or リダイレクト</li>
+</ul>
+<p>または、自社管理物件を直接表示:</p>
+<ul>
+<li>カード形式（写真 + 賃料 + 間取り + 築年数 + 駅徒歩）</li>
+<li>フィルター機能</li>
+</ul>
+<h3>3. FEATURES（強み）</h3>
+<ul>
+<li>3〜4個の差別化ポイント</li>
+<li>例: 「学生街20年」「{{エリア名}}最大級の物件数」「24時間対応」</li>
+<li>※「最大級」等の強調表現は宅建業法・景品表示法注意</li>
+</ul>
+<h3>4. TYPES（物件種別）</h3>
+<ul>
+<li>賃貸 / 売買 / 投資用 / 駐車場 等</li>
+<li>各カテゴリに代表物件 or 検索リンク</li>
+</ul>
+<h3>5. AREA（取扱エリア）</h3>
+<ul>
+<li>地図（Google Maps）</li>
+<li>駅一覧</li>
+<li>エリア別の特徴・相場感</li>
+</ul>
+<h3>6. STAFF（スタッフ紹介）</h3>
+<ul>
+<li>顔写真 + 氏名 + 役職 + 宅建士登録番号 + 一言</li>
+<li>信頼感の演出</li>
+</ul>
+<h3>7. FLOW（取引の流れ）</h3>
+<ul>
+<li>賃貸: 「お問い合わせ → 内覧 → 申込 → 審査 → 契約 → 入居」</li>
+<li>売買: 「査定 → 媒介契約 → 販売活動 → 契約 → 引渡」</li>
+<li>各ステップの所要時間目安</li>
+</ul>
+<h3>8. ACCESS</h3>
+<ul>
+<li>住所・最寄駅・営業時間</li>
+<li>Google Maps 埋込</li>
+</ul>
+<h3>9. FOOTER</h3>
+<ul>
+<li>屋号・住所・電話</li>
+<li><strong>宅建業免許番号</strong>（必須）</li>
+<li><strong>業界団体加盟</strong>（{{宅建協会 / 全日本不動産協会}} 等、必須）</li>
+<li>プライバシーポリシー / 個人情報保護方針</li>
+</ul>
+<h2>追従要素</h2>
+<ul>
+<li>下部追従バー（スマホ）:<ul>
+<li>「電話で問い合わせ」<code>tel:</code></li>
+<li>「LINEで相談」</li>
+<li>「メールで相談」</li>
+</ul>
+</li>
+</ul>
+<h2>宅建業法遵守</h2>
+<h3>必須表記（必ず明記）</h3>
+<ul>
+<li>商号 / 所在地 / 電話番号</li>
+<li>宅建業免許番号（更新回数含む）</li>
+<li>加盟団体（宅建協会 等）</li>
+<li>専任の宅地建物取引士の氏名・登録番号</li>
+<li>個別物件: 賃料 / 共益費 / 敷金 / 礼金 / 仲介手数料 / 取引態様（仲介・代理・売主等）</li>
+</ul>
+<h3>NG表現（厳守）</h3>
+<ul>
+<li>❌ 「日本一」「最高の物件」（最上級・誇大広告）</li>
+<li>❌ 「絶対」「必ず」（断定）</li>
+<li>❌ 「業界初」（証拠なき事実）</li>
+<li>❌ 個人情報の無断掲載（オーナー名・前居住者情報）</li>
+<li>❌ 物件写真の極端な加工（虚偽表示）</li>
+</ul>
+<h3>個別物件の表示ルール</h3>
+<p>各物件ページには以下を必ず表示：</p>
+<ul>
+<li>取引態様（媒介・代理・売主・貸主）</li>
+<li>賃貸: 賃料・共益費・敷金・礼金・仲介手数料・契約期間・更新料</li>
+<li>売買: 価格・所在地・面積・築年数・取引価格（消費税込/別記）</li>
+<li>物件写真の撮影日 or 現状</li>
+</ul>
+<h3>媒介契約</h3>
+<ul>
+<li>専属専任媒介・専任媒介・一般媒介の違いを明示</li>
+<li>媒介契約期間・契約解除条件</li>
+</ul>
+<h2>SEO・構造化データ</h2>
+<ul>
+<li>JSON-LD <code>RealEstateAgent</code></li>
+<li>営業時間 <code>openingHoursSpecification</code></li>
+<li>電話番号 <code>telephone</code></li>
+<li>物件ごとに <code>Apartment</code> や <code>House</code> の構造化データ</li>
+</ul>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>仕様外の機能（チャットボット等）を勝手に追加しない</li>
+<li>宅建業法 NG表現を絶対に使わない</li>
+<li>物件情報の捏造・誇大表現を使わない</li>
+<li>軍事比喩・否定列挙・採用語・階層用語は使わない</li>
+<li>文字サイズ: 本文17px、テーブル15px、行間1.9厳守</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>index.html</code> を開くと全要件を満たして表示</li>
+<li><input disabled="" type="checkbox"> 宅建業免許番号が明記されている</li>
+<li><input disabled="" type="checkbox"> 専任の宅建士情報が明記されている</li>
+<li><input disabled="" type="checkbox"> 加盟団体が明記されている</li>
+<li><input disabled="" type="checkbox"> 物件表示は取引態様等を含む</li>
+<li><input disabled="" type="checkbox"> レスポンシブ全幅でレイアウト崩れなし</li>
+<li><input disabled="" type="checkbox"> Lighthouse モバイル パフォーマンス 70以上</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+</ul>
+<h2>法的レビュー</h2>
+<p>公開前に必ず：</p>
+<ul>
+<li>顧問弁護士・宅建協会のレビュー</li>
+<li>個別物件情報は宅建士による確認</li>
+<li>不当景品類及び不当表示防止法（景表法）の確認</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

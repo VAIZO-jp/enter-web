@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>契約形態の選択 — V/ENTER WEB Handbook</title>
+<meta name="description" content="案件単位の契約形態を決める判断ツリー。クライアントの予算・運用体制・成果志向に応じて選定する。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/decision-trees/contract-type.html">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="契約形態の選択 — V/ENTER WEB Handbook">
+<meta property="og:description" content="案件単位の契約形態を決める判断ツリー。クライアントの予算・運用体制・成果志向に応じて選定する。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/decision-trees/contract-type.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="契約形態の選択 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="案件単位の契約形態を決める判断ツリー。クライアントの予算・運用体制・成果志向に応じて選定する。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>判断フロー：契約形態の選択（買切り / 月次運用 / ハイブリッド）</h1>
+<blockquote>
+<p>案件単位の契約形態を決める判断ツリー。クライアントの予算・運用体制・成果志向に応じて選定する。</p>
+</blockquote>
+<hr>
+<h2>3つの契約形態</h2>
+<table>
+<thead>
+<tr>
+<th>形態</th>
+<th>報酬構造</th>
+<th>期間</th>
+<th>適用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>買切り（Web制作のみ）</strong></td>
+<td>一括（または分割払い）</td>
+<td>制作期間 + 公開後30日</td>
+<td>LP単発・予算制約</td>
+</tr>
+<tr>
+<td><strong>月次運用契約</strong></td>
+<td>月額固定</td>
+<td>6ヶ月以上推奨</td>
+<td>継続的な改修・SEO・運用</td>
+</tr>
+<tr>
+<td><strong>ハイブリッド</strong></td>
+<td>制作費 + 月額運用費</td>
+<td>制作後 + 月次運用</td>
+<td>標準パターン（推奨）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>判断フロー</h2>
+<pre><code>┌────────────────────────────────────────────────┐
+│ Q1. クライアントは公開後の継続的改修・運用が       │
+│     必要か？                                    │
+└────────────────────────────────────────────────┘
+        │
+        ├── NO ───→ ★ 買切り（LP単発・小規模）
+        │           例: 期間限定キャンペーンLP
+        │
+        └── YES ──→ Q2へ
+
+┌────────────────────────────────────────────────┐
+│ Q2. クライアント側に運用人材（SEO担当・ライター     │
+│     等）はいるか？                                │
+└────────────────────────────────────────────────┘
+        │
+        ├── YES ──→ Q3へ
+        │
+        └── NO ───→ ★★★ ハイブリッド推奨
+                    制作 + 月次運用代行
+
+┌────────────────────────────────────────────────┐
+│ Q3. クライアントは「自走したい」「VAIZOに任せたい」 │
+│     どちら？                                    │
+└────────────────────────────────────────────────┘
+        │
+        ├── 自走 ──→ ★★ 買切り + サポート契約
+        │            （3ヶ月のチャットサポートのみ）
+        │
+        └── 任せたい ─→ ★★★ ハイブリッド
+                       制作 + 月次運用代行
+</code></pre>
+<hr>
+<h2>各形態の詳細</h2>
+<h3>A. 買切り（Web制作のみ）</h3>
+<h4>適用パターン</h4>
+<ul>
+<li>LP単発（イベント告知 / キャンペーン / 期間限定）</li>
+<li>予算制約が厳しい</li>
+<li>クライアントが自走できる体制</li>
+<li>VAIZO 側のリソース集中（運用受けると拘束される）</li>
+</ul>
+<h4>報酬構造</h4>
+<ul>
+<li>着手金30% / 中間金30% / 残金40%</li>
+<li>または 一括前払い（小規模案件）</li>
+</ul>
+<h4>公開後サポート</h4>
+<ul>
+<li>30日間: 軽微な修正・調整は無償</li>
+<li>31日〜90日: 軽微な修正は応相談（時間単価 5,000円〜）</li>
+<li>91日〜: すべて追加見積</li>
+</ul>
+<h4>注意点</h4>
+<ul>
+<li>契約終了後の運用責任はクライアント側</li>
+<li>WPアップデート・プラグイン互換性問題はクライアント対応</li>
+<li>ドメイン・サーバーの権限移譲を確実に行う</li>
+</ul>
+<hr>
+<h3>B. 月次運用契約</h3>
+<h4>適用パターン</h4>
+<ul>
+<li>既存サイトのリニューアル後、継続運用</li>
+<li>SEO中心の運用案件</li>
+<li>ブログ・ニュース更新を VAIZO が代行</li>
+<li>多店舗展開・新店オープン対応</li>
+</ul>
+<h4>報酬構造</h4>
+<ul>
+<li>月額固定（標準: 3万円〜10万円）</li>
+<li>内訳例（月額5万円の場合）:<ul>
+<li>SEO 改善: 月3時間</li>
+<li>コンテンツ更新: 月5記事</li>
+<li>パフォーマンス監視: 自動 + 月次レポート</li>
+<li>軽微な改修: 月3時間まで無償</li>
+</ul>
+</li>
+<li>大規模改修は別見積</li>
+</ul>
+<h4>契約期間</h4>
+<ul>
+<li>最低 6ヶ月</li>
+<li>自動更新（解約は1ヶ月前申告）</li>
+</ul>
+<h4>KPI</h4>
+<ul>
+<li>セッション数の月次推移</li>
+<li>GSC インプレッション・クリック推移</li>
+<li>Lighthouse スコア維持</li>
+<li>月次レポート提出</li>
+</ul>
+<h4>注意点</h4>
+<ul>
+<li>「月次運用契約だけ」は失敗しやすい（制作の文脈を共有していない別業者だと品質が落ちる）</li>
+<li>VAIZO が制作した案件の運用継続が理想</li>
+</ul>
+<hr>
+<h3>C. ハイブリッド（推奨パターン）</h3>
+<h4>適用パターン</h4>
+<ul>
+<li>標準的な案件（VAIZO 推奨）</li>
+<li>リニューアル制作 + 公開後の継続運用</li>
+</ul>
+<h4>報酬構造</h4>
+<ul>
+<li>制作費: 一括（または着手金30% / 中間金30% / 残金40%）</li>
+<li>月次運用費: 公開後の月額固定</li>
+</ul>
+<h4>契約期間</h4>
+<ul>
+<li>制作: 完了まで</li>
+<li>運用: 公開後6ヶ月最低、自動更新</li>
+</ul>
+<h4>メリット</h4>
+<ul>
+<li>VAIZO 側: 安定収益</li>
+<li>クライアント側: 制作の文脈を理解した業者に運用を任せられる</li>
+</ul>
+<hr>
+<h2>提案時の伝え方</h2>
+<h3>1次商談での選択肢提示</h3>
+<pre><code>「ご予算と運用体制に応じて、3つの形態をご提案しています：
+
+A. 買切り（Web制作のみ）
+   - 〜50万円程度
+   - 公開後30日のサポート付き
+   - その後は基本的にクライアント様で運用
+
+B. ハイブリッド（推奨）
+   - 制作費 + 月次運用契約
+   - 制作費はAと同等
+   - 月次運用は月額3万円〜
+   - VAIZO がコンテンツ更新・SEO・改修を継続
+
+C. 月次運用のみ（既存サイト運用）
+   - 既存サイトをVAIZOが運用
+   - 月額3万円〜10万円
+
+御社の状況に応じて、最適な形態をご相談しましょう。」
+</code></pre>
+<hr>
+<h2>業務委託パートナー（OneBe等）との関係</h2>
+<p>詳細: メモリ <code>project_onebe_partnership.md</code></p>
+<ul>
+<li>月次運用案件で OneBe にコンテンツ作成を再委託する場合は、業務委託契約に「再委託」条項を含める</li>
+<li>タスク単価ベースの管理（指揮命令性なし、偽装請負回避）</li>
+<li>詳細: メモリ <code>project_vaizo_web_ops.md</code> § C1</li>
+</ul>
+<hr>
+<h2>関連ドキュメント</h2>
+<ul>
+<li><a href="../handbook/01-sales-process.html"><code>handbook/01-sales-process.md</code></a> — 営業プロセス</li>
+<li><a href="../handbook/08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> — 経理・請求フロー</li>
+<li><a href="../handbook/09-client-offboarding.html"><code>handbook/09-client-offboarding.md</code></a> — オフボーディング</li>
+<li><a href="../runbooks/post-launch-30days.html"><code>runbooks/post-launch-30days.md</code></a> — 公開後30日のフォロー</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>

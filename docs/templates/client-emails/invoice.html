@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>メール: 請求書送付 — V/ENTER WEB Handbook</title>
+<meta name="description" content="着手金 / 中間金 / 残金の各タイミングで使用するメール雛形。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/templates/client-emails/invoice.html">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="メール: 請求書送付 — V/ENTER WEB Handbook">
+<meta property="og:description" content="着手金 / 中間金 / 残金の各タイミングで使用するメール雛形。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/templates/client-emails/invoice.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="メール: 請求書送付 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="着手金 / 中間金 / 残金の各タイミングで使用するメール雛形。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/vaizo-editorial.css">
+</head>
+<body>
+<main class="handbook-shell">
+<header class="handbook-header">
+  <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
+  <div class="handbook-meta">v0.1 · 2026-05-09</div>
+</header>
+<h1>メール雛形：請求書送付</h1>
+<blockquote>
+<p>着手金 / 中間金 / 残金の各タイミングで使用するメール雛形。</p>
+</blockquote>
+<hr>
+<h2>共通件名</h2>
+<pre><code>【ご請求】{{屋号 / 企業名}}様 {{案件名}} {{第N回}}請求書をお送りします（請求番号: {{番号}}）
+</code></pre>
+<h2>A. 着手金請求（着手時）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。
+株式会社VAIZO 経理部の {{差出人氏名}} です。
+
+このたびは業務委託契約書のご返送ありがとうございました。
+契約に基づき、着手金請求書をお送りいたします。
+
+──────────────
+■ ご請求金額
+──────────────
+
+請求番号: {{請求番号}}
+案件名: {{案件名}}
+請求項目: 着手金（契約金額の30%）
+金額: {{金額}} 円（税込）
+支払期限: {{請求日 + 14日}}
+
+──────────────
+■ お振込先
+──────────────
+
+{{振込先銀行名 + 支店 + 口座種別 + 口座番号 + 名義}}
+※ お振込手数料はクライアント様ご負担にてお願いいたします。
+
+──────────────
+■ 次のステップ
+──────────────
+
+ご入金確認後、即座に本制作に着手いたします。
+着手後は週次で進捗をご報告いたします。
+
+ご不明点はメールもしくはお電話でお問い合わせください。
+
+──────────────
+株式会社VAIZO 経理部
+{{差出人氏名}}
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>B. 中間金請求（制作着手から2週間後）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。
+株式会社VAIZO 経理部の {{差出人氏名}} です。
+
+{{案件名}} の制作が順調に進行しております。
+中間金請求書をお送りいたします。
+
+──────────────
+■ ご請求金額
+──────────────
+
+請求番号: {{請求番号}}
+案件名: {{案件名}}
+請求項目: 中間金（契約金額の30%）
+金額: {{金額}} 円（税込）
+支払期限: {{請求日 + 14日}}
+
+──────────────
+■ 制作進捗
+──────────────
+
+- {{完了済 例: FV + 6セクション デザイン確定}}
+- {{進行中 例: 写真選定・文章調整}}
+- {{今後 例: WP統合 → 公開作業}}
+
+公開予定日: {{合意した公開日}}
+
+──────────────
+■ お振込先
+──────────────
+
+{{振込先}}
+
+──────────────
+株式会社VAIZO 経理部
+{{差出人氏名}}
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>C. 残金請求（公開後30日）</h2>
+<pre><code>{{担当者ご芳名}} 様
+
+お世話になっております。
+株式会社VAIZO 経理部の {{差出人氏名}} です。
+
+{{案件名}} の公開から30日が経過いたしました。
+残金請求書をお送りいたします。
+
+──────────────
+■ ご請求金額
+──────────────
+
+請求番号: {{請求番号}}
+案件名: {{案件名}}
+請求項目: 残金（契約金額の40%）
+金額: {{金額}} 円（税込）
+支払期限: {{請求日 + 14日}}
+
+──────────────
+■ 公開後30日のレポート
+──────────────
+
+公開後30日のアクセス推移・パフォーマンスについて、
+別途レポートをお送りいたします（添付PDF）。
+
+- 公開日: {{YYYY-MM-DD}}
+- 30日累計セッション: {{N}}
+- Lighthouse モバイル パフォーマンス: 公開時 {{X}} → 30日後 {{Y}}
+
+──────────────
+■ お振込先
+──────────────
+
+{{振込先}}
+
+──────────────
+■ 今後について
+──────────────
+
+公開後30日のサポート期間が終了しました。
+継続的な運用・追加改修をご希望の場合、月次運用契約のご提案も可能です。
+詳細は別途ご相談ください。
+
+──────────────
+株式会社VAIZO 経理部
+{{差出人氏名}}
+info@vaizo.jp
+──────────────
+</code></pre>
+<h2>添付</h2>
+<ul>
+<li>請求書PDF（Drive <code>01_帳票テンプレート/請求書テンプレート/</code>）</li>
+<li>適格請求書（インボイス）対応版</li>
+</ul>
+<h2>チェックリスト</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 請求番号が連番になっている</li>
+<li><input disabled="" type="checkbox"> 振込先（VAIZO法人口座）が正しい</li>
+<li><input disabled="" type="checkbox"> 支払期限（標準: 翌月末 or 14日後）</li>
+<li><input disabled="" type="checkbox"> 適格請求書発行事業者番号が記載</li>
+<li><input disabled="" type="checkbox"> 税込・税別が明確</li>
+<li><input disabled="" type="checkbox"> 案件番号・契約書番号と整合</li>
+</ul>
+<h2>督促（支払期限超過時）</h2>
+<p>詳細: <a href="../../handbook/08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> §8 督促フロー</p>
+<ul>
+<li>1営業日超過: 経理部からメール</li>
+<li>5営業日超過: 案件CTO から電話</li>
+<li>10営業日超過: 橋本CEO 主導、書面催告書</li>
+</ul>
+<h2>関連</h2>
+<ul>
+<li><a href="../../handbook/08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> §6 請求書発行</li>
+<li><a href="./estimate.html"><code>templates/client-emails/estimate.md</code></a> — 見積書送付</li>
+</ul>
+
+<footer class="handbook-footer">
+  <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
+  <div>info@vaizo.jp · vaizo.jp</div>
+</footer>
+</main>
+</body>
+</html>
