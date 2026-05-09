@@ -3,230 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Process — V/ENTER WEB Handbook</title>
-<meta name="description" content="V/ENTER WEB の制作プロセス。8ステップ・保管場所・画像・MCPを最小限に。">
-<meta name="theme-color" content="#0a0a0a">
+<title>Process — V/ENTER WEB</title>
+<meta name="description" content="制作プロセスの最小限の地図。8ステップ・保管場所・画像・MCP。">
 <link rel="canonical" href="https://vaizo-jp.github.io/enter-web/process.html">
 <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Process — V/ENTER WEB Handbook">
-<meta property="og:description" content="制作プロセスの全体図を1ページで。">
-<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/process.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/vaizo-editorial.css">
 <style>
 .p-hero {
-  padding: clamp(48px, 9vw, 96px) 0 clamp(32px, 6vw, 56px);
+  padding: clamp(48px, 9vw, 96px) 0 clamp(24px, 4vw, 40px);
   border-bottom: 1px solid var(--rule-hairline);
 }
-
-.p-hero__eyebrow {
-  font-family: var(--font-sans-en);
-  font-size: var(--fs-caption);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-grey);
-  margin-bottom: 12px;
-}
-
 .p-hero__title {
   font-family: var(--font-sans-en);
   font-weight: 900;
   font-size: clamp(40px, 6vw, 80px);
   letter-spacing: 0.02em;
   line-height: 1;
-  margin: 0 0 16px;
-}
-
-.p-hero__lead {
-  font-family: var(--font-serif-jp);
-  font-size: 17px;
-  color: var(--ink-charcoal);
-  max-width: 640px;
   margin: 0;
-  line-height: 1.8;
 }
-
 .p-section {
-  padding: clamp(48px, 7vw, 80px) 0;
+  padding: clamp(40px, 6vw, 64px) 0;
   border-bottom: 1px solid var(--rule-hairline);
 }
-
-.p-section:last-of-type {
-  border-bottom: none;
-}
-
+.p-section:last-of-type { border-bottom: none; }
 .p-section__title {
   font-family: var(--font-sans-en);
   font-weight: 900;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-black);
-  margin: 0 0 32px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--ink-black);
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
+  margin: 0 0 24px;
 }
-
 .p-section__title .jp {
   font-family: var(--font-sans-jp);
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 400;
+  font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--ink-grey);
   text-transform: none;
+  margin-left: 12px;
 }
-
-/* Flow: 縦リスト1行 */
-.flow {
-  display: flex;
-  flex-direction: column;
-}
-
-.flow__row {
-  display: grid;
-  grid-template-columns: 48px 1fr auto;
-  gap: 24px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--rule-hairline);
-  align-items: baseline;
-}
-
-.flow__row:last-child {
-  border-bottom: none;
-}
-
-.flow__num {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 16px;
-  color: var(--accent-gold);
-  letter-spacing: 0.04em;
-}
-
-.flow__label {
-  font-family: var(--font-sans-jp);
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--ink-black);
-}
-
-.flow__label .en {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: var(--ink-grey);
-  margin-right: 12px;
-  text-transform: uppercase;
-}
-
-.flow__link {
-  font-family: var(--font-sans-en);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-graphite);
-  text-decoration: none;
-  border: none;
-  white-space: nowrap;
-}
-
-.flow__link:hover {
-  color: var(--ink-black);
-}
-
-@media (max-width: 640px) {
-  .flow__row {
-    grid-template-columns: 32px 1fr;
-  }
-  .flow__link {
-    grid-column: 2;
-    margin-top: 4px;
-  }
-}
-
-/* Storage / Asset / MCP: 共通テーブル */
-.simple-table {
+.t {
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-sans-jp);
   font-size: 14px;
 }
-
-.simple-table tr {
+.t tr {
   border-bottom: 1px solid var(--rule-hairline);
 }
-
-.simple-table tr:first-child {
-  border-top: 1px solid var(--ink-black);
-  border-bottom: 1px solid var(--ink-black);
-}
-
-.simple-table th {
-  text-align: left;
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 12px 16px;
-  color: var(--ink-black);
-  background: var(--paper-cream);
-}
-
-.simple-table td {
-  padding: 14px 16px;
+.t tr:first-child { border-top: 1px solid var(--ink-black); }
+.t td {
+  padding: 12px 0;
   vertical-align: top;
   color: var(--ink-charcoal);
 }
-
-.simple-table td:first-child {
-  font-weight: 700;
-  color: var(--ink-black);
+.t td:first-child {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--accent-gold);
+  letter-spacing: 0.04em;
+  width: 64px;
   white-space: nowrap;
 }
-
-.simple-table .dim {
-  color: var(--ink-soft);
+.t td:nth-child(2) {
+  font-weight: 700;
+  color: var(--ink-black);
+  width: 30%;
+}
+.t td:last-child {
+  color: var(--ink-graphite);
   font-size: 13px;
 }
-
-.tree-block {
-  font-family: var(--font-mono);
+.tree {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   line-height: 1.9;
   background: var(--paper-cream);
   border: 1px solid var(--rule-hairline);
-  padding: 20px 24px;
+  padding: 16px 20px;
   white-space: pre-wrap;
   color: var(--ink-charcoal);
 }
-
-.tree-block .dim {
-  color: var(--ink-soft);
-}
-
-.tree-block .accent {
-  color: var(--accent-gold);
-}
-
-.cmd-block {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  background: var(--ink-black);
-  color: var(--paper-off-white);
-  padding: 12px 16px;
-  margin: 12px 0;
-  display: block;
-  overflow-x: auto;
-}
-
+.tree .dim { color: var(--ink-soft); }
 .top-nav {
   position: sticky;
   top: 0;
@@ -235,7 +99,6 @@
   padding: 14px 0;
   z-index: 10;
 }
-
 .top-nav__inner {
   max-width: var(--max-w-page);
   margin: 0 auto;
@@ -244,43 +107,17 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.top-nav__brand {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  color: var(--ink-black);
-  text-decoration: none;
-  border: none;
-}
-
-.top-nav__brand .slash {
-  color: var(--accent-gold);
-}
-
+.top-nav__brand,
 .top-nav__back {
   font-family: var(--font-sans-en);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-graphite);
+  color: var(--ink-black);
   text-decoration: none;
   border: none;
 }
-
-.top-nav__back:hover {
-  color: var(--ink-black);
-}
-
-.lead-text {
-  font-family: var(--font-sans-jp);
-  font-size: 14px;
-  color: var(--ink-graphite);
-  line-height: 1.8;
-  max-width: 640px;
-  margin: 0 0 24px;
-}
+.top-nav__brand .slash { color: var(--accent-gold); }
+.top-nav__back { color: var(--ink-graphite); text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -295,84 +132,49 @@
 <main class="landing">
 
 <section class="p-hero">
-  <div class="p-hero__eyebrow">STANDARD PROCESS</div>
   <h1 class="p-hero__title">Process</h1>
-  <p class="p-hero__lead">制作プロセスの最小限の地図。8ステップ、保管場所、画像、MCPを1ページで。</p>
 </section>
 
-<!-- 1. FLOW -->
 <section class="p-section">
-  <h2 class="p-section__title">1. Flow <span class="jp">8ステップ</span></h2>
-  <div class="flow">
-    <div class="flow__row"><div class="flow__num">01</div><div class="flow__label"><span class="en">Sales</span>営業 · 三点セット送付</div><a class="flow__link" href="handbook/01-sales-process.html">詳細 →</a></div>
-    <div class="flow__row"><div class="flow__num">02</div><div class="flow__label"><span class="en">Contract</span>契約 · 提案3案 → 契約 → 着手金</div><a class="flow__link" href="handbook/08-finance-billing.html">詳細 →</a></div>
-    <div class="flow__row"><div class="flow__num">03</div><div class="flow__label"><span class="en">Research</span>リサーチ · 既存解析 + ムードボード</div><a class="flow__link" href="handbook/10-design-research.html">詳細 →</a></div>
-    <div class="flow__row"><div class="flow__num">04</div><div class="flow__label"><span class="en">Generate</span>生成 · Codex で実装ドラフト</div><a class="flow__link" href="handbook/03-codex-claude-workflow.html">詳細 →</a></div>
-    <div class="flow__row"><div class="flow__num">05</div><div class="flow__label"><span class="en">Review</span>統合 · Claude でレビュー + 直接編集</div><a class="flow__link" href="handbook/03-codex-claude-workflow.html">詳細 →</a></div>
-    <div class="flow__row"><div class="flow__num">06</div><div class="flow__label"><span class="en">QC</span>検証 · MCP 16項目 + Playwright</div><a class="flow__link" href="templates/wp-prompts/05-ai-test.html">詳細 →</a></div>
-    <div class="flow__row"><div class="flow__num">07</div><div class="flow__label"><span class="en">Demo</span>デモ · GitHub Pages / Vercel</div><a class="flow__link" href="templates/wp-prompts/04-0-optimize.html">詳細 →</a></div>
-    <div class="flow__row"><div class="flow__num">08</div><div class="flow__label"><span class="en">Publish</span>公開 + 30日フォロー</div><a class="flow__link" href="handbook/04-wp-publish-guide.html">詳細 →</a></div>
-  </div>
-</section>
-
-<!-- 2. STORAGE -->
-<section class="p-section">
-  <h2 class="p-section__title">2. Storage <span class="jp">どこに保管</span></h2>
-  <table class="simple-table">
-    <tr><th>場所</th><th>何を</th></tr>
-    <tr><td>Drive</td><td>顧客資料・画像・契約書・経理書類・議事録</td></tr>
-    <tr><td>GitHub</td><td>コード・ハンドブック・テンプレ</td></tr>
-    <tr><td>1Password</td><td>パスワード・APIキー・WPログイン</td></tr>
-    <tr><td>Local</td><td>作業中の一時ファイルのみ（完了後Drive/GitHubへ）</td></tr>
+  <h2 class="p-section__title">Flow <span class="jp">流れ</span></h2>
+  <table class="t">
+    <tr><td>01</td><td>Sales</td><td>営業 / 三点セット送付</td></tr>
+    <tr><td>02</td><td>Contract</td><td>提案3案 → 契約 → 着手金</td></tr>
+    <tr><td>03</td><td>Research</td><td>既存解析 + ムードボード</td></tr>
+    <tr><td>04</td><td>Generate</td><td>Codex でドラフト生成</td></tr>
+    <tr><td>05</td><td>Review</td><td>Claude で統合・修正</td></tr>
+    <tr><td>06</td><td>QC</td><td>MCP / Playwright で検証</td></tr>
+    <tr><td>07</td><td>Demo</td><td>クライアント確認</td></tr>
+    <tr><td>08</td><td>Publish</td><td>公開 + 30日フォロー</td></tr>
   </table>
 </section>
 
-<!-- 3. ASSETS -->
 <section class="p-section">
-  <h2 class="p-section__title">3. Assets <span class="jp">画像はどこに</span></h2>
-  <p class="lead-text">案件 Drive 配下に <strong>原本</strong>（圧縮前）と <strong>最新版</strong>（公開用）を分けて保管。</p>
-<pre class="tree-block">{案件名}/01_WEBサイト刷新サービス/
-├── <span class="accent">原本/images/</span>     <span class="dim">クライアント受領そのまま</span>
-└── <span class="accent">最新版/images/</span>   <span class="dim">圧縮・リネーム済み（公開用）</span></pre>
-  <p class="lead-text" style="margin-top:24px;"><strong>調達:</strong> クライアント提供 / 撮影手配 / Unsplash / Pexels / Adobe Stock</p>
-</section>
-
-<!-- 4. MCP -->
-<section class="p-section">
-  <h2 class="p-section__title">4. MCP <span class="jp">いつ使うか</span></h2>
-  <table class="simple-table">
-    <tr><th>MCP</th><th>用途</th><th>使う Step</th></tr>
-    <tr><td>site-renewal</td><td>既存サイト解析 + マージ + 16項目QC</td><td>03 / 04 / 06</td></tr>
-    <tr><td>web-cloner</td><td>競合解析 / 監査 / Wireframe</td><td>03 / 06</td></tr>
-    <tr><td>figma-to-code</td><td>Figma 完全再現（Figma案件のみ）</td><td>04</td></tr>
-    <tr><td>Playwright</td><td>自動テスト・スクショ・Lighthouse</td><td>06 / 08</td></tr>
+  <h2 class="p-section__title">Storage <span class="jp">保管場所</span></h2>
+  <table class="t">
+    <tr><td>—</td><td>Drive</td><td>顧客資料・画像・契約・経理・議事録</td></tr>
+    <tr><td>—</td><td>GitHub</td><td>コード・ハンドブック・テンプレ</td></tr>
+    <tr><td>—</td><td>1Password</td><td>パスワード・APIキー</td></tr>
+    <tr><td>—</td><td>Local</td><td>作業中の一時ファイルのみ</td></tr>
   </table>
 </section>
 
-<!-- 5. CODEX ORDER -->
 <section class="p-section">
-  <h2 class="p-section__title">5. Codex <span class="jp">作る順番</span></h2>
-  <table class="simple-table">
-    <tr><th>順</th><th>やること</th></tr>
-    <tr><td>1</td><td>brief.md に仕様を書く（5〜10分）</td></tr>
-    <tr><td>2</td><td>業態別プロンプトをコピーして codex_prompt.md にする</td></tr>
-    <tr><td>3</td><td>{{プレースホルダ}} を埋める</td></tr>
-    <tr><td>4</td><td>Codex 非対話モードで実行</td></tr>
-    <tr><td>5</td><td>Claude Code で codex_out.md をレビュー → 直接修正</td></tr>
-    <tr><td>6</td><td>site-renewal MCP で 16項目チェック</td></tr>
-    <tr><td>7</td><td>デモ環境にデプロイ → クライアント確認</td></tr>
-  </table>
-
-<code class="cmd-block">codex exec --skip-git-repo-check --cd "$PWD" \
-  --output-last-message "./codex_out.md" \
-  "$(cat ./codex_prompt.md)"</code>
+  <h2 class="p-section__title">Assets <span class="jp">画像の所在</span></h2>
+<pre class="tree">{案件名}/01_WEBサイト刷新サービス/
+├── 原本/images/    <span class="dim">受領そのまま</span>
+└── 最新版/images/  <span class="dim">圧縮・公開用</span></pre>
 </section>
 
-<footer class="landing-footer">
-  <div>VAIZO INC. · info@vaizo.jp</div>
-  <div class="updated">v0.4 / 2026-05-09</div>
-  <div><a href="index.html">← Home</a></div>
-</footer>
+<section class="p-section">
+  <h2 class="p-section__title">MCP <span class="jp">使うツール</span></h2>
+  <table class="t">
+    <tr><td>—</td><td>site-renewal</td><td>既存解析 + マージ + 16項目QC</td></tr>
+    <tr><td>—</td><td>web-cloner</td><td>競合解析 / 監査</td></tr>
+    <tr><td>—</td><td>figma-to-code</td><td>Figma案件のみ</td></tr>
+    <tr><td>—</td><td>Playwright</td><td>自動テスト</td></tr>
+  </table>
+</section>
 
 </main>
 
