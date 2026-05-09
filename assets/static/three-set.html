@@ -799,52 +799,194 @@ No photography — abstract SVG/CSS textures only.</pre>
     <h2 class="commit__title">REPORT</h2>
     <span class="commit__col">M 列</span>
   </div>
-  <p class="commit__title-jp">現サイトの「構造的・体験的な問題点」を整理し、変更必要性を可視化する。</p>
+  <p class="commit__title-jp">現サイトの問題点を Codex 1プロンプトで HTML/CSS レポート化 → PDF → GitHub 管理。</p>
 
   <table class="steps">
     <tr><th></th><th>WHAT</th><th>WHERE</th><th>WHO</th></tr>
     <tr>
       <td>01</td>
-      <td class="what">3ツールでパッシブスキャン</td>
-      <td class="where">securityheaders / Mozilla Observatory / SSL Labs</td>
+      <td class="what">クライアントサイトURLを案件情報.xlsxに記入</td>
+      <td class="where">案件フォルダ <span class="code-inline">/案件情報.xlsx</span></td>
       <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>02</td>
-      <td class="what">Lighthouse 計測（モバイル + デスクトップ）</td>
-      <td class="where">Chrome DevTools / PageSpeed</td>
+      <td class="what">Codex に1プロンプトで HTML レポート生成依頼</td>
+      <td class="where">Codex デスクトップ</td>
       <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>03</td>
-      <td class="what">CMS / プラグイン検出</td>
-      <td class="where">Wappalyzer 拡張</td>
+      <td class="what">Codex でレビュー・修正</td>
+      <td class="where">Codex デスクトップ</td>
       <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>04</td>
-      <td class="what">赤・黄・緑で分類してPDF化</td>
-      <td class="where">Drive 案件 <span class="code-inline">/reports/</span></td>
+      <td class="what">HTML を PDF 化（A4印刷想定）</td>
+      <td class="where">Playwright スクリプト or Codex 内</td>
       <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>05</td>
-      <td class="what">非エンジニア向け解消手順を添付</td>
-      <td class="where">PDF 末尾</td>
+      <td class="what">GitHub repo に push（HTML + PDF + metadata）</td>
+      <td class="where"><span class="code-inline">VAIZO-jp/{{案件略号}}-report</span> (Private)</td>
       <td class="who">案件CTO</td>
     </tr>
     <tr>
       <td>06</td>
-      <td class="what">PDF にパスワード保護</td>
-      <td class="where">送付直前</td>
+      <td class="what">PDF にパスワード保護してクライアント送付</td>
+      <td class="where">メール（PWは別経路）</td>
       <td class="who">案件CTO</td>
     </tr>
   </table>
 
   <div class="complete">
     <span class="complete__label">COMPLETE</span>
-    <span class="complete__text">マスターシート <strong>M 列</strong> に「レポート完成 + ファイル名」を記録。</span>
+    <span class="complete__text">マスターシート <strong>M 列</strong> に「レポート完成 + GitHub URL + PDF パス」を記録。</span>
   </div>
+
+  <details class="toggle">
+    <summary class="toggle__summary">Codex レポート生成の指示</summary>
+    <div class="toggle__body">
+
+      <h4>事前準備</h4>
+      <ul>
+        <li>案件情報.xlsx の Client セクションに <span class="var">{{client_url}}</span> を記入済み</li>
+        <li>Codex デスクトップアプリにログイン済み</li>
+        <li>GitHub repo <span class="var">VAIZO-jp/{{案件略号}}-report</span> を作成済み（Private）</li>
+      </ul>
+
+      <h4>Codex への指示文（コピペ用・1プロンプトで完結）</h4>
+      <p>Codex デスクトップで新規チャットを開き、案件情報.xlsx を添付してから下記をそのまま投げる。</p>
+<pre>## 役割
+あなたは V/ENTER WEB事業部の脆弱性レポート担当です。
+公開情報の範囲で対象URLを分析し、
+HTML/CSSベースのレポートを完成形で書いてください。
+
+## 添付
+- 案件情報.xlsx (Client セクション)
+
+## 分析対象URL
+{{client_url}}
+
+## 出力
+- 単一 HTML ファイル report.html
+- CSS は &lt;head&gt; 内に内包（外部CSSなし）
+- VAIZO Editorial スタイル (白黒 / 本文17px / 行間1.9 / ヘアライン)
+- A4 印刷想定（@page A4 + @media print 対応）
+- ダブルクリックで開けば即見られる、ブラウザで印刷すれば PDF になる状態
+
+## 分析項目（公開情報のみ・パッシブのみ）
+1. HTTP セキュリティヘッダ
+   - HSTS / CSP / X-Frame-Options / X-Content-Type-Options 等
+2. SSL/TLS 設定
+   - 証明書有効期限 / TLSバージョン / 弱い暗号スイートの有無
+3. パフォーマンス（推定）
+   - LCP / CLS / 画像最適化の余地 / JS ブロックの有無
+4. SEO 基本
+   - title / meta description / canonical
+   - JSON-LD 構造化データ / sitemap.xml / robots.txt
+5. アクセシビリティ
+   - alt属性 / 見出し階層 / コントラスト比
+6. CMS / プラグイン検出
+   - WordPress / Shopify 等の特定 / バージョン露出 / 既知CVE照合
+
+## レポート構造（5セクション）
+1. エグゼクティブサマリ — 赤/黄/緑のスコア表 1ページ
+2. 各カテゴリの詳細所見 — 項目ごとに事実ベースの所見
+3. 非エンジニア向け解消手順 — 各項目「やること」を1-2行で
+4. 専門業者への相談時の質問リスト
+5. 免責事項 — 公開情報の範囲 / 効果保証なし / 専門業者相談推奨
+
+## 守ってほしいこと（厳守）
+- 「危険です」「危険なサイト」等の恐怖訴求は禁止
+- 「すぐに対応が必要」等の煽りは禁止
+- 「うちで全部対応できます」等の直結セールスは禁止
+- すべて「公開情報の範囲で確認したところ」のトーン
+- 改善余地を事実として淡々と提示
+- 軍事比喩・否定列挙・採用語・階層用語は使わない
+
+## 完了条件
+- HTML を開くと A4 5-8 ページ分のレポートが表示
+- ブラウザの印刷で PDF 化したときページが綺麗に分かれる
+- コンソールエラー 0件
+- 公開情報の範囲を逸脱した記述なし
+
+最終アウトプットとして report.html の完全なコードを返してください。</pre>
+
+      <h4>HTML → PDF 化（Codex 内 or ローカル）</h4>
+      <p>Codex で HTML が完成したら、以下のいずれかで PDF 化。</p>
+      <p><strong>方法 A: Codex に PDF 変換スクリプトも書かせる</strong></p>
+<pre>「上記 report.html を Playwright で A4 PDF に変換する
+ Node.js スクリプト convert.mjs を書いてください。
+ 出力は report.pdf。
+ print background: true、margin 18/16mm。」</pre>
+
+      <p><strong>方法 B: 既存の build.mjs パターンを使う</strong></p>
+<pre>node -e "
+const { chromium } = require('playwright');
+(async () =&gt; {
+  const browser = await chromium.launch();
+  const page = await (await browser.newContext()).newPage();
+  await page.goto('file://' + require('path').resolve('report.html'));
+  await page.waitForTimeout(1000);
+  await page.pdf({
+    path: 'report.pdf',
+    format: 'A4',
+    margin: {top:'18mm', bottom:'18mm', left:'16mm', right:'16mm'},
+    printBackground: true
+  });
+  await browser.close();
+})();
+"</pre>
+
+      <p><strong>方法 C: ブラウザで開いて Ctrl+P → PDF として保存</strong></p>
+
+      <h4>GitHub 管理（リポジトリ構造）</h4>
+<pre>VAIZO-jp/{{案件略号}}-report/   (Private)
+├── report.html              # Codex 生成、原本
+├── report.pdf               # PDF 化済（クライアント送付物）
+├── metadata.json            # URL / 生成日時 / 担当者 / Codex版数
+├── README.md                # 案件メタ情報
+└── archive/                 # 改訂前の旧版
+    └── report.v1.html</pre>
+
+      <p><strong>metadata.json の例：</strong></p>
+<pre>{
+  "client_slug": "{{案件略号}}",
+  "client_url": "https://example.com",
+  "generated_at": "2026-05-09T15:30:00Z",
+  "generated_by": "{{担当者}}",
+  "codex_version": "GPT-Image-1 + GPT-5.4",
+  "report_version": "v1",
+  "sent_at": null,
+  "sent_to": null
+}</pre>
+
+      <h4>修正・レビュー時の追加指示</h4>
+      <p><strong>誇張表現チェック：</strong></p>
+<pre>「以下を確認し、違反があれば修正してください:
+ 1. 恐怖訴求（危険です / 至急対応必要 等）が無いか
+ 2. 直結セールス（うちで対応 等）が無いか
+ 3. 公開情報の範囲を超える推測が無いか
+ 4. すべて事実ベースで淡々としたトーンか」</pre>
+
+      <p><strong>非エンジニア向け解説の検証：</strong></p>
+<pre>「各項目の解消手順を、IT初心者の店舗オーナーが読んで
+ 自分で対応 or 業者に依頼判断ができるレベルに書き直してください。
+ 専門用語は括弧書きで補足。」</pre>
+
+      <h4>ありがちな失敗と対処</h4>
+      <ul>
+        <li><strong>Codex が実際にURLにアクセスできず推測で書く</strong> → ブラウザツールが有効か確認、または Claude Code + web-cloner MCP に切り替え</li>
+        <li><strong>恐怖訴求トーンになる</strong> → 「公開情報の範囲で〜」のトーンを再明示</li>
+        <li><strong>PDF化で改ページが汚い</strong> → CSS に <span class="var">page-break-inside: avoid</span> をテーブル/グラフに追加</li>
+        <li><strong>HTML → PDF で日本語フォントが崩れる</strong> → Playwright の networkidle 待機、または webfont を base64 埋め込み</li>
+      </ul>
+
+    </div>
+  </details>
 </section>
 
 <!-- ============== COMMIT 03 ============== -->
