@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Three-Set — V/ENTER WEB</title>
-<meta name="description" content="営業送付する三点セット（デモサイト・脆弱性レポート・デザインアイデンティティ）の作り方。">
+<title>Commitment — V/ENTER WEB</title>
+<meta name="description" content="営業送付する三点セット（DEMO・REPORT・SHEET）の作り方。L/M/N の3点が揃ってO列（送付日）へ進行。">
 <link rel="canonical" href="https://vaizo-jp.github.io/enter-web/three-set.html">
 <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,45 +13,75 @@
 <link rel="stylesheet" href="css/vaizo-editorial.css">
 <style>
 .p-hero {
-  padding: clamp(48px, 9vw, 96px) 0 clamp(24px, 4vw, 40px);
+  padding: clamp(64px, 10vw, 120px) 0 clamp(32px, 5vw, 48px);
   border-bottom: 1px solid var(--rule-hairline);
+}
+.p-hero__eyebrow {
+  font-family: var(--font-sans-en);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-grey);
+  margin-bottom: 12px;
 }
 .p-hero__title {
   font-family: var(--font-sans-en);
   font-weight: 900;
-  font-size: clamp(40px, 6vw, 80px);
-  letter-spacing: 0.02em;
+  font-size: clamp(48px, 7vw, 96px);
+  letter-spacing: 0.04em;
   line-height: 1;
   margin: 0 0 16px;
+  text-transform: uppercase;
 }
 .p-hero__lead {
   font-family: var(--font-sans-jp);
   font-size: 14px;
   color: var(--ink-graphite);
   margin: 0;
-  max-width: 600px;
+  max-width: 640px;
   line-height: 1.8;
 }
-.p-section {
-  padding: clamp(40px, 6vw, 64px) 0;
+.commit {
+  padding: clamp(48px, 7vw, 88px) 0;
   border-bottom: 1px solid var(--rule-hairline);
 }
-.p-section:last-of-type { border-bottom: none; }
-.p-section__title {
+.commit__head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0 0 8px;
+  flex-wrap: wrap;
+}
+.commit__num {
   font-family: var(--font-sans-en);
   font-weight: 900;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-black);
-  margin: 0 0 8px;
+  color: var(--accent-gold);
 }
-.p-section__title-jp {
+.commit__title {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: 0.04em;
+  color: var(--ink-black);
+  margin: 0;
+}
+.commit__col {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: var(--ink-black);
+  color: var(--paper-off-white);
+  padding: 2px 10px;
+  letter-spacing: 0.08em;
+}
+.commit__title-jp {
   font-family: var(--font-sans-jp);
   font-weight: 700;
-  font-size: 18px;
-  color: var(--ink-black);
-  margin: 0 0 24px;
+  font-size: 16px;
+  color: var(--ink-charcoal);
+  margin: 0 0 32px;
+  line-height: 1.6;
 }
 .steps {
   width: 100%;
@@ -70,12 +100,12 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 8px 12px 8px 0;
+  padding: 10px 16px 10px 0;
   color: var(--ink-grey);
   border-bottom: 1px solid var(--rule-hairline);
 }
 .steps td {
-  padding: 12px 12px 12px 0;
+  padding: 12px 16px 12px 0;
   vertical-align: top;
 }
 .steps td:first-child {
@@ -83,7 +113,7 @@
   font-weight: 900;
   font-size: 13px;
   color: var(--accent-gold);
-  width: 48px;
+  width: 40px;
   white-space: nowrap;
 }
 .steps td.what {
@@ -109,38 +139,57 @@
   padding: 1px 6px;
   color: var(--ink-charcoal);
 }
-.fields {
-  border: 1px solid var(--rule-hairline);
-  background: var(--paper-cream);
-  padding: 20px 24px;
+.complete {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
   margin-top: 24px;
+  padding: 14px 18px;
+  background: var(--paper-cream);
+  border-left: 3px solid var(--accent-gold);
   font-family: var(--font-sans-jp);
   font-size: 14px;
+}
+.complete__label {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  white-space: nowrap;
+}
+.complete__text {
+  color: var(--ink-charcoal);
+}
+.fields {
+  border: 1px solid var(--rule-hairline);
+  background: var(--paper-pure);
+  padding: 24px;
+  margin-top: 32px;
 }
 .fields__title {
   font-family: var(--font-sans-en);
   font-weight: 900;
-  font-size: 12px;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink-black);
-  margin: 0 0 16px;
+  color: var(--ink-grey);
+  margin: 0 0 20px;
 }
 .fields__group {
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
-.fields__group:last-child {
-  margin-bottom: 0;
-}
+.fields__group:last-child { margin-bottom: 0; }
 .fields__group-label {
   font-family: var(--font-sans-jp);
   font-weight: 700;
   font-size: 13px;
   color: var(--ink-black);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 10px;
 }
 .fields__group-source {
   font-family: var(--font-sans-en);
@@ -154,6 +203,80 @@
   font-size: 13px;
   color: var(--ink-graphite);
   line-height: 1.8;
+}
+.go-section {
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-bottom: 1px solid var(--rule-hairline);
+  text-align: center;
+}
+.go-section__label {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+.go-section__title {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: 0.04em;
+  margin: 0 0 16px;
+  line-height: 1;
+}
+.go-section__text {
+  font-family: var(--font-sans-jp);
+  font-size: 14px;
+  color: var(--ink-charcoal);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+.send-section,
+.forbidden-section {
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-bottom: 1px solid var(--rule-hairline);
+}
+.section-title {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-black);
+  margin: 0 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink-black);
+}
+.forbidden-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--ink-black);
+}
+.forbidden-list__item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-hairline);
+  align-items: baseline;
+}
+.forbidden-list__item:last-child { border-bottom: none; }
+.forbidden-list__num {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: #c8302e;
+  text-transform: uppercase;
+}
+.forbidden-list__text {
+  font-family: var(--font-sans-jp);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink-black);
 }
 .top-nav {
   position: sticky;
@@ -192,6 +315,7 @@
 }
 @media (max-width: 720px) {
   .steps td.where, .steps td.who { font-size: 12px; }
+  .forbidden-list__item { grid-template-columns: 60px 1fr; gap: 16px; }
 }
 </style>
 </head>
@@ -207,17 +331,22 @@
 <main class="landing">
 
 <section class="p-hero">
+  <div class="p-hero__eyebrow">V/ENTER · COMMITMENT</div>
   <h1 class="p-hero__title">Three-Set</h1>
-  <p class="p-hero__lead">営業送付する三点セットの作り方。1案件あたり 30〜45分で完成。</p>
+  <p class="p-hero__lead">候補企業に送る3点の完成物。<br>マスターシート L / M / N がすべて埋まって、はじめて O 列（送付日）へ進行する。</p>
 </section>
 
-<section class="p-section">
-  <h2 class="p-section__title">A. Demo Site</h2>
-  <div class="p-section__title-jp">デモサイト作成</div>
+<!-- ============== COMMIT 01 ============== -->
+<section class="commit">
+  <div class="commit__head">
+    <span class="commit__num">COMMIT 01</span>
+    <h2 class="commit__title">DEMO</h2>
+    <span class="commit__col">L 列</span>
+  </div>
+  <p class="commit__title-jp">候補企業のサイトを基に、業種・課題に応えた「動作するデモサイト」を構築する。</p>
+
   <table class="steps">
-    <tr>
-      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
-    </tr>
+    <tr><th></th><th>WHAT</th><th>WHERE</th><th>WHO</th></tr>
     <tr>
       <td>01</td>
       <td class="what">案件フォルダ + <span class="code-inline">brief.md</span> 作成</td>
@@ -226,21 +355,21 @@
     </tr>
     <tr>
       <td>02</td>
-      <td class="what">クライアント情報を埋める</td>
+      <td class="what">Client 情報を埋める</td>
       <td class="where"><span class="code-inline">brief.md</span> § Client</td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>03</td>
-      <td class="what">リサーチ情報を埋める</td>
+      <td class="what">Research 情報を埋める</td>
       <td class="where"><span class="code-inline">brief.md</span> § Research</td>
       <td class="who">案件CTO</td>
     </tr>
     <tr>
       <td>04</td>
-      <td class="what">Claude が brief.md を読んで Codex 生成</td>
+      <td class="what">Claude × Codex でデモ生成</td>
       <td class="where">案件ローカル</td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>05</td>
@@ -250,68 +379,68 @@
     </tr>
     <tr>
       <td>06</td>
-      <td class="what">デモURLを発行（PW保護）</td>
+      <td class="what">デモ URL 発行（PW保護）</td>
       <td class="where">GitHub Pages（プライベート + staticrypt）</td>
       <td class="who">案件CTO</td>
     </tr>
   </table>
 
+  <div class="complete">
+    <span class="complete__label">COMPLETE</span>
+    <span class="complete__text">マスターシート <strong>L 列</strong> に「デモ完成 + URL + PW」を記録。</span>
+  </div>
+
   <div class="fields">
-    <div class="fields__title">brief.md に埋める内容</div>
-
+    <div class="fields__title">brief.md に集める項目</div>
     <div class="fields__group">
-      <div class="fields__group-label">
-        Client <span class="fields__group-source">クライアントから受領</span>
-      </div>
-      <div class="fields__items">屋号 / 業態 / 電話 / 住所 / 営業時間 / メール / SNS（Instagram・X等）</div>
+      <div class="fields__group-label">Client <span class="fields__group-source">クライアントから受領</span></div>
+      <div class="fields__items">屋号 / 業態 / 電話 / 住所 / 営業時間 / メール / SNS（Instagram・X 等）</div>
     </div>
-
     <div class="fields__group">
-      <div class="fields__group-label">
-        Research <span class="fields__group-source">VAIZO がリサーチで決定</span>
-      </div>
-      <div class="fields__items">3キーワード / 配色（アクセント1色） / 書体 / 方向性命名（例 ELEGANT_WHITE） / 参考URL 3〜5本</div>
+      <div class="fields__group-label">Research <span class="fields__group-source">VAIZO がリサーチで決定</span></div>
+      <div class="fields__items">3キーワード / 配色（アクセント1色）/ 書体 / 方向性命名（例: ELEGANT_WHITE）/ 参考URL 3〜5本</div>
     </div>
-
     <div class="fields__group">
-      <div class="fields__group-label">
-        Brand <span class="fields__group-source">固定（VAIZO Editorial）</span>
-      </div>
-      <div class="fields__items">白黒基調 / 本文17px / テーブル15px / 行間1.9 / ヘアライン罫線 / 軍事比喩・否定列挙・採用語禁止</div>
+      <div class="fields__group-label">Brand <span class="fields__group-source">固定 = VAIZO Editorial</span></div>
+      <div class="fields__items">白黒基調 / 本文17px / 行間1.9 / ヘアライン罫線 / 軍事比喩・否定列挙・採用語禁止</div>
     </div>
   </div>
 </section>
 
-<section class="p-section">
-  <h2 class="p-section__title">B. Vulnerability Report</h2>
-  <div class="p-section__title-jp">脆弱性レポート（パッシブのみ）</div>
+<!-- ============== COMMIT 02 ============== -->
+<section class="commit">
+  <div class="commit__head">
+    <span class="commit__num">COMMIT 02</span>
+    <h2 class="commit__title">REPORT</h2>
+    <span class="commit__col">M 列</span>
+  </div>
+  <p class="commit__title-jp">現サイトの「構造的・体験的な問題点」を整理し、変更必要性を可視化する。</p>
+
   <table class="steps">
-    <tr>
-      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
-    </tr>
+    <tr><th></th><th>WHAT</th><th>WHERE</th><th>WHO</th></tr>
     <tr>
       <td>01</td>
-      <td class="what">3ツールで公開情報スキャン</td>
+      <td class="what">3ツールでパッシブスキャン</td>
       <td class="where">securityheaders / Mozilla Observatory / SSL Labs</td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>02</td>
       <td class="what">Lighthouse 計測（モバイル + デスクトップ）</td>
-      <td class="where">Chrome DevTools or PageSpeed</td>
-      <td class="who">アサイン者</td>
+      <td class="where">Chrome DevTools / PageSpeed</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>03</td>
       <td class="what">CMS / プラグイン検出</td>
       <td class="where">Wappalyzer 拡張</td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>04</td>
       <td class="what">赤・黄・緑で分類してPDF化</td>
       <td class="where">Drive 案件 <span class="code-inline">/reports/</span></td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>05</td>
@@ -326,15 +455,24 @@
       <td class="who">案件CTO</td>
     </tr>
   </table>
+
+  <div class="complete">
+    <span class="complete__label">COMPLETE</span>
+    <span class="complete__text">マスターシート <strong>M 列</strong> に「レポート完成 + ファイル名」を記録。</span>
+  </div>
 </section>
 
-<section class="p-section">
-  <h2 class="p-section__title">C. Design Identity</h2>
-  <div class="p-section__title-jp">デザインアイデンティティ</div>
+<!-- ============== COMMIT 03 ============== -->
+<section class="commit">
+  <div class="commit__head">
+    <span class="commit__num">COMMIT 03</span>
+    <h2 class="commit__title">SHEET</h2>
+    <span class="commit__col">N 列</span>
+  </div>
+  <p class="commit__title-jp">提案の輪郭を言語化したコンセプトシート。デモを支援する文脈を1枚に視覚化。</p>
+
   <table class="steps">
-    <tr>
-      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
-    </tr>
+    <tr><th></th><th>WHAT</th><th>WHERE</th><th>WHO</th></tr>
     <tr>
       <td>01</td>
       <td class="what">既存サイト・SNS・店内写真を観察</td>
@@ -351,7 +489,7 @@
       <td>03</td>
       <td class="what">ムードボード作成（参考画像 6〜12枚）</td>
       <td class="where">Drive <span class="code-inline">/moodboard_YYYYMMDD/</span></td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>04</td>
@@ -361,25 +499,35 @@
     </tr>
     <tr>
       <td>05</td>
-      <td class="what">方向性メモ（PDF 1枚）にまとめる</td>
+      <td class="what">コンセプトシート（PDF 1枚）</td>
       <td class="where">Drive 案件 <span class="code-inline">/reports/</span></td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
   </table>
+
+  <div class="complete">
+    <span class="complete__label">COMPLETE</span>
+    <span class="complete__text">マスターシート <strong>N 列</strong> に「シート完成 + ファイル名」を記録。</span>
+  </div>
 </section>
 
-<section class="p-section">
-  <h2 class="p-section__title">Send</h2>
-  <div class="p-section__title-jp">送付</div>
+<!-- ============== GO ============== -->
+<section class="go-section">
+  <div class="go-section__label">GO / GATE</div>
+  <h2 class="go-section__title">→ O 列へ進行</h2>
+  <p class="go-section__text">L / M / N がすべて埋まった上で、<br>橋本CEO・案件CTO・外部デザイナー の <strong>3者のいずれか1名</strong> が GO 判定。</p>
+</section>
+
+<!-- ============== SEND ============== -->
+<section class="send-section">
+  <h2 class="section-title">SEND</h2>
   <table class="steps">
-    <tr>
-      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
-    </tr>
+    <tr><th></th><th>WHAT</th><th>WHERE</th><th>WHO</th></tr>
     <tr>
       <td>01</td>
-      <td class="what">3点をZIPにしてパスワード保護</td>
+      <td class="what">3点をZIP化 + パスワード保護</td>
       <td class="where">Drive 案件 <span class="code-inline">/送付物/</span></td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
     </tr>
     <tr>
       <td>02</td>
@@ -391,9 +539,34 @@
       <td>03</td>
       <td class="what">カバーレターを送信（PWは別経路）</td>
       <td class="where">メール</td>
-      <td class="who">アサイン者</td>
+      <td class="who">アサイン</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td class="what">送付日を記録</td>
+      <td class="where">マスターシート <strong>O 列</strong></td>
+      <td class="who">アサイン</td>
     </tr>
   </table>
+</section>
+
+<!-- ============== FORBIDDEN ============== -->
+<section class="forbidden-section">
+  <h2 class="section-title">Forbidden</h2>
+  <div class="forbidden-list">
+    <div class="forbidden-list__item">
+      <span class="forbidden-list__num">FORBIDDEN 01</span>
+      <span class="forbidden-list__text">L / M / N が空欄のまま O 列に送付日を入れない</span>
+    </div>
+    <div class="forbidden-list__item">
+      <span class="forbidden-list__num">FORBIDDEN 02</span>
+      <span class="forbidden-list__text">1案件は1名固定。共有担当・連名禁止</span>
+    </div>
+    <div class="forbidden-list__item">
+      <span class="forbidden-list__num">FORBIDDEN 03</span>
+      <span class="forbidden-list__text">マスターシート以外で並行管理しない</span>
+    </div>
+  </div>
 </section>
 
 </main>
