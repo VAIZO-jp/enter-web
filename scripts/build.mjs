@@ -359,11 +359,159 @@ async function buildIndividualHtmlPages() {
 }
 
 // ============================================================
-// 6. 統合 HTML（PDF用、1ファイル）
+// 6a. ランディングページ（docs/index.html、シンプル）
+// ============================================================
+
+const CATEGORY_META = {
+  "00": {
+    en: "GENESIS",
+    jp: "はじめに",
+    desc: "新規メンバー・AIエージェント向けの入口とデータ地図。",
+  },
+  "01": {
+    en: "HANDBOOK",
+    jp: "事業部ハンドブック",
+    desc: "事業全体像・営業・デザイン・実装ワークフロー・公開手順・脆弱性レポート・経理・オフボーディング・デザインリサーチ。",
+  },
+  "02": {
+    en: "TEMPLATES",
+    jp: "テンプレート集",
+    desc: "Codex プロンプト9業態・WP プロンプト3種・クライアントメール10雛形・公開報告。",
+  },
+  "03": {
+    en: "DECISION TREES",
+    jp: "判断フロー",
+    desc: "WP統合方式・脆弱性送付対象・AI vs人間の境界・契約形態・エスカレーション。",
+  },
+  "04": {
+    en: "TROUBLESHOOTING",
+    jp: "トラブル事例",
+    desc: "mailtoリグレッション・WP公開作業・Codex CLI・Playwrightの障害事例と対処。",
+  },
+  "05": {
+    en: "RUNBOOKS",
+    jp: "ランブック",
+    desc: "新規案件キックオフ・公開当日・公開後30日・1Password Teamsセットアップ・クレーム対応。",
+  },
+};
+
+async function buildLandingPage() {
+  console.log("🏠 Building landing page (docs/index.html)...");
+  await ensureDir(DIST_HTML);
+
+  const cssRel = path.relative(DIST_HTML, CSS_OUT).replace(/\\/g, "/");
+  const iconRel = path.relative(DIST_HTML, ICON_PATH).replace(/\\/g, "/");
+
+  // 章カード生成
+  let categoryCards = "";
+  for (const ch of STRUCTURE) {
+    const meta = CATEGORY_META[ch.chapter] || { en: ch.titleEn, jp: ch.titleJp, desc: "" };
+    let listItems = "";
+    const previewFiles = ch.files.slice(0, 6);
+    for (const f of previewFiles) {
+      const href = f.src.replace(/\.md$/, ".html");
+      listItems += `<li><a href="${href}"><span class="title">${escapeHtml(f.title)}</span><span class="num">→</span></a></li>`;
+    }
+    let moreLink = "";
+    if (ch.files.length > 6) {
+      moreLink = `<a class="category-card__more" href="#${slugify(ch.titleEn)}">+ ${ch.files.length - 6} more →</a>`;
+    }
+    categoryCards += `
+      <article class="category-card" id="${slugify(ch.titleEn)}">
+        <div class="category-card__index">CH ${ch.chapter}</div>
+        <h3 class="category-card__title">${escapeHtml(meta.en)}</h3>
+        <div class="category-card__title-jp">${escapeHtml(meta.jp)}</div>
+        <p class="category-card__desc">${escapeHtml(meta.desc)}</p>
+        <ul class="category-card__list">${listItems}</ul>
+        ${moreLink}
+      </article>`;
+  }
+
+  // ファイル数集計
+  let totalFiles = 0;
+  for (const ch of STRUCTURE) totalFiles += ch.files.length;
+
+  const description = "AI（Claude × Codex）でWebサイトを高速・高品質に作るための、VAIZO V/ENTER WEB事業部のハンドブック。営業・デザイン・実装・公開・運用の標準手順を一元化。";
+
+  const landingHtml =
+    HEAD_BASE
+      .replace(/\{\{title\}\}/g, "V/ENTER WEB Handbook")
+      .replace(/\{\{description\}\}/g, description)
+      .replace(/\{\{canonical\}\}/g, `${SITE_URL}/`)
+      .replace(/\{\{iconPath\}\}/g, iconRel)
+      .replace(/\{\{cssPath\}\}/g, cssRel) +
+    `
+<main class="landing">
+  <section class="landing-hero">
+    <div class="landing-hero__eyebrow">VAIZO INC. · V/ENTER WEB DEPT.</div>
+    <h1 class="landing-hero__title">V<span class="slash">/</span>ENTER<br>WEB</h1>
+    <p class="landing-hero__subtitle">AIで作るWebサイト制作の、標準手順とテンプレート集。<br>未経験者とAIエージェントが見れば、即動けるハンドブック。</p>
+    <div class="landing-hero__actions">
+      <a class="btn" href="handbook/00-overview.html"><span>ハンドブックを開く</span><span class="arrow">→</span></a>
+      <a class="btn btn--ghost" href="pdf/V_ENTER_WEB_Handbook.pdf"><span>PDF をダウンロード</span><span class="arrow">↓</span></a>
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <div class="landing-section__label">QUICK START</div>
+    <h2 class="landing-section__title">Day 1</h2>
+    <p class="landing-section__lead">新規メンバー・AIエージェントが最初に開く3つ。順に読めば、その日のうちに稼働可能になります。</p>
+    <div class="quickstart">
+      <a class="quickstart__step" href="README.html">
+        <span class="quickstart__num">01</span>
+        <span class="quickstart__title">README</span>
+        <span class="quickstart__desc">このリポジトリの読み方とナビゲーション。</span>
+      </a>
+      <a class="quickstart__step" href="MAP.html">
+        <span class="quickstart__num">02</span>
+        <span class="quickstart__title">MAP</span>
+        <span class="quickstart__desc">データ保存場所・アクセス地図。最重要ファイル。</span>
+      </a>
+      <a class="quickstart__step" href="handbook/06-onboarding.html">
+        <span class="quickstart__num">03</span>
+        <span class="quickstart__title">Onboarding</span>
+        <span class="quickstart__desc">Day1チェックリスト。アカウント・ツール準備。</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <div class="landing-section__label">CATEGORIES</div>
+    <h2 class="landing-section__title">Library</h2>
+    <p class="landing-section__lead">${totalFiles}本のドキュメントを6カテゴリに整理。</p>
+    <div class="category-grid">${categoryCards}</div>
+  </section>
+
+  <section class="landing-section">
+    <div class="landing-section__label">FACTS</div>
+    <h2 class="landing-section__title">v0.2 / 2026-05-09</h2>
+    <div class="facts">
+      <div class="fact"><div class="fact__num">${totalFiles}</div><div class="fact__label">ドキュメント</div></div>
+      <div class="fact"><div class="fact__num">9</div><div class="fact__label">業態別Codexプロンプト</div></div>
+      <div class="fact"><div class="fact__num">10</div><div class="fact__label">クライアントメール雛形</div></div>
+      <div class="fact"><div class="fact__num">5</div><div class="fact__label">判断フロー</div></div>
+      <div class="fact"><div class="fact__num">5</div><div class="fact__label">ランブック</div></div>
+    </div>
+  </section>
+
+  <footer class="landing-footer">
+    <div>VAIZO INC. · info@vaizo.jp</div>
+    <div class="updated">Last updated: 2026-05-09</div>
+    <div><a href="https://github.com/VAIZO-jp/enter-web">GitHub</a></div>
+  </footer>
+</main>` +
+    FOOT_BASE;
+
+  await writeFile(path.join(DIST_HTML, "index.html"), landingHtml);
+  console.log(`  ✓ docs/index.html (landing page)`);
+}
+
+// ============================================================
+// 6b. PDF用統合HTML（dist/html/print.html、配信しない）
 // ============================================================
 
 async function buildBookHtml() {
-  console.log("📕 Building combined book HTML...");
+  console.log("📕 Building print/PDF combined HTML (internal)...");
   await ensureDir(DIST_HTML);
 
   const cssRel = path.relative(DIST_HTML, CSS_PATH).replace(/\\/g, "/");
@@ -395,9 +543,9 @@ async function buildBookHtml() {
     body +
     FOOT_BASE;
 
-  const outPath = path.join(DIST_HTML, "index.html");
+  const outPath = path.join(DIST_HTML, "print.html"); // PDF生成専用、配信しない
   await writeFile(outPath, fullHtml);
-  console.log(`  ✓ Combined → ${path.relative(ROOT, outPath)}`);
+  console.log(`  ✓ Print HTML → ${path.relative(ROOT, outPath)}`);
 
   // 404.html 自動生成
   const notFoundHtml =
@@ -472,6 +620,10 @@ async function copyToDocs() {
   console.log("📦 Copying to docs/ for GitHub Pages...");
   await fs.rm(DOCS_DIR, { recursive: true, force: true });
   await fs.cp(DIST_HTML, DOCS_DIR, { recursive: true });
+  // print.html はPDF生成専用なので docs/ に含めない
+  try {
+    await fs.rm(path.join(DOCS_DIR, "print.html"));
+  } catch {}
   await ensureDir(path.join(DOCS_DIR, "pdf"));
   const pdfSrc = path.join(DIST_PDF, "V_ENTER_WEB_Handbook.pdf");
   try {
@@ -493,7 +645,10 @@ async function main() {
   if (!PDF_ONLY) {
     await prepareCssAssets();
     await buildIndividualHtmlPages();
+    await buildLandingPage();
     combinedHtmlPath = await buildBookHtml();
+  } else {
+    combinedHtmlPath = path.join(DIST_HTML, "print.html");
   }
 
   if (!HTML_ONLY) {
