@@ -5,6 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>営業プロセス — V/ENTER WEB Handbook</title>
+<meta name="description" content="V/ENTER WEB の営業は 「カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ」三点セット送付 が中軸。 月次300件規模で運用し、返信率5%・成約率1%を目標とする。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/handbook/01-sales-process.html">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="営業プロセス — V/ENTER WEB Handbook">
+<meta property="og:description" content="V/ENTER WEB の営業は 「カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ」三点セット送付 が中軸。 月次300件規模で運用し、返信率5%・成約率1%を目標とする。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/handbook/01-sales-process.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="営業プロセス — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="V/ENTER WEB の営業は 「カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ」三点セット送付 が中軸。 月次300件規模で運用し、返信率5%・成約率1%を目標とする。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,9 +32,10 @@
 </header>
 <h1>01 — 営業プロセス</h1>
 <p>V/ENTER WEB の営業は <strong>「カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ」三点セット送付</strong> が中軸。
-本ファイルは骨格のみ。詳細は別途 Phase 2 で充実予定。</p>
+月次300件規模で運用し、返信率5%・成約率1%を目標とする。</p>
 <hr>
 <h2>1. ターゲット選定</h2>
+<h3>1.1 ランク基準</h3>
 <table>
 <thead>
 <tr>
@@ -38,67 +53,197 @@
 </tr>
 <tr>
 <td>A</td>
-<td>飲食、ライブハウス、地方の老舗</td>
+<td>飲食、ライブハウス、地方の老舗、美容室、整体・治療院</td>
 <td>30万〜80万</td>
 <td>仙台レトロバックページ（実績）</td>
 </tr>
 <tr>
 <td>B</td>
-<td>ホームページ業者制作の店舗サイト、リニューアル放置型</td>
+<td>ホームページ業者制作の店舗サイト、リニューアル放置型、不動産仲介、スクール</td>
 <td>10万〜30万</td>
 <td>（継続発掘）</td>
 </tr>
 </tbody></table>
-<p>ターゲティング基準の詳細はメモリ <code>project_venter_targeting.md</code> 参照。</p>
-<h2>2. アプローチ手順</h2>
+<p>ランクは「予算 × 意思決定スピード × ブランド適合度」で決まる。</p>
+<h3>1.2 発掘ソース</h3>
+<ul>
+<li>Google Maps / 食べログ / ぐるなび / RETRIP の業態別検索</li>
+<li>ホットペッパービューティー（美容室）</li>
+<li>Suumo / Homes（不動産仲介）</li>
+<li>業界誌・ローカル雑誌の特集記事</li>
+<li>VAIZER の知人・紹介ネットワーク</li>
+<li>既存クライアントからの紹介（最強ルート）</li>
+</ul>
+<h3>1.3 ターゲット除外条件</h3>
+<ul>
+<li>すでに直近半年でリニューアル済（業者ロゴが新しい）</li>
+<li>法人ではなく個人ブログ・個人サイト</li>
+<li>政府機関・医療機関・教育機関（<a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> の慎重対応）</li>
+<li>ブラックリスト登録済（過去に削除依頼あり）</li>
+</ul>
+<p>詳細は <a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a> 参照。</p>
+<hr>
+<h2>2. アプローチ手順（月次300件運用）</h2>
+<h3>2.1 Week 1: ターゲットリスト作成（毎月初）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 各VAIZERが週75件 = 月300件のターゲット候補を発掘</li>
+<li><input disabled="" type="checkbox"> スプレッドシート <code>OPS_Sheet TASKS</code> の <code>VENTER_Targets</code> タブに登録</li>
+<li><input disabled="" type="checkbox"> 重複チェック・ブラックリスト照合</li>
+<li><input disabled="" type="checkbox"> ランク（S/A/B）と推定単価を記入</li>
+</ul>
+<h3>2.2 Week 2-4: 三点セット作成・送付</h3>
+<p>各ターゲットに対して：</p>
 <ol>
-<li>公開情報のみで脆弱性スキャン（必ず <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> の2ライン遵守）</li>
-<li>デザインアイデンティティ提案（既存サイトの「らしさ」を抽出して再構築案）</li>
-<li>カスタムデモトップ（FV）を Codex で生成（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a>）</li>
-<li>脆弱性レポート + デモURLをセットで送付（メール雛形 <a href="../templates/client-emails/"><code>templates/client-emails/</code></a>）</li>
-<li>反応があったら商談、契約、本制作</li>
+<li><strong>公開情報のみで脆弱性スキャン</strong>（<a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> のパッシブツールのみ）</li>
+<li><strong>デザインアイデンティティ提案</strong>（既存サイトの「らしさ」を抽出して再構築案）</li>
+<li><strong>カスタムデモトップ（FV）を Codex で生成</strong>（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> から業態別雛形を選択）</li>
+<li><strong>櫻井みどりが QC</strong>（誤検知の二重チェック、3-5分/件）</li>
+<li><strong>三点セットをメール送付</strong>（雛形: <a href="../templates/client-emails/vulnerability-report-cover.html"><code>templates/client-emails/vulnerability-report-cover.md</code></a>）</li>
+<li><strong>送付ログを記録</strong>（送信日時・担当者・添付パスワード）</li>
 </ol>
-<h2>3. 月次目標（300件スケール）</h2>
+<h3>2.3 反応待ち + 追加送付</h3>
+<ul>
+<li>反応がない場合は3ヶ月以上空けて再送付（<a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §再送付ルール）</li>
+<li>削除依頼は24時間以内に返信、ブラックリスト永久登録</li>
+</ul>
+<hr>
+<h2>3. 商談フェーズ</h2>
+<h3>3.1 1次商談（オンライン or 訪問）</h3>
+<ul>
+<li>60分のMTG設定</li>
+<li>アジェンダ:<ul>
+<li>VAIZOの紹介（5分）</li>
+<li>課題ヒアリング（20分）</li>
+<li>提案概要（15分）</li>
+<li>質疑応答（15分）</li>
+<li>次のステップ（5分）</li>
+</ul>
+</li>
+<li>Plaud + Tactiq で議事録録取</li>
+</ul>
+<h3>3.2 2次商談（提案）</h3>
+<ul>
+<li>提案書 + デザイン3案 + 見積を送付（雛形: <a href="../templates/client-emails/proposal.html"><code>templates/client-emails/proposal.md</code></a>）</li>
+<li>クライアントが採用案決定後、契約書・着手金請求</li>
+</ul>
+<h3>3.3 契約・着手金</h3>
+<ul>
+<li>契約書送付（雛形: <a href="../templates/client-emails/contract.html"><code>templates/client-emails/contract.md</code></a>）</li>
+<li>着手金30%請求（雛形: <a href="../templates/client-emails/invoice.html"><code>templates/client-emails/invoice.md</code></a>）</li>
+<li>入金確認後に <a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> の30項目を実行</li>
+</ul>
+<p>詳細は <a href="./08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> §3-5 参照。</p>
+<hr>
+<h2>4. 月次KPI</h2>
 <table>
 <thead>
 <tr>
 <th>指標</th>
 <th>目標</th>
+<th>計測方法</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>送付</td>
+<td>送付件数</td>
 <td>300件/月</td>
+<td>OPS_Sheet <code>VENTER_Targets</code> の送付済件数</td>
 </tr>
 <tr>
 <td>返信率</td>
-<td>5%以上</td>
+<td>5%以上（15件/月）</td>
+<td>送付後30日の返信件数</td>
 </tr>
 <tr>
-<td>商談化</td>
-<td>3%以上</td>
+<td>商談化率</td>
+<td>3%以上（9件/月）</td>
+<td>MTG実施件数</td>
 </tr>
 <tr>
-<td>成約</td>
-<td>1%以上（≒3件/月）</td>
+<td>成約率</td>
+<td>1%以上（3件/月）</td>
+<td>契約締結件数</td>
+</tr>
+<tr>
+<td>平均単価（成約案件）</td>
+<td>50万円以上</td>
+<td>受注金額平均</td>
+</tr>
+<tr>
+<td>案件公開期間</td>
+<td>14日以内</td>
+<td>契約から公開までの日数</td>
+</tr>
+<tr>
+<td>クレーム件数</td>
+<td>月3件以下</td>
+<td>OPS_Sheet <code>VENTER_クレーム対応</code></td>
+</tr>
+<tr>
+<td>削除依頼件数</td>
+<td>月10件以下</td>
+<td>OPS_Sheet <code>VENTER_BlackList</code> 増加数</td>
 </tr>
 </tbody></table>
-<h2>4. クレーム発生時の対応</h2>
-<p>詳細は <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> クレーム対応SOP参照。</p>
+<p>KPIダッシュボードは Phase 3 で GitHub Actions + Google Sheets 連携で自動集計予定。</p>
+<hr>
+<h2>5. クレーム・問題発生時の対応</h2>
+<p>詳細は <a href="../runbooks/incident-response.html"><code>runbooks/incident-response.md</code></a> と <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §クレーム対応SOP 参照。</p>
+<h3>即時対応（30分以内）</h3>
 <ul>
-<li>1次対応: 受信30分以内（小野寺・櫻井みどり）</li>
-<li>2次対応: 2時間以内（橋本CEO主導）</li>
-<li>削除依頼は24時間以内対応、ブラックリスト永久登録</li>
+<li>小野寺陸斗 or 櫻井みどり が即返信</li>
+<li>文面例: 「ご連絡ありがとうございます。担当責任者へエスカレーションします」</li>
+<li>橋本CEO・櫻井理也CTOへSlack DMで即時通知</li>
 </ul>
-<h2>5. 関連ドキュメント</h2>
+<h3>2次対応（2時間以内）</h3>
 <ul>
-<li><a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a></li>
-<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a></li>
-<li><a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a></li>
-<li>メモリ <code>project_sales_process_v1.md</code></li>
+<li>橋本CEO主導で個別対応</li>
+<li>必要に応じて謝罪・削除・関係先への連絡停止</li>
+<li>内容によっては顧問弁護士・顧問税理士へ相談</li>
+</ul>
+<h3>記録</h3>
+<ul>
+<li>クレーム発生案件は <code>OPS_Sheet TASKS</code> に「VENTER_クレーム対応」として記録</li>
+<li>月次振り返りで件数・原因を集計、ガイドラインへ反映</li>
 </ul>
 <hr>
-<p><strong>Phase 2 で本文充実予定</strong>: ターゲット発掘の具体手法、メール文面の精緻化、KPIダッシュボード設計、Slack/CRM運用フロー</p>
+<h2>6. 営業ツール・スプレッドシート</h2>
+<h3>OPS_Sheet TASKS の主要タブ</h3>
+<ul>
+<li><code>VENTER_Targets</code> — ターゲットリスト・送付ログ</li>
+<li><code>VENTER_BlackList</code> — 削除依頼受領先</li>
+<li><code>VENTER_クレーム対応</code> — クレーム発生記録</li>
+<li><code>VENTER_反応ログ</code> — 反応・商談化・成約の記録</li>
+<li><code>VENTER_KPI月次</code> — 月次KPI集計</li>
+</ul>
+<p>スプレッドシートID は <a href="../MAP.html"><code>MAP.md</code></a> §6 案件管理 の Drive 案件管理セクションに記載予定（Phase 2）。</p>
+<hr>
+<h2>7. 文体・トーンの統一</h2>
+<p>すべてのアウトバウンド文書（メール・提案書・電話スクリプト）で以下を遵守：</p>
+<ul>
+<li>❌ 「あなたのサイトは危険です」（恐怖訴求）</li>
+<li>❌ 「すぐに対応が必要」（煽り）</li>
+<li>❌ 「うちで全部対応できます」（直結セールス）</li>
+<li>❌ 「ご返答お願いします」（催促）</li>
+<li>❌ 軍事比喩・否定列挙・採用語・階層用語</li>
+<li>✅ 「公開情報の範囲で確認したところ、◯◯の改善余地が見受けられました」</li>
+<li>✅ 「ご参考までにお送りします」</li>
+<li>✅ 「ご不要の場合はお手数ですが破棄してください」</li>
+</ul>
+<p>詳細は <a href="./02-design-policy.html"><code>handbook/02-design-policy.md</code></a> §7 NG表現 と <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §ライン2 参照。</p>
+<hr>
+<h2>8. 関連ドキュメント</h2>
+<ul>
+<li><a href="./02-design-policy.html"><code>handbook/02-design-policy.md</code></a> — 文体ルール</li>
+<li><a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> — 脆弱性レポート営業の2ライン</li>
+<li><a href="./08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> — 経理・請求フロー</li>
+<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a> — メール雛形集</li>
+<li><a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a> — 送付対象判定</li>
+<li><a href="../decision-trees/contract-type.html"><code>decision-trees/contract-type.md</code></a> — 契約形態の選択</li>
+<li><a href="../runbooks/incident-response.html"><code>runbooks/incident-response.md</code></a> — クレーム発生時</li>
+<li><a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> — 新規案件キックオフ</li>
+<li>メモリ <code>project_sales_process_v1.md</code></li>
+<li>メモリ <code>project_venter_targeting.md</code></li>
+</ul>
 
 <footer class="handbook-footer">
   <div>VAIZO INC. · V/ENTER WEB DEPT.</div>

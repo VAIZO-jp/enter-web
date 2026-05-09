@@ -5,6 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>V/ENTER WEB Handbook — V/ENTER WEB Handbook</title>
+<meta name="description" content="VAIZO V/ENTER WEB事業部のハンドブック。AI（Claude × Codex）でWebサイトを高速・高品質に作るための、実務用一元ドキュメント。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/">
+<link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="V/ENTER WEB Handbook — V/ENTER WEB Handbook">
+<meta property="og:description" content="VAIZO V/ENTER WEB事業部のハンドブック。AI（Claude × Codex）でWebサイトを高速・高品質に作るための、実務用一元ドキュメント。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="V/ENTER WEB Handbook — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="VAIZO V/ENTER WEB事業部のハンドブック。AI（Claude × Codex）でWebサイトを高速・高品質に作るための、実務用一元ドキュメント。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -119,6 +133,30 @@
 <tr>
 <td>クライアント宛メール雛形</td>
 <td><a href="./templates/client-emails/"><code>templates/client-emails/</code></a></td>
+</tr>
+<tr>
+<td>デザインの見つけ方・参考収集</td>
+<td><a href="./handbook/10-design-research.html"><code>handbook/10-design-research.md</code></a></td>
+</tr>
+<tr>
+<td>ナレッジ更新運用</td>
+<td><a href="./handbook/07-knowledge-management.html"><code>handbook/07-knowledge-management.md</code></a></td>
+</tr>
+<tr>
+<td>経理・請求フロー</td>
+<td><a href="./handbook/08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a></td>
+</tr>
+<tr>
+<td>クライアントオフボーディング</td>
+<td><a href="./handbook/09-client-offboarding.html"><code>handbook/09-client-offboarding.md</code></a></td>
+</tr>
+<tr>
+<td>クレーム・障害発生時</td>
+<td><a href="./runbooks/incident-response.html"><code>runbooks/incident-response.md</code></a></td>
+</tr>
+<tr>
+<td>契約形態の選択</td>
+<td><a href="./decision-trees/contract-type.html"><code>decision-trees/contract-type.md</code></a></td>
 </tr>
 <tr>
 <td>何かに迷った（判断基準）</td>
@@ -931,9 +969,10 @@
 </header>
 <h1>01 — 営業プロセス</h1>
 <p>V/ENTER WEB の営業は <strong>「カスタマイズデモ + 脆弱性レポート + デザインアイデンティティ」三点セット送付</strong> が中軸。
-本ファイルは骨格のみ。詳細は別途 Phase 2 で充実予定。</p>
+月次300件規模で運用し、返信率5%・成約率1%を目標とする。</p>
 <hr>
 <h2>1. ターゲット選定</h2>
+<h3>1.1 ランク基準</h3>
 <table>
 <thead>
 <tr>
@@ -951,67 +990,197 @@
 </tr>
 <tr>
 <td>A</td>
-<td>飲食、ライブハウス、地方の老舗</td>
+<td>飲食、ライブハウス、地方の老舗、美容室、整体・治療院</td>
 <td>30万〜80万</td>
 <td>仙台レトロバックページ（実績）</td>
 </tr>
 <tr>
 <td>B</td>
-<td>ホームページ業者制作の店舗サイト、リニューアル放置型</td>
+<td>ホームページ業者制作の店舗サイト、リニューアル放置型、不動産仲介、スクール</td>
 <td>10万〜30万</td>
 <td>（継続発掘）</td>
 </tr>
 </tbody></table>
-<p>ターゲティング基準の詳細はメモリ <code>project_venter_targeting.md</code> 参照。</p>
-<h2>2. アプローチ手順</h2>
+<p>ランクは「予算 × 意思決定スピード × ブランド適合度」で決まる。</p>
+<h3>1.2 発掘ソース</h3>
+<ul>
+<li>Google Maps / 食べログ / ぐるなび / RETRIP の業態別検索</li>
+<li>ホットペッパービューティー（美容室）</li>
+<li>Suumo / Homes（不動産仲介）</li>
+<li>業界誌・ローカル雑誌の特集記事</li>
+<li>VAIZER の知人・紹介ネットワーク</li>
+<li>既存クライアントからの紹介（最強ルート）</li>
+</ul>
+<h3>1.3 ターゲット除外条件</h3>
+<ul>
+<li>すでに直近半年でリニューアル済（業者ロゴが新しい）</li>
+<li>法人ではなく個人ブログ・個人サイト</li>
+<li>政府機関・医療機関・教育機関（<a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> の慎重対応）</li>
+<li>ブラックリスト登録済（過去に削除依頼あり）</li>
+</ul>
+<p>詳細は <a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a> 参照。</p>
+<hr>
+<h2>2. アプローチ手順（月次300件運用）</h2>
+<h3>2.1 Week 1: ターゲットリスト作成（毎月初）</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 各VAIZERが週75件 = 月300件のターゲット候補を発掘</li>
+<li><input disabled="" type="checkbox"> スプレッドシート <code>OPS_Sheet TASKS</code> の <code>VENTER_Targets</code> タブに登録</li>
+<li><input disabled="" type="checkbox"> 重複チェック・ブラックリスト照合</li>
+<li><input disabled="" type="checkbox"> ランク（S/A/B）と推定単価を記入</li>
+</ul>
+<h3>2.2 Week 2-4: 三点セット作成・送付</h3>
+<p>各ターゲットに対して：</p>
 <ol>
-<li>公開情報のみで脆弱性スキャン（必ず <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> の2ライン遵守）</li>
-<li>デザインアイデンティティ提案（既存サイトの「らしさ」を抽出して再構築案）</li>
-<li>カスタムデモトップ（FV）を Codex で生成（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a>）</li>
-<li>脆弱性レポート + デモURLをセットで送付（メール雛形 <a href="../templates/client-emails/"><code>templates/client-emails/</code></a>）</li>
-<li>反応があったら商談、契約、本制作</li>
+<li><strong>公開情報のみで脆弱性スキャン</strong>（<a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> のパッシブツールのみ）</li>
+<li><strong>デザインアイデンティティ提案</strong>（既存サイトの「らしさ」を抽出して再構築案）</li>
+<li><strong>カスタムデモトップ（FV）を Codex で生成</strong>（<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> から業態別雛形を選択）</li>
+<li><strong>櫻井みどりが QC</strong>（誤検知の二重チェック、3-5分/件）</li>
+<li><strong>三点セットをメール送付</strong>（雛形: <a href="../templates/client-emails/vulnerability-report-cover.html"><code>templates/client-emails/vulnerability-report-cover.md</code></a>）</li>
+<li><strong>送付ログを記録</strong>（送信日時・担当者・添付パスワード）</li>
 </ol>
-<h2>3. 月次目標（300件スケール）</h2>
+<h3>2.3 反応待ち + 追加送付</h3>
+<ul>
+<li>反応がない場合は3ヶ月以上空けて再送付（<a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §再送付ルール）</li>
+<li>削除依頼は24時間以内に返信、ブラックリスト永久登録</li>
+</ul>
+<hr>
+<h2>3. 商談フェーズ</h2>
+<h3>3.1 1次商談（オンライン or 訪問）</h3>
+<ul>
+<li>60分のMTG設定</li>
+<li>アジェンダ:<ul>
+<li>VAIZOの紹介（5分）</li>
+<li>課題ヒアリング（20分）</li>
+<li>提案概要（15分）</li>
+<li>質疑応答（15分）</li>
+<li>次のステップ（5分）</li>
+</ul>
+</li>
+<li>Plaud + Tactiq で議事録録取</li>
+</ul>
+<h3>3.2 2次商談（提案）</h3>
+<ul>
+<li>提案書 + デザイン3案 + 見積を送付（雛形: <a href="../templates/client-emails/proposal.html"><code>templates/client-emails/proposal.md</code></a>）</li>
+<li>クライアントが採用案決定後、契約書・着手金請求</li>
+</ul>
+<h3>3.3 契約・着手金</h3>
+<ul>
+<li>契約書送付（雛形: <a href="../templates/client-emails/contract.html"><code>templates/client-emails/contract.md</code></a>）</li>
+<li>着手金30%請求（雛形: <a href="../templates/client-emails/invoice.html"><code>templates/client-emails/invoice.md</code></a>）</li>
+<li>入金確認後に <a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> の30項目を実行</li>
+</ul>
+<p>詳細は <a href="./08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> §3-5 参照。</p>
+<hr>
+<h2>4. 月次KPI</h2>
 <table>
 <thead>
 <tr>
 <th>指標</th>
 <th>目標</th>
+<th>計測方法</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>送付</td>
+<td>送付件数</td>
 <td>300件/月</td>
+<td>OPS_Sheet <code>VENTER_Targets</code> の送付済件数</td>
 </tr>
 <tr>
 <td>返信率</td>
-<td>5%以上</td>
+<td>5%以上（15件/月）</td>
+<td>送付後30日の返信件数</td>
 </tr>
 <tr>
-<td>商談化</td>
-<td>3%以上</td>
+<td>商談化率</td>
+<td>3%以上（9件/月）</td>
+<td>MTG実施件数</td>
 </tr>
 <tr>
-<td>成約</td>
-<td>1%以上（≒3件/月）</td>
+<td>成約率</td>
+<td>1%以上（3件/月）</td>
+<td>契約締結件数</td>
+</tr>
+<tr>
+<td>平均単価（成約案件）</td>
+<td>50万円以上</td>
+<td>受注金額平均</td>
+</tr>
+<tr>
+<td>案件公開期間</td>
+<td>14日以内</td>
+<td>契約から公開までの日数</td>
+</tr>
+<tr>
+<td>クレーム件数</td>
+<td>月3件以下</td>
+<td>OPS_Sheet <code>VENTER_クレーム対応</code></td>
+</tr>
+<tr>
+<td>削除依頼件数</td>
+<td>月10件以下</td>
+<td>OPS_Sheet <code>VENTER_BlackList</code> 増加数</td>
 </tr>
 </tbody></table>
-<h2>4. クレーム発生時の対応</h2>
-<p>詳細は <a href="./05-vulnerability-scan.html"><code>05-vulnerability-scan.md</code></a> クレーム対応SOP参照。</p>
+<p>KPIダッシュボードは Phase 3 で GitHub Actions + Google Sheets 連携で自動集計予定。</p>
+<hr>
+<h2>5. クレーム・問題発生時の対応</h2>
+<p>詳細は <a href="../runbooks/incident-response.html"><code>runbooks/incident-response.md</code></a> と <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §クレーム対応SOP 参照。</p>
+<h3>即時対応（30分以内）</h3>
 <ul>
-<li>1次対応: 受信30分以内（小野寺・櫻井みどり）</li>
-<li>2次対応: 2時間以内（橋本CEO主導）</li>
-<li>削除依頼は24時間以内対応、ブラックリスト永久登録</li>
+<li>小野寺陸斗 or 櫻井みどり が即返信</li>
+<li>文面例: 「ご連絡ありがとうございます。担当責任者へエスカレーションします」</li>
+<li>橋本CEO・櫻井理也CTOへSlack DMで即時通知</li>
 </ul>
-<h2>5. 関連ドキュメント</h2>
+<h3>2次対応（2時間以内）</h3>
 <ul>
-<li><a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a></li>
-<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a></li>
-<li><a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a></li>
-<li>メモリ <code>project_sales_process_v1.md</code></li>
+<li>橋本CEO主導で個別対応</li>
+<li>必要に応じて謝罪・削除・関係先への連絡停止</li>
+<li>内容によっては顧問弁護士・顧問税理士へ相談</li>
+</ul>
+<h3>記録</h3>
+<ul>
+<li>クレーム発生案件は <code>OPS_Sheet TASKS</code> に「VENTER_クレーム対応」として記録</li>
+<li>月次振り返りで件数・原因を集計、ガイドラインへ反映</li>
 </ul>
 <hr>
-<p><strong>Phase 2 で本文充実予定</strong>: ターゲット発掘の具体手法、メール文面の精緻化、KPIダッシュボード設計、Slack/CRM運用フロー</p>
+<h2>6. 営業ツール・スプレッドシート</h2>
+<h3>OPS_Sheet TASKS の主要タブ</h3>
+<ul>
+<li><code>VENTER_Targets</code> — ターゲットリスト・送付ログ</li>
+<li><code>VENTER_BlackList</code> — 削除依頼受領先</li>
+<li><code>VENTER_クレーム対応</code> — クレーム発生記録</li>
+<li><code>VENTER_反応ログ</code> — 反応・商談化・成約の記録</li>
+<li><code>VENTER_KPI月次</code> — 月次KPI集計</li>
+</ul>
+<p>スプレッドシートID は <a href="../MAP.html"><code>MAP.md</code></a> §6 案件管理 の Drive 案件管理セクションに記載予定（Phase 2）。</p>
+<hr>
+<h2>7. 文体・トーンの統一</h2>
+<p>すべてのアウトバウンド文書（メール・提案書・電話スクリプト）で以下を遵守：</p>
+<ul>
+<li>❌ 「あなたのサイトは危険です」（恐怖訴求）</li>
+<li>❌ 「すぐに対応が必要」（煽り）</li>
+<li>❌ 「うちで全部対応できます」（直結セールス）</li>
+<li>❌ 「ご返答お願いします」（催促）</li>
+<li>❌ 軍事比喩・否定列挙・採用語・階層用語</li>
+<li>✅ 「公開情報の範囲で確認したところ、◯◯の改善余地が見受けられました」</li>
+<li>✅ 「ご参考までにお送りします」</li>
+<li>✅ 「ご不要の場合はお手数ですが破棄してください」</li>
+</ul>
+<p>詳細は <a href="./02-design-policy.html"><code>handbook/02-design-policy.md</code></a> §7 NG表現 と <a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> §ライン2 参照。</p>
+<hr>
+<h2>8. 関連ドキュメント</h2>
+<ul>
+<li><a href="./02-design-policy.html"><code>handbook/02-design-policy.md</code></a> — 文体ルール</li>
+<li><a href="./05-vulnerability-scan.html"><code>handbook/05-vulnerability-scan.md</code></a> — 脆弱性レポート営業の2ライン</li>
+<li><a href="./08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> — 経理・請求フロー</li>
+<li><a href="../templates/client-emails/"><code>templates/client-emails/</code></a> — メール雛形集</li>
+<li><a href="../decision-trees/vulnerability-target.html"><code>decision-trees/vulnerability-target.md</code></a> — 送付対象判定</li>
+<li><a href="../decision-trees/contract-type.html"><code>decision-trees/contract-type.md</code></a> — 契約形態の選択</li>
+<li><a href="../runbooks/incident-response.html"><code>runbooks/incident-response.md</code></a> — クレーム発生時</li>
+<li><a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> — 新規案件キックオフ</li>
+<li>メモリ <code>project_sales_process_v1.md</code></li>
+<li>メモリ <code>project_venter_targeting.md</code></li>
+</ul>
 
 <footer class="handbook-footer">
   <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
@@ -2599,44 +2768,149 @@ cat codex_out.md
   <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
   <div class="handbook-meta">v0.1 · 2026-05-09</div>
 </header>
-<h1>Codex プロンプト：コーポレートサイト業態（骨格）</h1>
+<h1>Codex プロンプト：コーポレートサイト業態</h1>
 <blockquote>
-<p>骨格レベル（Phase 1）。Phase 2 で本文充実予定。</p>
+<p>中小企業・士業・SaaS・専門サービス向けコーポレートサイト雛形。
+「信頼感」「専門性」「実績」を3軸に、VAIZO Editorial 白黒基調で表現する。</p>
 </blockquote>
+<p>使用方法: 案件ディレクトリにコピーして {{プレースホルダ}} を埋め、<code>codex_prompt.md</code> としてリネーム。</p>
 <hr>
-<h2>タスク: {{企業名}}コーポレートサイト</h2>
+<h2>タスク: {{企業名}}コーポレートサイトのトップページ</h2>
 <h2>役割</h2>
-<p>V/ENTER WEB事業部の実装ドラフト担当として、コーポレートサイトのトップページを生成。</p>
+<p>V/ENTER WEB事業部の実装ドラフト担当として、コーポレートサイトのトップページを生成。FV + 6セクション構成のスクロールLPまたは複数ページ構造の入口。</p>
+<h2>成果物</h2>
+<ul>
+<li>単一HTMLファイル <code>index.html</code>（CSSはhead内、JS最小限）</li>
+<li>またはWP固定ページ用最適化版（<code>{{slug}}_wp.html</code>）</li>
+</ul>
 <h2>想定企業</h2>
 <ul>
-<li><strong>業態</strong>: {{製造業 / サービス業 / IT / 士業 / 医療 / 教育}}</li>
-<li><strong>規模</strong>: {{従業員数 / 年商}}</li>
-<li><strong>対象</strong>: {{B2B / B2C / 採用候補}}</li>
+<li><strong>業態</strong>: {{製造業 / サービス業 / IT / SaaS / 士業 / 医療 / 教育 / 建設 / 物流 / その他}}</li>
+<li><strong>規模</strong>: 従業員 {{N}}名、年商 {{XX}}億円</li>
+<li><strong>本社所在地</strong>: {{都道府県 + 市区町村}}</li>
+<li><strong>設立</strong>: {{YYYY年}}</li>
+<li><strong>事業内容</strong>: {{1〜3行の概要}}</li>
+<li><strong>対象顧客</strong>: B2B / B2C / 採用候補 / 株主・投資家</li>
+<li><strong>ミッション</strong>: {{ステートメント}}</li>
 </ul>
 <h2>デザイン要件</h2>
 <ul>
 <li>VAIZOエディトリアル白黒基調</li>
 <li>信頼感重視、過剰な装飾を避ける</li>
-<li>セクション構成例:<ul>
-<li>HERO（ミッション + キービジュアル）</li>
-<li>SERVICES（事業領域）</li>
-<li>WORKS / CASE STUDY（実績）</li>
-<li>COMPANY（会社概要）</li>
-<li>NEWS（更新情報、可能なら自動取得）</li>
-<li>CONTACT（問い合わせフォーム + 電話 + メール）</li>
+<li>アクセントカラー（任意、業界に応じて）:<ul>
+<li>製造業: ネイビー <code>#1e3a5f</code></li>
+<li>士業（法律・会計）: エンジ <code>#7a1d1d</code> または ネイビー <code>#1e3a5f</code></li>
+<li>医療・ヘルスケア: モスグリーン <code>#5a8b6e</code></li>
+<li>IT・SaaS: シアン <code>#0066cc</code> または純黒</li>
+<li>教育: エンジ <code>#7a1d1d</code>（伝統校）または シアン <code>#0066cc</code>（モダン校）</li>
 </ul>
 </li>
+<li>書体: Inter 900（英字）+ Noto Sans JP 700（日本語）</li>
+<li>本文 17px / テーブル 15px / 行間 1.9 厳守</li>
 </ul>
-<h2>⚠️ コーポレートサイト特有の注意</h2>
+<h2>セクション構成</h2>
+<h3>1. HERO（ファーストビュー）</h3>
 <ul>
-<li>IR情報・適時開示などの法定開示事項がある場合は別ページとして用意</li>
-<li>採用情報がある場合は専用セクション、ただし「採用語」は使わない（<a href="../../handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a> 参照）</li>
-<li>個人情報の取り扱い・プライバシーポリシー・特定商取引法表記など必須</li>
+<li>ミッションステートメント（メインコピー、20文字以内）</li>
+<li>英文サブコピー</li>
+<li>キービジュアル（写真 or CSS抽象表現）</li>
+<li>ナビゲーション（FV下部）: SERVICES / WORKS / COMPANY / CONTACT</li>
 </ul>
-<h2>完了条件・守ってほしいこと</h2>
-<p><a href="./TEMPLATE.html"><code>TEMPLATE.md</code></a> の共通要件に従う。</p>
+<h3>2. SERVICES（事業領域）</h3>
+<ul>
+<li>事業領域 3〜5本をカード形式で</li>
+<li>各カード: アイコン（線画SVG）+ 事業名 + 1〜2行説明 + 詳細リンク</li>
+</ul>
+<h3>3. WORKS / CASE STUDY（実績）</h3>
+<ul>
+<li>代表的な実績 3〜6件</li>
+<li>カード形式（クライアント名 + プロジェクト概要 + サムネイル）</li>
+<li>リンク先: 各案件詳細ページ（任意）</li>
+</ul>
+<h3>4. STRENGTHS（強み・特長）</h3>
+<ul>
+<li>3〜4個の差別化ポイント</li>
+<li>数字で示せるもの優先（実績件数、満足度、業界経験年数）</li>
+</ul>
+<h3>5. COMPANY（会社概要）</h3>
+<ul>
+<li>表形式: 会社名 / 設立 / 所在地 / 代表者 / 事業内容 / 取引先</li>
+<li>沿革（年表）</li>
+</ul>
+<h3>6. NEWS（更新情報）</h3>
+<ul>
+<li>最新3〜5件（タイトル + 日付 + 概要）</li>
+<li>全件一覧へのリンク</li>
+</ul>
+<h3>7. CONTACT（問い合わせ）</h3>
+<ul>
+<li>問い合わせフォーム or メール / 電話</li>
+<li>アクセス情報（住所 + Google Maps 埋込）</li>
+</ul>
+<h3>8. FOOTER</h3>
+<ul>
+<li>会社名・住所・電話・メール</li>
+<li>プライバシーポリシー / 特定商取引法表記 / 利用規約 へのリンク</li>
+<li>SNSアイコン（LinkedIn / X 等、ある場合）</li>
+</ul>
+<h2>コーポレートサイト特有の注意</h2>
+<h3>法定開示事項</h3>
+<ul>
+<li><strong>個人情報保護法</strong>: プライバシーポリシー必須（別ページ）</li>
+<li><strong>特定商取引法</strong>: 物販・有料サービスがある場合は表記必須</li>
+<li><strong>景品表示法</strong>: 比較表現・最上級表現に注意</li>
+<li><strong>IR情報</strong>: 上場企業は適時開示・決算情報の別ページ</li>
+<li><strong>業法ごとの規制</strong>: 士業（弁護士業務広告規制）、医療（医療広告ガイドライン）、不動産（宅建業法）等を必ず確認</li>
+</ul>
+<h3>採用情報がある場合</h3>
+<ul>
+<li>「採用語」（カルチャーフィット、リファラル採用、チャレンジ等）を <strong>使わない</strong>（<a href="../../handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a>）</li>
+<li>代わりに具体的な業務内容・条件・福利厚生で語る</li>
+<li>別ページ <code>/recruit/</code> または <code>/careers/</code> に分離</li>
+</ul>
+<h3>SEO・構造化データ</h3>
+<ul>
+<li>JSON-LD <code>Organization</code> 必須</li>
+<li>JSON-LD <code>LocalBusiness</code>（拠点ある場合）</li>
+<li>パンくずリスト</li>
+<li>canonical URL</li>
+<li>OGP画像（1200x630）</li>
+</ul>
+<h3>アクセシビリティ</h3>
+<ul>
+<li>WCAG AA 以上</li>
+<li>スキップリンク</li>
+<li><code>aria-label</code> 適切に</li>
+<li>フォーカスリング表示</li>
+<li><code>prefers-reduced-motion</code> 対応</li>
+</ul>
+<h2>守ってほしいこと</h2>
+<ul>
+<li>仕様外の機能（チャットボット・ニュースレター登録ポップアップ等）を勝手に追加しない</li>
+<li>軍事比喩・否定列挙・採用語・階層用語は使わない</li>
+<li>「〜していただきます」より「します」を優先</li>
+<li>メールは <code>info@vaizo.jp</code>（<code>.co.jp</code> 不使用）— ただしコーポレートサイトはクライアント企業のドメインを使用</li>
+<li>仕様書記載の数値・名称は厳密に転載</li>
+</ul>
+<h2>完了条件</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>index.html</code> を開くと全要件を満たして表示</li>
+<li><input disabled="" type="checkbox"> JSON-LD <code>Organization</code> が GSC リッチ結果テストツールで有効</li>
+<li><input disabled="" type="checkbox"> レスポンシブ全幅でレイアウト崩れなし</li>
+<li><input disabled="" type="checkbox"> Lighthouse モバイル パフォーマンス 70以上、LCP 2.5秒以内</li>
+<li><input disabled="" type="checkbox"> WCAG AA 以上</li>
+<li><input disabled="" type="checkbox"> コンソールエラーゼロ</li>
+</ul>
+<h2>最終アウトプット</h2>
+<p><code>{{ファイル名}}</code> の完全なコードと、JSON-LD の実例を返してください。</p>
 <hr>
-<p><strong>Phase 2 で本文充実予定</strong>: 業種別パターン（製造業・士業・医療・SaaS等）、SEO構造化データの推奨、IR/採用ページの分離設計</p>
+<h2>業態別の参考（さらに具体化したい場合）</h2>
+<ul>
+<li>IT・SaaS: 単一プロダクト型なら <a href="./extension-sections.html"><code>templates/codex-prompts/extension-sections.md</code></a> のLP拡張を参照</li>
+<li>士業: 信頼感重視、写真は人物中心、配色はネイビー or エンジ</li>
+<li>製造業: 工場・設備写真重視、技術スペック表を多用</li>
+<li>医療: 医療広告ガイドラインに細心の注意（治療効果の断言不可）</li>
+</ul>
 
 <footer class="handbook-footer">
   <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
@@ -3103,47 +3377,124 @@ info@vaizo.jp
   <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
   <div class="handbook-meta">v0.1 · 2026-05-09</div>
 </header>
-<h1>メール雛形：提案メール（骨格）</h1>
+<h1>メール雛形：提案メール</h1>
 <blockquote>
-<p>商談を経て、デザイン3案 + 見積を提出する際のメール雛形。</p>
+<p>商談を経て、デザイン3案 + 見積を提出する際のメール雛形。
+<a href="../../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> §8 デザイン提案 から呼び出される。</p>
 </blockquote>
 <hr>
 <h2>件名</h2>
-<pre><code>{{屋号 / 企業名}}様 Webサイトリニューアル ご提案資料一式（{{案件番号 or YYYYMMDD}}）
+<pre><code>{{屋号 / 企業名}}様 Webサイトリニューアル ご提案資料一式（案件番号: {{案件番号}}）
 </code></pre>
+<p>NGな件名:</p>
+<ul>
+<li>「至急ご確認ください」（煽り）</li>
+<li>「最終提案です」（プレッシャー）</li>
+</ul>
 <h2>本文（雛形）</h2>
 <pre><code>{{担当者ご芳名}} 様
 
-お世話になっております。VAIZO V/ENTER WEB の {{差出人氏名}} です。
-先日はお打ち合わせのお時間をいただきありがとうございました。
+お世話になっております。
+株式会社VAIZO V/ENTER WEB事業部の {{差出人氏名}} です。
 
+先日（{{MTG日付}}）はお打ち合わせのお時間をいただきありがとうございました。
 ご相談いただいた内容に基づき、デザインの方向性として3案を整理しました。
-いずれも公開URLでご覧いただけます（パスワード保護あり、PWは別途）。
 
-【ご提案資料】
-1. デザイン3案（プライベートデモURL）
-   ・案A: ELEGANT_WHITE → {{URL_A}}
-   ・案B: HERITAGE_DARK → {{URL_B}}
-   ・案C: URBAN_MUSIC → {{URL_C}}
+──────────────
+■ デザイン3案
+──────────────
 
-2. 各案の構造と意図（PDF）
-3. お見積書
+いずれも実際のWebページとしてご覧いただけます（プライベート公開・パスワード保護）。
 
-【ご決定いただきたい3点】
-1. 採用案（A/B/Cまたは複数のミックス）
+▼ 案A: {{方向性A 例: ELEGANT_WHITE}}
+  {{URL_A}}
+  特徴: {{1〜2行 例: 上品な白基調・余白を活かしたミニマル構成}}
+
+▼ 案B: {{方向性B 例: HERITAGE_DARK}}
+  {{URL_B}}
+  特徴: {{1〜2行 例: 歴史を感じる暗色基調・落ち着いた佇まい}}
+
+▼ 案C: {{方向性C 例: WARM_HOSPITALITY}}
+  {{URL_C}}
+  特徴: {{1〜2行 例: 温かみと親しみを重視・人柄が伝わる}}
+
+各案のパスワード:
+  案A: {{パスワードA}}
+  案B: {{パスワードB}}
+  案C: {{パスワードC}}
+
+各案の意図とコンセプトは、添付PDFの3ページ目にまとめております。
+
+──────────────
+■ お見積書
+──────────────
+
+添付PDFをご確認ください。
+- 基本料金: {{金額}}（{{範囲: FV+Nセクション、写真選定、文章調整}}）
+- オプション: {{ロゴ刷新 / 撮影手配 / 月次運用 等あれば}}
+- 合計: {{合計金額}}（消費税込）
+
+支払条件: 着手金30% / 中間金30% / 残金40%
+公開予定日: {{合意したスケジュール}}
+
+──────────────
+■ ご決定いただきたい3点
+──────────────
+
+1. 採用案（A / B / C / 複数のミックス）
 2. 文章・写真等の素材ご提供のスケジュール
 3. 公開希望日
 
-ご不明点・ご相談はメールもしくはお電話でお気軽にどうぞ。
+──────────────
+■ 次のステップ
+──────────────
+
+採用案決定後、契約書 + 着手金請求書をお送りいたします。
+契約書受領 + 入金確認後、本制作に着手いたします。
+
+ご不明点・ご相談・他案件のご相談など、メールもしくはお電話でお気軽にどうぞ。
+
+末筆ながら、{{屋号}}様のますますのご繁栄をお祈り申し上げます。
 
 ──────────────
 株式会社VAIZO V/ENTER WEB事業部
 {{差出人氏名}}（{{役割}}）
-info@vaizo.jp
+〒980-0021 宮城県仙台市青葉区中央四丁目1番26号
+info@vaizo.jp / vaizo.jp
 ──────────────
 </code></pre>
-<hr>
-<p><strong>Phase 2 で本文充実予定</strong>: 業態別の差し替えポイント、見積根拠の説明文、契約書ドラフトへのリンク</p>
+<h2>添付推奨</h2>
+<ol>
+<li>デザイン3案の意図・構成を解説したPDF（3〜6ページ）</li>
+<li>お見積書（VAIZO 公式テンプレ、Drive <code>01_帳票テンプレート/</code>）</li>
+<li>業務委託契約書ドラフト（任意・選定後でもよい）</li>
+</ol>
+<h2>守るルール</h2>
+<ul>
+<li>✅ 商談MTGで合意した内容と整合</li>
+<li>✅ 数字（金額・期間）はすべて見積書と一致</li>
+<li>✅ 採用判断を急かさない（決定期限を設けない or 余裕を持たせる）</li>
+<li>❌ 「他社にも同時提案しています」（プレッシャー）</li>
+<li>❌ 「今だけ特別価格」（煽り）</li>
+<li>❌ 軍事比喩・否定列挙・採用語</li>
+</ul>
+<h2>チェックリスト（送信前）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 案件番号・差出人氏名・MTG日付・金額が正確</li>
+<li><input disabled="" type="checkbox"> 3案のURL・パスワードがアクセス可能</li>
+<li><input disabled="" type="checkbox"> 添付PDFが正しく開ける</li>
+<li><input disabled="" type="checkbox"> 添付見積書の合計金額が本文と一致</li>
+<li><input disabled="" type="checkbox"> 支払条件・公開予定日が商談合意と一致</li>
+<li><input disabled="" type="checkbox"> 文体ルール遵守（<a href="../../handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a> §7）</li>
+</ul>
+<h2>関連</h2>
+<ul>
+<li><a href="../codex-prompts/"><code>templates/codex-prompts/</code></a> — 業態別デザイン提案の雛形</li>
+<li><a href="./contract.html"><code>templates/client-emails/contract.md</code></a> — 採用案決定後の契約書送付</li>
+<li><a href="./invoice.html"><code>templates/client-emails/invoice.md</code></a> — 着手金請求</li>
+<li><a href="../../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> — キックオフ全体フロー</li>
+<li><a href="../../handbook/08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> — 経理・請求フロー</li>
+</ul>
 
 <footer class="handbook-footer">
   <div>VAIZO INC. · V/ENTER WEB DEPT.</div>
@@ -5067,7 +5418,7 @@ codex exec ... --env &quot;WP_PASSWORD=$WP_PASSWORD&quot; ...
 </ol>
 <h4>教育</h4>
 <ul>
-<li>全VAIZER に <a href="./06-onboarding.html"><code>handbook/06-onboarding.md</code></a> の更新版を周知</li>
+<li>全VAIZER に <a href="../handbook/06-onboarding.html"><code>handbook/06-onboarding.md</code></a> の更新版を周知</li>
 <li>30分の Zoom セッションで全員の初期セットアップを支援</li>
 </ul>
 <h3>Step 7: 14日トライアル後の本契約判断（橋本CEO）</h3>

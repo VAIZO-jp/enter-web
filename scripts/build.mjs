@@ -179,6 +179,8 @@ async function renderMarkdownFile(srcRelative) {
 // 4. HTML テンプレート
 // ============================================================
 
+const SITE_URL = "https://vaizo-jp.github.io/enter-web";
+
 const HEAD_BASE = `
 <!DOCTYPE html>
 <html lang="ja">
@@ -186,6 +188,20 @@ const HEAD_BASE = `
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}} — V/ENTER WEB Handbook</title>
+<meta name="description" content="{{description}}">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="{{canonical}}">
+<link rel="icon" type="image/svg+xml" href="{{iconPath}}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{title}} — V/ENTER WEB Handbook">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{title}} — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="{{description}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -260,10 +276,35 @@ function renderTOC(structure) {
 // ============================================================
 
 async function prepareCssAssets() {
-  console.log("🎨 Preparing CSS assets in dist/html/css/...");
+  console.log("🎨 Preparing static assets...");
   await ensureDir(path.dirname(CSS_OUT));
   await fs.copyFile(CSS_SRC, CSS_OUT);
   console.log(`  ✓ ${path.relative(ROOT, CSS_OUT)}`);
+
+  // favicon
+  const FAVICON_SRC = path.join(ROOT, "assets", "icons", "favicon.svg");
+  const FAVICON_OUT = path.join(DIST_HTML, "icons", "favicon.svg");
+  try {
+    await ensureDir(path.dirname(FAVICON_OUT));
+    await fs.copyFile(FAVICON_SRC, FAVICON_OUT);
+    console.log(`  ✓ ${path.relative(ROOT, FAVICON_OUT)}`);
+  } catch {
+    console.warn("  ⚠️  favicon.svg が見当たらないためスキップ");
+  }
+}
+
+const ICON_PATH = path.join(DIST_HTML, "icons", "favicon.svg");
+
+function extractDescription(html) {
+  // 先頭の <p>...</p> から100文字程度を抽出
+  const m = html.match(/<p>([\s\S]*?)<\/p>/);
+  if (!m) return "VAIZO V/ENTER WEB事業部の運用ハンドブック";
+  const text = m[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  return (text.slice(0, 110) + (text.length > 110 ? "…" : "")).replace(/"/g, "&quot;");
+}
+
+function relForFile(outPath, target) {
+  return path.relative(path.dirname(outPath), target).replace(/\\/g, "/");
 }
 
 async function buildIndividualHtmlPages() {
@@ -276,9 +317,17 @@ async function buildIndividualHtmlPages() {
       if (!html) continue;
 
       const outPath = path.join(DIST_HTML, f.src.replace(/\.md$/, ".html"));
-      const cssRel = path.relative(path.dirname(outPath), CSS_PATH).replace(/\\/g, "/");
+      const cssRel = relForFile(outPath, CSS_OUT);
+      const iconRel = relForFile(outPath, ICON_PATH);
+      const description = extractDescription(html);
+      const canonical = `${SITE_URL}/${path.relative(DIST_HTML, outPath).replace(/\\/g, "/")}`;
       const fullHtml =
-        HEAD_BASE.replace("{{title}}", escapeHtml(f.title)).replace("{{cssPath}}", cssRel) +
+        HEAD_BASE
+          .replace(/\{\{title\}\}/g, escapeHtml(f.title))
+          .replace(/\{\{description\}\}/g, description)
+          .replace(/\{\{canonical\}\}/g, canonical)
+          .replace(/\{\{iconPath\}\}/g, iconRel)
+          .replace(/\{\{cssPath\}\}/g, cssRel) +
         `<main class="handbook-shell">` +
         renderHeader() +
         html +
@@ -301,6 +350,7 @@ async function buildBookHtml() {
   await ensureDir(DIST_HTML);
 
   const cssRel = path.relative(DIST_HTML, CSS_PATH).replace(/\\/g, "/");
+  const iconRel = path.relative(DIST_HTML, ICON_PATH).replace(/\\/g, "/");
   let body = renderCover() + renderTOC(STRUCTURE);
 
   for (const ch of STRUCTURE) {
@@ -317,14 +367,40 @@ async function buildBookHtml() {
     }
   }
 
+  const description = "VAIZO V/ENTER WEB事業部のハンドブック。AI（Claude × Codex）でWebサイトを高速・高品質に作るための、実務用一元ドキュメント。";
   const fullHtml =
-    HEAD_BASE.replace("{{title}}", "V/ENTER WEB Handbook").replace("{{cssPath}}", cssRel) +
+    HEAD_BASE
+      .replace(/\{\{title\}\}/g, "V/ENTER WEB Handbook")
+      .replace(/\{\{description\}\}/g, description)
+      .replace(/\{\{canonical\}\}/g, `${SITE_URL}/`)
+      .replace(/\{\{iconPath\}\}/g, iconRel)
+      .replace(/\{\{cssPath\}\}/g, cssRel) +
     body +
     FOOT_BASE;
 
   const outPath = path.join(DIST_HTML, "index.html");
   await writeFile(outPath, fullHtml);
   console.log(`  ✓ Combined → ${path.relative(ROOT, outPath)}`);
+
+  // 404.html 自動生成
+  const notFoundHtml =
+    HEAD_BASE
+      .replace(/\{\{title\}\}/g, "404 — Not Found")
+      .replace(/\{\{description\}\}/g, "ページが見つかりませんでした。")
+      .replace(/\{\{canonical\}\}/g, `${SITE_URL}/404.html`)
+      .replace(/\{\{iconPath\}\}/g, iconRel)
+      .replace(/\{\{cssPath\}\}/g, cssRel) +
+    `<main class="handbook-shell" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;text-align:center;">
+       ${renderHeader()}
+       <h1 style="font-family:var(--font-sans-en);font-weight:900;font-size:clamp(64px,9vw,128px);letter-spacing:0.04em;margin:24px 0;">404</h1>
+       <p style="font-family:var(--font-serif-jp);font-size:20px;color:var(--ink-charcoal);margin-bottom:32px;">お探しのページは見つかりませんでした。</p>
+       <p><a href="/enter-web/">ハンドブックトップへ戻る →</a></p>
+       ${renderFooter()}
+     </main>` +
+    FOOT_BASE;
+  await writeFile(path.join(DIST_HTML, "404.html"), notFoundHtml);
+  console.log(`  ✓ 404 → dist/html/404.html`);
+
   return outPath;
 }
 

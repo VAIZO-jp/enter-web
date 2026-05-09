@@ -117,7 +117,7 @@ codex exec ... --env "WP_PASSWORD=$WP_PASSWORD" ...
 
 #### 教育
 
-- 全VAIZER に [`handbook/06-onboarding.md`](./06-onboarding.md) の更新版を周知
+- 全VAIZER に [`handbook/06-onboarding.md`](../handbook/06-onboarding.md) の更新版を周知
 - 30分の Zoom セッションで全員の初期セットアップを支援
 
 ### Step 7: 14日トライアル後の本契約判断（橋本CEO）

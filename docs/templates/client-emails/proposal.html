@@ -5,6 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>メール: 提案 — V/ENTER WEB Handbook</title>
+<meta name="description" content="商談を経て、デザイン3案 + 見積を提出する際のメール雛形。 runbooks/new-client-kickoff.md §8 デザイン提案 から呼び出される。">
+<meta name="author" content="株式会社VAIZO V/ENTER WEB事業部">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://vaizo-jp.github.io/enter-web/templates/client-emails/proposal.html">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="メール: 提案 — V/ENTER WEB Handbook">
+<meta property="og:description" content="商談を経て、デザイン3案 + 見積を提出する際のメール雛形。 runbooks/new-client-kickoff.md §8 デザイン提案 から呼び出される。">
+<meta property="og:url" content="https://vaizo-jp.github.io/enter-web/templates/client-emails/proposal.html">
+<meta property="og:site_name" content="V/ENTER WEB Handbook">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="メール: 提案 — V/ENTER WEB Handbook">
+<meta name="twitter:description" content="商談を経て、デザイン3案 + 見積を提出する際のメール雛形。 runbooks/new-client-kickoff.md §8 デザイン提案 から呼び出される。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,47 +30,124 @@
   <div class="handbook-brand">V<span class="slash">/</span>ENTER WEB · HANDBOOK</div>
   <div class="handbook-meta">v0.1 · 2026-05-09</div>
 </header>
-<h1>メール雛形：提案メール（骨格）</h1>
+<h1>メール雛形：提案メール</h1>
 <blockquote>
-<p>商談を経て、デザイン3案 + 見積を提出する際のメール雛形。</p>
+<p>商談を経て、デザイン3案 + 見積を提出する際のメール雛形。
+<a href="../../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> §8 デザイン提案 から呼び出される。</p>
 </blockquote>
 <hr>
 <h2>件名</h2>
-<pre><code>{{屋号 / 企業名}}様 Webサイトリニューアル ご提案資料一式（{{案件番号 or YYYYMMDD}}）
+<pre><code>{{屋号 / 企業名}}様 Webサイトリニューアル ご提案資料一式（案件番号: {{案件番号}}）
 </code></pre>
+<p>NGな件名:</p>
+<ul>
+<li>「至急ご確認ください」（煽り）</li>
+<li>「最終提案です」（プレッシャー）</li>
+</ul>
 <h2>本文（雛形）</h2>
 <pre><code>{{担当者ご芳名}} 様
 
-お世話になっております。VAIZO V/ENTER WEB の {{差出人氏名}} です。
-先日はお打ち合わせのお時間をいただきありがとうございました。
+お世話になっております。
+株式会社VAIZO V/ENTER WEB事業部の {{差出人氏名}} です。
 
+先日（{{MTG日付}}）はお打ち合わせのお時間をいただきありがとうございました。
 ご相談いただいた内容に基づき、デザインの方向性として3案を整理しました。
-いずれも公開URLでご覧いただけます（パスワード保護あり、PWは別途）。
 
-【ご提案資料】
-1. デザイン3案（プライベートデモURL）
-   ・案A: ELEGANT_WHITE → {{URL_A}}
-   ・案B: HERITAGE_DARK → {{URL_B}}
-   ・案C: URBAN_MUSIC → {{URL_C}}
+──────────────
+■ デザイン3案
+──────────────
 
-2. 各案の構造と意図（PDF）
-3. お見積書
+いずれも実際のWebページとしてご覧いただけます（プライベート公開・パスワード保護）。
 
-【ご決定いただきたい3点】
-1. 採用案（A/B/Cまたは複数のミックス）
+▼ 案A: {{方向性A 例: ELEGANT_WHITE}}
+  {{URL_A}}
+  特徴: {{1〜2行 例: 上品な白基調・余白を活かしたミニマル構成}}
+
+▼ 案B: {{方向性B 例: HERITAGE_DARK}}
+  {{URL_B}}
+  特徴: {{1〜2行 例: 歴史を感じる暗色基調・落ち着いた佇まい}}
+
+▼ 案C: {{方向性C 例: WARM_HOSPITALITY}}
+  {{URL_C}}
+  特徴: {{1〜2行 例: 温かみと親しみを重視・人柄が伝わる}}
+
+各案のパスワード:
+  案A: {{パスワードA}}
+  案B: {{パスワードB}}
+  案C: {{パスワードC}}
+
+各案の意図とコンセプトは、添付PDFの3ページ目にまとめております。
+
+──────────────
+■ お見積書
+──────────────
+
+添付PDFをご確認ください。
+- 基本料金: {{金額}}（{{範囲: FV+Nセクション、写真選定、文章調整}}）
+- オプション: {{ロゴ刷新 / 撮影手配 / 月次運用 等あれば}}
+- 合計: {{合計金額}}（消費税込）
+
+支払条件: 着手金30% / 中間金30% / 残金40%
+公開予定日: {{合意したスケジュール}}
+
+──────────────
+■ ご決定いただきたい3点
+──────────────
+
+1. 採用案（A / B / C / 複数のミックス）
 2. 文章・写真等の素材ご提供のスケジュール
 3. 公開希望日
 
-ご不明点・ご相談はメールもしくはお電話でお気軽にどうぞ。
+──────────────
+■ 次のステップ
+──────────────
+
+採用案決定後、契約書 + 着手金請求書をお送りいたします。
+契約書受領 + 入金確認後、本制作に着手いたします。
+
+ご不明点・ご相談・他案件のご相談など、メールもしくはお電話でお気軽にどうぞ。
+
+末筆ながら、{{屋号}}様のますますのご繁栄をお祈り申し上げます。
 
 ──────────────
 株式会社VAIZO V/ENTER WEB事業部
 {{差出人氏名}}（{{役割}}）
-info@vaizo.jp
+〒980-0021 宮城県仙台市青葉区中央四丁目1番26号
+info@vaizo.jp / vaizo.jp
 ──────────────
 </code></pre>
-<hr>
-<p><strong>Phase 2 で本文充実予定</strong>: 業態別の差し替えポイント、見積根拠の説明文、契約書ドラフトへのリンク</p>
+<h2>添付推奨</h2>
+<ol>
+<li>デザイン3案の意図・構成を解説したPDF（3〜6ページ）</li>
+<li>お見積書（VAIZO 公式テンプレ、Drive <code>01_帳票テンプレート/</code>）</li>
+<li>業務委託契約書ドラフト（任意・選定後でもよい）</li>
+</ol>
+<h2>守るルール</h2>
+<ul>
+<li>✅ 商談MTGで合意した内容と整合</li>
+<li>✅ 数字（金額・期間）はすべて見積書と一致</li>
+<li>✅ 採用判断を急かさない（決定期限を設けない or 余裕を持たせる）</li>
+<li>❌ 「他社にも同時提案しています」（プレッシャー）</li>
+<li>❌ 「今だけ特別価格」（煽り）</li>
+<li>❌ 軍事比喩・否定列挙・採用語</li>
+</ul>
+<h2>チェックリスト（送信前）</h2>
+<ul>
+<li><input disabled="" type="checkbox"> 案件番号・差出人氏名・MTG日付・金額が正確</li>
+<li><input disabled="" type="checkbox"> 3案のURL・パスワードがアクセス可能</li>
+<li><input disabled="" type="checkbox"> 添付PDFが正しく開ける</li>
+<li><input disabled="" type="checkbox"> 添付見積書の合計金額が本文と一致</li>
+<li><input disabled="" type="checkbox"> 支払条件・公開予定日が商談合意と一致</li>
+<li><input disabled="" type="checkbox"> 文体ルール遵守（<a href="../../handbook/02-design-policy.html"><code>handbook/02-design-policy.md</code></a> §7）</li>
+</ul>
+<h2>関連</h2>
+<ul>
+<li><a href="../codex-prompts/"><code>templates/codex-prompts/</code></a> — 業態別デザイン提案の雛形</li>
+<li><a href="./contract.html"><code>templates/client-emails/contract.md</code></a> — 採用案決定後の契約書送付</li>
+<li><a href="./invoice.html"><code>templates/client-emails/invoice.md</code></a> — 着手金請求</li>
+<li><a href="../../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> — キックオフ全体フロー</li>
+<li><a href="../../handbook/08-finance-billing.html"><code>handbook/08-finance-billing.md</code></a> — 経理・請求フロー</li>
+</ul>
 
 <footer class="handbook-footer">
   <div>VAIZO INC. · V/ENTER WEB DEPT.</div>

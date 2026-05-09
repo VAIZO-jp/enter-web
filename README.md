@@ -46,6 +46,12 @@
 | 公開後30日のフォロー | [`runbooks/post-launch-30days.md`](./runbooks/post-launch-30days.md) |
 | Codex に渡すプロンプト | [`templates/codex-prompts/`](./templates/codex-prompts/) |
 | クライアント宛メール雛形 | [`templates/client-emails/`](./templates/client-emails/) |
+| デザインの見つけ方・参考収集 | [`handbook/10-design-research.md`](./handbook/10-design-research.md) |
+| ナレッジ更新運用 | [`handbook/07-knowledge-management.md`](./handbook/07-knowledge-management.md) |
+| 経理・請求フロー | [`handbook/08-finance-billing.md`](./handbook/08-finance-billing.md) |
+| クライアントオフボーディング | [`handbook/09-client-offboarding.md`](./handbook/09-client-offboarding.md) |
+| クレーム・障害発生時 | [`runbooks/incident-response.md`](./runbooks/incident-response.md) |
+| 契約形態の選択 | [`decision-trees/contract-type.md`](./decision-trees/contract-type.md) |
 | 何かに迷った（判断基準） | [`decision-trees/`](./decision-trees/) |
 | 何か壊れた・詰まった | [`troubleshooting/`](./troubleshooting/) |
 
