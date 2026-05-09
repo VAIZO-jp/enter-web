@@ -308,6 +308,22 @@ async function prepareCssAssets() {
   } catch {
     console.warn("  ⚠️  favicon.svg が見当たらないためスキップ");
   }
+
+  // Static HTML pages（assets/static/*.html を dist/html/ にコピー）
+  const STATIC_DIR = path.join(ROOT, "assets", "static");
+  try {
+    const entries = await fs.readdir(STATIC_DIR);
+    for (const entry of entries) {
+      if (entry.endsWith(".html")) {
+        const src = path.join(STATIC_DIR, entry);
+        const out = path.join(DIST_HTML, entry);
+        await fs.copyFile(src, out);
+        console.log(`  ✓ ${path.relative(ROOT, out)}`);
+      }
+    }
+  } catch {
+    // assets/static/ が無ければスキップ
+  }
 }
 
 const ICON_PATH = path.join(DIST_HTML, "icons", "favicon.svg");
@@ -447,8 +463,9 @@ async function buildLandingPage() {
     <h1 class="landing-hero__title">V<span class="slash">/</span>ENTER<br>WEB</h1>
     <p class="landing-hero__subtitle">AIで作るWebサイト制作の、標準手順とテンプレート集。<br>未経験者とAIエージェントが見れば、即動けるハンドブック。</p>
     <div class="landing-hero__actions">
-      <a class="btn" href="handbook/00-overview.html"><span>ハンドブックを開く</span><span class="arrow">→</span></a>
-      <a class="btn btn--ghost" href="pdf/V_ENTER_WEB_Handbook.pdf"><span>PDF をダウンロード</span><span class="arrow">↓</span></a>
+      <a class="btn" href="process.html"><span>制作プロセスを見る</span><span class="arrow">→</span></a>
+      <a class="btn btn--ghost" href="handbook/00-overview.html"><span>ハンドブック</span><span class="arrow">→</span></a>
+      <a class="btn btn--ghost" href="pdf/V_ENTER_WEB_Handbook.pdf"><span>PDF</span><span class="arrow">↓</span></a>
     </div>
   </section>
 
