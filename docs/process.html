@@ -4,500 +4,236 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Process — V/ENTER WEB Handbook</title>
-<meta name="description" content="V/ENTER WEB の制作プロセス全体図。営業→契約→リサーチ→Codex生成→QC→公開→運用の8ステップと、保管場所・画像所在・MCP活用を1ページに集約。">
+<meta name="description" content="V/ENTER WEB の制作プロセス。8ステップ・保管場所・画像・MCPを最小限に。">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="canonical" href="https://vaizo-jp.github.io/enter-web/process.html">
 <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Process — V/ENTER WEB Handbook">
-<meta property="og:description" content="制作プロセス全体図。8ステップ・保管場所・画像・MCP・Codex順序を一枚で。">
+<meta property="og:description" content="制作プロセスの全体図を1ページで。">
 <meta property="og:url" content="https://vaizo-jp.github.io/enter-web/process.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/vaizo-editorial.css">
 <style>
-/* ==========================================================================
-   Process page specific styles
-   ========================================================================== */
-
-.process-hero {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(48px, 10vw, 120px) 0;
+.p-hero {
+  padding: clamp(48px, 9vw, 96px) 0 clamp(32px, 6vw, 56px);
   border-bottom: 1px solid var(--rule-hairline);
 }
 
-.process-hero__eyebrow {
+.p-hero__eyebrow {
   font-family: var(--font-sans-en);
   font-size: var(--fs-caption);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-grey);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.process-hero__title {
+.p-hero__title {
   font-family: var(--font-sans-en);
   font-weight: 900;
-  font-size: clamp(48px, 8vw, 120px);
-  line-height: 0.92;
+  font-size: clamp(40px, 6vw, 80px);
   letter-spacing: 0.02em;
-  margin: 0 0 24px;
-}
-
-.process-hero__lead {
-  font-family: var(--font-serif-jp);
-  font-size: clamp(17px, 1.6vw, 22px);
-  font-weight: 400;
-  color: var(--ink-charcoal);
-  max-width: 720px;
-  letter-spacing: 0.04em;
-  line-height: 1.8;
-}
-
-/* ----- Section heading ----- */
-.section {
-  padding: clamp(64px, 9vw, 112px) 0;
-  border-bottom: 1px solid var(--rule-hairline);
-}
-
-.section:last-child {
-  border-bottom: none;
-}
-
-.section__label {
-  font-family: var(--font-sans-en);
-  font-size: var(--fs-caption);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent-gold);
-  margin-bottom: 16px;
-}
-
-.section__title {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: clamp(28px, 4vw, 56px);
-  letter-spacing: 0.02em;
+  line-height: 1;
   margin: 0 0 16px;
 }
 
-.section__title-jp {
-  font-family: var(--font-sans-jp);
-  font-weight: 700;
-  font-size: clamp(16px, 1.5vw, 22px);
+.p-hero__lead {
+  font-family: var(--font-serif-jp);
+  font-size: 17px;
   color: var(--ink-charcoal);
-  letter-spacing: 0.04em;
-  margin-bottom: 32px;
+  max-width: 640px;
+  margin: 0;
+  line-height: 1.8;
 }
 
-/* ==========================================================================
-   8-step flow (vertical timeline)
-   ========================================================================== */
-.flow {
-  display: grid;
-  gap: 0;
-  border-top: 1px solid var(--ink-black);
+.p-section {
+  padding: clamp(48px, 7vw, 80px) 0;
+  border-bottom: 1px solid var(--rule-hairline);
+}
+
+.p-section:last-of-type {
+  border-bottom: none;
+}
+
+.p-section__title {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-black);
+  margin: 0 0 32px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--ink-black);
-  margin-top: 32px;
-}
-
-.flow-step {
-  display: grid;
-  grid-template-columns: 80px 1fr 1fr;
-  gap: 32px;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--rule-hairline);
-  align-items: start;
-}
-
-.flow-step:last-child {
-  border-bottom: none;
-}
-
-.flow-step__num {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 48px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  color: var(--accent-gold);
-  padding-top: 4px;
-}
-
-.flow-step__main {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: baseline;
+  gap: 16px;
 }
 
-.flow-step__title {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 20px;
-  letter-spacing: 0.04em;
-  color: var(--ink-black);
-  margin: 0;
-}
-
-.flow-step__title-jp {
+.p-section__title .jp {
   font-family: var(--font-sans-jp);
   font-weight: 700;
-  font-size: 17px;
-  color: var(--ink-black);
-}
-
-.flow-step__desc {
-  font-family: var(--font-sans-jp);
-  font-size: 14px;
-  color: var(--ink-graphite);
-  line-height: 1.7;
-  margin: 0;
-}
-
-.flow-step__tools {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.flow-step__tools-label {
-  font-family: var(--font-sans-en);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.04em;
   color: var(--ink-grey);
+  text-transform: none;
 }
 
-.flow-step__chips {
+/* Flow: 縦リスト1行 */
+.flow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-direction: column;
 }
 
-.chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  background: var(--paper-cream);
-  border: 1px solid var(--rule-hairline);
-  color: var(--ink-charcoal);
-  letter-spacing: 0.02em;
-}
-
-.chip--primary {
-  background: var(--ink-black);
-  color: var(--paper-off-white);
-  border-color: var(--ink-black);
-}
-
-.chip--accent {
-  background: transparent;
-  color: var(--accent-gold);
-  border-color: var(--accent-gold);
-}
-
-.chip a {
-  color: inherit;
-  border: none;
-  text-decoration: none;
-}
-
-@media (max-width: 720px) {
-  .flow-step {
-    grid-template-columns: 60px 1fr;
-    gap: 16px;
-  }
-  .flow-step__num {
-    font-size: 32px;
-  }
-  .flow-step__tools {
-    grid-column: 2;
-  }
-}
-
-/* ==========================================================================
-   Storage matrix
-   ========================================================================== */
-.matrix {
+.flow__row {
   display: grid;
-  grid-template-columns: 1.4fr repeat(4, 1fr);
-  border-top: 1px solid var(--ink-black);
-  border-left: 1px solid var(--rule-hairline);
-  font-family: var(--font-sans-jp);
-  font-size: 14px;
-  margin-top: 32px;
-}
-
-.matrix__cell {
-  padding: 14px 16px;
-  border-right: 1px solid var(--rule-hairline);
+  grid-template-columns: 48px 1fr auto;
+  gap: 24px;
+  padding: 16px 0;
   border-bottom: 1px solid var(--rule-hairline);
-  display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
-.matrix__head {
-  background: var(--paper-cream);
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.matrix__row-label {
-  font-weight: 700;
-  background: var(--paper-pure);
-  font-family: var(--font-sans-jp);
-}
-
-.matrix__check {
-  justify-content: center;
-}
-
-.check-y {
-  color: var(--ink-black);
-  font-weight: 900;
-  font-size: 18px;
-}
-
-.check-n {
-  color: var(--ink-soft);
-  font-size: 14px;
-}
-
-.check-partial {
-  color: var(--accent-gold);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-}
-
-@media (max-width: 720px) {
-  .matrix {
-    grid-template-columns: 1.4fr repeat(2, 1fr);
-  }
-  .matrix__cell:nth-child(5n+4),
-  .matrix__cell:nth-child(5n+5) {
-    display: none;
-  }
-}
-
-/* ==========================================================================
-   Asset map (tree view)
-   ========================================================================== */
-.tree {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 1.9;
-  background: var(--paper-cream);
-  border: 1px solid var(--rule-hairline);
-  padding: 24px 28px;
-  white-space: pre-wrap;
-  margin-top: 24px;
-  color: var(--ink-charcoal);
-}
-
-.tree .dim {
-  color: var(--ink-soft);
-}
-
-.tree .accent {
-  color: var(--accent-gold);
-}
-
-.tree .label {
-  color: var(--ink-black);
-  font-weight: 700;
-}
-
-.asset-sources {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 32px;
-}
-
-.asset-source {
-  border: 1px solid var(--rule-hairline);
-  padding: 24px;
-  background: var(--paper-pure);
-}
-
-.asset-source__title {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 0.12em;
-  color: var(--ink-black);
-  margin: 0 0 8px;
-  text-transform: uppercase;
-}
-
-.asset-source__desc {
-  font-family: var(--font-sans-jp);
-  font-size: 13px;
-  color: var(--ink-graphite);
-  line-height: 1.7;
-  margin: 0 0 12px;
-}
-
-.asset-source__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: var(--font-sans-jp);
-  font-size: 13px;
-}
-
-.asset-source__list li {
-  padding: 4px 0;
-  color: var(--ink-charcoal);
-  border-bottom: 1px dashed var(--rule-hairline);
-}
-
-.asset-source__list li:last-child {
+.flow__row:last-child {
   border-bottom: none;
 }
 
-/* ==========================================================================
-   MCP cards
-   ========================================================================== */
-.mcp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  margin-top: 32px;
-}
-
-.mcp-card {
-  border: 1px solid var(--rule-hairline);
-  padding: 28px 24px;
-  background: var(--paper-pure);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.mcp-card__name {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 14px;
+.flow__num {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 16px;
   color: var(--accent-gold);
   letter-spacing: 0.04em;
 }
 
-.mcp-card__title {
-  font-family: var(--font-sans-jp);
-  font-weight: 700;
-  font-size: 17px;
-  color: var(--ink-black);
-  margin: 0;
-}
-
-.mcp-card__desc {
-  font-family: var(--font-sans-jp);
-  font-size: 14px;
-  color: var(--ink-graphite);
-  line-height: 1.7;
-  margin: 0;
-}
-
-.mcp-card__use {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding-top: 12px;
-  border-top: 1px solid var(--rule-hairline);
-}
-
-.mcp-card__steps {
-  font-family: var(--font-sans-en);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-}
-
-/* ==========================================================================
-   Codex order (numbered process)
-   ========================================================================== */
-.codex-order {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  margin-top: 32px;
-  border-top: 1px solid var(--ink-black);
-}
-
-.codex-step {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--rule-hairline);
-  align-items: start;
-}
-
-.codex-step__num {
-  font-family: var(--font-sans-en);
-  font-weight: 900;
-  font-size: 28px;
-  color: var(--ink-black);
-  letter-spacing: 0.02em;
-  line-height: 1;
-}
-
-.codex-step__main {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.codex-step__title {
+.flow__label {
   font-family: var(--font-sans-jp);
   font-weight: 700;
   font-size: 16px;
   color: var(--ink-black);
 }
 
-.codex-step__cmd {
+.flow__label .en {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ink-grey);
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+
+.flow__link {
+  font-family: var(--font-sans-en);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-graphite);
+  text-decoration: none;
+  border: none;
+  white-space: nowrap;
+}
+
+.flow__link:hover {
+  color: var(--ink-black);
+}
+
+@media (max-width: 640px) {
+  .flow__row {
+    grid-template-columns: 32px 1fr;
+  }
+  .flow__link {
+    grid-column: 2;
+    margin-top: 4px;
+  }
+}
+
+/* Storage / Asset / MCP: 共通テーブル */
+.simple-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans-jp);
+  font-size: 14px;
+}
+
+.simple-table tr {
+  border-bottom: 1px solid var(--rule-hairline);
+}
+
+.simple-table tr:first-child {
+  border-top: 1px solid var(--ink-black);
+  border-bottom: 1px solid var(--ink-black);
+}
+
+.simple-table th {
+  text-align: left;
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  color: var(--ink-black);
+  background: var(--paper-cream);
+}
+
+.simple-table td {
+  padding: 14px 16px;
+  vertical-align: top;
+  color: var(--ink-charcoal);
+}
+
+.simple-table td:first-child {
+  font-weight: 700;
+  color: var(--ink-black);
+  white-space: nowrap;
+}
+
+.simple-table .dim {
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.tree-block {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.9;
+  background: var(--paper-cream);
+  border: 1px solid var(--rule-hairline);
+  padding: 20px 24px;
+  white-space: pre-wrap;
+  color: var(--ink-charcoal);
+}
+
+.tree-block .dim {
+  color: var(--ink-soft);
+}
+
+.tree-block .accent {
+  color: var(--accent-gold);
+}
+
+.cmd-block {
   font-family: var(--font-mono);
   font-size: 13px;
   background: var(--ink-black);
   color: var(--paper-off-white);
-  padding: 10px 14px;
-  margin-top: 4px;
-  display: inline-block;
-  max-width: 100%;
+  padding: 12px 16px;
+  margin: 12px 0;
+  display: block;
   overflow-x: auto;
 }
 
-.codex-step__note {
-  font-family: var(--font-sans-jp);
-  font-size: 13px;
-  color: var(--ink-graphite);
-  line-height: 1.7;
-}
-
-/* ==========================================================================
-   Top nav (back to landing)
-   ========================================================================== */
 .top-nav {
   position: sticky;
   top: 0;
   background: var(--paper-off-white);
   border-bottom: 1px solid var(--rule-hairline);
-  padding: 16px 0;
+  padding: 14px 0;
   z-index: 10;
-  backdrop-filter: blur(8px);
 }
 
 .top-nav__inner {
@@ -507,7 +243,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
 }
 
 .top-nav__brand {
@@ -524,25 +259,28 @@
   color: var(--accent-gold);
 }
 
-.top-nav__links {
-  display: flex;
-  gap: 24px;
+.top-nav__back {
   font-family: var(--font-sans-en);
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.top-nav__links a {
   color: var(--ink-graphite);
   text-decoration: none;
   border: none;
 }
 
-.top-nav__links a:hover {
+.top-nav__back:hover {
   color: var(--ink-black);
 }
 
+.lead-text {
+  font-family: var(--font-sans-jp);
+  font-size: 14px;
+  color: var(--ink-graphite);
+  line-height: 1.8;
+  max-width: 640px;
+  margin: 0 0 24px;
+}
 </style>
 </head>
 <body>
@@ -550,463 +288,90 @@
 <nav class="top-nav">
   <div class="top-nav__inner">
     <a href="index.html" class="top-nav__brand">V<span class="slash">/</span>ENTER WEB</a>
-    <div class="top-nav__links">
-      <a href="index.html">HOME</a>
-      <a href="#flow">FLOW</a>
-      <a href="#storage">STORAGE</a>
-      <a href="#assets">ASSETS</a>
-      <a href="#mcp">MCP</a>
-      <a href="#codex">CODEX</a>
-    </div>
+    <a href="index.html" class="top-nav__back">← HOME</a>
   </div>
 </nav>
 
 <main class="landing">
 
-<!-- ============== HERO ============== -->
-<section class="process-hero">
-  <div class="process-hero__eyebrow">VAIZO INC. · V/ENTER WEB · STANDARD PROCESS</div>
-  <h1 class="process-hero__title">Process</h1>
-  <p class="process-hero__lead">
-    制作プロセス全体図。営業から運用まで <strong>8ステップ</strong>。<br>
-    どこに何を保管するか、画像はどこにあるか、MCPはいつ使うか、Codexはどの順番で回すか。<br>
-    必要なものだけを1ページに集約しています。
-  </p>
+<section class="p-hero">
+  <div class="p-hero__eyebrow">STANDARD PROCESS</div>
+  <h1 class="p-hero__title">Process</h1>
+  <p class="p-hero__lead">制作プロセスの最小限の地図。8ステップ、保管場所、画像、MCPを1ページで。</p>
 </section>
 
-<!-- ============== 8-STEP FLOW ============== -->
-<section class="section" id="flow">
-  <div class="section__label">SECTION 01</div>
-  <h2 class="section__title">8-Step Standard Flow</h2>
-  <div class="section__title-jp">標準制作フロー（営業 → 公開 → 運用）</div>
-
+<!-- 1. FLOW -->
+<section class="p-section">
+  <h2 class="p-section__title">1. Flow <span class="jp">8ステップ</span></h2>
   <div class="flow">
-
-    <div class="flow-step">
-      <div class="flow-step__num">01</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">SALES</div>
-        <div class="flow-step__title-jp">営業 · ターゲット選定 + 三点セット送付</div>
-        <p class="flow-step__desc">脆弱性スキャン（パッシブのみ）+ デザインアイデンティティ + カスタムデモトップ。月次300件規模。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip"><a href="handbook/01-sales-process.html">01-sales-process</a></span>
-          <span class="chip"><a href="handbook/05-vulnerability-scan.html">05-vulnerability-scan</a></span>
-          <span class="chip"><a href="templates/client-emails/vulnerability-report-cover.html">cover-email</a></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-step__num">02</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">CONTRACT</div>
-        <div class="flow-step__title-jp">契約 · 提案3案 → 採用案決定 → 契約書 → 着手金</div>
-        <p class="flow-step__desc">商談MTG → デザイン3案提示 → クライアント選定 → 契約書送付 → 着手金30%請求 → 入金確認後にキックオフ。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip"><a href="templates/client-emails/proposal.html">proposal</a></span>
-          <span class="chip"><a href="templates/client-emails/contract.html">contract</a></span>
-          <span class="chip"><a href="templates/client-emails/invoice.html">invoice</a></span>
-          <span class="chip"><a href="handbook/08-finance-billing.html">08-finance-billing</a></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-step__num">03</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">RESEARCH</div>
-        <div class="flow-step__title-jp">リサーチ · 既存サイト解析 + デザイン参照</div>
-        <p class="flow-step__desc">3キーワード抽出、ムードボード作成、デザイン3案の方向性命名。MCPで既存サイトのコンテンツ・デザインを自動抽出。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip chip--accent">site-renewal</span>
-          <span class="chip chip--accent">web-cloner</span>
-          <span class="chip"><a href="handbook/10-design-research.html">10-design-research</a></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-step__num">04</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">GENERATE</div>
-        <div class="flow-step__title-jp">生成 · Codex でドラフト + MCP でマージ</div>
-        <p class="flow-step__desc">業態別 codex_prompt.md → codex exec で初版生成。site-renewal MCP の merge_and_renew で既存コンテンツとデザインを合成。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip chip--primary">Codex CLI</span>
-          <span class="chip chip--accent">site-renewal</span>
-          <span class="chip"><a href="templates/codex-prompts/TEMPLATE.html">codex-prompts</a></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-step__num">05</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">REVIEW</div>
-        <div class="flow-step__title-jp">統合 · Claude Code でレビュー + 直接編集</div>
-        <p class="flow-step__desc">codex_out.md を Claude が判定 → 必要修正は Claude が直接 Edit。Claude → Codex → Claude の直列厳守、並行編集禁止。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip chip--primary">Claude Code</span>
-          <span class="chip"><a href="handbook/03-codex-claude-workflow.html">03-codex-claude-workflow</a></span>
-          <span class="chip"><a href="handbook/02-design-policy.html">02-design-policy</a></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-step__num">06</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">QC</div>
-        <div class="flow-step__title-jp">検証 · 16項目自動チェック + Playwright</div>
-        <p class="flow-step__desc">site-renewal MCP の quality_check で16項目を自動診断。Playwright で全リンク・CTA・レスポンシブ・Lighthouse を検証。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip chip--accent">site-renewal</span>
-          <span class="chip chip--primary">Playwright</span>
-          <span class="chip"><a href="templates/wp-prompts/05-ai-test.html">05-ai-test</a></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-step__num">07</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">DEMO</div>
-        <div class="flow-step__title-jp">デモ · GitHub Pages / Vercel でクライアント確認</div>
-        <p class="flow-step__desc">staticrypt パスワード保護のプレビューURL を共有 → 採用合意 → WP最適化版作成（4-pre 監査・4-0 最適化）。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip"><a href="templates/wp-prompts/04-pre-audit.html">04-pre-audit</a></span>
-          <span class="chip"><a href="templates/wp-prompts/04-0-optimize.html">04-0-optimize</a></span>
-          <span class="chip"><a href="decision-trees/wp-integration-method.html">wp-integration</a></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-step__num">08</div>
-      <div class="flow-step__main">
-        <div class="flow-step__title">PUBLISH &amp; OPS</div>
-        <div class="flow-step__title-jp">公開 + 運用 · WP統合 + 30日フォロー</div>
-        <p class="flow-step__desc">バックアップ → WP統合 → 公開 → メール宛先テスト → 公開完了報告 → 公開後30日フォロー → 残金請求。</p>
-      </div>
-      <div class="flow-step__tools">
-        <div class="flow-step__tools-label">TOOLS / DOCS</div>
-        <div class="flow-step__chips">
-          <span class="chip"><a href="handbook/04-wp-publish-guide.html">04-wp-publish-guide</a></span>
-          <span class="chip"><a href="runbooks/deploy-day.html">deploy-day</a></span>
-          <span class="chip"><a href="runbooks/post-launch-30days.html">post-launch-30days</a></span>
-        </div>
-      </div>
-    </div>
-
+    <div class="flow__row"><div class="flow__num">01</div><div class="flow__label"><span class="en">Sales</span>営業 · 三点セット送付</div><a class="flow__link" href="handbook/01-sales-process.html">詳細 →</a></div>
+    <div class="flow__row"><div class="flow__num">02</div><div class="flow__label"><span class="en">Contract</span>契約 · 提案3案 → 契約 → 着手金</div><a class="flow__link" href="handbook/08-finance-billing.html">詳細 →</a></div>
+    <div class="flow__row"><div class="flow__num">03</div><div class="flow__label"><span class="en">Research</span>リサーチ · 既存解析 + ムードボード</div><a class="flow__link" href="handbook/10-design-research.html">詳細 →</a></div>
+    <div class="flow__row"><div class="flow__num">04</div><div class="flow__label"><span class="en">Generate</span>生成 · Codex で実装ドラフト</div><a class="flow__link" href="handbook/03-codex-claude-workflow.html">詳細 →</a></div>
+    <div class="flow__row"><div class="flow__num">05</div><div class="flow__label"><span class="en">Review</span>統合 · Claude でレビュー + 直接編集</div><a class="flow__link" href="handbook/03-codex-claude-workflow.html">詳細 →</a></div>
+    <div class="flow__row"><div class="flow__num">06</div><div class="flow__label"><span class="en">QC</span>検証 · MCP 16項目 + Playwright</div><a class="flow__link" href="templates/wp-prompts/05-ai-test.html">詳細 →</a></div>
+    <div class="flow__row"><div class="flow__num">07</div><div class="flow__label"><span class="en">Demo</span>デモ · GitHub Pages / Vercel</div><a class="flow__link" href="templates/wp-prompts/04-0-optimize.html">詳細 →</a></div>
+    <div class="flow__row"><div class="flow__num">08</div><div class="flow__label"><span class="en">Publish</span>公開 + 30日フォロー</div><a class="flow__link" href="handbook/04-wp-publish-guide.html">詳細 →</a></div>
   </div>
 </section>
 
-<!-- ============== STORAGE MATRIX ============== -->
-<section class="section" id="storage">
-  <div class="section__label">SECTION 02</div>
-  <h2 class="section__title">Storage Map</h2>
-  <div class="section__title-jp">どこに何を保管するか</div>
-
-  <div class="matrix">
-    <div class="matrix__cell matrix__head">資料種別</div>
-    <div class="matrix__cell matrix__head">Drive</div>
-    <div class="matrix__cell matrix__head">GitHub</div>
-    <div class="matrix__cell matrix__head">1Password</div>
-    <div class="matrix__cell matrix__head">Local</div>
-
-    <div class="matrix__cell matrix__row-label">顧客固有資料・契約書</div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-
-    <div class="matrix__cell matrix__row-label">画像・写真素材</div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-partial">tmp</span></div>
-
-    <div class="matrix__cell matrix__row-label">議事録（録音）</div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-partial">要点のみ</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-
-    <div class="matrix__cell matrix__row-label">コード（成果物）</div>
-    <div class="matrix__cell matrix__check"><span class="check-partial">納品時</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-partial">作業中</span></div>
-
-    <div class="matrix__cell matrix__row-label">ハンドブック・テンプレ</div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-
-    <div class="matrix__cell matrix__row-label">パスワード・APIキー</div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-
-    <div class="matrix__cell matrix__row-label">経理書類（請求/見積）</div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-
-    <div class="matrix__cell matrix__row-label">Codexプロンプト・成果コード</div>
-    <div class="matrix__cell matrix__check"><span class="check-partial">コピー</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-y">●</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-n">—</span></div>
-    <div class="matrix__cell matrix__check"><span class="check-partial">作業中</span></div>
-  </div>
+<!-- 2. STORAGE -->
+<section class="p-section">
+  <h2 class="p-section__title">2. Storage <span class="jp">どこに保管</span></h2>
+  <table class="simple-table">
+    <tr><th>場所</th><th>何を</th></tr>
+    <tr><td>Drive</td><td>顧客資料・画像・契約書・経理書類・議事録</td></tr>
+    <tr><td>GitHub</td><td>コード・ハンドブック・テンプレ</td></tr>
+    <tr><td>1Password</td><td>パスワード・APIキー・WPログイン</td></tr>
+    <tr><td>Local</td><td>作業中の一時ファイルのみ（完了後Drive/GitHubへ）</td></tr>
+  </table>
 </section>
 
-<!-- ============== ASSET MAP ============== -->
-<section class="section" id="assets">
-  <div class="section__label">SECTION 03</div>
-  <h2 class="section__title">Asset Map</h2>
-  <div class="section__title-jp">画像・素材の所在</div>
-
-  <pre class="tree"><span class="dim">02_事業部別_EnterWebAI_AIWebサイト制作/{案件名}/</span>
-├── <span class="label">01_WEBサイト刷新サービス/</span>
-│   ├── <span class="accent">原本/images/</span>           <span class="dim">← クライアント受領そのまま（圧縮前）</span>
-│   ├── <span class="accent">最新版/images/</span>         <span class="dim">← 圧縮・リネーム済み（公開用）</span>
-│   ├── moodboard_YYYYMMDD/   <span class="dim">← デザインリサーチ用</span>
-│   ├── docs/                 <span class="dim">← 議事録・契約・監査レポート</span>
-│   └── WP最適化版/           <span class="dim">← Codex生成 → WP用最適化済HTML</span>
-├── 公開作業/
-│   ├── バックアップ_YYYYMMDD/
-│   └── AIテストレポート_YYYYMMDD.md
-└── 議事録/                   <span class="dim">← Plaud/Tactiq文字起こし</span></pre>
-
-  <div class="asset-sources">
-    <article class="asset-source">
-      <h3 class="asset-source__title">CLIENT</h3>
-      <p class="asset-source__desc">クライアント提供。受領後、原本のまま保管 + 圧縮版を別フォルダ。</p>
-      <ul class="asset-source__list">
-        <li>SNS投稿写真（権利確認必須）</li>
-        <li>過去パンフレット用素材</li>
-        <li>店内撮影写真</li>
-      </ul>
-    </article>
-
-    <article class="asset-source">
-      <h3 class="asset-source__title">PHOTOGRAPHER</h3>
-      <p class="asset-source__desc">撮影手配。Sランク案件で予算がある場合。1日5万〜15万。</p>
-      <ul class="asset-source__list">
-        <li>VAIZO提携カメラマン</li>
-        <li>業態に応じた撮影スタイル指定</li>
-        <li>納品: 高解像度RAW + JPG</li>
-      </ul>
-    </article>
-
-    <article class="asset-source">
-      <h3 class="asset-source__title">STOCK</h3>
-      <p class="asset-source__desc">無料・有料フォトストック。商用利用可・クレジット表記要否を必ず確認。</p>
-      <ul class="asset-source__list">
-        <li>Unsplash / Pexels（無料）</li>
-        <li>Photo AC（日本人モデル多）</li>
-        <li>Adobe Stock / iStock（有料）</li>
-      </ul>
-    </article>
-
-    <article class="asset-source">
-      <h3 class="asset-source__title">AI</h3>
-      <p class="asset-source__desc">方向性確認のみ。実装には実画像（撮影 or ストック）を使用。</p>
-      <ul class="asset-source__list">
-        <li>Midjourney（ムードボード補完）</li>
-        <li>DALL-E（ラフ案）</li>
-        <li>SVG/CSS で抽象表現（Codex生成）</li>
-      </ul>
-    </article>
-  </div>
+<!-- 3. ASSETS -->
+<section class="p-section">
+  <h2 class="p-section__title">3. Assets <span class="jp">画像はどこに</span></h2>
+  <p class="lead-text">案件 Drive 配下に <strong>原本</strong>（圧縮前）と <strong>最新版</strong>（公開用）を分けて保管。</p>
+<pre class="tree-block">{案件名}/01_WEBサイト刷新サービス/
+├── <span class="accent">原本/images/</span>     <span class="dim">クライアント受領そのまま</span>
+└── <span class="accent">最新版/images/</span>   <span class="dim">圧縮・リネーム済み（公開用）</span></pre>
+  <p class="lead-text" style="margin-top:24px;"><strong>調達:</strong> クライアント提供 / 撮影手配 / Unsplash / Pexels / Adobe Stock</p>
 </section>
 
-<!-- ============== MCP USAGE ============== -->
-<section class="section" id="mcp">
-  <div class="section__label">SECTION 04</div>
-  <h2 class="section__title">MCP Toolbox</h2>
-  <div class="section__title-jp">いつ・どのMCPを使うか</div>
-
-  <div class="mcp-grid">
-
-    <article class="mcp-card">
-      <div class="mcp-card__name">site-renewal</div>
-      <h3 class="mcp-card__title">サイトリニューアル特化</h3>
-      <p class="mcp-card__desc">既存サイトのコンテンツ抽出・デザイン参照とのマージ・16項目品質管理。リニューアル案件のメインMCP。</p>
-      <div class="mcp-card__use">
-        <span class="chip">extract_content_map</span>
-        <span class="chip">extract_design</span>
-        <span class="chip">merge_and_renew</span>
-        <span class="chip">quality_check</span>
-      </div>
-      <div class="mcp-card__steps">USE: STEP 03 / 04 / 06</div>
-    </article>
-
-    <article class="mcp-card">
-      <div class="mcp-card__name">web-cloner</div>
-      <h3 class="mcp-card__title">サイト全体をクローン</h3>
-      <p class="mcp-card__desc">競合サイトのデザイン解析、ローカル再現、A11y/SEO/セキュリティ監査、Wireframe生成。リサーチ初期フェーズ。</p>
-      <div class="mcp-card__use">
-        <span class="chip">mirror_site</span>
-        <span class="chip">capture_screenshots</span>
-        <span class="chip">audit_site</span>
-        <span class="chip">design_review</span>
-      </div>
-      <div class="mcp-card__steps">USE: STEP 03 / 06</div>
-    </article>
-
-    <article class="mcp-card">
-      <div class="mcp-card__name">figma-to-code</div>
-      <h3 class="mcp-card__title">Figma完全再現</h3>
-      <p class="mcp-card__desc">Figma案件のみ。SVG修正・回転楕円マスク・座標自動計算・スクショ比較で完全再現を実現。</p>
-      <div class="mcp-card__use">
-        <span class="chip">analyze_sections</span>
-        <span class="chip">generate_html_css</span>
-        <span class="chip">screenshot_compare</span>
-      </div>
-      <div class="mcp-card__steps">USE: STEP 04（Figma案件のみ）</div>
-    </article>
-
-    <article class="mcp-card">
-      <div class="mcp-card__name">Codex CLI</div>
-      <h3 class="mcp-card__title">実装ドラフト担当</h3>
-      <p class="mcp-card__desc">業態別プロンプト雛形から初版生成。Claude→Codex→Claudeの直列で並行編集を避ける。</p>
-      <div class="mcp-card__use">
-        <span class="chip">codex exec</span>
-        <span class="chip chip--accent">非対話モード必須</span>
-      </div>
-      <div class="mcp-card__steps">USE: STEP 04</div>
-    </article>
-
-    <article class="mcp-card">
-      <div class="mcp-card__name">Claude Code</div>
-      <h3 class="mcp-card__title">司令塔・統合</h3>
-      <p class="mcp-card__desc">仕様整理、Codex出力レビュー、最終採否、品質チェック、直接Edit。すべての判断を担う。</p>
-      <div class="mcp-card__use">
-        <span class="chip">Read</span>
-        <span class="chip">Edit</span>
-        <span class="chip">Bash</span>
-        <span class="chip">Playwright MCP</span>
-      </div>
-      <div class="mcp-card__steps">USE: ALL STEPS</div>
-    </article>
-
-    <article class="mcp-card">
-      <div class="mcp-card__name">Playwright</div>
-      <h3 class="mcp-card__title">自動テスト・スクショ</h3>
-      <p class="mcp-card__desc">全リンク・CTA・レスポンシブ・Lighthouse・コンソールエラー検知を全自動。</p>
-      <div class="mcp-card__use">
-        <span class="chip">page.goto</span>
-        <span class="chip">page.screenshot</span>
-        <span class="chip">Lighthouse</span>
-      </div>
-      <div class="mcp-card__steps">USE: STEP 06 / 08</div>
-    </article>
-
-  </div>
+<!-- 4. MCP -->
+<section class="p-section">
+  <h2 class="p-section__title">4. MCP <span class="jp">いつ使うか</span></h2>
+  <table class="simple-table">
+    <tr><th>MCP</th><th>用途</th><th>使う Step</th></tr>
+    <tr><td>site-renewal</td><td>既存サイト解析 + マージ + 16項目QC</td><td>03 / 04 / 06</td></tr>
+    <tr><td>web-cloner</td><td>競合解析 / 監査 / Wireframe</td><td>03 / 06</td></tr>
+    <tr><td>figma-to-code</td><td>Figma 完全再現（Figma案件のみ）</td><td>04</td></tr>
+    <tr><td>Playwright</td><td>自動テスト・スクショ・Lighthouse</td><td>06 / 08</td></tr>
+  </table>
 </section>
 
-<!-- ============== CODEX ORDER ============== -->
-<section class="section" id="codex">
-  <div class="section__label">SECTION 05</div>
-  <h2 class="section__title">Codex Build Order</h2>
-  <div class="section__title-jp">Codexで作る標準7手順</div>
+<!-- 5. CODEX ORDER -->
+<section class="p-section">
+  <h2 class="p-section__title">5. Codex <span class="jp">作る順番</span></h2>
+  <table class="simple-table">
+    <tr><th>順</th><th>やること</th></tr>
+    <tr><td>1</td><td>brief.md に仕様を書く（5〜10分）</td></tr>
+    <tr><td>2</td><td>業態別プロンプトをコピーして codex_prompt.md にする</td></tr>
+    <tr><td>3</td><td>{{プレースホルダ}} を埋める</td></tr>
+    <tr><td>4</td><td>Codex 非対話モードで実行</td></tr>
+    <tr><td>5</td><td>Claude Code で codex_out.md をレビュー → 直接修正</td></tr>
+    <tr><td>6</td><td>site-renewal MCP で 16項目チェック</td></tr>
+    <tr><td>7</td><td>デモ環境にデプロイ → クライアント確認</td></tr>
+  </table>
 
-  <div class="codex-order">
-
-    <div class="codex-step">
-      <div class="codex-step__num">01</div>
-      <div class="codex-step__main">
-        <div class="codex-step__title">仕様確定 — brief.md を案件直下に書く</div>
-        <div class="codex-step__note">対象ファイル / 入出力仕様 / 制約 / 完了条件 (DoD) を箇条書き。所要時間 5〜10分。</div>
-      </div>
-    </div>
-
-    <div class="codex-step">
-      <div class="codex-step__num">02</div>
-      <div class="codex-step__main">
-        <div class="codex-step__title">プロンプト雛形をコピー</div>
-        <div class="codex-step__note">業態に応じて bar / live-house / corporate / beauty-salon / clinic / real-estate / school から選択。</div>
-        <code class="codex-step__cmd">cp templates/codex-prompts/bar-or-restaurant-fv.md ./codex_prompt.md</code>
-      </div>
-    </div>
-
-    <div class="codex-step">
-      <div class="codex-step__num">03</div>
-      <div class="codex-step__main">
-        <div class="codex-step__title">プレースホルダ {{...}} を埋める</div>
-        <div class="codex-step__note">屋号・業態・キーワード・配色・電話番号など。3キーワードはデザインリサーチで決まったものを使う。</div>
-      </div>
-    </div>
-
-    <div class="codex-step">
-      <div class="codex-step__num">04</div>
-      <div class="codex-step__main">
-        <div class="codex-step__title">Codex 非対話モードで実行</div>
-        <div class="codex-step__note">起動前に <code>codex --version</code> で疎通確認。セッション切れは無音失敗するので必須。</div>
-        <code class="codex-step__cmd">codex exec --skip-git-repo-check --cd "$PWD" --output-last-message "./codex_out.md" "$(cat ./codex_prompt.md)"</code>
-      </div>
-    </div>
-
-    <div class="codex-step">
-      <div class="codex-step__num">05</div>
-      <div class="codex-step__main">
-        <div class="codex-step__title">Claude Code でレビュー</div>
-        <div class="codex-step__note">codex_out.md を Claude が読み、仕様充足性を判定。修正は Claude が直接 Edit。Codex に再投げしない（直列維持）。</div>
-      </div>
-    </div>
-
-    <div class="codex-step">
-      <div class="codex-step__num">06</div>
-      <div class="codex-step__main">
-        <div class="codex-step__title">site-renewal MCP で品質チェック</div>
-        <div class="codex-step__note">16項目（A11y・SEO・パフォーマンス・ブランド整合等）を自動診断 + 修正提案。</div>
-        <code class="codex-step__cmd">// MCP: site-renewal__quality_check {site: "./index.html"}</code>
-      </div>
-    </div>
-
-    <div class="codex-step">
-      <div class="codex-step__num">07</div>
-      <div class="codex-step__main">
-        <div class="codex-step__title">デモ環境構築</div>
-        <div class="codex-step__note">GitHub Pages（プライベート + staticrypt）または Vercel に Preview デプロイ → クライアント確認。</div>
-        <code class="codex-step__cmd">// MCP: site-renewal__deploy_vercel {repo: ".", projectName: "{slug}-demo"}</code>
-      </div>
-    </div>
-
-  </div>
+<code class="cmd-block">codex exec --skip-git-repo-check --cd "$PWD" \
+  --output-last-message "./codex_out.md" \
+  "$(cat ./codex_prompt.md)"</code>
 </section>
 
-<!-- ============== FOOTER ============== -->
 <footer class="landing-footer">
   <div>VAIZO INC. · info@vaizo.jp</div>
-  <div class="updated">v0.3 / 2026-05-09</div>
-  <div><a href="https://github.com/VAIZO-jp/enter-web">GitHub</a></div>
+  <div class="updated">v0.4 / 2026-05-09</div>
+  <div><a href="index.html">← Home</a></div>
 </footer>
 
 </main>
