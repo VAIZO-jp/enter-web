@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Three-Set — V/ENTER WEB</title>
-<meta name="description" content="営業送付する三点セット（カスタムデモ・脆弱性レポート・デザインアイデンティティ）の作り方。">
+<meta name="description" content="営業送付する三点セット（デモサイト・脆弱性レポート・デザインアイデンティティ）の作り方。">
 <link rel="canonical" href="https://vaizo-jp.github.io/enter-web/three-set.html">
 <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/vaizo-editorial.css">
 <style>
 .p-hero {
@@ -63,8 +63,19 @@
 .steps tr {
   border-bottom: 1px solid var(--rule-hairline);
 }
+.steps th {
+  text-align: left;
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 12px 8px 0;
+  color: var(--ink-grey);
+  border-bottom: 1px solid var(--rule-hairline);
+}
 .steps td {
-  padding: 12px 0;
+  padding: 12px 12px 12px 0;
   vertical-align: top;
 }
 .steps td:first-child {
@@ -75,18 +86,74 @@
   width: 48px;
   white-space: nowrap;
 }
-.steps td:last-child {
-  color: var(--ink-charcoal);
+.steps td.what {
+  color: var(--ink-black);
+  font-weight: 700;
+  width: 38%;
 }
-.steps td .tool {
-  display: inline-block;
+.steps td.where {
+  color: var(--ink-charcoal);
+  font-size: 13px;
+  width: 36%;
+}
+.steps td.who {
+  color: var(--ink-grey);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.code-inline {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   background: var(--paper-cream);
   border: 1px solid var(--rule-hairline);
-  padding: 2px 8px;
-  margin-left: 8px;
+  padding: 1px 6px;
   color: var(--ink-charcoal);
+}
+.fields {
+  border: 1px solid var(--rule-hairline);
+  background: var(--paper-cream);
+  padding: 20px 24px;
+  margin-top: 24px;
+  font-family: var(--font-sans-jp);
+  font-size: 14px;
+}
+.fields__title {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-black);
+  margin: 0 0 16px;
+}
+.fields__group {
+  margin-bottom: 16px;
+}
+.fields__group:last-child {
+  margin-bottom: 0;
+}
+.fields__group-label {
+  font-family: var(--font-sans-jp);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink-black);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.fields__group-source {
+  font-family: var(--font-sans-en);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+.fields__items {
+  font-size: 13px;
+  color: var(--ink-graphite);
+  line-height: 1.8;
 }
 .top-nav {
   position: sticky;
@@ -123,6 +190,9 @@
   text-decoration: none;
   border: none;
 }
+@media (max-width: 720px) {
+  .steps td.where, .steps td.who { font-size: 12px; }
+}
 </style>
 </head>
 <body>
@@ -142,27 +212,119 @@
 </section>
 
 <section class="p-section">
-  <h2 class="p-section__title">A. Custom Demo</h2>
-  <div class="p-section__title-jp">カスタムデモトップ</div>
+  <h2 class="p-section__title">A. Demo Site</h2>
+  <div class="p-section__title-jp">デモサイト作成</div>
   <table class="steps">
-    <tr><td>01</td><td>業態別プロンプト雛形をコピー<span class="tool">templates/codex-prompts/{業態}.md</span></td></tr>
-    <tr><td>02</td><td>屋号・業態・キーワード・配色・電話番号を埋める</td></tr>
-    <tr><td>03</td><td>Codex 非対話で実行 → index.html 生成<span class="tool">codex exec</span></td></tr>
-    <tr><td>04</td><td>Claude でレビュー・修正</td></tr>
-    <tr><td>05</td><td>GitHub Pages（プライベート + staticrypt）に置く</td></tr>
+    <tr>
+      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td class="what">案件フォルダ + <span class="code-inline">brief.md</span> 作成</td>
+      <td class="where">Drive 案件ディレクトリ直下</td>
+      <td class="who">案件CTO</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td class="what">クライアント情報を埋める</td>
+      <td class="where"><span class="code-inline">brief.md</span> § Client</td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td class="what">リサーチ情報を埋める</td>
+      <td class="where"><span class="code-inline">brief.md</span> § Research</td>
+      <td class="who">案件CTO</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td class="what">Claude が brief.md を読んで Codex 生成</td>
+      <td class="where">案件ローカル</td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td class="what">Claude でレビュー・修正</td>
+      <td class="where">案件ローカル</td>
+      <td class="who">案件CTO</td>
+    </tr>
+    <tr>
+      <td>06</td>
+      <td class="what">デモURLを発行（PW保護）</td>
+      <td class="where">GitHub Pages（プライベート + staticrypt）</td>
+      <td class="who">案件CTO</td>
+    </tr>
   </table>
+
+  <div class="fields">
+    <div class="fields__title">brief.md に埋める内容</div>
+
+    <div class="fields__group">
+      <div class="fields__group-label">
+        Client <span class="fields__group-source">クライアントから受領</span>
+      </div>
+      <div class="fields__items">屋号 / 業態 / 電話 / 住所 / 営業時間 / メール / SNS（Instagram・X等）</div>
+    </div>
+
+    <div class="fields__group">
+      <div class="fields__group-label">
+        Research <span class="fields__group-source">VAIZO がリサーチで決定</span>
+      </div>
+      <div class="fields__items">3キーワード / 配色（アクセント1色） / 書体 / 方向性命名（例 ELEGANT_WHITE） / 参考URL 3〜5本</div>
+    </div>
+
+    <div class="fields__group">
+      <div class="fields__group-label">
+        Brand <span class="fields__group-source">固定（VAIZO Editorial）</span>
+      </div>
+      <div class="fields__items">白黒基調 / 本文17px / テーブル15px / 行間1.9 / ヘアライン罫線 / 軍事比喩・否定列挙・採用語禁止</div>
+    </div>
+  </div>
 </section>
 
 <section class="p-section">
   <h2 class="p-section__title">B. Vulnerability Report</h2>
   <div class="p-section__title-jp">脆弱性レポート（パッシブのみ）</div>
   <table class="steps">
-    <tr><td>01</td><td>securityheaders.com / Mozilla Observatory / SSL Labs を実行</td></tr>
-    <tr><td>02</td><td>Lighthouse でモバイル + デスクトップ計測</td></tr>
-    <tr><td>03</td><td>Wappalyzer で CMS / プラグイン検出</td></tr>
-    <tr><td>04</td><td>結果を赤・黄・緑で分類してPDF化</td></tr>
-    <tr><td>05</td><td>非エンジニア向け解消手順書を添付</td></tr>
-    <tr><td>06</td><td>パスワード保護をかけて送付準備</td></tr>
+    <tr>
+      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td class="what">3ツールで公開情報スキャン</td>
+      <td class="where">securityheaders / Mozilla Observatory / SSL Labs</td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td class="what">Lighthouse 計測（モバイル + デスクトップ）</td>
+      <td class="where">Chrome DevTools or PageSpeed</td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td class="what">CMS / プラグイン検出</td>
+      <td class="where">Wappalyzer 拡張</td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td class="what">赤・黄・緑で分類してPDF化</td>
+      <td class="where">Drive 案件 <span class="code-inline">/reports/</span></td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td class="what">非エンジニア向け解消手順を添付</td>
+      <td class="where">PDF 末尾</td>
+      <td class="who">案件CTO</td>
+    </tr>
+    <tr>
+      <td>06</td>
+      <td class="what">PDF にパスワード保護</td>
+      <td class="where">送付直前</td>
+      <td class="who">案件CTO</td>
+    </tr>
   </table>
 </section>
 
@@ -170,11 +332,39 @@
   <h2 class="p-section__title">C. Design Identity</h2>
   <div class="p-section__title-jp">デザインアイデンティティ</div>
   <table class="steps">
-    <tr><td>01</td><td>既存サイト・SNS・店内写真を5分眺める</td></tr>
-    <tr><td>02</td><td>3キーワードで「らしさ」を言語化</td></tr>
-    <tr><td>03</td><td>Pinterest で参考画像 6〜12枚集めてムードボード作成</td></tr>
-    <tr><td>04</td><td>業態別の標準3案から方向性を選定</td></tr>
-    <tr><td>05</td><td>方向性メモ（PDF 1枚）にまとめてA案と一緒に送付</td></tr>
+    <tr>
+      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td class="what">既存サイト・SNS・店内写真を観察</td>
+      <td class="where">5分・案件ノート</td>
+      <td class="who">案件CTO</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td class="what">3キーワードで「らしさ」を言語化</td>
+      <td class="where"><span class="code-inline">brief.md</span> § Research</td>
+      <td class="who">案件CTO</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td class="what">ムードボード作成（参考画像 6〜12枚）</td>
+      <td class="where">Drive <span class="code-inline">/moodboard_YYYYMMDD/</span></td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td class="what">業態別の標準3案から方向性選定</td>
+      <td class="where"><span class="code-inline">brief.md</span> § Research</td>
+      <td class="who">案件CTO</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td class="what">方向性メモ（PDF 1枚）にまとめる</td>
+      <td class="where">Drive 案件 <span class="code-inline">/reports/</span></td>
+      <td class="who">アサイン者</td>
+    </tr>
   </table>
 </section>
 
@@ -182,9 +372,27 @@
   <h2 class="p-section__title">Send</h2>
   <div class="p-section__title-jp">送付</div>
   <table class="steps">
-    <tr><td>01</td><td>3点をZIPにしてパスワード保護</td></tr>
-    <tr><td>02</td><td>櫻井みどりが目視QC（誤検知二重チェック・3〜5分）</td></tr>
-    <tr><td>03</td><td>カバーレターを送信（パスワードは別経路）</td></tr>
+    <tr>
+      <th></th><th>WHAT</th><th>WHERE</th><th>WHO</th>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td class="what">3点をZIPにしてパスワード保護</td>
+      <td class="where">Drive 案件 <span class="code-inline">/送付物/</span></td>
+      <td class="who">アサイン者</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td class="what">目視QC（誤検知二重チェック）</td>
+      <td class="where">3〜5分</td>
+      <td class="who">櫻井みどり</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td class="what">カバーレターを送信（PWは別経路）</td>
+      <td class="where">メール</td>
+      <td class="who">アサイン者</td>
+    </tr>
   </table>
 </section>
 
