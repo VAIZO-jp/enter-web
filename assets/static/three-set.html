@@ -424,7 +424,51 @@ details[open] > .toggle__summary::after { content: '−'; }
 <section class="p-hero">
   <div class="p-hero__eyebrow">V/ENTER · COMMITMENT</div>
   <h1 class="p-hero__title">Three-Set</h1>
-  <p class="p-hero__lead">候補企業に送る3点の完成物。<br>マスターシート L / M / N がすべて埋まって、はじめて O 列（送付日）へ進行する。</p>
+  <p class="p-hero__lead">候補企業に送る3点の完成物。<br>営業候補リストの L / M / N列がすべて埋まって、はじめて O列（3点セット送付日）へ進行する。</p>
+</section>
+
+<section class="p-section" style="padding: clamp(32px,5vw,56px) 0;">
+  <h2 class="p-section__title" style="margin-bottom: 16px;">Master Sheet <span class="jp">マスターシート対応列</span></h2>
+  <p class="lead-text" style="margin-bottom: 16px;">案件は「VAIZO_営業候補リスト_master」スプシで一元管理。3点セット関連は L〜O 列。</p>
+  <table class="t">
+    <tr><th>列</th><th>カラム名</th><th>記入内容</th></tr>
+    <tr><td>L</td><td>デモURL</td><td>COMMIT 01 完成時 — GitHub Pages URL + PW</td></tr>
+    <tr><td>M</td><td>脆弱性レポートURL</td><td>COMMIT 02 完成時 — GitHub repo URL + PDF パス</td></tr>
+    <tr><td>N</td><td>コンセプトシートURL</td><td>COMMIT 03 完成時 — Drive PDF URL</td></tr>
+    <tr><td>O</td><td>3点セット送付日</td><td>SEND 完了時 — YYYY-MM-DD</td></tr>
+  </table>
+  <details class="toggle" style="margin-top: 16px;">
+    <summary class="toggle__summary">マスターシート全カラム（25列）</summary>
+    <div class="toggle__body">
+      <ul>
+        <li><strong>A</strong> 候補ID（P0001〜の連番）</li>
+        <li><strong>B</strong> 会社名</li>
+        <li><strong>C</strong> 担当者名・役職</li>
+        <li><strong>D</strong> 連絡先</li>
+        <li><strong>E</strong> デモ制作担当VAIZER</li>
+        <li><strong>F</strong> 営業窓口VAIZER</li>
+        <li><strong>G</strong> ステージ（1.候補登録 / 2.デモ着手 / 3.3点完成 / 4.送付済 / ...）</li>
+        <li><strong>H</strong> 期待値（S=紹介 / A / B / C）</li>
+        <li><strong>I</strong> 次アクション</li>
+        <li><strong>J</strong> 次アクション期日</li>
+        <li><strong>K</strong> メモ（業種・業態・エリア・住所・URL・V_ENTER#）</li>
+        <li><strong>L</strong> デモURL ★COMMIT 01</li>
+        <li><strong>M</strong> 脆弱性レポートURL ★COMMIT 02</li>
+        <li><strong>N</strong> コンセプトシートURL ★COMMIT 03</li>
+        <li><strong>O</strong> 3点セット送付日 ★SEND</li>
+        <li><strong>P</strong> メール①</li>
+        <li><strong>Q</strong> 電話①</li>
+        <li><strong>R</strong> メール②</li>
+        <li><strong>S</strong> 電話②</li>
+        <li><strong>T</strong> 現状サイトURL</li>
+        <li><strong>U</strong> 業種スコア</li>
+        <li><strong>V</strong> 店舗スコア（暫定）</li>
+        <li><strong>W</strong> 総合スコア（暫定）</li>
+        <li><strong>X</strong> 採点根拠</li>
+        <li><strong>Y</strong> 採点日</li>
+      </ul>
+    </div>
+  </details>
 </section>
 
 <!-- ============== COMMIT 01 ============== -->
@@ -484,7 +528,7 @@ details[open] > .toggle__summary::after { content: '−'; }
 
   <div class="complete">
     <span class="complete__label">COMPLETE</span>
-    <span class="complete__text">マスターシート <strong>L 列</strong> に「デモ完成 + URL + PW」を記録。</span>
+    <span class="complete__text"><strong>L列（デモURL）</strong> に GitHub Pages URL + パスワード を記入。<strong>G列（ステージ）</strong> を「2.デモ着手 → 完成」に更新。</span>
   </div>
 
   <div class="fields">
@@ -843,7 +887,7 @@ No photography — abstract SVG/CSS textures only.</pre>
 
   <div class="complete">
     <span class="complete__label">COMPLETE</span>
-    <span class="complete__text">マスターシート <strong>M 列</strong> に「レポート完成 + GitHub URL + PDF パス」を記録。</span>
+    <span class="complete__text"><strong>M列（脆弱性レポートURL）</strong> に GitHub repo URL + PDF パス を記入。</span>
   </div>
 
   <details class="toggle">
@@ -1034,7 +1078,7 @@ const { chromium } = require('playwright');
 
   <div class="complete">
     <span class="complete__label">COMPLETE</span>
-    <span class="complete__text">マスターシート <strong>N 列</strong> に「シート完成 + ファイル名」を記録。</span>
+    <span class="complete__text"><strong>N列（コンセプトシートURL）</strong> に Drive PDF URL を記入。<strong>G列（ステージ）</strong> を「3.3点完成」に更新。</span>
   </div>
 </section>
 
@@ -1042,7 +1086,7 @@ const { chromium } = require('playwright');
 <section class="go-section">
   <div class="go-section__label">GO / GATE</div>
   <h2 class="go-section__title">→ O 列へ進行</h2>
-  <p class="go-section__text">L / M / N がすべて埋まった上で、<br>橋本CEO・案件CTO・外部デザイナー の <strong>3者のいずれか1名</strong> が GO 判定。</p>
+  <p class="go-section__text"><strong>L / M / N</strong> 列がすべて埋まった上で、<br>橋本CEO・案件CTO・外部デザイナー の <strong>3者のいずれか1名</strong> が GO 判定。</p>
 </section>
 
 <!-- ============== SEND ============== -->
@@ -1070,8 +1114,8 @@ const { chromium } = require('playwright');
     </tr>
     <tr>
       <td>04</td>
-      <td class="what">送付日を記録</td>
-      <td class="where">マスターシート <strong>O 列</strong></td>
+      <td class="what">送付日を記録 + ステージ更新</td>
+      <td class="where">スプシ <strong>O列</strong>（送付日）+ <strong>G列</strong>（4.送付済）</td>
       <td class="who">アサイン</td>
     </tr>
   </table>
@@ -1083,7 +1127,7 @@ const { chromium } = require('playwright');
   <div class="forbidden-list">
     <div class="forbidden-list__item">
       <span class="forbidden-list__num">FORBIDDEN 01</span>
-      <span class="forbidden-list__text">L / M / N が空欄のまま O 列に送付日を入れない</span>
+      <span class="forbidden-list__text">L列（デモURL）/ M列（レポートURL）/ N列（シートURL）が空欄のまま O列（送付日）を埋めない</span>
     </div>
     <div class="forbidden-list__item">
       <span class="forbidden-list__num">FORBIDDEN 02</span>
@@ -1091,7 +1135,7 @@ const { chromium } = require('playwright');
     </div>
     <div class="forbidden-list__item">
       <span class="forbidden-list__num">FORBIDDEN 03</span>
-      <span class="forbidden-list__text">マスターシート以外で並行管理しない</span>
+      <span class="forbidden-list__text">「VAIZO_営業候補リスト_master」以外のスプシ・別タブで並行管理しない</span>
     </div>
   </div>
 </section>
