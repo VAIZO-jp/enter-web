@@ -90,7 +90,6 @@
 ### 15:30 — 振り返り
 
 - [ ] 当日詰まった点を [`troubleshooting/`](../troubleshooting/) に追記候補としてメモ
-- [ ] プロンプトの改善点を [`templates/codex-prompts/`](../templates/codex-prompts/) への追記候補としてメモ
 - [ ] 後日 PR 起票
 
 ---

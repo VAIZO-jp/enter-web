@@ -274,7 +274,6 @@
 </code></pre>
 <p>ただし、生成画像は <strong>方向性確認のみ</strong> に使い、実装には実画像（撮影 or ストック）を使う。</p>
 <h3>7.2 Codex プロンプトで方向性試作</h3>
-<p><a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> の業態別雛形に「3キーワード」と「方向性」を埋めて、Codex に FV を試作させる。</p>
 <pre><code class="language-bash">cd 案件ディレクトリ
 # codex_prompt_a.md, codex_prompt_b.md, codex_prompt_c.md を作る
 codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &quot;./codex_out_a.md&quot; &quot;$(cat ./codex_prompt_a.md)&quot;
@@ -498,13 +497,10 @@ codex exec --skip-git-repo-check --cd &quot;$PWD&quot; --output-last-message &qu
 <li><input disabled="" type="checkbox"> 書体決定（VAIZO 標準から選定）</li>
 <li><input disabled="" type="checkbox"> 写真調達方針決定（ストック / 撮影 / 既存素材）</li>
 </ul>
-<p>すべて揃ったら、<a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> で Codex プロンプト3本を作成 → Codex で FV3案を生成 → クライアントに提示。</p>
 <hr>
 <h2>12. 関連ドキュメント</h2>
 <ul>
 <li><a href="./02-design-policy.html"><code>handbook/02-design-policy.md</code></a> — VAIZO Design Policy v1</li>
-<li><a href="./03-codex-claude-workflow.html"><code>handbook/03-codex-claude-workflow.md</code></a> — Codex 実行手順</li>
-<li><a href="../templates/codex-prompts/"><code>templates/codex-prompts/</code></a> — 業態別Codexプロンプト雛形</li>
 <li><a href="../runbooks/new-client-kickoff.html"><code>runbooks/new-client-kickoff.md</code></a> — 新規案件キックオフ</li>
 </ul>
 

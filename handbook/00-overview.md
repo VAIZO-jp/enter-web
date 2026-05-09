@@ -34,10 +34,8 @@
 
 ## 4. 制作プロセス（要約）
 
-詳細は [`03-codex-claude-workflow.md`](./03-codex-claude-workflow.md) と [`04-wp-publish-guide.md`](./04-wp-publish-guide.md) 参照。
 
 1. 仕様確定（Claude Code が `brief.md` をまとめる）
-2. Codex プロンプト組み立て（[`templates/codex-prompts/`](../templates/codex-prompts/) から雛形選択）
 3. Codex CLI で実装ドラフト生成（`codex exec`）
 4. Claude Code が差分レビュー、必要修正を直接Edit
 5. Playwright/web-cloner MCP で自己検収

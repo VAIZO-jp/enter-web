@@ -80,6 +80,5 @@ assignees: ''
 
 ## 関連メモ
 
-- 業態別 Codex プロンプト雛形: [`templates/codex-prompts/`](../../templates/codex-prompts/)
 - 公開手順: [`handbook/04-wp-publish-guide.md`](../../handbook/04-wp-publish-guide.md)
 - 公開当日 runbook: [`runbooks/deploy-day.md`](../../runbooks/deploy-day.md)

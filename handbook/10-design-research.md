@@ -221,7 +221,6 @@ prompt: "intimate Japanese bar interior, dim warm lighting, walnut counter, 8 le
 
 ### 7.2 Codex プロンプトで方向性試作
 
-[`templates/codex-prompts/`](../templates/codex-prompts/) の業態別雛形に「3キーワード」と「方向性」を埋めて、Codex に FV を試作させる。
 
 ```bash
 cd 案件ディレクトリ
@@ -374,13 +373,10 @@ VAIZO 白黒基調を維持しつつ、業態の「らしさ」を1色で足す�
 - [ ] 書体決定（VAIZO 標準から選定）
 - [ ] 写真調達方針決定（ストック / 撮影 / 既存素材）
 
-すべて揃ったら、[`templates/codex-prompts/`](../templates/codex-prompts/) で Codex プロンプト3本を作成 → Codex で FV3案を生成 → クライアントに提示。
 
 ---
 
 ## 12. 関連ドキュメント
 
 - [`handbook/02-design-policy.md`](./02-design-policy.md) — VAIZO Design Policy v1
-- [`handbook/03-codex-claude-workflow.md`](./03-codex-claude-workflow.md) — Codex 実行手順
-- [`templates/codex-prompts/`](../templates/codex-prompts/) — 業態別Codexプロンプト雛形
 - [`runbooks/new-client-kickoff.md`](../runbooks/new-client-kickoff.md) — 新規案件キックオフ

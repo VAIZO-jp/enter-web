@@ -122,7 +122,6 @@ font-feature-settings: "tnum" 1, "lnum" 1;
 
 ## 11. 関連ドキュメント
 
-- [`templates/codex-prompts/TEMPLATE.md`](../templates/codex-prompts/TEMPLATE.md) — Codex プロンプトに本ポリシーを埋め込み済み
 - [`troubleshooting/wp-publish-issues.md`](../troubleshooting/wp-publish-issues.md) — CSS衝突時の対処
 - メモリ `feedback_figma_implementation.md` — Figma実装の11鉄則
 

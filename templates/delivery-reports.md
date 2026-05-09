@@ -95,7 +95,6 @@
 - {{...}}
 
 トラブルシューティングへの追記候補があれば [`troubleshooting/`](../troubleshooting/) へPR。
-プロンプト改善があれば [`templates/codex-prompts/`](./codex-prompts/) へPR。
 
 ## 10. 関連ファイル
 

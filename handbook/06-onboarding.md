@@ -59,7 +59,6 @@ cd enter-web
 - [ ] [`MAP.md`](../MAP.md)（データ保存場所・アクセス地図）★最重要
 - [ ] [`handbook/00-overview.md`](./00-overview.md)（事業全体像）
 - [ ] [`handbook/02-design-policy.md`](./02-design-policy.md)（VAIZO Design Policy）
-- [ ] [`handbook/03-codex-claude-workflow.md`](./03-codex-claude-workflow.md)（実装ワークフロー）
 
 ### 役割別の追加読書（1〜2時間）
 
@@ -73,8 +72,6 @@ cd enter-web
 #### 制作担当の場合
 
 - [ ] [`handbook/04-wp-publish-guide.md`](./04-wp-publish-guide.md)（**最重要**：5ステップ公開手順）
-- [ ] [`templates/codex-prompts/TEMPLATE.md`](../templates/codex-prompts/TEMPLATE.md)
-- [ ] [`templates/codex-prompts/`](../templates/codex-prompts/) 業態別雛形を全て眺める
 - [ ] [`decision-trees/wp-integration-method.md`](../decision-trees/wp-integration-method.md)
 - [ ] [`runbooks/deploy-day.md`](../runbooks/deploy-day.md)
 
@@ -106,7 +103,6 @@ cd enter-web
   ```
 - [ ] 生成された `index.html` をブラウザで開いて確認
 - [ ] Claude Code に「このHTMLをVAIZO Design Policyに沿って修正して」と依頼してみる
-- [ ] [`troubleshooting/codex-cli-issues.md`](../troubleshooting/codex-cli-issues.md) を読み、無音失敗のパターンを把握
 
 ---
 

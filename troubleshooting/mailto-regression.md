@@ -128,5 +128,4 @@ URLエンコード推奨（特に日本語）：
 
 - [`handbook/04-wp-publish-guide.md`](../handbook/04-wp-publish-guide.md) Step 5-メール
 - [`templates/wp-prompts/05-ai-test.md`](../templates/wp-prompts/05-ai-test.md)
-- [`templates/codex-prompts/live-house.md`](../templates/codex-prompts/live-house.md) — 仙台レトロを基にした雛形（事故注意書き含む）
 - メモリ `project_vaizo_web_ops.md` — 統合運用フレーム v0.2 の策定動機

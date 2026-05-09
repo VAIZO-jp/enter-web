@@ -37,14 +37,12 @@
 | 事業の全体像を知りたい | [`handbook/00-overview.md`](./handbook/00-overview.md) |
 | 営業プロセスを知りたい | [`handbook/01-sales-process.md`](./handbook/01-sales-process.md) |
 | デザインルールを知りたい | [`handbook/02-design-policy.md`](./handbook/02-design-policy.md) |
-| Claude × Codex の使い分け | [`handbook/03-codex-claude-workflow.md`](./handbook/03-codex-claude-workflow.md) |
 | WordPressに公開する手順 | [`handbook/04-wp-publish-guide.md`](./handbook/04-wp-publish-guide.md) |
 | 脆弱性レポートの送付ルール | [`handbook/05-vulnerability-scan.md`](./handbook/05-vulnerability-scan.md) |
 | 新規メンバーのDay1 | [`handbook/06-onboarding.md`](./handbook/06-onboarding.md) |
 | 新規案件の立ち上げ | [`runbooks/new-client-kickoff.md`](./runbooks/new-client-kickoff.md) |
 | 公開当日の段取り | [`runbooks/deploy-day.md`](./runbooks/deploy-day.md) |
 | 公開後30日のフォロー | [`runbooks/post-launch-30days.md`](./runbooks/post-launch-30days.md) |
-| Codex に渡すプロンプト | [`templates/codex-prompts/`](./templates/codex-prompts/) |
 | クライアント宛メール雛形 | [`templates/client-emails/`](./templates/client-emails/) |
 | デザインの見つけ方・参考収集 | [`handbook/10-design-research.md`](./handbook/10-design-research.md) |
 | ナレッジ更新運用 | [`handbook/07-knowledge-management.md`](./handbook/07-knowledge-management.md) |

@@ -27,10 +27,6 @@
 - `handbook/07-knowledge-management.md`（ナレッジ更新運用）
 - `handbook/08-finance-billing.md`（経理・請求フロー）
 - `handbook/09-client-offboarding.md`（クライアントオフボーディング）
-- `templates/codex-prompts/beauty-salon.md`（美容室・サロン業態）
-- `templates/codex-prompts/clinic.md`（整体・治療院業態）
-- `templates/codex-prompts/real-estate.md`（不動産仲介業態）
-- `templates/codex-prompts/school.md`（教育・スクール業態）
 - `templates/client-emails/estimate.md`（見積送付メール）
 - `templates/client-emails/invoice.md`（請求書送付メール）
 - `templates/client-emails/contract.md`（契約書送付メール）
@@ -44,7 +40,6 @@
 
 ### Changed
 - `handbook/01-sales-process.md` 本文を骨格→詳細に拡張
-- `templates/codex-prompts/corporate.md` 本文を骨格→詳細に拡張
 - `templates/client-emails/proposal.md` 本文を骨格→詳細に拡張
 - `scripts/build.mjs` 改善：個別ページにOGP/title/description埋め込み、404 と favicon の自動配置
 - `README.md` に GitHub Pages バッジ・公開URL明記
@@ -57,12 +52,9 @@
 ### Added
 - リポジトリ立ち上げ `VAIZO-jp/enter-web`（Public化）
 - `README.md` `MAP.md`（最重要：データ保存場所・アクセス地図）
-- `handbook/` 全7章（00-overview / 01-sales-process / 02-design-policy / 03-codex-claude-workflow / 04-wp-publish-guide / 05-vulnerability-scan / 06-onboarding）
-- `templates/codex-prompts/` 5本（TEMPLATE + bar-or-restaurant-fv + live-house + corporate + extension-sections）
 - `templates/wp-prompts/` 3本（04-pre-audit + 04-0-optimize + 05-ai-test）
 - `templates/client-emails/` 3本（vulnerability-report-cover + proposal + delivery-completion）+ delivery-reports.md
 - `decision-trees/` 4本（wp-integration-method + vulnerability-target + ai-vs-human + escalation）
-- `troubleshooting/` 4本（mailto-regression + wp-publish-issues + codex-cli-issues + playwright-failures）
 - `runbooks/` 4本（new-client-kickoff + deploy-day + post-launch-30days + 1password-teams-setup）
 - `.github/`（Issue 3テンプレ + PR + CODEOWNERS）
 - `assets/css/vaizo-editorial.css`（白黒・Inter900+NotoSansJP700・17px本文・@page A4）

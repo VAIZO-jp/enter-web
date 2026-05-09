@@ -48,7 +48,6 @@
 |--------|--------|------|
 | LP制作7ステップ | `1W3yK-bH3KLN1k6pGk3PDzWMA94AlncfczO8EtdxS6w4` | 現役 |
 | WP公開汎用版手順書（Drive版） | `1XK4epQJSMDqlXkXMx9bhlFgi1wkhundnJBlAK8bIyW4` | **GitHub `handbook/04-wp-publish-guide.md` に正本移管予定** |
-| Claude Code × Codex CLI 運用ガイド | `1qWTpds1dU3CKTpmQYhXpxl6yNJO9RfVjNX6leYKxvas` | **GitHub `handbook/03-codex-claude-workflow.md` に正本移管予定** |
 | V/ENTER 営業ガイドライン（脆弱性レポート） | `1VgoW0gmPaZVkZs1GSLvzYEDCBXPO0Dtt3nV_E2tM1Sw` | **GitHub `handbook/05-vulnerability-scan.md` に正本移管予定** |
 | WordPressへ下書き保存する手順 | `1AnEhStpeb5xIC8gQI9TUHYIZS0HHZWI8wOW4fqS2RWE` | 現役（v1.0、2026-04-22） |
 | 仙台レトロバックページ修正ログ | `1KqjiYq5fP9-qYPgYJLTjDwpIi6_fEDWpPWsocJpcQK4` | 案件記録（保存） |

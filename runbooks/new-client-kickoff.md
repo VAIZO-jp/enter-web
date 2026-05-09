@@ -100,8 +100,6 @@ WP公開作業に必要な情報・アカウント（[`handbook/04-wp-publish-gu
 
 ## 8. デザイン提案（3〜5営業日）
 
-- [ ] [`templates/codex-prompts/`](../templates/codex-prompts/) から業態別雛形を選択
-- [ ] FV3案を Codex で生成（[`bar-or-restaurant-fv.md`](../templates/codex-prompts/bar-or-restaurant-fv.md) 等）
 - [ ] Claude Code でレビュー → 修正
 - [ ] GitHub プライベートリポジトリ `VAIZO-jp/{{案件略号}}-site` 作成、staticrypt保護でデプロイ
 - [ ] 提案メール送付（[`templates/client-emails/proposal.md`](../templates/client-emails/proposal.md)）
@@ -111,7 +109,6 @@ WP公開作業に必要な情報・アカウント（[`handbook/04-wp-publish-gu
 ## 9. 採用案決定〜本制作開始
 
 - [ ] クライアントから採用案決定の返信受領
-- [ ] FV → 6セクション拡張（[`templates/codex-prompts/extension-sections.md`](../templates/codex-prompts/extension-sections.md)）
 - [ ] 修正対応表の運用開始（修正ID `F-{{案件略号}}-{{YYYYMM}}-{{連番:03桁}}`）
 
 担当: 制作担当

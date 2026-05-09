@@ -52,7 +52,6 @@ V/ENTER WEB の営業は **「カスタマイズデモ + 脆弱性レポート +
 
 1. **公開情報のみで脆弱性スキャン**（[`handbook/05-vulnerability-scan.md`](./05-vulnerability-scan.md) のパッシブツールのみ）
 2. **デザインアイデンティティ提案**（既存サイトの「らしさ」を抽出して再構築案）
-3. **カスタムデモトップ（FV）を Codex で生成**（[`templates/codex-prompts/`](../templates/codex-prompts/) から業態別雛形を選択）
 4. **櫻井みどりが QC**（誤検知の二重チェック、3-5分/件）
 5. **三点セットをメール送付**（雛形: [`templates/client-emails/vulnerability-report-cover.md`](../templates/client-emails/vulnerability-report-cover.md)）
 6. **送付ログを記録**（送信日時・担当者・添付パスワード）

@@ -116,7 +116,6 @@ info@vaizo.jp / vaizo.jp
 
 ## 関連
 
-- [`templates/codex-prompts/`](../codex-prompts/) — 業態別デザイン提案の雛形
 - [`templates/client-emails/contract.md`](./contract.md) — 採用案決定後の契約書送付
 - [`templates/client-emails/invoice.md`](./invoice.md) — 着手金請求
 - [`runbooks/new-client-kickoff.md`](../../runbooks/new-client-kickoff.md) — キックオフ全体フロー

@@ -114,7 +114,6 @@
 ### 内部振り返り
 
 - [ ] [`troubleshooting/`](../troubleshooting/) への追記が必要な学びがあるかレビュー
-- [ ] [`templates/codex-prompts/`](../templates/codex-prompts/) のプロンプト改善PRを起票
 - [ ] チーム内で 15分の振り返り（Slack スレッドでも可）
 
 ---

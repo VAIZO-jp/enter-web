@@ -9,7 +9,6 @@
 V/ENTER WEB ハンドブックは **読むためでなく、書き換えるため** にある。
 
 - 案件で詰まった → `troubleshooting/` に追記
-- 良いプロンプトを書いた → `templates/codex-prompts/` に追加
 - 判断に迷った → `decision-trees/` に追加
 - 公開後の学び → `runbooks/post-launch-30days.md` で振り返り → 各所に反映
 
@@ -52,9 +51,7 @@ gh pr merge --squash --auto  # 自己マージOK
 ### 新規業態の Codex プロンプト雛形
 
 1. 1〜2件の実案件で実証（雛形を案件直下で書く）
-2. 案件公開後、雛形を `templates/codex-prompts/{業態}.md` に汎用化
 3. PR で追加、CTO レビュー
-4. `templates/codex-prompts/README.md` に業態リスト追加
 
 ## 4. リンク整合性の維持
 

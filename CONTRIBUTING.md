@@ -16,7 +16,6 @@
 ### ✅ 大歓迎
 
 - 案件で詰まった点を [`troubleshooting/`](./troubleshooting/) に追記
-- AIに使ってみて良かったプロンプトを [`templates/codex-prompts/`](./templates/codex-prompts/) に追加
 - 手順書の不足・分かりにくい箇所への改善提案
 - 新規業態の Codex プロンプト雛形（飲食以外で需要があれば）
 - 公開後の振り返りで得られた学び（[`runbooks/post-launch-30days.md`](./runbooks/post-launch-30days.md) のフォーマット）

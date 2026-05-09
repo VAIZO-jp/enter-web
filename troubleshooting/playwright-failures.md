@@ -1,6 +1,5 @@
 # Playwright 関連のトラブルシューティング
 
-> [`templates/wp-prompts/05-ai-test.md`](../templates/wp-prompts/05-ai-test.md) や [`handbook/03-codex-claude-workflow.md`](../handbook/03-codex-claude-workflow.md) で Playwright が使えない場合の対処。
 
 ---
 
@@ -135,5 +134,3 @@ LCPが遅い原因が画像なら、それ自体が課題なので画像最適�
 ## 関連ドキュメント
 
 - [`templates/wp-prompts/05-ai-test.md`](../templates/wp-prompts/05-ai-test.md) — 公開後テストプロンプト
-- [`handbook/03-codex-claude-workflow.md`](../handbook/03-codex-claude-workflow.md) §自己検収
-- [`troubleshooting/codex-cli-issues.md`](./codex-cli-issues.md) §4

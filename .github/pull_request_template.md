@@ -26,9 +26,7 @@
 - [ ] [`README.md`](../README.md) の目次・案内に変更が必要か確認
 - [ ] [`MAP.md`](../MAP.md) の参照情報に変更が必要か確認
 
-### Codexプロンプト変更（templates/codex-prompts/）
 
-- [ ] [`TEMPLATE.md`](../templates/codex-prompts/TEMPLATE.md) の共通制約と矛盾しないか
 - [ ] [`handbook/02-design-policy.md`](../handbook/02-design-policy.md) のブランド規定に従っているか
 - [ ] 過去案件（BAR NOIR、仙台レトロ）で実証されたパターンか
 
