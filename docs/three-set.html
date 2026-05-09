@@ -317,6 +317,97 @@
   .steps td.where, .steps td.who { font-size: 12px; }
   .forbidden-list__item { grid-template-columns: 60px 1fr; gap: 16px; }
 }
+
+/* Toggle (details/summary) */
+.toggle {
+  margin-top: 24px;
+  border: 1px solid var(--rule-hairline);
+  background: var(--paper-pure);
+}
+.toggle__summary {
+  cursor: pointer;
+  padding: 16px 24px;
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-black);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+.toggle__summary::-webkit-details-marker { display: none; }
+.toggle__summary::after {
+  content: '+';
+  font-size: 20px;
+  color: var(--accent-gold);
+  font-weight: 700;
+  line-height: 1;
+}
+details[open] > .toggle__summary::after { content: '−'; }
+.toggle__summary:hover { background: var(--paper-cream); }
+.toggle__body {
+  padding: 24px;
+  font-family: var(--font-sans-jp);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink-charcoal);
+  border-top: 1px solid var(--rule-hairline);
+}
+.toggle__body h4 {
+  font-family: var(--font-sans-en);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 28px 0 10px;
+  color: var(--accent-gold);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule-hairline);
+}
+.toggle__body h4:first-child { margin-top: 0; }
+.toggle__body p { margin: 0 0 10px; font-size: 13px; }
+.toggle__body pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  background: var(--ink-black);
+  color: var(--paper-off-white);
+  padding: 14px 18px;
+  margin: 12px 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.7;
+  border-radius: 0;
+  overflow-x: auto;
+}
+.toggle__body .var {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--paper-cream);
+  border: 1px solid var(--rule-hairline);
+  padding: 1px 6px;
+  color: var(--ink-charcoal);
+}
+.toggle__body ul {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  font-size: 13px;
+  list-style: none;
+}
+.toggle__body ul li {
+  position: relative;
+  padding: 3px 0;
+}
+.toggle__body ul li::before {
+  content: '·';
+  position: absolute;
+  left: -14px;
+  color: var(--accent-gold);
+  font-weight: 900;
+}
 </style>
 </head>
 <body>
@@ -411,6 +502,196 @@
       <div class="fields__items">白黒基調 / 本文17px / 行間1.9 / ヘアライン罫線 / 軍事比喩・否定列挙・採用語禁止</div>
     </div>
   </div>
+
+  <details class="toggle">
+    <summary class="toggle__summary">Codex 画像生成プロンプト</summary>
+    <div class="toggle__body">
+
+      <h4>共通変数（5つ）</h4>
+      <p>下記をプロンプトに流し込む前に、案件情報.xlsx から取得して埋める。</p>
+      <ul>
+        <li><span class="var">{{store_name}}</span> — 屋号</li>
+        <li><span class="var">{{業態}}</span> — bar / restaurant / live-house / clinic / beauty-salon / corporate / school / real-estate</li>
+        <li><span class="var">{{方向性}}</span> — ELEGANT_WHITE / HERITAGE_DARK / URBAN_MUSIC / WARM_HOSPITALITY / MINIMAL_NORDIC / ACADEMIC_CLASSIC</li>
+        <li><span class="var">{{location}}</span> — 銀座路地裏 / 仙台中心部 / 表参道 etc</li>
+        <li><span class="var">{{phone}}</span> — 03-0000-0000</li>
+      </ul>
+
+      <h4>とりあえず作りたい例</h4>
+      <ul>
+        <li><strong>銀座系高級バー</strong> — 方向性 ELEGANT_WHITE / 配色 黒×ゴールド / 書体 Cormorant Garamond + Noto Serif JP</li>
+        <li><strong>ライブハウス</strong> — 方向性 URBAN_MUSIC / 配色 黒×ネオンオレンジ / 書体 Inter 900 + Noto Sans JP 700</li>
+        <li><strong>美容室</strong> — 方向性 MINIMAL_NORDIC / 配色 サクラベージュ / 書体 Cormorant Garamond + Noto Serif JP</li>
+        <li><strong>整体・治療院</strong> — 方向性 MEDICAL_TRUST / 配色 モスグリーン / 書体 Inter + Noto Sans JP</li>
+        <li><strong>コーポレート</strong> — 方向性 ACADEMIC_CLASSIC / 配色 ネイビー / 書体 Inter 900 + Noto Sans JP 700</li>
+      </ul>
+
+      <h4>A. 営業送付段階：TOP Full-LP 1枚（COMMIT 01 用）</h4>
+      <p>クライアントの「やる気スイッチ」を押す目的。送付段階ではこの1枚のみ生成。</p>
+<pre>A full-page vertical website mockup for "{{store_name}}",
+a {{業態}} in {{location}}.
+
+Style: VAIZO Editorial — minimal white &amp; black,
+       hairline 1px rules, generous white space,
+       body 17px equivalent, line-height 1.9.
+Direction: {{方向性}}.
+Typography: {{premium: Cormorant Garamond + Noto Serif JP /
+             standard: Inter 900 + Noto Sans JP 700}}.
+Accent: {{premium: subtle gold #b89b6a / standard: black only}}.
+
+Layout: 1280 wide × ~5000 tall, browser screenshot (no chrome).
+
+8 sections stacked vertically with clamp(80,12vw,160)px gutters:
+
+01. HERO — 屋号 / catchphrase / english tagline / {{phone}} / nav
+02. CONCEPT — 店の哲学 (Noto Serif JP) + vertical hairline + gold accent
+03. SPACE — 3 columns of abstract material/atmosphere visuals
+04. {{業態固有1}}
+    bar:           WHISKY &amp; DRINKS — signature 3 cards + price table
+    restaurant:    MENU — category cards + price guideline
+    live-house:    EVENTS — vertical timeline of upcoming 4-6 events
+    clinic:        APPROACH — counseling → exam → treatment → aftercare
+    beauty-salon:  STYLE — gallery grid 6-12 + filter tabs
+    corporate:     SERVICES — 3-5 service cards with line icons
+05. {{業態固有2}}
+    bar:           A NIGHT AT [name] — vertical timeline 19:00 → 02:00
+    restaurant:    A MEAL — course flow timeline
+    live-house:    ARTISTS — house band + frequent acts
+    clinic:        PRACTITIONER — bio + 国家資格番号 + experience
+    beauty-salon:  STYLISTS — name + role + specialty + Instagram
+    corporate:     WORKS — case study grid 3-6
+06. RESERVATION — large phone CTA + LINE CTA + reception hours + policy
+07. ACCESS — full address + nearest station + abstract sketch map
+08. FOOTER — 屋号 / address / phone / hours / "Established YYYY"
+
+Render notes:
+- No actual photography — atmosphere via abstract gradients/textures
+- Hairline 1px rules between sections
+- Gold accent only as: vertical rules / list bullets / footer line (premium tier)
+- Real screenshot style (no annotations, no labels)</pre>
+
+      <h4>B. 本制作段階：Sitemap 1枚 + TOP + サブページ N枚</h4>
+      <p>契約後の本制作フェーズ。複数画像 + sitemap.yaml の併走で全ページ実装の指示書にする。</p>
+
+      <p><strong>業態別の主要ページ：</strong></p>
+      <ul>
+        <li>飲食・バー: TOP / CONCEPT / MENU / RESERVATION / ACCESS（5枚）</li>
+        <li>ライブハウス: TOP / EVENTS / ARTISTS / TICKET / ACCESS（5枚）</li>
+        <li>美容室: TOP / MENU / STYLISTS / RESERVATION / ACCESS（5枚）</li>
+        <li>整体・治療院: TOP / SYMPTOMS / FLOW / PRICING / ACCESS（5枚）</li>
+        <li>不動産仲介: TOP / SEARCH / TYPES / AREA / COMPANY / CONTACT（6枚）</li>
+        <li>コーポレート: TOP / SERVICE / WORKS / COMPANY / NEWS / CONTACT（6枚）</li>
+        <li>スクール: TOP / RESULTS / CURRICULUM / INSTRUCTORS / FAQ / CONTACT（6枚）</li>
+      </ul>
+
+      <p><strong>B-0. Sitemap プロンプト（クライアント提示用）：</strong></p>
+<pre>A site map (information architecture diagram) for "{{store_name}}",
+a {{業態}}.
+
+Style: VAIZO Editorial — pure black ink on off-white #f5f3ee,
+       hairline 1px lines, thin sans-serif labels.
+       No fills, no shadows, no decoration.
+
+Layout: Horizontal hierarchical tree, 1920×1080.
+
+Structure:
+  Root: HOME
+  Level 1 (5-6 boxes): {{業態の主要ページ}}
+  Level 2 where applicable: {{子ページ}}
+
+Each node:
+  - 1px hairline rectangle, ~200×60
+  - English caps + 日本語ラベル下段
+  - ★ marker on top 3 conversion destinations
+
+Connections:
+  - Solid 1px = primary navigation
+  - Dashed 1px = footer-only / utility
+
+Bottom-right legend:
+  PRIMARY NAV ─── / FOOTER LINK - - - / ★ CONVERSION
+
+Pure information design, no thumbnails, no colors except black.</pre>
+
+      <p><strong>B-1. TOP プロンプト：</strong> A. と同じ内容を流用。</p>
+
+      <p><strong>B-2. サブページ共通プロンプト（page_name を差し替え）：</strong></p>
+<pre>A full-page mockup for "{{page_name_en}} / {{page_name_jp}}"
+of "{{store_name}}" ({{業態}}).
+
+Style: VAIZO Editorial — same as sitemap and TOP.
+Direction: {{方向性}}.
+Typography: {{premium / standard 同上}}.
+
+Layout: 1280 wide × ~{{height: 2500-3500}} tall, browser screenshot.
+
+Header (sticky, identical across all pages):
+  - Logo/屋号 left
+  - Primary nav right: {{全主要ページ列挙}}
+  - Phone top-right: {{phone}}
+
+Footer (identical):
+  - 屋号 / address / hours / phone / SNS / copyright
+
+Page-specific blocks:
+  {{ここをページごとに差し替え ↓}}
+
+Hairline 1px rules between blocks, generous white space.
+No photography — abstract SVG/CSS textures only.</pre>
+
+      <h4>Codex に読ませる時の指示（営業段階）</h4>
+<pre>以下の参考画像 1枚と添付ファイルを基に、
+{{store_name}} のデモサイトを実装してください。
+
+参考画像:
+  - top-fulllp.png : 縦長LP一枚絵、全8セクション
+
+別添:
+  - 案件情報.xlsx (Client / Reference / Brand)
+
+実装条件:
+  - 単一 HTML（CSS は &lt;head&gt; 内、JS 最小限）
+  - VAIZO Editorial 厳守 (本文17px / 行間1.9 / ヘアライン)
+  - 文字情報は案件情報.xlsx の値を採用
+  - 写真はSVG/CSSで抽象表現（外部画像URLなし）
+  - 飲食・店舗業態は追従の電話・LINE CTA を 2セクション目以降に表示
+  - 軍事比喩・否定列挙・採用語禁止
+
+完了条件:
+  - コンソールエラー 0件
+  - HTML5として妥当
+  - レスポンシブ全幅でレイアウト崩れなし</pre>
+
+      <h4>Codex に読ませる時の指示（本制作段階）</h4>
+<pre>以下の参考画像 N+1枚と添付ファイルを基に、
+{{store_name}} の本制作サイトを実装してください。
+
+参考画像:
+  - sitemap.png    : 全ページ階層・関係（視覚化用）
+  - page-top.png   : トップページ縦長LP
+  - page-{xxx}.png : {{各サブページ}}
+
+別添:
+  - 案件情報.xlsx (Client / Reference / Brand)
+  - sitemap.yaml  (ページID・パス・ナビ構造の正本 — 画像より優先)
+
+実装条件:
+  - sitemap.yaml に従って 1ページ1ファイルで分割
+    （/index.html, /about.html, /menu.html, ...）
+  - 全ページ共通ヘッダ・フッタ（include不可、コピー記述で同期）
+  - 全 internal link は sitemap.yaml の path に従う
+  - VAIZO Editorial 厳守
+  - 文字情報は案件情報.xlsx の値を採用
+  - 写真はSVG/CSSで抽象表現
+
+完了条件:
+  - 全ページ コンソールエラー 0件
+  - 全 internal link 200 OK（相対パス）
+  - レスポンシブ全幅で崩れなし
+  - sitemap.yaml と実装が一致</pre>
+
+    </div>
+  </details>
 </section>
 
 <!-- ============== COMMIT 02 ============== -->
